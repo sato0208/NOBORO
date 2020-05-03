@@ -33,18 +33,18 @@
 
 
 
-##　🙋‍♀️　ターゲットユーザ
+## 🙋‍♀️　ターゲットユーザ
 - ボルダリングをもっと楽しみたいひと
 - ジムの情報が欲しい人
 - ジムの管理者
 
-##　💪　主な利用シーン
+## 💪　主な利用シーン
 - 登った課題の管理がしたいとき
 - ランキングを見て上位にいこうとモチベーションを上げるとき
 - ジムの検索がしたいとき
 - トロフィー集めを楽しみたいとき
 
-##　✒️　使い方
+## ✒️　使い方
 
 ### 1.ジム検索について
 カテゴリ別にジムを検索することができます。<br>
@@ -69,12 +69,12 @@
 
 
 
-##　📃　設計書
-###[ワイヤーフレーム　user側](https://drive.google.com/file/d/1EYJ_Tr6NmMoKJcZVwmTYLYZ9u4tLszQg/view?usp=sharing)
-###[ワイヤーフレーム　admin側](https://app.diagrams.net/#G1GQshFpEhRTq3xialP9dOQHu8DJ1hrjtE)
-###[ER図](https://app.diagrams.net/#G1wzUQNLwBpJw6pwcnkBhbnAf4EVFQD2om)
-###[テーブル提議書](https://docs.google.com/spreadsheets/d/1NkqBkop23iWMGou29T9cCjX-nU4dwcR6I1jlKRXh_2k/edit#gid=313609131)
-###[アプリケーション詳細設計](https://docs.google.com/sprÂeadsheets/d/1NkqBkop23iWMGou29T9cCjX-nU4dwcR6I1jlKRXh_2k/edit#gid=485630087)
+## 📃　設計書
+### [ワイヤーフレーム　user側](https://drive.google.com/file/d/1EYJ_Tr6NmMoKJcZVwmTYLYZ9u4tLszQg/view?usp=sharing)
+### [ワイヤーフレーム　admin側](https://app.diagrams.net/#G1GQshFpEhRTq3xialP9dOQHu8DJ1hrjtE)
+### [ER図](https://app.diagrams.net/#G1wzUQNLwBpJw6pwcnkBhbnAf4EVFQD2om)
+### [テーブル提議書](https://docs.google.com/spreadsheets/d/1NkqBkop23iWMGou29T9cCjX-nU4dwcR6I1jlKRXh_2k/edit#gid=313609131)
+### [アプリケーション詳細設計](https://docs.google.com/sprÂeadsheets/d/1NkqBkop23iWMGou29T9cCjX-nU4dwcR6I1jlKRXh_2k/edit#gid=485630087)
 <br>
 ## 💻　機能一覧
 ###[機能一覧](https://docs.google.com/spreadsheets/d/1NkqBkop23iWMGou29T9cCjX-nU4dwcR6I1jlKRXh_2k/edit?usp=sharing)
