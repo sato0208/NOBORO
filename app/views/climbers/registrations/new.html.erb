@@ -8,6 +8,13 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+ <!-- name入力画面追加(nameをログインで使用するため) -->
+  <div class="form-group has-icon">
+    <label for="inputName">Name</label><br>
+    <%= f.text_field :name, autofocus: true, id:"inputName"%>
+    <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+  </div>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>

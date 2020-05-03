@@ -1,12 +1,26 @@
 class Gyms::TasksController < ApplicationController
   def index
+    @tasks = Task.all
+    @new_task = Task.new
+    @grades = Grade.all
   end
 
   def update
   end
 
   def create
+    @tasks = Task.all
+    @new_task = Task.new(task_params)
+    @new_task.gym_id = current_gym.id
+    if @new_task.save
+    redirect_to request.referer, notice: "successfully created Task!"
+    end
   end
+
+
+
+
+
 
   def new
   end
@@ -16,4 +30,9 @@ class Gyms::TasksController < ApplicationController
 
   def destroy
   end
+
+  private
+    def task_params
+      params.require(:task).permit(:gym_id, :task_name, :grade_id)
+    end
 end

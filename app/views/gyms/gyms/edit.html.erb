@@ -1,2 +1,54 @@
-<h1>Gyms::Gyms#edit</h1>
-<p>Find me in app/views/gyms/gyms/edit.html.erb</p>
+<div class="container">
+  <h1>ジム情報　編集画面</h1>
+    <%= form_with method: :put, model:@gym, local: true do |f| %>
+      <label>
+        <span class="btn btn-primary">画像を選択
+          <input type="file" style="display:none">
+        </span>
+        <%= f.attachment_field :image, class: "image_form" %>
+      </label>
+      <% if @gym.errors.any? %>
+        <%= @gym.errors.count %>件のerrorが発生しました
+        <% @gym.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+    </div>
+      <div class="col-xs-5">
+        <table class="table table-borderless">
+          <tr>
+            <th>ジムの名前</th><td><%= f.text_field :gym_name %></td>
+          </tr>
+          <tr>
+            <th>ジムの紹介文</th><td><%= f.text_area :description %></td>
+          </tr>
+          <tr>
+            <th>ジムの郵便番号</th><td><%= f.text_area :post_code %></td>
+          </tr>          
+          <tr>
+            <th>ジムの住所</th><td><%= f.text_area :address %></td>
+          </tr>  
+          <tr>
+            <th>ジムの電話番号</th><td><%= f.text_area :phone_number %></td>
+          </tr>
+          <tr>
+            <th>ジムの特徴</th><td><%= f.collection_select :genre_id, @genres, :id, :name %></td>
+          </tr>
+          <tr>
+            <th>ジムのurl</th><td><%= f.text_area :gym_url %></td>
+          </tr>
+ 
+        </table>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-primary btn-lg pull-right">変更を保存</button>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
