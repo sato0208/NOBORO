@@ -23,10 +23,10 @@ class ApplicationController < ActionController::Base
   # サインアップ時に保存するカラムを追加する
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :gym_name, :email,:genre_id])
   end
   # データ更新時のパラメーターを設定する
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :gym_name, :email])
   end
 end

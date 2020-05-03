@@ -1,2 +1,52 @@
-<h1>Climbers::Gyms#search</h1>
-<p>Find me in app/views/climbers/gyms/search.html.erb</p>
+<div class="container">
+    NOBOROは<br>
+    クライミングを楽しむ全ての人のためのアプリです。<br>
+    お気に入りジムを登録して、お知らせを受け取ろう。<br>
+    一人でも楽しめるけど、ライバルがいた方がずっと楽しい！<br>
+    ランキングは毎月更新！上位を目指そう！<br>
+    登れたら課題をアンロック！グレードごとにトロフィーがもらえるぞ！いっぱい集めよう！<br>
+    ーーーーー　絞り込み検索　ーーーーー<br>
+    <%= gym_signed_in? %>
+    <div class="row">
+        <h2>ジム一覧画面</h2>
+    </div>
+
+    <!-- 検索フォームここから -->
+    <div class="search-form">
+        <h2>Search</h2>
+        <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
+        <%= f.text_field :gym_name %>
+        <%= f.submit ' 検索する' %>
+        <% end %>
+    </div>
+    <!-- ジャンル検索用 -->
+    <%= render 'genres', genre: @genres %>
+    <div class="table">
+        <table class="table table-hover table-inverse">
+            <thead>
+                <tr>
+                    <th>ジムの名前</th>
+                    <th>ジムの紹介文</th>
+                    <th>ジムのHP</th>
+                    <th>ジムのジャンル</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @gyms.each do |gym| %>
+                <tr>
+                    <td>
+                        <%= link_to gym.gym_name, gym_path(gym.id) %>
+                    </td>
+                    <td>
+                        <%= gym.description %>
+                    </td>
+                    <td>
+                        <%= gym.gym_url %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
