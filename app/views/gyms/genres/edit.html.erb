@@ -1,2 +1,26 @@
-<h1>Gyms::Genres#edit</h1>
-<p>Find me in app/views/gyms/genres/edit.html.erb</p>
+<div class="container">
+    <h1>ジャンル　編集画面</h1>
+    <div class="row">
+        <div class="col-xs-5 ">
+            <%= form_with method: :patch, model: @genre, local: true, url: gyms_genre_path(@genre) do |f| %>
+
+            <% if @genre.errors.any? %>
+                  <%= @genre.errors.count %>件のerrorが発生しました
+              <% @genre.errors.full_messages.each do |message| %>
+                <%= message %>
+              <% end %>
+            <% end %>
+        </div>
+        <div class="col-xs-5">
+            <table class="table table-borderless">
+                <tr>
+                    <th>ジャンル</th>
+                    <td>
+                        <%= f.text_field :genre_name %>
+                    </td>
+            </table>
+        </div>
+        <%= f.submit "変更を保存" %>
+        <% end %>
+    </div>
+</div>

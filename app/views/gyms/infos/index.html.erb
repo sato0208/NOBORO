@@ -1,2 +1,41 @@
-<h1>Gyms::Infos#index</h1>
-<p>Find me in app/views/gyms/infos/index.html.erb</p>
+<div class="container">
+  <h2>お知らせ追加・一覧画面</h2>
+      <% if @new_info.errors.any? %>
+      <div class="alert alert-danger">
+          <h2><%= @new_info.errors.count %>つ空白があります</h2>
+          <% @new_info.errors.full_messages.each do |message| %>
+          <%= message %><br>
+          <% end %>
+      </div>
+    <% end %>
+    <%= form_with method: :post, model:@new_info,local: true, url: gyms_infos_path do |f| %>
+      <div class="field row">
+        <%= f.label :お知らせ %>
+        <%= f.text_field :info %>
+      <%= f.submit "追加", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>お知らせ</th>
+          <th>登録日</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @infos.each do |info| %>
+        <tr>
+          <td><%= info.info %></td>
+          <td><%= info.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+
+          <td><%= link_to "Destroy", gyms_info_path(info.id), method: :delete , class: "btn btn-danger" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+
+

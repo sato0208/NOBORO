@@ -13,3 +13,55 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+
+
+
+
+
+
+
+* {
+  margin:0; padding:0;
+}
+
+html {
+    font-size: 10px;
+    font-family: sans-serif;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+    line-height: 1.42857143;
+    display: block;
+    margin-top: 60px;
+    color: #333333;
+    background-color: #fff;
+    }
+
+div {
+    display: block;
+    }
+
+header {
+    color: white;
+    margin: 0,auto;
+}
+
+
+header a:hover {
+color: white;
+background-color: #222;
+text-decoration:none;
+}
+
+header li {
+  display: inline-block;
+  padding: 0 15px;
+  color: #9d9d9d;
+  font-family: 'Glyphicons Halflings';
+  }

@@ -1,44 +1,43 @@
 <div class="container">
-  <h2>ジャンル追加・一覧画面</h2>
-      <% if @new_task.errors.any? %>
-      <div class="alert alert-danger">
-          <h2><%= @new_task.errors.count %>つ空白があります</h2>
-          <% @new_task.errors.full_messages.each do |message| %>
-          <%= message %><br>
-          <% end %>
-      </div>
-    <% end %>
-    <%= form_with method: :post, model:@new_task,local: true, url: gyms_tasks_path do |f| %>
-      <div class="field row">
-        <%= f.label :課題 %>
-        <%= f.text_field :task_name %>
-
-        <th>グレード</th>
-        <td><%= f.collection_select :grade_id, @grades, :id, :grade %></td>
-      <%= f.submit "追加", class: "btn btn-primary" %>
-      </div>
-    <% end %>
-
-    <table class="table">
-      <thead class="thead-light">
-        <tr>
-          <th>課題</th>
-          <th>グレード</th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @tasks.each do |task| %>
-        <tr>
-          <td><%= task.task_name %></td>
-          <td><%= task.grade.grade %></td>
-          <td><%= link_to "編集する", edit_gyms_task_path(task.id) ,class: "btn btn-primary"%></td>
-          <td><%= link_to "Destroy", gyms_task_path(task.id), method: :delete , class: "btn btn-danger" %></td>
-        </tr>
+    <h2>ジャンル追加・一覧画面</h2>
+    <% if @new_genre.errors.any? %>
+    <div class="alert alert-danger">
+        <h2>
+            <%= @new_genre.errors.count %>つ空白があります</h2>
+        <% @new_genre.errors.full_messages.each do |message| %>
+        <%= message %><br>
         <% end %>
-      </tbody>
+    </div>
+    <% end %>
+    <%= form_with method: :post, model:@new_genre,local: true, url: gyms_genres_path do |f| %>
+    <div class="field row">
+        <%= f.label :ジャンル %>
+        <%= f.text_field :genre_name %>
+        <%= f.submit "追加", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>ジャンル</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @genres.each do |genre| %>
+            <tr>
+                <td>
+                    <%= genre.genre_name %>
+                </td>
+                <td>
+                    <%= link_to "編集する", edit_gyms_genre_path(genre.id) ,class: "btn btn-primary"%>
+                </td>
+                <td>
+                    <%= link_to "Destroy", gyms_genre_path(genre.id), method: :delete , class: "btn btn-danger" %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
     </table>
 </div>
-
-

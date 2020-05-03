@@ -1,2 +1,33 @@
-<h1>Gyms::Tasks#edit</h1>
-<p>Find me in app/views/gyms/tasks/edit.html.erb</p>
+<div class="container">
+    <h1>課題　編集画面</h1>
+    <div class="row">
+        <div class="col-xs-5 ">
+            <%= form_with method: :patch, model: @task, local: true, url: gyms_task_path(@task) do |f| %>
+
+            <% if @task.errors.any? %>
+                  <%= @task.errors.count %>件のerrorが発生しました
+              <% @task.errors.full_messages.each do |message| %>
+                <%= message %>
+              <% end %>
+            <% end %>
+        </div>
+        <div class="col-xs-5">
+            <table class="table table-borderless">
+                <tr>
+                    <th>課題名</th>
+                    <td>
+                        <%= f.text_field :task_name %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>ジャンル</th>
+                    <td>
+                      <%= f.collection_select :genre_id, @genres, :id, :genre_name %>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <%= f.submit "変更を保存" %>
+        <% end %>
+    </div>
+</div>

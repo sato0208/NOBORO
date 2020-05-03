@@ -1,15 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>NOBORO</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+        <nav class="nav navbar-nav navbar-left">
+            <span>NOBORO</span>
+        </nav>
+        <!-- ユーザーがサインインしている場合 -->
+        <% if climber_signed_in? %>
+        <ul class="navbar-text navbar-right">
+            <li>
+                <%= link_to " Home", climber_path(current_climber.id),class:"glyphicon glyphicon-home"%>
+            </li>
+            <li>
+            </li>
+            <li>
+                <%= link_to " Tasks", tasks_path,class:"glyphicon glyphicon-book" %>
+            </li>
+            <li>
+                <%= link_to " Tasks", done_tasks_path,class:"glyphicon glyphicon-book" %>
+            </li>
+            <li>
+                <%= link_to " trophys", trophys_path,class:"glyphicon glyphicon-book" %>
+            </li>
+            <li>
+                <%= link_to " logout", destroy_climber_session_path,class:"glyphicon glyphicon-log-out", method: :delete %>
+            </li>
+        </ul>
+        <!-- ユーザーがサインインしていない場合 -->
+        <% else %>
+        <ul class="navbar-text navbar-right">
+            <li>
+                <%= link_to " Home", '#',class:"glyphicon glyphicon-home" %>
+            </li>
+            <li>
+                <%= link_to " about", '#',class:"glyphicon glyphicon-link" %>
+            </li>
+            <li>
+                <%= link_to " sign up", '#',class:"glyphicon glyphicon-pencil" %>
+            </li>
+            <li>
+                <%= link_to " login", '#',class:"glyphicon glyphicon-log-in" %>
+            </li>
+        </ul>
+        <% end %>
+    </div>
+</header>
+<div class="container">
+    <!-- flashここからnotice：ログイン・ログアウト -->
+    <% if notice %>
+    　 <div class="success">
+        <%= notice %>
+    </div>
+    <% elsif alert %>
+    <div class="info">
+        <%= alert %>
+    </div>
+    <% end %>
 
-  <body>
-    <%= yield %>
-  </body>
+    <body>
+        <%= yield %>
+    </body>
+
 </html>

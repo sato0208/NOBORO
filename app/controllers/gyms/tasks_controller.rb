@@ -6,6 +6,9 @@ class Gyms::TasksController < ApplicationController
   end
 
   def update
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    redirect_to gyms_tasks_path, notice: "successfully update Task!"
   end
 
   def create
@@ -21,6 +24,8 @@ class Gyms::TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find(params[:id])
+    @genres = Genre.all
   end
 
   def destroy

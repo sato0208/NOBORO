@@ -1,32 +1,26 @@
-
 <div class="container">
-  <h2>task一覧</h2>
-  (全<%=@tasks_all.count%>件） (<%=@gyms.count%>件)
+    <h2>task一覧</h2>
     <div class="items">
-      <div class="col-xs-2">
-        <%= render 'genres', genre: @genres %>
-      </div>
+        <div class="col-xs-2">
+            <%= render 'genres', genre: @genres %>
+        </div>
         <div class="col-xs-10 text-center">
-          <div class="table-responsive">
-            <div class="flex_test-box">
-                <% @gyms.each do |gym| %>
+            <div class="table-responsive">
+                <div class="flex_test-box">
+                    <% @tasks.each do |task| %>
                     <div class="flex_test-item">
                         <%= link_to item_path(item) do %>
-                            <div class="item_image">
-                            </div>
-                               <p><%= gym.gym_name %></p>
-                               <p><%= gym.description %></p>
-                               <p><%= gym.post_code %></p>
-                               <p><%= gym.address %></p>
-                               <p><%= gym.genre_id %></p>
+                        <p>
+                            <%= task.task_name %>
+                        </p>
                         <% end %>
                         <% end %>
                     </div>
                 </div>
-              </div>
             </div>
         </div>
-        <div class='p-top__paginate'>
-            <%= paginate @gyms %>
-        </div>
     </div>
+    <div class='p-top__paginate'>
+        <%= paginate @gyms %>
+    </div>
+</div>
