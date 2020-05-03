@@ -1,0 +1,2 @@
+module Climbers::DoneTasksHelper
+end

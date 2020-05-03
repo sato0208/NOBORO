@@ -1,0 +1,2 @@
+class Trophy < ApplicationRecord
+end
