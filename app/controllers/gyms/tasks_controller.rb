@@ -17,11 +17,6 @@ class Gyms::TasksController < ApplicationController
     end
   end
 
-
-
-
-
-
   def new
   end
 
@@ -29,6 +24,10 @@ class Gyms::TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to request.referer, notice: "successfully delete Task!"
+
   end
 
   private
