@@ -7,12 +7,17 @@
 
     <div class="field row">
       <%= f.label :name, "名前" %>
-      <%= f.text_field :name %>
+      <%= f.attachment_field :profile_image, placeholder:"プロフィール画像", id:"profile_icon" %>
     </div>
 
     <div class="field row">
       <%= f.label :name, "名前" %>
       <%= f.text_field :name %>
+    </div>
+
+     <div class="field row">
+      <%= f.label :introduction, "自己紹介" %>
+      <%= f.text_field :introduction %>
     </div>
 
 

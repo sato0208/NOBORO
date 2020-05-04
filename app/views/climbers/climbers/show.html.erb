@@ -1,24 +1,24 @@
 <h2>マイページ</h2>
 <div class="field row">
-    <%= current_climber.name %>
+    <%= @climber.name %>
 </div>
+<%= attachment_image_tag @climber, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.png", size:'40x40' %>
 <div class="field row">
     お気に入り登録しているgym_nameを表示
-    <%= current_climber.name %>
+    <%= @climber.name %>
 </div>
 <div class="field row">
-    自己紹介カラムを追加して表示させる
-    <%= current_climber.name %>
+    <%= @climber.introduction %>
 </div>
 <!-- あとでunlessに書き換える -->
 <!-- カレントユーザーにはフォローボタンを表示させない -->
-<% if current_climber.id == @climber.id %>
+<% unless current_climber.id == @climber.id %>
 <% if current_climber.following?(@climber) %>
 <%= form_for(current_climber.relationships.find_by(follow_id: @climber.id), html: { method: :delete }) do |f| %>
 <%= hidden_field_tag :follow_id, @climber.id %>
 <tr>
     <td>
-        <%= f.submit 'Unfollow', class: 'btn btn-danger btn-block' %>
+        <%= f.submit 'フォローをはずす', class: 'btn btn-danger' %>
     </td>
 </tr>
 <% end %>
@@ -27,7 +27,7 @@
 <%= hidden_field_tag :follow_id, @climber.id %>
 <tr>
     <td>
-        <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
+        <%= f.submit 'フォローする', class: 'btn btn-primary' %>
     </td>
 </tr>
 <% end %>

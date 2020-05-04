@@ -5,9 +5,8 @@ Rails.application.routes.draw do
     sessions: 'gyms/sessions',
     registrations: 'gyms/registrations'
   }
-
+    get '/' => 'tasks#index'
   namespace :gyms do
-      get '/' => 'tasks#index'
     resources :climbers, only: [:index]
     resources :gyms, only: [:edit, :update, :show]
     resources :genres, only: [:create, :index, :destroy, :new, :show, :edit, :update]

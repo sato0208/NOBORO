@@ -8,14 +8,8 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     @new_done_task = DoneTask.new
-    @done_task = DoneTask.find(params[:task_id])
-  end
-
-  def destroy
-    @done_task = DoneTask.find(params[:task_id])
-    @delete_done_task = DoneTask.find(params[:id])
-    @delete_done_task.destroy
-    redirect_to request.referer, notice: "successfully delete Task!"
+    # 現在のクライマーのdone_tasksテーブルの中のtask_idが表示されてる@taskと同じものがあるか探す
+     @delete_done_task = current_climber.done_tasks.find_by(task_id: @task.id)
   end
 
   private

@@ -3,6 +3,8 @@ class Gym < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+    attachment :gym_image
+
 
   has_many :tasks, dependent: :destroy
   has_many :infos, dependent: :destroy

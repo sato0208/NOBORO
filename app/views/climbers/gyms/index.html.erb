@@ -17,7 +17,7 @@
     <%= f.submit 'Search' %>
     <% end %>
     <!-- ジャンル検索 -->
-    <%= render 'genres', genre: @genres %>
+    <%= render 'genres', genres: @genres %>
     <div class="table">
         <table class="table table-hover table-inverse">
             <thead>
@@ -39,6 +39,9 @@
                     </td>
                     <td>
                         <%= gym.gym_url %>
+                    </td>
+                    <td>
+                        <%= gym.genre.genre_name %>
                     </td>
                 </tr>
                 <% end %>

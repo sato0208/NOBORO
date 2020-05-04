@@ -9,8 +9,6 @@ class Climbers::GymsController < ApplicationController
     else
       @gyms = Gym.page(params[:page]).per(8).order('updated_at DESC')
     end
-
-
   end
 
   def show
@@ -35,6 +33,6 @@ class Climbers::GymsController < ApplicationController
 
   private
     def gym_params
-      params.require(:gym).permit(:genre_id, :description, :gym_name, :post_code, :address, :gym_url)
+      params.require(:gym).permit(:genre_id, :description, :gym_name, :post_code, :address, :gym_url,:gym_image)
     end
 end

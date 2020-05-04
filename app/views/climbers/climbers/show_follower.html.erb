@@ -1,14 +1,18 @@
 <h1>フォローしてくれてる人一覧</h1>
-  <table class="table">
+<table class="table">
     <tr>
-      <th></th>
-      <th>名前</th>
-      <th></th>
+        <th></th>
+        <th>名前</th>
+        <th></th>
     </tr>
-  <% @climber.followers.each do |climber| %>
+    <% @climbers.each do |climber| %>
     <tr>
-      <td>  <%= climber.name %> </td>
-      <td><%= link_to '詳細', climber_path(climber) %></td>
+        <td>
+            <%= climber.name %>
+        </td>
+        <td>
+            <%= link_to '詳細', climber_path(climber) %>
+        </td>
     </tr>
-  <% end %>
+    <% end %>
 </table>
