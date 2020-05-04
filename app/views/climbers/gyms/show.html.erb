@@ -18,6 +18,19 @@
             <td>
                 <%= @gym.address %>
             </td>
+        </tr>
+        <tr>
+            <th>電話番号</th>
+            <td>
+                <%= @gym.phone_number %>
+            </td>
+        </tr>
+        <tr>
+            <th>HP</th>
+            <td>
+                <%= @gym.gym_url %>
+            </td>
+        </tr>
     </thead>
 </table>
 <%= link_to '今月のランキング',done_tasks_path, class: "btn btn-primary" %>

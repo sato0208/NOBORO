@@ -11,7 +11,11 @@
     <tbody>
         <% @rank_done_tasks.each do |f| %>
         <tr>
-            <td><%= f.climber.name %></td>
+            <td>
+              <%= link_to climber_path(f.climber_id) do %>
+                  <%= f.climber.name %>
+                <% end %>
+            </td>
         </tr>
         <% end %>
     </tbody>
