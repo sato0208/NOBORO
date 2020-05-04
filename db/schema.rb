@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_055547) do
+ActiveRecord::Schema.define(version: 2020_05_04_222923) do
 
   create_table "climbers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 2020_05_04_055547) do
     t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "climber_id"
+    t.integer "gym_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["climber_id", "gym_id"], name: "index_favorites_on_climber_id_and_gym_id", unique: true
+    t.index ["climber_id"], name: "index_favorites_on_climber_id"
+    t.index ["gym_id"], name: "index_favorites_on_gym_id"
   end
 
   create_table "genres", force: :cascade do |t|
