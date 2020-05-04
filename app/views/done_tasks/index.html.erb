@@ -1,2 +1,16 @@
-<h1>Climbers::DoneTasks#index</h1>
-<p>Find me in app/views/climbers/done_tasks/index.html.erb</p>
+<h2>今月のランキング</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>名前</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @rank_done_tasks.each do |f| %>
+        <tr>
+            <td><%= f.climber.name %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

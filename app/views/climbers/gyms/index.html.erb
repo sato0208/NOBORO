@@ -43,6 +43,9 @@
                     <td>
                         <%= gym.genre.genre_name %>
                     </td>
+                    <td>
+                        <%= attachment_image_tag gym, :gym_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "bo2.jpeg", size:'40x40' %>
+                    </td>
                 </tr>
                 <% end %>
             </tbody>

@@ -37,3 +37,18 @@
     <% end %>
 </div>
 <h2>登れた人一覧</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>名前</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @done_tasks.each do |f| %>
+        <tr>
+            <td><%= f.climber.name %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

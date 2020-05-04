@@ -6,7 +6,7 @@
 <%= form_with method: :patch, model: @climber, url:climber_path(@climber.id), local: true do |f| %>
 
     <div class="field row">
-      <%= f.label :name, "名前" %>
+      <%= f.label :name, "プロフィール画像" %>
       <%= f.attachment_field :profile_image, placeholder:"プロフィール画像", id:"profile_icon" %>
     </div>
 

@@ -1,3 +1,4 @@
+<%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "bo2.jpeg", size:'400x300' %>
 <table class="table">
     <thead>
         <tr>
@@ -19,7 +20,7 @@
             </td>
     </thead>
 </table>
-<%= link_to '今月のランキング',tasks_path(@task), class: " btn btn-primary" %>
+<%= link_to '今月のランキング',done_tasks_path, class: "btn btn-primary" %>
 <div class="container">
     <h2>課題一覧</h2>
     <table class="table">
@@ -37,19 +38,18 @@
                 <td>
                     <%= grade.grade %>
                 </td>
+                <% grade.tasks.each do |f| %>
+                <td>
+                    <%= link_to task_path(f) do %>
+                        <%= f.task_name %>
+                    <% end %>
+                </td>
+                <% end %>
             </tr>
             <% end %>
-            <!-- 課題のeach文 -->
-            <% @tasks.each do |task| %>
-            <td>
-                <%= link_to task_path(task) do %>
-                <%= task.task_name %>
-                <% end %>
-            </td>
-            <td>
-                <%= task.grade.grade %>
-                <% end %>
-            </tr>
         </tbody>
     </table>
 </div>
+
+<%= link_to "＜＜戻る", gyms_path %>
+

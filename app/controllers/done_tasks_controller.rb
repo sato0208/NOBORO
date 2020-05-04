@@ -1,5 +1,7 @@
 class DoneTasksController < ApplicationController
   def index
+    # ランキング機能
+    @rank_done_tasks = DoneTask.find(DoneTask.group(:climber_id).order('count(task_id) desc').limit(3).pluck(:id))
   end
 
   def show
