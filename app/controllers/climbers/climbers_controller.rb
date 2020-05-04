@@ -1,5 +1,6 @@
 class Climbers::ClimbersController < ApplicationController
   def show
+    @climber = Climber.find(params[:id])
   end
 
   def edit

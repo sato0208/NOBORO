@@ -1,2 +1,20 @@
-<h1>Climbers::Climbers#show</h1>
-<p>Find me in app/views/climbers/climbers/show.html.erb</p>
+<h2>マイページ</h2>
+<div class="field row">
+    <%= current_climber.name %>
+</div>
+<div class="field row">
+    お気に入り登録しているgym_nameを表示
+    <%= current_climber.name %>
+
+</div>
+<div class="field row">
+  自己紹介カラムを追加して表示させる
+    <%= current_climber.name %>
+</div>
+
+
+
+<%= link_to "ー　獲得したトロフィー一覧　ー", trophys_path %>
+
+
+<h3>----　今月の獲得トロフィー　---</h3>

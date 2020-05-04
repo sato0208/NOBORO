@@ -3,7 +3,7 @@
     <h3 class="col-xs-offset-2 col-xs-3">登録情報編集</h3>
   </div>
   <div class="container">
-<%= form_with method: :patch, model: @climber, url:climber_path(current_culimber.id), local: true do |f| %>
+<%= form_with method: :patch, model: @climber, url:climber_path(@climber.id), local: true do |f| %>
 
     <div class="field row">
       <%= f.label :name, "名前" %>
