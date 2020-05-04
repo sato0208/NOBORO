@@ -1,2 +1,22 @@
-<h1>Climbers::Gyms#show</h1>
-<p>Find me in app/views/climbers/gyms/show.html.erb</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>店舗名</th>
+            <td>
+                <%= @gym.gym_name %>
+            </td>
+        </tr>
+        <tr>
+            <th>紹介文</th>
+            <td>
+                <%= @gym.description %>
+            </td>
+        </tr>
+        <tr>
+            <th>アクセス</th>
+            <td>
+                <%= @gym.address %>
+            </td>
+        </tr>
+    </thead>
+</table>

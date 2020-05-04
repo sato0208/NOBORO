@@ -1,4 +1,5 @@
 class Climbers::GymsController < ApplicationController
+
   def index
     @gyms = Gym.all
     @genres = Genre.all
@@ -11,21 +12,21 @@ class Climbers::GymsController < ApplicationController
   end
 
   def show
+    @gym = Gym.find(params[:id])
   end
 
   def search
   end
 
-
-# 検索用
-def search
-  @genres = Genre.all
-  @how_search = params[:choice]
-  if how_search == "1"
-    @gyms = Gym.search(params[:search])
+  def search
+    @genres = Genre.all
+    # 値が入力されていれば、whereメソッドと部分一致検索で、店舗情報を取得する。
+    if params[:gym_name]
+      @gyms = Gym.where('gym_name LIKE ?', "%#{params[:gym_name]}%")
+    else
+      @gyms = Gym.all
+    end
   end
-end
-
 
   private
     def gym_params
