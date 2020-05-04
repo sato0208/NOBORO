@@ -1,7 +1,16 @@
 class DoneTasksController < ApplicationController
   def index
     # ランキング機能
-    @rank_done_tasks = DoneTask.find(DoneTask.group(:climber_id).order('count(task_id) desc').limit(3).pluck(:id))
+    now = Time.current 
+    @rank_done_tasks = DoneTask.find(DoneTask.where(created_at:(now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(3).pluck(:id))
+    # 自分の総合順位
+      @my_rank = 1
+      @rank_done_tasks.each do |rank|
+        if rank.climber_id == current_climber.id
+          break
+        end
+        @my_rank = @my_rank + 1
+      end
   end
 
   def show
