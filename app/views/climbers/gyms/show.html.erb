@@ -17,6 +17,39 @@
             <td>
                 <%= @gym.address %>
             </td>
-        </tr>
     </thead>
 </table>
+<%= link_to '今月のランキング',tasks_path(@task), class: " btn btn-primary" %>
+<div class="container">
+    <h2>課題一覧</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>グレード</th>
+                <th>課題名</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- グレードのeach文 -->
+            <% @grades.each do |grade| %>
+            <tr>
+                <td>
+                    <%= grade.grade %>
+                </td>
+            </tr>
+            <% end %>
+            <!-- 課題のeach文 -->
+            <% @tasks.each do |task| %>
+            <td>
+                <%= link_to task_path(task) do %>
+                <%= task.task_name %>
+                <% end %>
+            </td>
+            <td>
+                <%= task.grade.grade %>
+                <% end %>
+            </tr>
+        </tbody>
+    </table>
+</div>

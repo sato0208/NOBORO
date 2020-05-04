@@ -9,10 +9,15 @@ class Climbers::GymsController < ApplicationController
     else
       @gyms = Gym.page(params[:page]).per(8).order('updated_at DESC')
     end
+
+
   end
 
   def show
     @gym = Gym.find(params[:id])
+    @tasks = Gym.find(params[:id]).tasks
+    @grades = Grade.all
+    # グレードに紐ずくtaskを取り出して表示させたい。
   end
 
   def search

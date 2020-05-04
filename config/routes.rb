@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   root to: 'climbers/gyms#index'
 
   devise_for :gyms, controllers: {
-      sessions: 'gyms/sessions',
-      registrations: 'gyms/registrations'
-    }
+    sessions: 'gyms/sessions',
+    registrations: 'gyms/registrations'
+  }
 
   namespace :gyms do
       get '/' => 'tasks#index'
@@ -17,14 +17,13 @@ Rails.application.routes.draw do
     resources :done_tasks, only: [:index]
   end
 
+   devise_for :climbers, controllers: {
+    sessions: 'climbers/sessions',
+    registrations: 'climbers/registrations',
+    passwords: 'climbers/passwords'
+  }
 
-     devise_for :climbers, controllers: {
-      sessions: 'climbers/sessions',
-      registrations: 'climbers/registrations',
-      passwords: 'climbers/passwords'
-    }
-
-    scope module: :climbers do
+  scope module: :climbers do
      get 'gyms/search' => 'gyms#search'
     resources :climbers, only: [:show, :edit, :update]
     resources :gyms, only: [:index, :show]
@@ -34,9 +33,6 @@ Rails.application.routes.draw do
     resources :grades, only: [:create, :index, :destroy, :edit, :update]
     resources :tasks, only: [:index, :destroy, :show]
     resources :infos, only: [:index]
-    resources :done_tasks, only: [:index, :create, :update, :show]
+    resources :done_tasks, only: [:index, :create, :update, :show, :destroy]
     resources :trophys, only: [:create, :index]
-
-
-
 end
