@@ -5,16 +5,41 @@
 <div class="field row">
     お気に入り登録しているgym_nameを表示
     <%= current_climber.name %>
-
 </div>
 <div class="field row">
-  自己紹介カラムを追加して表示させる
+    自己紹介カラムを追加して表示させる
     <%= current_climber.name %>
 </div>
-
-
-
+<!-- あとでunlessに書き換える -->
+<!-- カレントユーザーにはフォローボタンを表示させない -->
+<% if current_climber.id == @climber.id %>
+<% if current_climber.following?(@climber) %>
+<%= form_for(current_climber.relationships.find_by(follow_id: @climber.id), html: { method: :delete }) do |f| %>
+<%= hidden_field_tag :follow_id, @climber.id %>
+<tr>
+    <td>
+        <%= f.submit 'Unfollow', class: 'btn btn-danger btn-block' %>
+    </td>
+</tr>
+<% end %>
+<% else %>
+<%= form_for(current_climber.relationships.build) do |f| %>
+<%= hidden_field_tag :follow_id, @climber.id %>
+<tr>
+    <td>
+        <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
+    </td>
+</tr>
+<% end %>
+<% end %>
+<% end %>
+<p>フォロー数</p>
+<p>
+    <%= link_to @climber.followings.count,following_climber_path(@climber) %>
+</p>
+<p>フォロワー数</p>
+<p>
+    <%= link_to @climber.followers.count,follower_climber_path(@climber) %>
+</p>
 <%= link_to "ー　獲得したトロフィー一覧　ー", trophys_path %>
-
-
 <h3>----　今月の獲得トロフィー　---</h3>

@@ -24,8 +24,13 @@ Rails.application.routes.draw do
   }
 
   scope module: :climbers do
-     get 'gyms/search' => 'gyms#search'
-    resources :climbers, only: [:show, :edit, :update]
+      get 'gyms/search' => 'gyms#search'
+      get 'following_climbers' => 'climbers#following_climbers'
+    resources :climbers, only: [:show, :edit, :update]do
+    member do
+      get :follower, :following
+    end
+  end
     resources :gyms, only: [:index, :show]
   end
     # urlにclimbersを含めたくないのでわざとscopeから外してます
@@ -35,4 +40,6 @@ Rails.application.routes.draw do
     resources :infos, only: [:index]
     resources :done_tasks, only: [:index, :create, :update, :show, :destroy]
     resources :trophys, only: [:create, :index]
+    resources :relationships, only: [:create, :destroy]
+
 end

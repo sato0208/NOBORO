@@ -13,6 +13,20 @@ class Climbers::ClimbersController < ApplicationController
     redirect_to request.referer, notice: "successfully delete Climber!"
   end
 
+# フォローしている人
+  def following
+  @climber = Climber.find(params[:id])
+  @climbers = @climber.followings
+  render 'show_follow'
+end
+
+# フォローしてくれてる人
+def follower
+  @climber = Climber.find(params[:id])
+  @climbers = @climber.followers
+  render 'show_follower'
+end
+
     private
     def climber_params
       params.require(:climber).permit(:name, :profile_image_id, :email)
