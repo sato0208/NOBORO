@@ -1,0 +1,2 @@
+module Climbers::FavoritesHelper
+end

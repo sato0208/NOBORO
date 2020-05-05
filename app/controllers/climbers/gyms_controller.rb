@@ -18,7 +18,9 @@ class Climbers::GymsController < ApplicationController
     # グレードに紐ずくtaskを取り出して表示させたい。
   end
 
-  def search
+  def favorites
+    # gym_favorites = climberモデルに記述.gymモデルを参照する
+    @gyms = current_climber.gym_favorites.includes(:climber).recent
   end
 
   def search

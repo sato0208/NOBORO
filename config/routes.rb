@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
   root to: 'climbers/gyms#index'
 
   devise_for :gyms, controllers: {
@@ -26,11 +28,14 @@ Rails.application.routes.draw do
       get 'gyms/search' => 'gyms#search'
       get 'following_climbers' => 'climbers#following_climbers'
     resources :climbers, only: [:show, :edit, :update]do
-    member do
-      get :follower, :following
+      member do
+        get :follower, :following
+      end
     end
-  end
-    resources :gyms, only: [:index, :show]
+    resources :gyms, only: [:index, :show], shallow: true do
+      resource :favorites, only: [:create, :destroy]
+      get :favorites, on: :collection
+    end
   end
     # urlにclimbersを含めたくないのでわざとscopeから外してます
     resources :genres, only: [:create, :index, :destroy, :new, :show, :edit, :update]

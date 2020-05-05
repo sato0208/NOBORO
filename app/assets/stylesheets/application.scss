@@ -16,6 +16,8 @@
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome'; 
 
 
 
@@ -54,9 +56,9 @@ header {
 
 
 header a:hover {
-color: white;
-background-color: #222;
-text-decoration:none;
+    color: white;
+    background-color: #222;
+    text-decoration:none;
 }
 
 header li {

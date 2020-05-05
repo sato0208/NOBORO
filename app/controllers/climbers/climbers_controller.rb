@@ -1,6 +1,7 @@
 class Climbers::ClimbersController < ApplicationController
   def show
     @climber = Climber.find(params[:id])
+    @favorite = Favorite.find_by(climber_id: @climber.id)
   end
 
   def edit

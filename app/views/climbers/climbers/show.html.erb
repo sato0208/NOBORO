@@ -1,16 +1,26 @@
 <h2>マイページ</h2>
-<div class="field row">
-    <%= @climber.name %>
-</div>
-<%= attachment_image_tag @climber, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.png", size:'40x40' %>
-<div class="field row">
-    お気に入り登録しているgym_nameを表示
-    <%= @climber.name %>
-</div>
-<div class="field row">
-    <%= @climber.introduction %>
-</div>
-<!-- あとでunlessに書き換える -->
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>プロフィール</th>
+      <th>名前</th>
+      <th>お気に入りジム</th>
+      <th>自己紹介</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>
+        <%= attachment_image_tag @climber, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.png", size:'40x40' %>
+    </td>
+      <td><%= @climber.name %></td>
+      <td><%= @favorite.gym.gym_name %></td>
+      <td><%= @climber.introduction %></td>
+    </tr>
+  </tbody>
+</table>
+<table>
+
 <!-- カレントユーザーにはフォローボタンを表示させない -->
 <% unless current_climber.id == @climber.id %>
 <% if current_climber.following?(@climber) %>
