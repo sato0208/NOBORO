@@ -63,11 +63,11 @@
                         <% @new_done_task = DoneTask.new %>
                         <% @delete_done_task = current_climber.done_tasks.find_by(task_id: f.id)%>
                             <td id="done_task_<%= f.id %>">
-                            <%= render 'done_task', task: f, new_done_task: @new_done_task, delete_done_task: @delete_done_task %>
-                            <%= link_to task_path(f.id) do %>
-                                <%= f.task_name %>
-                            <% end %>
-                        </td>
+                                <%= render 'done_task', task: f, new_done_task: @new_done_task, delete_done_task: @delete_done_task %>
+                                <%= link_to task_path(f.id) do %>
+                                    <%= f.task_name %>
+                                <% end %>
+                            </td>
                     <% end %>
                 </tr>
             <% end %>

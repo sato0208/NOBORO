@@ -1,0 +1,1 @@
+$('#done_task_<%= f.id %>').html("<%= j(render 'done_task/done_task', locals: task: f, new_done_task: @new_done_task, delete_done_task: @delete_done_task) %>");

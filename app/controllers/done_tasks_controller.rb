@@ -20,7 +20,6 @@ class DoneTasksController < ApplicationController
   end
 
   def create
-    binding.pry
     @new_done_task = DoneTask.new(done_task_params)
     @new_done_task.climber_id = current_climber.id
     @new_done_task.save

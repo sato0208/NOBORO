@@ -1,6 +1,6 @@
 class Gyms::TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @tasks = current_gym.tasks
     @new_task = Task.new
     @grades = Grade.all
   end
