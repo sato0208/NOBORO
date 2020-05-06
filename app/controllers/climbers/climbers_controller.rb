@@ -11,17 +11,17 @@ class Climbers::ClimbersController < ApplicationController
   def update
     @climber = Climber.find(params[:id])
     @climber.update(climber_params)
-    redirect_to request.referer, notice: "successfully delete Climber!"
+    redirect_to request.referer, notice: 'successfully delete Climber!'
   end
 
-# フォローしている人
+  # フォローしている人
   def following
     @climber = Climber.find(params[:id])
     @climbers = @climber.followings
     render 'show_follow'
   end
 
-# フォローしてくれてる人
+  # フォローしてくれてる人
   def follower
     @climber = Climber.find(params[:id])
     @climbers = @climber.followers
@@ -29,7 +29,8 @@ class Climbers::ClimbersController < ApplicationController
   end
 
   private
+
   def climber_params
-    params.require(:climber).permit(:name, :profile_image, :email,:introduction)
+    params.require(:climber).permit(:name, :profile_image, :email, :introduction)
   end
 end

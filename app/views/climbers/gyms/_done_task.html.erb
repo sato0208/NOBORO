@@ -1,0 +1,21 @@
+<% if task.achieved?(current_climber)%>
+    <!-- done_taskテーブルに登録する -->
+    <%= form_with method: :delete, model: delete_done_task, url:done_task_path(delete_done_task), local: true do |f| %>
+    <!-- done_taskにcrrent_climberのidとdone_taskのclimber_idに同じものがある場合。（登録済みの場合） -->
+    <!-- @task.idをtask_idとして送る -->
+    <%= f.hidden_field :task_id, value: task.id %>
+    <%= f.hidden_field :climber_id, value: current_climber.id %>
+    <i class="fas fa-check", aria-hidden="true" style="color: green;"></i>
+    <%= f.submit"取り消し！", class: "btn btn-default  btn-block glyphicon glyphicon-wrench" %>
+<% end %>
+<% else %>
+<!-- done_taskテーブルに登録する -->
+<%= form_with method: :post, model: new_done_task, url:done_tasks_path, local: true do |f| %>
+    <!-- done_taskにcrrent_climberのidとdone_taskのclimber_idに同じものがある場合。（登録済みの場合） -->
+    <!-- @task.idをtask_idとして送る -->
+    <%= f.hidden_field :task_id, value: task.id %>
+    <%= f.hidden_field :climber_id, value: current_climber.id %>
+    <i class="fas fa-check" aria-hidden="true"></i>
+    <%= f.submit"登れた！", class: "btn btn-default  btn-block glyphicon glyphicon-wrench" %>
+<% end %>
+<% end %>

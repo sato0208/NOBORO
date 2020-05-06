@@ -1,5 +1,4 @@
 class DoneTask < ApplicationRecord
-    belongs_to :climber
-    belongs_to :task
-
+  belongs_to :climber
+  belongs_to :task
 end

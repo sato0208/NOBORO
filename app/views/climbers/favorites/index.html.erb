@@ -1,0 +1,17 @@
+お気に入りジムお知らせ一覧ページ
+<table>
+  <thead>
+    <tr>
+      <th>ジムの名前</th>
+      <th>お知らせ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @favorites.each do |f|%>
+      <tr>
+        <td><%= f.gym.gym_name %></td>
+        <td><%= f.gym.info %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

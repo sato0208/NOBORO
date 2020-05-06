@@ -1,0 +1,2 @@
+module Gyms::FavoritesHelper
+end

@@ -1,5 +1,4 @@
 class RelationshipsController < ApplicationController
-
   def create
     # フォローされる側のID
     @climber = Climber.find(params[:follow_id])
@@ -33,7 +32,8 @@ class RelationshipsController < ApplicationController
     end
   end
 
-private
+  private
+
   def relationship_params
     params.require(:relationship).permit(:climber_id, :follow_id)
   end

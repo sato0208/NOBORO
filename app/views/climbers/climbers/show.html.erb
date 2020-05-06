@@ -23,33 +23,34 @@
 
 <!-- カレントユーザーにはフォローボタンを表示させない -->
 <% unless current_climber.id == @climber.id %>
-<% if current_climber.following?(@climber) %>
-<%= form_for(current_climber.relationships.find_by(follow_id: @climber.id), html: { method: :delete }) do |f| %>
-<%= hidden_field_tag :follow_id, @climber.id %>
-<tr>
-    <td>
-        <%= f.submit 'フォローをはずす', class: 'btn btn-danger' %>
-    </td>
-</tr>
-<% end %>
-<% else %>
-<%= form_for(current_climber.relationships.build) do |f| %>
-<%= hidden_field_tag :follow_id, @climber.id %>
-<tr>
-    <td>
-        <%= f.submit 'フォローする', class: 'btn btn-primary' %>
-    </td>
-</tr>
-<% end %>
-<% end %>
+  <% if current_climber.following?(@climber) %>
+    <%= form_for(current_climber.relationships.find_by(follow_id: @climber.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :follow_id, @climber.id %>
+      <tr>
+          <td>
+              <%= f.submit 'フォローをはずす', class: 'btn btn-danger' %>
+          </td>
+      </tr>
+      <% end %>
+      <% else %>
+      <%= form_for(current_climber.relationships.build) do |f| %>
+      <%= hidden_field_tag :follow_id, @climber.id %>
+      <tr>
+          <td>
+              <%= f.submit 'フォローする', class: 'btn btn-primary' %>
+          </td>
+      </tr>
+    <% end %>
+  <% end %>
 <% end %>
 <p>フォロー数</p>
-<p>
-    <%= link_to @climber.followings.count,following_climber_path(@climber) %>
-</p>
+  <p>
+      <%= link_to @climber.followings.count,following_climber_path(@climber) %>
+  </p>
 <p>フォロワー数</p>
-<p>
-    <%= link_to @climber.followers.count,follower_climber_path(@climber) %>
-</p>
+  <p>
+      <%= link_to @climber.followers.count,follower_climber_path(@climber) %>
+  </p>
+<%= link_to "ー　お知らせ一覧　ー", favorites_gyms_path %><br>
 <%= link_to "ー　獲得したトロフィー一覧　ー", trophys_path %>
 <h3>----　今月の獲得トロフィー　---</h3>

@@ -3,7 +3,7 @@ class Gym < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-    attachment :gym_image
+  attachment :gym_image
 
   has_many :tasks, dependent: :destroy
   has_many :infos, dependent: :destroy
@@ -11,10 +11,9 @@ class Gym < ApplicationRecord
   belongs_to :climber
   has_many :favorites, dependent: :destroy
 
-# gymをお気に入りにしているか判定をする
-# climberにはcurrent_climberが渡される
+  # gymをお気に入りにしているか判定をする
+  # climberにはcurrent_climberが渡される
   def favorite_by?(climber)
     favorites.where(climber_id: climber.id).exists?
   end
-
 end

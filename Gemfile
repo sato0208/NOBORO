@@ -40,6 +40,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'pry-doc'
 end
 
 group :development do
@@ -66,8 +68,8 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'rspec-rails'
 gem 'font-awesome-sass'
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile-mini_magick'
 gem 'hirb'
 gem 'hirb-unicode'
 gem 'kaminari'

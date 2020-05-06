@@ -7,14 +7,14 @@ class Gyms::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     @genre.update(genre_params)
-    redirect_to gyms_genres_path, notice: "successfully update Genre!"
+    redirect_to gyms_genres_path, notice: 'successfully update Genre!'
   end
 
   def create
     @genres = Genre.all
     @new_genre = Genre.new(genre_params)
     @new_genre.save
-    redirect_to request.referer, notice: "successfully created Genre!"
+    redirect_to request.referer, notice: 'successfully created Genre!'
   end
 
   def new
@@ -28,7 +28,8 @@ class Gyms::GenresController < ApplicationController
   end
 
   private
-    def genre_params
-      params.require(:genre).permit(:genre_name)
-    end
+
+  def genre_params
+    params.require(:genre).permit(:genre_name)
+  end
 end

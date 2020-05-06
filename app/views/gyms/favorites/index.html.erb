@@ -1,0 +1,15 @@
+お気に入り登録者一覧
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @favorites.each do |f|%>
+      <tr>
+        <td><%= f.climber.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

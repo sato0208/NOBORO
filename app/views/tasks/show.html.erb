@@ -18,13 +18,12 @@
 </table>
 <div class="container">
     <% if @task.achieved?(current_climber)%>
-     <!-- done_taskテーブルに登録する -->
-      <%= form_with method: :delete, model: @delete_done_task, url:done_task_path(@delete_done_task), local: true do |f| %>
+        <!-- done_taskテーブルに登録する -->
+        <%= form_with method: :delete, model: @delete_done_task, url:done_task_path(@delete_done_task), local: true do |f| %>
         <!-- done_taskにcrrent_climberのidとdone_taskのclimber_idに同じものがある場合。（登録済みの場合） -->
         <!-- @task.idをtask_idとして送る -->
         <%= f.hidden_field :task_id, value: @task.id %>
         <%= f.submit"取り消し！", class:"btn btn-primary btn-lg pull-left" %>
-
     <% end %>
     <% else %>
       <!-- done_taskテーブルに登録する -->

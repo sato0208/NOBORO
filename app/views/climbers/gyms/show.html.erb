@@ -22,13 +22,15 @@
         <tr>
             <th>電話番号</th>
             <td>
-                <%= @gym.phone_number %>
+                <a class="heading-p" href="tel:">
+                    <%= @gym.phone_number %>
+                </a>
             </td>
         </tr>
         <tr>
             <th>HP</th>
             <td>
-                <%= @gym.gym_url %>
+                <%= link_to @gym.gym_url %>
             </td>
         </tr>
     </thead>
@@ -50,23 +52,27 @@
         </thead>
         <tbody>
             <!-- グレードのeach文 -->
-            <% @grades.each do |grade| %>
-            <tr>
-                <td>
-                    <%= grade.grade %>
-                </td>
-                <% grade.tasks.each do |f| %>
-                <td>
-                    <%= link_to task_path(f) do %>
-                        <%= f.task_name %>
+            <% @grades_all.each do |grade| %>
+                <tr>
+                    <td>
+                        <%= grade.grade %>
+                    </td>
+                    <%# グレードに紐づくeach文 %>
+                    <% gym_tasks = grade.tasks.where(gym_id: @gym.id)%>
+                    <% gym_tasks.each do |f| %>
+                        <% @new_done_task = DoneTask.new %>
+                        <% @delete_done_task = current_climber.done_tasks.find_by(task_id: f.id)%>
+                            <td id="done_task_<%= f.id %>">
+                            <%= render 'done_task', task: f, new_done_task: @new_done_task, delete_done_task: @delete_done_task %>
+                            <%= link_to task_path(f.id) do %>
+                                <%= f.task_name %>
+                            <% end %>
+                        </td>
                     <% end %>
-                </td>
-                <% end %>
-            </tr>
+                </tr>
             <% end %>
         </tbody>
     </table>
 </div>
-
 <%= link_to "＜＜戻る", gyms_path %>
 
