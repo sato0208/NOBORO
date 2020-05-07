@@ -35,10 +35,10 @@ class DoneTasksController < ApplicationController
         # done_taskの中にtaskが全部あるかをチェック
         # 32行目でとってきたtaskと34行目でとってきたtaskの中身の数が一緒であれば全て達成したことになる。
         if done_tasks.count == task_ids.count
-          redirect_to request.referer
+          redirect_to request.referer, notice: "課題 #{@new_done_task.task.task_name}が登れました!" 
           @new_trophy = Trophy.new
         else
-          redirect_to request.referer
+          redirect_to request.referer, notice: "課題 #{@new_done_task.task.task_name}が登れました!"
         end
     end
   end
@@ -46,7 +46,7 @@ class DoneTasksController < ApplicationController
   def destroy
     @delete_done_task = DoneTask.find(params[:id])
     @delete_done_task.destroy
-    redirect_to request.referer, notice: 'successfully delete Task!'
+    redirect_to request.referer, notice: "課題 #{@delete_done_task.task.task_name}を取り消しました"
   end
 
   private

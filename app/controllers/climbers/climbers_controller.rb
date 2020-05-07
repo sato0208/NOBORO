@@ -2,7 +2,6 @@ class Climbers::ClimbersController < ApplicationController
   def show
     @climber = Climber.find(params[:id])
     @favorite = Favorite.find_by(climber_id: @climber.id)
-    end
   end
 
   def edit
@@ -12,7 +11,7 @@ class Climbers::ClimbersController < ApplicationController
   def update
     @climber = Climber.find(params[:id])
     @climber.update(climber_params)
-    redirect_to request.referer, notice: 'successfully delete Climber!'
+    redirect_to climber_path(@climber), notice: 'プロフィールをupdateしました！'
   end
 
   # フォローしている人

@@ -44,4 +44,10 @@ class Climber < ApplicationRecord
   def follows_by?(climber)
     relationships.where(climber_id: climber.id).exists?
   end
+
+  # gymをお気に入りにしているか判定をする
+  # climberにはcurrent_climberが渡される
+  def favorite_by?(climber)
+    favorites.where(climber_id: climber.id).exists?
+  end
 end
