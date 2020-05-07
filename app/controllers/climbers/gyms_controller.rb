@@ -14,16 +14,6 @@ class Climbers::GymsController < ApplicationController
     @gym = Gym.find(params[:id])
     @tasks = @gym.tasks
     @grades_all = Grade.all
-    # @grades = Grade.all
-    # # @grades と @tasks を紐づけて viewに渡す
-    # @grades = @grades.map do |grade|  ## gradeが持っているtaskを修正するためにmapで全要素をまわす
-    #   grade.tasks = [] ## いったんgradeが持っているtasksを空にする
-    #   @tasks.each do |task| ## tasksをeach文でまわす
-    #     if grade.id == task.grade_id ## このtaskがこのgradeに紐づいているか検証
-    #       grade.tasks.push(task) ## 紐づいている場合gradeのtasksに追加
-    #     end
-    #   end
-    # end
   end
 
   def favorites
@@ -47,6 +37,3 @@ class Climbers::GymsController < ApplicationController
     params.require(:gym).permit(:genre_id, :description, :gym_name, :post_code, :address, :gym_url, :gym_image)
   end
 end
-
-# - map は 操作する対象自体のデータを変更したい場合
-# - each は操作する対象のデータは変更し
