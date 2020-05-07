@@ -1,0 +1,29 @@
+ja:
+  activerecord:
+    attributes:
+      climbers:
+        name: 名前
+        address: 住所
+        post_code: 郵便番号email
+        email: メールアドレス
+      genre:
+        genre_name: 名前
+      item:
+        name: 名前
+        price: 値段
+      grades:
+        grade: グレード
+        trophy_name: トロフィー名
+        trophy_image_id: トロフィー画像
+      gyms:
+        email: メールアドレス
+        genre_id: ジャンル
+        gym_name: 名前
+        description: 紹介文
+        post_code: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        gym_url: HPのURL
+        gym_image_id: ジムの写真
+
+

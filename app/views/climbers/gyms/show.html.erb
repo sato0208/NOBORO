@@ -22,9 +22,7 @@
         <tr>
             <th>電話番号</th>
             <td>
-                <a class="heading-p" href="tel:">
                     <%= @gym.phone_number %>
-                </a>
             </td>
         </tr>
         <tr>
@@ -38,6 +36,10 @@
 <td id="favorites_<%= @gym.id %>">
     <%= render 'favorite', gym: @gym %>
 </td>
+<a class="heading-p" href="tel:">
+    予約の電話をかける
+    <% @gym.phone_number %>
+</a>
 
 <%= link_to '今月のランキング',rank_path, class: "btn btn-primary" %>
 <div class="container">
