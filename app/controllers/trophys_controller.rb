@@ -3,9 +3,9 @@ class TrophysController < ApplicationController
   end
 
   def create
-    @trophy = Trophy.new
     # DoneTaskテーブルからclimber_idがcrrent_climber.idと一致するものを探す
     @done_task = DoneTask.where(climber_id: crrent_climber.id)
+    @new_trophy = Trophy.new
     if @trophy.save
       @done_task.each do
       end

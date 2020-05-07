@@ -22,13 +22,13 @@ class DoneTasksController < ApplicationController
   def create
     @new_done_task = DoneTask.new(done_task_params)
     @new_done_task.climber_id = current_climber.id
-    # もしdone_taskをsaveするときに
+    # done_taskをsaveするときに
     if @new_done_task.save
       # @new_done_task に入っている task_idのgradeを取得
         grade = @new_done_task.task.grade
         # @new_done_taskに対するtask_idのgymを取得
         gym = @new_done_task.task.gym
-        # 課題テーブルからgym && grade が一致する task_idを全て持ってくる
+        # taskテーブルからgym_id && grade_id が一致する task.idを全て持ってくる
         task_ids = Task.where.(gym_id: gym.id, grade_id: grade.id).pluck(:id)
         # 自分が今まで達成したtaskの中から32行目でとってきた同じジムの同じtaskのgradeがあるかをwhereで探す
         done_tasks = current_climber.done_tasks.where(tasks_id: task_ids)
@@ -36,7 +36,7 @@ class DoneTasksController < ApplicationController
         # 32行目でとってきたtaskと34行目でとってきたtaskの中身の数が一緒であれば全て達成したことになる。
         if done_tasks.count == task_ids.count
           redirect_to request.referer
-          @trophy_new = Trophy.new
+          @new_trophy = Trophy.new
         else
           redirect_to request.referer
         end
