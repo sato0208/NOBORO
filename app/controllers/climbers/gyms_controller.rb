@@ -19,7 +19,7 @@ class Climbers::GymsController < ApplicationController
     # 見やすく書き直したい
     now = Time.current
     # done_taskテーブルのtask_idからgym_idを条件に検索したい　うまくいかない
-    @rank_done_tasks = DoneTask.where(gym_id: @gym.id, created_at: (now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(10).pluck(:id)
+    @rank_done_tasks = DoneTask.where(task_id: Task.where(gym_id: @gym.id).pluck(:id),created_at: (now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(10)
     # 自分の順位
     @my_rank = 1
     @rank_done_tasks.each do |rank|

@@ -4,7 +4,7 @@ class DoneTasksController < ApplicationController
     # 1日から月末までを集計する
     # 見やすく書き直したい
     now = Time.current
-    @rank_done_tasks = DoneTask.find(DoneTask.where(created_at: (now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(3).pluck(:id))
+    @rank_done_tasks = DoneTask.find(DoneTask.where(created_at:(now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(3).pluck(:id))
     # 自分の順位
     @my_rank = 1
     @rank_done_tasks.each do |rank|
@@ -20,6 +20,7 @@ class DoneTasksController < ApplicationController
   end
 
   def create
+    # あとでリファクタリングする。モデルに記述して短くする
     @new_done_task = DoneTask.new(done_task_params)
     @new_done_task.climber_id = current_climber.id
     # done_taskをsaveするときに
@@ -36,11 +37,13 @@ class DoneTasksController < ApplicationController
         # done_taskの中にtaskが全部あるかをチェック
         # 32行目でとってきたtaskと34行目でとってきたtaskの中身の数が一緒であれば全て達成したことになる。
         # binding.pry
+        # 登れた課題のtaskのidの数とそのgradeの全部のtaskの数が同じ場合トロフィーを獲得する
         if done_tasks.count == task_ids.count
           @new_trophy = Trophy.new
           @new_trophy.climber_id = current_climber.id
           @new_trophy.my_trophy_name = grade.trophy_name
           @new_trophy.my_trophy_image_id = grade.trophy_image_id
+          # ifで同じtrophyは登録できない様にする
           @new_trophy.save
           redirect_to request.referer, notice: "トロフィー#{@new_trophy.my_trophy_name}を獲得しました！"
         else
