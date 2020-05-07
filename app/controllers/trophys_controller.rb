@@ -4,7 +4,12 @@ class TrophysController < ApplicationController
 
   def create
     @trophy = Trophy.new
-    @trophy.save
+    # DoneTaskテーブルからclimber_idがcrrent_climber.idと一致するものを探す
+    @done_task = DoneTask.where(climber_id: crrent_climber.id)
+    if @trophy.save
+      @done_task.each do
+      end
+    end
     redirect_to request.referer
   end
 
