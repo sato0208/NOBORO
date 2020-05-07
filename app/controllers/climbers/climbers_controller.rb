@@ -28,6 +28,11 @@ class Climbers::ClimbersController < ApplicationController
     render 'show_follower'
   end
 
+  def trophy
+    @climber = Climber.find(params[:id])
+    @trophys = Trophy.where(climber_id: @climber.id)
+  end
+
   private
 
   def climber_params

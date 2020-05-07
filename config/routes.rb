@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   scope module: :climbers do
     get 'gyms/search' => 'gyms#search'
     get 'gyms/rank/:id' => 'gyms#rank', as: :rank
+    get 'climbers/trophy/:id' => 'climbers#trophy', as: :trophy
     get 'following_climbers' => 'climbers#following_climbers'
     resources :climbers, only: [:show, :edit, :update]do
       member do
@@ -44,6 +45,6 @@ Rails.application.routes.draw do
   resources :tasks, only: [:index, :destroy, :show]
   resources :infos, only: [:index]
   resources :done_tasks, only: [:index, :create, :update, :show, :destroy]
-  resources :trophys, only: [:create, :index]
+  resources :trophys, only: [:create]
   resources :relationships, only: [:create, :destroy]
 end

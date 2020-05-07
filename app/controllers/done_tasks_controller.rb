@@ -23,16 +23,14 @@ class DoneTasksController < ApplicationController
     # あとでリファクタリングする。モデルに記述して短くする
     @new_done_task = DoneTask.new(done_task_params)
     @new_done_task.climber_id = current_climber.id
-    # done_taskをsaveするときに
-    # binding.pry
     if @new_done_task.save
-      # @new_done_task に入っている task_idのgradeを取得
+      # @new_done_task に入っている task_idからgradeを取得
         grade = @new_done_task.task.grade
         # @new_done_taskに対するtask_idのgymを取得
         gym = @new_done_task.task.gym
-        # taskテーブルからgym_id && grade_id が一致する task.idを全て持ってくる
+        # donetask.newしたtaskに紐ずくgymの一つのgradeのtask全てを取得（taskテーブルからgym_id && grade_id が一致する task.idを全て持ってくる）
         task_ids = Task.where(gym_id: gym.id, grade_id: grade.id).pluck(:id)
-        # 自分が今まで達成したtaskの中から32行目でとってきた同じジムの同じtaskのgradeがあるかをwhereで探す
+        # 自分に紐ずくdone_taskの中から@new_done_taskのtask.idに紐ずくtaskを全て取得（32行目でとってきた同じジムの同じtaskのgradeがあるかをwhereで探す）
         done_tasks = current_climber.done_tasks.where(task_id: task_ids)
         # done_taskの中にtaskが全部あるかをチェック
         # 32行目でとってきたtaskと34行目でとってきたtaskの中身の数が一緒であれば全て達成したことになる。
