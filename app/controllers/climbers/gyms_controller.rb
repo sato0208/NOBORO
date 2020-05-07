@@ -10,6 +10,24 @@ class Climbers::GymsController < ApplicationController
     end
   end
 
+  def rank
+    # 選択しているジムの登れた課題ランキングが出したい。
+    # このままだと全てのジムの登れた総数ランキングになってしまう
+    @gym = Gym.find(params[:id])
+    # ランキング機能
+    # 1日から月末までを集計する
+    # 見やすく書き直したい
+    now = Time.current
+    # done_taskテーブルのtask_idからgym_idを条件に検索したい　うまくいかない
+    @rank_done_tasks = DoneTask.where(gym_id: @gym.id, created_at: (now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(10).pluck(:id)
+    # 自分の順位
+    @my_rank = 1
+    @rank_done_tasks.each do |rank|
+      break if rank.climber_id == current_climber.id
+      @my_rank += 1
+    end
+  end
+
   def show
     @gym = Gym.find(params[:id])
     @tasks = @gym.tasks

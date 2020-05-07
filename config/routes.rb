@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   scope module: :climbers do
     get 'gyms/search' => 'gyms#search'
+    get 'gyms/rank/:id' => 'gyms#rank', as: :rank
     get 'following_climbers' => 'climbers#following_climbers'
     resources :climbers, only: [:show, :edit, :update]do
       member do

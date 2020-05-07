@@ -1,5 +1,6 @@
-<h2>全ジム総合ランキング</h2>
-全てのジムで登れた総数を集計したランキングです<br>
+<%= @gym.gym_name%>の
+<h2>今月のランキング</h2>
+
 あなたのランキングは<%= @my_rank %>位です
 
 <table class="table table-hover">
@@ -10,12 +11,12 @@
         </tr>
     </thead>
     <tbody>
-        <% rank = 1 %>
+    <% rank = 1%>
         <% @rank_done_tasks.each do |f| %>
         <tr>
             <td>
-                <%= rank %>位
-                <% rank += 1 %>
+              <%= rank %>位
+              <% rank += 1 %>
             </td>
             <td>
               <%= link_to climber_path(f.climber_id) do %>
