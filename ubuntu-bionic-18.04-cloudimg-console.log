@@ -597,4 +597,48 @@ Welcome to [1mUbuntu 18.04.4 LTS[0m!
 
 Ubuntu 18.04.4 LTS ubuntu-bionic ttyS0
 
-ubuntu-bionic login: 
+ubuntu-bionic login: [160007.198812] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[160007.198812]   Tx Queue             <0>
+[160007.198812]   TDH                  <7>
+[160007.198812]   TDT                  <a>
+[160007.198812]   next_to_use          <a>
+[160007.198812]   next_to_clean        <7>
+[160007.198812] buffer_info[next_to_clean]
+[160007.198812]   time_stamp           <1026163b0>
+[160007.198812]   next_to_watch        <9>
+[160007.198812]   jiffies              <1026165f8>
+[160007.198812]   next_to_watch.status <0>
+[160009.214000] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[160009.214000]   Tx Queue             <0>
+[160009.214000]   TDH                  <7>
+[160009.214000]   TDT                  <a>
+[160009.214000]   next_to_use          <a>
+[160009.214000]   next_to_clean        <7>
+[160009.214000] buffer_info[next_to_clean]
+[160009.214000]   time_stamp           <1026163b0>
+[160009.214000]   next_to_watch        <9>
+[160009.214000]   jiffies              <1026167f0>
+[160009.214000]   next_to_watch.status <0>
+[160011.228665] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[160011.228665]   Tx Queue             <0>
+[160011.228665]   TDH                  <7>
+[160011.228665]   TDT                  <a>
+[160011.228665]   next_to_use          <a>
+[160011.228665]   next_to_clean        <7>
+[160011.228665] buffer_info[next_to_clean]
+[160011.228665]   time_stamp           <1026163b0>
+[160011.228665]   next_to_watch        <9>
+[160011.228665]   jiffies              <1026169e8>
+[160011.228665]   next_to_watch.status <0>
+[160013.244276] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[160013.244276]   Tx Queue             <0>
+[160013.244276]   TDH                  <7>
+[160013.244276]   TDT                  <a>
+[160013.244276]   next_to_use          <a>
+[160013.244276]   next_to_clean        <7>
+[160013.244276] buffer_info[next_to_clean]
+[160013.244276]   time_stamp           <1026163b0>
+[160013.244276]   next_to_watch        <9>
+[160013.244276]   jiffies              <102616be0>
+[160013.244276]   next_to_watch.status <0>
+[160014.139392] e1000 0000:00:03.0 enp0s3: Reset adapter

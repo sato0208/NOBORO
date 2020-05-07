@@ -1,4 +1,4 @@
-    <table class="table table-hover">
+    <table class="table">
       <thead class="thead-lignt">
         <tr>
           <th>ジャンル検索</th>
@@ -8,7 +8,12 @@
       <tbody>
         <% genres.each do |genre| %>
           <tr>
-            <td><%= link_to genre.genre_name, gyms_path(genre_id: genre.id) %></td>
+            <td>
+            <%= link_to gyms_path(genre_id: genre.id) do %>
+              <%= attachment_image_tag genre, :genre_image, size: '100x100',format: "jpeg",fallback: "ira13.png" %>
+            <% end %>
+              <%= genre.genre_name %>
+            </td>
           </tr>
           <% end %>
       </tbody>

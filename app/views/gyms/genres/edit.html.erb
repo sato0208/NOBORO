@@ -5,10 +5,10 @@
             <%= form_with method: :patch, model: @genre, local: true, url: gyms_genre_path(@genre) do |f| %>
 
             <% if @genre.errors.any? %>
-                  <%= @genre.errors.count %>件のerrorが発生しました
-              <% @genre.errors.full_messages.each do |message| %>
-                <%= message %>
-              <% end %>
+                <%= @genre.errors.count %>件のerrorが発生しました
+                <% @genre.errors.full_messages.each do |message| %>
+                    <%= message %>
+                <% end %>
             <% end %>
         </div>
         <div class="col-xs-5">
@@ -18,6 +18,13 @@
                     <td>
                         <%= f.text_field :genre_name %>
                     </td>
+                </tr>
+                <tr>
+                    <th>画像を選択</th>
+                    <td>
+                        <%= f.attachment_field :genre_image, class: "image_form" %>
+                    </td>
+                </tr>
             </table>
         </div>
         <%= f.submit "変更を保存" %>

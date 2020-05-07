@@ -15,7 +15,10 @@
     </td>
       <td><%= @climber.name %></td>
         <% if @climber.favorite_by?(current_climber) %>
-            <td><%= @favorite.gym.gym_name %></td>
+            <td><%= link_to gym_path(@favorite.gym) do %>
+                <%= @favorite.gym.gym_name %>
+              <% end %>
+            </td>
           <% else %>
             <td>お気に入りジム未登録</td>
         <% end %>
@@ -55,7 +58,9 @@
   <p>
       <%= link_to @climber.followers.count,follower_climber_path(@climber) %>
   </p>
-<%= link_to "ー　プロフィール編集　ー", edit_climber_path %><br>
-<%= link_to "ー　お気に入りジムの お知らせ一覧　ー", favorites_path %><br>
+<% if current_climber.id == @climber.id %>
+  <%= link_to "ー　プロフィール編集　ー", edit_climber_path %><br>
+  <%= link_to "ー　お気に入りジムの お知らせ一覧　ー", favorites_path %><br>
+<% end %>
 <%= link_to "ー　獲得したトロフィー一覧　ー", trophys_path %>
 <h3>----　今月の獲得トロフィー　---</h3>

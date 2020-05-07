@@ -30,6 +30,6 @@ class Gyms::GenresController < ApplicationController
   private
 
   def genre_params
-    params.require(:genre).permit(:genre_name)
+    params.require(:genre).permit(:genre_name,:genre_image)
   end
 end
