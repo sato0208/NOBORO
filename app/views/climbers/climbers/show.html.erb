@@ -40,7 +40,9 @@
       <%= hidden_field_tag :follow_id, @climber.id %>
       <tr>
           <td>
-              <%= f.submit 'フォローをはずす', class: 'btn btn-danger' %>
+          <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
+            <i class="fas fa-user-minus"> フォローを外す</i>
+          <% end %>
           </td>
       </tr>
       <% end %>
@@ -49,7 +51,9 @@
       <%= hidden_field_tag :follow_id, @climber.id %>
       <tr>
           <td>
-              <%= f.submit 'フォローする', class: 'btn btn-primary' %>
+            <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
+              <i class="fas fa-user-plus"> フォローする</i>
+            <% end %>
           </td>
       </tr>
     <% end %>

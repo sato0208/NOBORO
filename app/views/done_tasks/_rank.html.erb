@@ -1,4 +1,4 @@
-<%= @my_rank %>位
+<%= my_rank %>位
 <%= attachment_image_tag current_climber,:profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.png", size:'40x40' %>
 <%= current_climber.name %>
 <%= current_climber.done_tasks.count%>本
@@ -14,7 +14,7 @@
     </thead>
     <tbody>
         <% rank = 1 %>
-        <% @rank_done_tasks.each do |f| %>
+        <% rank_done_tasks.each do |f| %>
         <tr>
             <td>
                 <%= rank %>位

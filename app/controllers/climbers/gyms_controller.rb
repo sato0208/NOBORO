@@ -15,16 +15,27 @@ class Climbers::GymsController < ApplicationController
     # ランキング機能
     # 1日から月末までを集計する
     # 見やすく書き直したい
+    # ジムの中の登れた課題ランキング
     now = Time.current
     # done_taskテーブルのtask_idからgym_idを条件に検索
-    @rank_done_tasks = DoneTask.where(task_id: Task.where(gym_id: @gym.id).pluck(:id),created_at: (now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(10)
+    @gym_done_tasks = DoneTask.where(task_id: Task.where(gym_id: @gym.id).pluck(:id),created_at: (now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(10)
     # 自分の順位
-    @my_rank = 1
+    @gym_my_rank = 1
     # @rank_done_task（多い順に並んでいる）にあるclimber_idとcurrent_climber.idが一致するまで1ずつ増やすことで順位を出す
-    @rank_done_tasks.each do |rank|
+    @gym_done_tasks.each do |rank|
       break if rank.climber_id == current_climber.id
-      @my_rank += 1
+      @gym_my_rank += 1
     end
+
+    # 全ジムの登れた課題ランキング
+    @all_done_tasks = DoneTask.find(DoneTask.where(created_at:(now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(30).pluck(:id))
+    # 自分の順位
+    @all_my_rank = 1
+    @all_done_tasks.each do |rank|
+      break if rank.climber_id == current_climber.id
+      @all_my_rank += 1
+    end
+
   end
 
   def show

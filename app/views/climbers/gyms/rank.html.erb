@@ -11,14 +11,14 @@
   <div class="tab-content">
  <div role="tabpanel" class="tab-pane active" id="home">
  <h2><%= @gym.gym_name%> 登れた本数ランキング</h2>
-<%= render 'done_tasks/rank', rank_done_tasks: @rank_done_tasks %>
+<%= render 'done_tasks/rank', rank_done_tasks: @gym_done_tasks, my_rank: @gym_my_rank %>
 <br>
  <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
  </div>
  <div role="tabpanel" class="tab-pane" id="profile">
  <h2>全ジム 登れた本数ランキング</h2>
  <p>
-<%= render 'done_tasks/rank', rank_done_tasks: @rank_done_tasks %>
+<%= render 'done_tasks/rank', rank_done_tasks: @all_done_tasks, my_rank: @all_my_rank %>
  <br>
  <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
  </p>
@@ -26,7 +26,7 @@
   <div role="tabpanel" class="tab-pane" id="message">
  <h2>フォロワーランキング</h2>
  <p>
- <%= render 'done_tasks/rank', rank_done_tasks: @rank_done_tasks %>
+ <%# <%= render 'done_tasks/rank', rank_done_tasks: @fallow_done_tasks, my_rank: @fallow_my_rank %> %>
  <br>
  <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
  </p>

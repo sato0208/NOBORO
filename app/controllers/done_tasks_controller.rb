@@ -1,16 +1,5 @@
 class DoneTasksController < ApplicationController
   def index
-    # ランキング機能
-    # 1日から月末までを集計する
-    # 見やすく書き直したい
-    now = Time.current
-    @rank_done_tasks = DoneTask.find(DoneTask.where(created_at:(now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(30).pluck(:id))
-    # 自分の順位
-    @my_rank = 1
-    @rank_done_tasks.each do |rank|
-      break if rank.climber_id == current_climber.id
-      @my_rank += 1
-    end
   end
 
   def show

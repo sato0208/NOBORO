@@ -1,5 +1,16 @@
-<h2>ー　獲得したトロフィー一覧　ー</h2>
-<% @trophys.each do |f| %>
-<%= attachment_image_tag f, :my_trophy_image, size: '100x100',format: "jpeg",fallback: "ira13.png" %>
-  <%= f.my_trophy_name%>
-<% end %>
+<h2>ー　獲得したトロフィー　ー</h2>
+<table class="table">
+		<tbody>
+			<% @trophys.each do |f| %>
+			<tr>
+				<td><%= f.my_trophy_name%>
+        </td>
+				<td><%= attachment_image_tag f, :my_trophy_image, size: '100x100',format: "jpeg",fallback: "ira13.png" %>
+        </td>
+				<td><%= f.updated_at.strftime("%Y-%m-%d") %>
+				</td>
+			</tr>
+					<% end %>
+		</tbody>
+	</table>
+</div>

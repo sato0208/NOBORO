@@ -44,26 +44,26 @@
         <% elsif climber_signed_in? %>
         <ul class="navbar-text navbar-right">
             <li>
-                <%= link_to " マイページ", climber_path(current_climber.id),class:"glyphicon glyphicon-home"%>
+                <%= link_to " マイページ", climber_path(current_climber.id),class:"fas fa-dove"%>
             </li>
             <li>
-                <%= link_to " ジム検索", root_path,class:"glyphicon glyphicon-book" %>
+                <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
             </li>
             <li>
-                <%= link_to "バトル通知", "#",class:"glyphicon glyphicon-book" %>
+                <%= link_to " バトル通知", "#",class:"fas fa-user-friends" %>
             </li>
             <li>
-                <%= link_to " 獲得したトロフィー", trophy_path,class:"glyphicon glyphicon-book" %>
+                <%= link_to " 獲得したトロフィー", trophy_path(current_climber.id),class:"fas fa-chess-queen" %>
             </li>
             <li>
-                <%= link_to " ログアウト", destroy_climber_session_path,class:"glyphicon glyphicon-log-out", method: :delete %>
+                <%= link_to " ログアウト", destroy_climber_session_path,class:"fas fa-door-open", method: :delete %>
             </li>
         </ul>
         <!-- ユーザーがサインインしていない場合 -->
         <% else %>
         <ul class="navbar-text navbar-right">
             <li>
-                <%= link_to " ジム検索", root_path,class:"glyphicon glyphicon-home" %>
+                <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
             </li>
             <li>
                 <%= link_to " about", '#',class:"glyphicon glyphicon-link" %>
