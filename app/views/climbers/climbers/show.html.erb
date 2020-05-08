@@ -15,11 +15,14 @@
     </td>
       <td><%= @climber.name %></td>
         <% if @climber.favorite_by?(current_climber) %>
-            <td><%= link_to gym_path(@favorite.gym) do %>
-                <%= @favorite.gym.gym_name %>
-              <% end %>
-            </td>
-          <% else %>
+          <td>
+            <% @favorites.each do |f|%>
+              <%= link_to gym_path(f.gym) do %>
+                  <%= f.gym.gym_name %>
+                <% end %>
+            <% end %>
+          </td>
+        <% else %>
             <td>お気に入りジム未登録</td>
         <% end %>
       <td><%= @climber.introduction %></td>
@@ -27,6 +30,8 @@
   </tbody>
 </table>
 <table>
+
+
 
 <!-- カレントユーザーにはフォローボタンを表示させない -->
 <% unless current_climber.id == @climber.id %>

@@ -3,8 +3,7 @@ class Climbers::ClimbersController < ApplicationController
     @climber = Climber.find(params[:id])
     now = Time.current
     @trophys = Trophy.where(climber_id: @climber.id,created_at: (now.beginning_of_month)..(now.end_of_month)).group(:climber_id)
-
-    @favorite = Favorite.find_by(climber_id: @climber.id)
+    @favorites = Favorite.where(climber_id: @climber.id)
   end
 
   def edit

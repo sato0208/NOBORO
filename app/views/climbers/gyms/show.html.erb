@@ -1,3 +1,13 @@
+<div class="trophy">
+<%= attachment_image_tag @new_trophy, :my_trophy_image, :fill, 50, 50, format: 'jpeg', class: "pull-left profile-img", fallback: "bo2.jpeg", size:'50x50' %>
+<p>トロフィーを獲得しました</p>
+<p>笑顔でボルダリングする女</p>
+<%# <%= @new_trophy.my_trophy_name %></p>
+</div>
+
+
+
+
 <%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "bo2.jpeg", size:'400x300' %>
 <table class="table">
     <thead>
@@ -22,7 +32,9 @@
         <tr>
             <th>電話番号</th>
             <td>
+                <a class="heading-p" href="tel:">
                     <%= @gym.phone_number %>
+                </a>
             </td>
         </tr>
         <tr>
@@ -36,11 +48,6 @@
 <td id="favorites_<%= @gym.id %>">
     <%= render 'favorite', gym: @gym %>
 </td>
-<a class="heading-p" href="tel:">
-    予約の電話をかける
-    <% @gym.phone_number %>
-</a>
-
 <%= link_to '今月のランキング',rank_path, class: "btn btn-primary" %>
 <div class="container">
     <h2>課題一覧</h2>
@@ -77,5 +84,8 @@
         </tbody>
     </table>
 </div>
+
+
+
 <%= link_to "＜＜戻る", gyms_path %>
 
