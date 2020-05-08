@@ -8,6 +8,7 @@
         <tr>
             <th>順位</th>
             <th>名前</th>
+            <th>登れた数</th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +24,8 @@
                   <%= f.climber.name %>
                 <% end %>
             </td>
+            <td>
+                <%= f.climber.done_tasks.count%>本
         </tr>
         <% end %>
     </tbody>
