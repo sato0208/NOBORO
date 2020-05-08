@@ -1,31 +1,3 @@
 <h2>全ジム総合ランキング</h2>
 全てのジムで登れた総数を集計したランキングです<br>
-あなたのランキングは<%= @my_rank %>位です
-
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>順位</th>
-            <th>名前</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% rank = 1 %>
-        <% @rank_done_tasks.each do |f| %>
-        <tr>
-            <td>
-                <%= rank %>位
-                <% rank += 1 %>
-            </td>
-            <td>
-              <%= link_to climber_path(f.climber_id) do %>
-                  <%= f.climber.name %>
-                <% end %>
-            </td>
-            <td>
-                <%= f.climber.done_tasks.count%>本
-            </td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+<%= render 'rank', rank_done_tasks: @rank_done_tasks %>

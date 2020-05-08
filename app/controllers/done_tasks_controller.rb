@@ -4,7 +4,7 @@ class DoneTasksController < ApplicationController
     # 1日から月末までを集計する
     # 見やすく書き直したい
     now = Time.current
-    @rank_done_tasks = DoneTask.find(DoneTask.where(created_at:(now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(3).pluck(:id))
+    @rank_done_tasks = DoneTask.find(DoneTask.where(created_at:(now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(30).pluck(:id))
     # 自分の順位
     @my_rank = 1
     @rank_done_tasks.each do |rank|

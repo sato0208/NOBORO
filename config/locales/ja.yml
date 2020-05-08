@@ -4,7 +4,7 @@ ja:
       climbers:
         name: 名前
         address: 住所
-        post_code: 郵便番号email
+        post_code: 郵便番号
         email: メールアドレス
       genre:
         genre_name: 名前
