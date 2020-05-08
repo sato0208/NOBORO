@@ -41,7 +41,7 @@ body {
     line-height: 1.42857143;
     display: block;
     margin-top: 60px;
-    color: #333333;
+    color: rgb(70, 70, 70);
     background-color: #fff;
     }
 
@@ -49,14 +49,14 @@ div {
     display: block;
     }
 
-header {
-    color: white;
+header a{
+    color: #fff;
     margin: 0,auto;
 }
 
 
 header a:hover {
-    color: white;
+    color: #9d9d9d;
     background-color: #222;
     text-decoration:none;
 }
@@ -64,10 +64,15 @@ header a:hover {
 header li {
   display: inline-block;
   padding: 0 15px;
-  color: #9d9d9d;
+  color: #fff;
   font-family: 'Glyphicons Halflings';
   }
-
+  header span{
+    font-size: 20px;
+    display: inline-block;
+    padding: 15px 15px;
+    color: #fff;
+    }
 
 
 

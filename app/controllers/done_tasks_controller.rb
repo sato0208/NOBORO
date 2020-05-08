@@ -36,7 +36,7 @@ class DoneTasksController < ApplicationController
         else
           redirect_to request.referer, notice: "課題 #{@new_done_task.task.task_name}が登れました!"
         end
-    end
+    end 
   end
 
   def destroy

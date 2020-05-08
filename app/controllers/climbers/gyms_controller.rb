@@ -56,7 +56,8 @@ class Climbers::GymsController < ApplicationController
               Gym.where('gym_name LIKE ?', "%#{params[:gym_name]}%")
             else
               Gym.all
-    end
+            end
+
   end
 
   private

@@ -15,8 +15,10 @@
     <div class="search-form">
         <h2>Search</h2>
         <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
-        <%= f.text_field :gym_name %>
-        <%= f.submit ' 検索する' %>
+            <%= f.text_field :gym_name %>
+            <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-info' do %>
+                <i class="fa fa-search"> ジムを探す</i>
+            <% end %>
         <% end %>
     </div>
     <!-- ジャンル検索用 -->

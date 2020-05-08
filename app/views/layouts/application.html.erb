@@ -12,16 +12,14 @@
 </head>
 <header class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
-        <nav class="nav navbar-nav navbar-left">
-            <span>NOBORO</span>
+        <nav class="navbar-left">
+            <span><%= link_to " NOBORO", root_path %></span>
         </nav>
 
         <% if gym_signed_in? %>
             <ul class="navbar-text navbar-right">
             <li>
                 <%= link_to " ジム情報編集", edit_gyms_gym_path(current_gym.id),class:"glyphicon glyphicon-home"%>
-            </li>
-            <li>
             </li>
             <li>
                 <%= link_to " ジム課題登録", gyms_tasks_path,class:"glyphicon glyphicon-book" %>
@@ -50,7 +48,7 @@
                 <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
             </li>
             <li>
-                <%= link_to " バトル通知", "#",class:"fas fa-user-friends" %>
+                <%= link_to " バトル通知", "#",class:"fas fa-bolt" %>
             </li>
             <li>
                 <%= link_to " 獲得したトロフィー", trophy_path(current_climber.id),class:"fas fa-chess-queen" %>
