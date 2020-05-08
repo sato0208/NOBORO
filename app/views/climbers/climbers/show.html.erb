@@ -64,3 +64,6 @@
 <% end %>
 <%= link_to "ー　獲得したトロフィー一覧　ー", trophy_path(@climber) %>
 <h3>----　今月の獲得トロフィー　---</h3>
+<% @trophys.each do |f|%>
+<%= attachment_image_tag f, :my_trophy_image, size: '100x100',format: "jpeg",fallback: "ira13.png" %>
+<% end %>

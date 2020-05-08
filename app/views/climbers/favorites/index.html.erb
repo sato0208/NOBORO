@@ -10,7 +10,9 @@
     <% @favorites.each do |f|%>
       <tr>
         <td><%= f.gym.gym_name %></td>
-        <td><%= f.gyms.infos.info%> </td>
+      <% gym_infos = f.gym.find_by(gym_id: f.id) %>
+
+        <td><%= gym_.info %>
       </tr>
     <% end %>
   </tbody>

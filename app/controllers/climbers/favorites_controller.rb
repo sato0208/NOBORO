@@ -12,7 +12,7 @@ class Climbers::FavoritesController < ApplicationController
   end
 
   def index
-    @favorites = current_climber.favorites
+    @favorites = Favorite.where(climber_id: current_climber.id)
   end
 
   private
