@@ -57,11 +57,10 @@ class Climbers::GymsController < ApplicationController
             else
               Gym.all
             end
-
+      
   end
 
   private
-
   def gym_params
     params.require(:gym).permit(:genre_id, :description, :gym_name, :post_code, :address, :gym_url, :gym_image)
   end

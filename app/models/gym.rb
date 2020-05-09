@@ -15,4 +15,10 @@ class Gym < ApplicationRecord
   def favorite_by?(climber)
     favorites.where(climber_id: climber.id).exists?
   end
+
+  def self.search(search)
+    return Gym. unless search
+    Gym.where(['content LIKE ?', "%#{search}%"])
+   end
+
 end
