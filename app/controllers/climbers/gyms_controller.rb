@@ -18,7 +18,14 @@ class Climbers::GymsController < ApplicationController
     # ジムの中の登れた課題ランキング
     now = Time.current
     # done_taskテーブルのtask_idからgym_idを条件に検索
-    @gym_done_tasks = DoneTask.where(task_id: Task.where(gym_id: @gym.id).pluck(:id),created_at: (now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(10)
+    #Order.select("date(created_at) as ordered_date, sum(price) as total_price").group("date(created_at)")
+    @gym_done_tasks = DoneTask.where(
+      task_id: Task.where(gym_id: @gym.id).pluck(:id),
+      created_at: (now.beginning_of_month)..(now.end_of_month)
+    )
+    .group(:climber_id)
+    .order('count(task_id) desc')
+    .limit(10)
     # 自分の順位
     @gym_my_rank = 1
     # @rank_done_task（多い順に並んでいる）にあるclimber_idとcurrent_climber.idが一致するまで1ずつ増やすことで順位を出す
@@ -35,6 +42,9 @@ class Climbers::GymsController < ApplicationController
       break if rank.climber_id == current_climber.id
       @all_my_rank += 1
     end
+
+    # フォロワーの登れた課題ランキング
+    # @fallow_done_tasks =DoneTasks.
 
   end
 

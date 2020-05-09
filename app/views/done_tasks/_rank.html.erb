@@ -14,22 +14,23 @@
     </thead>
     <tbody>
         <% rank = 1 %>
-        <% rank_done_tasks.each do |f| %>
+        <% rank_done_tasks.each do |rank_done_task| %>
         <tr>
             <td>
                 <%= rank %>位
                 <% rank += 1 %>
             </td>
             <td>
-            <%= attachment_image_tag f.climber,:profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.png", size:'40x40' %>
+            <%= attachment_image_tag rank_done_task.climber,:profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.png", size:'40x40' %>
             </td>
             <td>
-              <%= link_to climber_path(f.climber_id) do %>
-                  <%= f.climber.name %>
+              <%= link_to climber_path(rank_done_task.climber_id) do %>
+                  <%= rank_done_task.climber.name %>
                 <% end %>
             </td>
             <td>
-                <%= f.climber.done_tasks.count%>本
+                <%#= rank_done_task.climber.done_tasks.count %> <!--本 -->
+                <%= rank_done_task.count_per_gym %>本
             </td>
         </tr>
         <% end %>
