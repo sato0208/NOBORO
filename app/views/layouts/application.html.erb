@@ -19,23 +19,23 @@
         <% if gym_signed_in? %>
             <ul class="navbar-text navbar-right">
             <li>
-                <%= link_to " ジム情報編集", edit_gyms_gym_path(current_gym.id),class:"glyphicon glyphicon-home"%>
+                <%= link_to " ジム情報編集", edit_gyms_gym_path(current_gym.id),class:"fas fa-cog"%>
             </li>
             <li>
-                <%= link_to " ジム課題登録", gyms_tasks_path,class:"glyphicon glyphicon-book" %>
+                <%= link_to " ジム課題登録", gyms_tasks_path,class:"fas fa-feather" %>
             </li>
             <li>
-                <%= link_to " ジムグレード登録（トロフィー）", gyms_grades_path,class:"glyphicon glyphicon-book" %>
+                <%= link_to " ジムグレード登録（トロフィー）", gyms_grades_path,class:"fas fa-chess-queen" %>
             </li>
             <li>
-                <%= link_to " ジムのジャンル登録", gyms_genres_path,class:"glyphicon glyphicon-book" %>
+                <%= link_to " ジムのジャンル登録", gyms_genres_path,class:"fas fa-horse-head" %>
             </li>
             <li>
-                <%= link_to " ジムのお知らせ登録", gyms_infos_path,class:"glyphicon glyphicon-book" %>
+                <%= link_to " ジムのお知らせ登録", gyms_infos_path,class:"far fa-bell" %>
             </li>
             <%# ログアウトは後で消す %>
             <li>
-                <%= link_to " ログアウト", destroy_climber_session_path,class:"glyphicon glyphicon-log-out", method: :delete %>
+                <%= link_to " ログアウト", destroy_climber_session_path,class:"fas fa-door-open", method: :delete %>
             </li>
         </ul>
         <!-- クライマーがサインインしている場合 -->
@@ -48,7 +48,7 @@
                 <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
             </li>
             <li>
-                <%= link_to " バトル通知", "#",class:"fas fa-bolt" %>
+                <%= link_to " バトル通知", "#",class:"fas fa-bell" %>
             </li>
             <li>
                 <%= link_to " 獲得したトロフィー", trophy_path(current_climber.id),class:"fas fa-chess-queen" %>
@@ -64,13 +64,13 @@
                 <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
             </li>
             <li>
-                <%= link_to " about", '#',class:"glyphicon glyphicon-link" %>
+                <%= link_to " about", '#',class:"fas fa-cat" %>
             </li>
             <li>
-                <%= link_to " sign up", new_climber_registration_path,class:"glyphicon glyphicon-pencil" %>
+                <%= link_to " sign up", new_climber_registration_path,class:"fas fa-door-closed" %>
             </li>
             <li>
-                <%= link_to " login", new_climber_session_path,class:"glyphicon glyphicon-log-in" %>
+                <%= link_to " login", new_climber_session_path,class:"fas fa-key" %>
             </li>
         </ul>
         <% end %>
