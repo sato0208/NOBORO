@@ -6,6 +6,7 @@ class Gyms::GradesController < ApplicationController
 
   def update
     @grade = Grade.find(params[:id])
+    p grade_params
     if @grade.update(grade_params)
       redirect_to request.referer, notice: 'successfully update Genre!'
     else
@@ -25,10 +26,11 @@ class Gyms::GradesController < ApplicationController
 
   def edit
     @grade = Grade.find(params[:id])
+    render 'edit'
   end
 
   def destroy
-    @grade = Grade.find
+    @grade = Grade.find(params[:id])
     @grade.destroy
     redirect_to request.referer, notice: 'successfully delete Grade!'
   end

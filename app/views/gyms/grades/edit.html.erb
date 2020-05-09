@@ -2,7 +2,6 @@
     <h1>グレード　編集画面</h1>
     <div class="row">
         <div class="col-xs-5 ">
-            <%= form_with method: :patch, model: @grade, local: true, url: gyms_grade_path(@grade) do |f| %>
 
             <% if @grade.errors.any? %>
               <%= @grade.errors.count %>件のerrorが発生しました
@@ -11,6 +10,7 @@
               <% end %>
             <% end %>
         </div>
+        <%= form_with method: :patch, model: @grade, local: true, url: gyms_grade_path(@grade) do |f| %>
         <div class="col-xs-5">
             <table class="table table-borderless">
                 <tr>
