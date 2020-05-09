@@ -8,6 +8,11 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <div class="field">
+    <%= f.label :gym_name %><br/>
+    <%= f.text_field :gym_name, autofocus: true, autocomplete: "gym_name" %>
+  </div>
+
    <div class="field">
     <%= f.label :genre_id %><br/>
     <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
