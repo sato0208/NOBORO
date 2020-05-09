@@ -20,8 +20,15 @@
 @import 'font-awesome'; 
 
 
-
-
+// @font-face {
+//     font-family: "komorebi";
+//     src: font-url("/komorebi-gothic-P.ttf") format("truetype");
+//     font-weight: normal;
+//     font-style: normal;
+//   }
+//   .sample h2 {
+//     font-family: "komorebi";
+//   }
 
 
 
@@ -49,6 +56,13 @@ div {
     display: block;
     }
 
+.container {
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
 header a{
     color: #fff;
     margin: 0,auto;
@@ -57,7 +71,7 @@ header a{
 
 header a:hover {
     color: #9d9d9d;
-    background-color: #222;
+    background-color:  rgb(70, 70, 70);
     text-decoration:none;
 }
 
@@ -73,7 +87,25 @@ header li {
     padding: 15px 15px;
     color: #fff;
     }
+    .navbar-inverse {
+        background-color: rgb(70, 70, 70);
+        border-color: #090909;
+    }
 
+footer {
+        width: 100%;
+        height: 60px;
+        background-color:  rgb(70, 70, 70);
+        font-size: 16px;
+        color: #FAFAFA;
+        text-align: center;
+        padding: 40px;
+    }
+    
+p .copyright{
+        font-size: 16px;
+        color: #FAFAFA;
+    }
 
 
 
