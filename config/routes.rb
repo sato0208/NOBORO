@@ -48,4 +48,5 @@ Rails.application.routes.draw do
   resources :trophys, only: [:create]
   resources :relationships, only: [:create, :destroy]
   resources :battles, only: [:create, :destroy, :show, :update, :index]
+  resources :notifications, only: [:create, :destroy, :show, :update, :index]
 end

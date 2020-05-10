@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_072246) do
+ActiveRecord::Schema.define(version: 2020_05_10_083628) do
 
   create_table "battles", force: :cascade do |t|
     t.integer "climber_id"
@@ -98,6 +98,19 @@ ActiveRecord::Schema.define(version: 2020_05_10_072246) do
     t.string "info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visiter_id"
+    t.integer "visited_id"
+    t.integer "confirm_status"
+    t.boolean "is_checked_status", default: false, null: false
+    t.integer "battle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visiter_id", "visited_id"], name: "index_notifications_on_visiter_id_and_visited_id", unique: true
+    t.index ["visiter_id"], name: "index_notifications_on_visiter_id"
   end
 
   create_table "relationships", force: :cascade do |t|

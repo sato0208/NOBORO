@@ -1,3 +1,16 @@
+<ul class="nav">
+ 
+<div>
+  <h4 class="sub-title">通知</h4>
+  <% if @notifications.exists? %>
+    <div class="users-index">
+      <%= render @notifications %>
+      <%= paginate @notifications %>
+    </div>
+  <% else %>
+    <p>通知はありません</p>
+  <% end %>
+</div>
 <!-- ここからプロフィール -->
 	<div class="profile">
 		<div id="profile"></div>
@@ -27,7 +40,6 @@
           <h3 class="feature-title">お気に入りジム</h3>
           <p class="heading-p">
           <% if @climber.favorite_by?(current_climber) %>
-              
               <% @favorites.each do |f|%> /
                 <%= link_to gym_path(f.gym) do %>
                     <%= f.gym.gym_name %> 
@@ -47,6 +59,13 @@
 
           <p class="heading-p"><!-- カレントユーザーにはフォローボタンを表示させない -->
             <% unless current_climber.id == @climber.id %>
+              <%= form_with method: :post, model: @new_battle,local: true, url:battles_path do |f| %>
+                <%= hidden_field_tag :battler_id, @climber.id %>
+                  <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
+                    <i class="fas fa-user-plus"> バトルを申し込む</i>
+                  <% end %>
+              <% end %>
+
               <% if current_climber.following?(@climber) %>
                 <%= form_for(current_climber.relationships.find_by(follow_id: @climber.id), html: { method: :delete }) do |f| %>
                   <%= hidden_field_tag :follow_id, @climber.id %>
