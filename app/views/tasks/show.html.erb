@@ -16,7 +16,6 @@
         </tr>
     </tbody>
 </table>
-<div class="container">
     <% if @task.achieved?(current_climber)%>
             <!-- done_taskテーブルに登録する -->
             <%= form_with method: :delete, model: @delete_done_task, url:done_task_path(@delete_done_task), local: true do |f| %>
@@ -34,7 +33,6 @@
             <%= f.submit"登れた！", class:"btn btn-primary btn-lg pull-left" %>
         <% end %>
     <% end %>
-</div>
 <h2>登れた人一覧</h2>
 
 <table>

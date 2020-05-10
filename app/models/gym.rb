@@ -10,12 +10,12 @@ class Gym < ApplicationRecord
   belongs_to :genre
   has_many :favorites, dependent: :destroy
 
-  # gymをお気に入りにしているか判定をする
-  # climberにはcurrent_climberが渡される
+  # お気に入り登録しているか判定
   def favorite_by?(climber)
     favorites.where(climber_id: climber.id).exists?
   end
 
+  # リファクタリングするための記述
   def self.search(search)
     return Gym. unless search
     Gym.where(['content LIKE ?', "%#{search}%"])
