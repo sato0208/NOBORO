@@ -47,4 +47,5 @@ Rails.application.routes.draw do
   resources :done_tasks, only: [:index, :create, :update, :show, :destroy]
   resources :trophys, only: [:create]
   resources :relationships, only: [:create, :destroy]
+  resources :battles, only: [:create, :destroy, :show, :update, :index]
 end

@@ -10,6 +10,11 @@ class Climber < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :gym_favorites, through: :favorites, source: :gym
 
+  # バトル機能
+  has_many :battles, class_name: 'Battles', foreign_key: 'climber_id'
+  has_many :reverse_of_battles, class_name: 'Battles', foreign_key: 'battler_id'
+
+
   # フォロー、フォロワー機能
   has_many :relationships, class_name: 'Relationship', foreign_key: 'climber_id'
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'

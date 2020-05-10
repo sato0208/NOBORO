@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_091154) do
+ActiveRecord::Schema.define(version: 2020_05_10_072246) do
+
+  create_table "battles", force: :cascade do |t|
+    t.integer "climber_id"
+    t.integer "battler_id"
+    t.boolean "is_valid_status", default: false, null: false
+    t.datetime "finish_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["battler_id"], name: "index_battles_on_battler_id"
+    t.index ["climber_id", "battler_id"], name: "index_battles_on_climber_id_and_battler_id", unique: true
+    t.index ["climber_id"], name: "index_battles_on_climber_id"
+  end
 
   create_table "climbers", force: :cascade do |t|
     t.string "email", default: "", null: false
