@@ -7,7 +7,7 @@ class CreateBattles < ActiveRecord::Migration[5.2]
       t.datetime :finish_at
 
       t.timestamps
-      t.index [:climber_id, :battler_id], unique: true
+      t.index [:climber_id, :battler_id]
     end
   end
 end

@@ -1,10 +1,14 @@
 <ul class="nav">
- 
+ <li class="notification">
+ <%= link_to '通知', notifications_path, class:"btn" %>
+  <%# <% if unchecked_notifications.any? %> %>
+    <i class="fa fa-circle notification-circle"></i>
+  <%# <% end %> %>
 <div>
   <h4 class="sub-title">通知</h4>
   <% if @notifications.exists? %>
     <div class="users-index">
-      <%= render @notifications %>
+      <%= render 'climbers/climbers/notification', notifications: @notifications %>
       <%= paginate @notifications %>
     </div>
   <% else %>
@@ -62,7 +66,7 @@
               <%= form_with method: :post, model: @new_battle,local: true, url:battles_path do |f| %>
                 <%= hidden_field_tag :battler_id, @climber.id %>
                   <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
-                    <i class="fas fa-user-plus"> バトルを申し込む</i>
+                    <i class="fas fa-burn"> バトルを申し込む</i>
                   <% end %>
               <% end %>
 

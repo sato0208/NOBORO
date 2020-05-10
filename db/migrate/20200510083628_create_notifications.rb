@@ -8,7 +8,6 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
       t.integer :battle_id
 
       t.timestamps
-      t.index [:visiter_id, :visited_id], unique: true
     end
   end
 end

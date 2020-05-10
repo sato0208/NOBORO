@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_083628) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["battler_id"], name: "index_battles_on_battler_id"
-    t.index ["climber_id", "battler_id"], name: "index_battles_on_climber_id_and_battler_id", unique: true
+    t.index ["climber_id", "battler_id"], name: "index_battles_on_climber_id_and_battler_id"
     t.index ["climber_id"], name: "index_battles_on_climber_id"
   end
 
@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(version: 2020_05_10_083628) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
-    t.index ["visiter_id", "visited_id"], name: "index_notifications_on_visiter_id_and_visited_id", unique: true
     t.index ["visiter_id"], name: "index_notifications_on_visiter_id"
   end
 
