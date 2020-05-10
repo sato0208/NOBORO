@@ -1,78 +1,158 @@
-<h2>マイページ</h2>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>プロフィール</th>
-      <th>名前</th>
-      <th>お気に入りジム</th>
-      <th>自己紹介</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <td>
-        <%= attachment_image_tag @climber, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.png", size:'40x40' %>
-    </td>
-      <td><%= @climber.name %></td>
-        <% if @climber.favorite_by?(current_climber) %>
-          <td>
-            <% @favorites.each do |f|%>
-              <%= link_to gym_path(f.gym) do %>
-                  <%= f.gym.gym_name %>
-                <% end %>
-            <% end %>
-          </td>
-        <% else %>
-            <td>お気に入りジム未登録</td>
-        <% end %>
-      <td><%= @climber.introduction %></td>
-    </tr>
-  </tbody>
-</table>
-<table>
-
-
-
-<!-- カレントユーザーにはフォローボタンを表示させない -->
-<% unless current_climber.id == @climber.id %>
-  <% if current_climber.following?(@climber) %>
-    <%= form_for(current_climber.relationships.find_by(follow_id: @climber.id), html: { method: :delete }) do |f| %>
-      <%= hidden_field_tag :follow_id, @climber.id %>
-      <tr>
-          <td>
-          <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
-            <i class="fas fa-user-minus"> フォローを外す</i>
+<!-- ここからプロフィール -->
+	<div class="profile">
+		<div id="profile"></div>
+		<div class="container">
+			<h2 class="heading">マイページ</h2>
+			<div class="ander"></div>
+			<p class="heading-p">
+			<div class="prof-group">
+          <div class="left-content">
+            <div class="my-icon">
+              <%= attachment_image_tag @climber, :profile_image, format: 'jpeg', class: "pull-left my-icon", fallback: "no_image.png" %>
+            </div>
+          </div>
+        <div class="prof-vi">
+          <h3 class="feature-title">
+            フォロワー <%= link_to @climber.followers.count,follower_climber_path(@climber) %>
+            フォロー中 <%= link_to @climber.followings.count,following_climber_path(@climber) %>
+            <%= link_to "　　　獲得したトロフィー　　　", trophy_path(@climber) %>
+          </h3><br>
+          <h3 class="feature-title">
+          </h3>
+          <h3 class="feature-title">
+            <%= @climber.name %>
+          </h3>
+          <p class="heading-p">
+            <%= @climber.introduction %>
+          </p>
+          <h3 class="feature-title">お気に入りジム</h3>
+          <p class="heading-p">
+          <% if @climber.favorite_by?(current_climber) %>
+              
+              <% @favorites.each do |f|%> /
+                <%= link_to gym_path(f.gym) do %>
+                    <%= f.gym.gym_name %> 
+                  <% end %> 
+              <% end %>
+          <% else %>
+              お気に入りジム未登録
           <% end %>
-          </td>
-      </tr>
-      <% end %>
-      <% else %>
-      <%= form_for(current_climber.relationships.build) do |f| %>
-      <%= hidden_field_tag :follow_id, @climber.id %>
-      <tr>
-          <td>
-            <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
-              <i class="fas fa-user-plus"> フォローする</i>
+          </p>
+
+          <h3 class="feature-title">
+          <% if current_climber.id == @climber.id %>
+            <%= link_to "ー　プロフィール編集　ー", edit_climber_path %><br>
+            <%= link_to "ー　お知らせ　ー", favorites_path %><br>
+          <% end %>
+          </h3>
+
+          <p class="heading-p"><!-- カレントユーザーにはフォローボタンを表示させない -->
+            <% unless current_climber.id == @climber.id %>
+              <% if current_climber.following?(@climber) %>
+                <%= form_for(current_climber.relationships.find_by(follow_id: @climber.id), html: { method: :delete }) do |f| %>
+                  <%= hidden_field_tag :follow_id, @climber.id %>
+                      <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
+                        <i class="fas fa-user-minus"> フォローを外す</i>
+                      <% end %>
+                  <% end %>
+              <% else %>
+                <%= form_for(current_climber.relationships.build) do |f| %>
+                  <%= hidden_field_tag :follow_id, @climber.id %>
+                      <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
+                        <i class="fas fa-user-plus"> フォローする</i>
+                      <% end %>
+                  <% end %>
+              <% end %>
             <% end %>
-          </td>
-      </tr>
-    <% end %>
-  <% end %>
-<% end %>
-<p>フォロー数</p>
-  <p>
-      <%= link_to @climber.followings.count,following_climber_path(@climber) %>
-  </p>
-<p>フォロワー数</p>
-  <p>
-      <%= link_to @climber.followers.count,follower_climber_path(@climber) %>
-  </p>
-<% if current_climber.id == @climber.id %>
-  <%= link_to "ー　プロフィール編集　ー", edit_climber_path %><br>
-  <%= link_to "ー　お気に入りジムの お知らせ一覧　ー", favorites_path %><br>
-<% end %>
-<%= link_to "ー　獲得したトロフィー一覧　ー", trophy_path(@climber) %>
+          </p>
+        </div>
+			</div>
+		</div>
+	</div>
+	<!-- ここまでプロフィール -->
+
+
+
+
+
+
+	<!-- ここからプロフィール -->
+	<div class="trophys">
+		<div id="profile"></div>
+		<div class="container">
+			<h2 class="heading">マイページ</h2>
+			<div class="ander"></div>
+			<p class="heading-p">
+			<div class="prof-group">
+          <div class="left-content">
+            <div class="my-icon">
+              <%= attachment_image_tag @climber, :profile_image, format: 'jpeg', class: "pull-left my-icon", fallback: "no_image.png" %>
+            </div>
+          </div>
+        <div class="prof-vi">
+          <h3 class="feature-title">
+            フォロワー <%= link_to @climber.followers.count,follower_climber_path(@climber) %>
+            フォロー中 <%= link_to @climber.followings.count,following_climber_path(@climber) %>
+          </h3>
+          <h3 class="feature-title">
+            <%= link_to "ー　獲得したトロフィー　ー", trophy_path(@climber) %>
+          </h3>
+          <h3 class="feature-title">
+            <%= @climber.name %>
+          </h3>
+          <p class="heading-p">
+            <%= @climber.introduction %>
+          </p>
+          <h3 class="feature-title">お気に入りジム</h3>
+          <p class="heading-p">
+          <% if @climber.favorite_by?(current_climber) %>
+              
+              <% @favorites.each do |f|%>
+                <%= link_to gym_path(f.gym) do %>
+                    <%= f.gym.gym_name %><br>
+                  <% end %>
+              <% end %>
+          <% else %>
+              お気に入りジム未登録
+          <% end %>
+          </p>
+
+          <h3 class="feature-title">
+          <% if current_climber.id == @climber.id %>
+            <%= link_to "ー　プロフィール編集　ー", edit_climber_path %><br>
+            <%= link_to "ー　お知らせ　ー", favorites_path %><br>
+          <% end %>
+          </h3>
+
+          <p class="heading-p"><!-- カレントユーザーにはフォローボタンを表示させない -->
+            <% unless current_climber.id == @climber.id %>
+              <% if current_climber.following?(@climber) %>
+                <%= form_for(current_climber.relationships.find_by(follow_id: @climber.id), html: { method: :delete }) do |f| %>
+                  <%= hidden_field_tag :follow_id, @climber.id %>
+                      <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
+                        <i class="fas fa-user-minus"> フォローを外す</i>
+                      <% end %>
+                  <% end %>
+              <% else %>
+                <%= form_for(current_climber.relationships.build) do |f| %>
+                  <%= hidden_field_tag :follow_id, @climber.id %>
+                      <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
+                        <i class="fas fa-user-plus"> フォローする</i>
+                      <% end %>
+                  <% end %>
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+			</div>
+		</div>
+	</div>
+	<!-- ここまでプロフィール -->
 <h3>----　今月の獲得トロフィー　---</h3>
 <% @trophys.each do |f|%>
 <%= attachment_image_tag f, :my_trophy_image, size: '100x100',format: "jpeg",fallback: "ira13.png" %>
 <% end %>
+
+
+
+

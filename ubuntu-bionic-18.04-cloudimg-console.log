@@ -596,4 +596,5 @@ Welcome to [1mUbuntu 18.04.4 LTS[0m!
 
 Ubuntu 18.04.4 LTS ubuntu-bionic ttyS0
 
-ubuntu-bionic login: 
+ubuntu-bionic login: [217849.818778] Out of memory: Kill process 8757 (ruby2.5) score 557 or sacrifice child
+[217849.821174] Killed process 8757 (ruby2.5) total-vm:1591240kB, anon-rss:560840kB, file-rss:0kB, shmem-rss:0kB

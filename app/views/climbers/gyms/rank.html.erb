@@ -3,17 +3,28 @@
   <h2><%= Date.today.month %>月 ランキング</h2>
     <!-- 以下タブの表示設定 -->
     <ul id="myTabs" class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="#home"  aria-controls="home" role="tab" data-toggle="tab"><%= @gym.gym_name%></a>
+      <li role="presentation" class="active">
+        <a href="#home"  aria-controls="home" role="tab" data-toggle="tab"><%= @gym.gym_name%></a>
       </li>
-      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">全部のジム</a></li>
-      <li role="presentation"><a href="#message" aria-controls="message" role="tab" data-toggle="tab">フォロワー</a></li>
+      <li role="presentation">
+        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+          全部のジム
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#message" aria-controls="message" role="tab" data-toggle="tab">
+          フォロワー
+        </a>
+      </li>
     </ul>
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="home">
-        <h2><%= @gym.gym_name%> 登れた本数ランキング</h2>
-        <%= render 'done_tasks/rank', rank_done_tasks: @gym_done_tasks, my_rank: @gym_my_rank %>
+        <h2>
+          <%= @gym.gym_name%> 登れた本数ランキング
+        </h2>
+          <%= render 'done_tasks/rank', rank_done_tasks: @gym_done_tasks, my_rank: @gym_my_rank %>
         <br>
-        <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
+          <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
       </div>
       <div role="tabpanel" class="tab-pane" id="profile">
         <h2>全ジム 登れた本数ランキング</h2>

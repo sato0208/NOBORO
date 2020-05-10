@@ -24,12 +24,12 @@
             <%= attachment_image_tag rank_done_task.climber,:profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.png", size:'40x40' %>
             </td>
             <td>
-              <%= link_to climber_path(rank_done_task.climber_id) do %>
-                  <%= rank_done_task.climber.name %>
+                <%= link_to climber_path(rank_done_task.climber_id) do %>
+                    <%= rank_done_task.climber.name %>
                 <% end %>
             </td>
             <td>
-                <%#= rank_done_task.climber.done_tasks.count %> <!--本 -->
+                <%= rank_done_task.climber.done_tasks.count %>本
                 <%= rank_done_task.count_per_gym %>本
             </td>
         </tr>

@@ -1,9 +1,10 @@
-お気に入りジムお知らせ一覧ページ
-<table>
+<h2>お知らせ</h2>
+<table class="table">
   <thead>
     <tr>
-      <th>ジムの名前</th>
+      <th>ジム</th>
       <th>お知らせ</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
       <% f.gym.infos.each do |info| %>
         <td><%= info.info %></td>
       <% end %>
+        <td><%= f.updated_at.strftime("%Y/%m/%d") %></td>
       </tr>
     <% end %>
   <% else %>

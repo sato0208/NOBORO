@@ -1,16 +1,17 @@
-<h2>ー　獲得したトロフィー　ー</h2>
-<table class="table">
-		<tbody>
+	<!-- ここからフューチャー -->
+	<div class="feature">
+	 <section id="feature">
+		<div class="container">
+				<h2 class="heading">ー　獲得したトロフィー　ー</h2>
+				<div class="ander"></div>
+			<div class="strength-group clearfix">
 			<% @trophys.each do |f| %>
-			<tr>
-				<td><%= f.my_trophy_name%>
-        </td>
-				<td><%= attachment_image_tag f, :my_trophy_image, size: '100x100',format: "jpeg",fallback: "ira13.png" %>
-        </td>
-				<td><%= f.updated_at.strftime("%Y-%m-%d") %>
-				</td>
-			</tr>
-					<% end %>
-		</tbody>
-	</table>
+				<div class="strength">
+					<h3 class="feature-title"><%= f.my_trophy_name%></h3>
+					<%= attachment_image_tag f, :my_trophy_image, size: '100x100',format: "jpeg",fallback: "ira13.png" %>
+					<h3 class="feature-title"><%= f.updated_at.strftime("%Y/%m/%d") %></h3>
+				</div>
+				<% end %>
+		</div>
+	</section>
 </div>

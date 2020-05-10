@@ -1,11 +1,6 @@
-<div class="container">
 <div class="sample">
-  <h2>NOBOROは</h2><br>
-    クライミングを楽しむ全ての人のためのアプリです。<br>
-    お気に入りジムを登録して、お知らせを受け取ろう。<br>
-    一人でも楽しめるけど、ライバルがいた方がずっと楽しい！<br>
-    ランキングは毎月更新！上位を目指そう！<br>
-    登れたら課題をアンロック！グレードごとにトロフィーがもらえるぞ！いっぱい集めよう！<br>
+  <h2>ジム検索</h2><br>
+    
 </div>
 
     ーーーーー　絞り込み検索　ーーーーー<br>
@@ -15,15 +10,14 @@
     <%= climber_signed_in? %>
 
     <div class="row">
-        <h2>ジム検索</h2>
+            <%= form_with url:gyms_search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :gym_name %>
+                <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-info' do %>
+                    <i class="fa fa-search"> ジムを探す</i>
+                <% end %>
+            <% end %>
     </div>
-    <!--あいまい検索-->
-    <%= form_with url:gyms_search_path, method: :get, local: true do |f| %>
-        <%= f.text_field :gym_name %>
-        <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-info' do %>
-            <i class="fa fa-search"> ジムを探す</i>
-        <% end %>
-    <% end %>
+    
     <!-- ジャンル検索 -->
 
     <%= render 'genres', genres: @genres %>
@@ -61,4 +55,5 @@
         </table>
     </div>
 </div>
-</div>
+
+

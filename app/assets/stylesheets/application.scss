@@ -59,8 +59,19 @@ div {
 .container {
         margin-right: auto;
         margin-left: auto;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    a {
+        color: rgb(70, 70, 70);
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #337ab7;
+        text-decoration: none;
     }
 
 header a{
@@ -175,3 +186,80 @@ p .copyright{
 //     margin: 10px auto;
 //     cursor: pointer;
 //   }
+
+// トロフィー一覧ページ
+
+
+.strength {
+    float: left;
+    width: 320px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 60px;
+}
+
+h3.feature-title{
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
+#feature {
+    background-size: cover;
+    background-position: center;
+}
+
+
+// ユーザーのshow
+.profile {
+	width: 100%;
+	background-color: #ECEFF1;
+	padding-bottom: 90px;
+}
+
+.left-content {
+    width: 30%;
+    float: left;
+}
+
+.prof-vi{
+	text-align: left;
+}
+.my-icon {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    border-radius: 50%;
+    float: left;
+    margin: 0 auto; 
+
+}
+
+.heading{
+	font-size: 32px;
+    padding-top: 50px;
+	text-align: center;
+}
+
+.heading-p{
+	margin: 10px auto 30px auto;
+	font-size: 16px;
+	color:  rgb(70, 70, 70);
+	// text-align: center;
+}
+
+.ander {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    margin: 8px auto 40px auto;
+    background-color:  rgb(70, 70, 70);
+}
+
+.trophys {
+	width: 100%;
+    border: solid 3px #364e96;/*線色*/
+    padding: 0.5em;/*文字周りの余白*/
+    border-radius: 0.5em;/*角丸*/
+	padding-bottom: 90px;
+}

@@ -19,6 +19,6 @@ class Gym < ApplicationRecord
   def self.search(search)
     return Gym. unless search
     Gym.where(['content LIKE ?', "%#{search}%"])
-   end
+  end
 
 end

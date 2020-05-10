@@ -2,7 +2,7 @@ class DoneTask < ApplicationRecord
   belongs_to :climber
   belongs_to :task
 
-  
+  # ジムごとに登れた本数が多いクライマー順に並べる
   def count_per_gym
     # 今の時間を出す
     now = Time.current
