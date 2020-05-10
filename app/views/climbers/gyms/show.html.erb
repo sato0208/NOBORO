@@ -24,7 +24,8 @@
 
 
 <%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "bo2.jpeg", size:'400x300' %>
-<table class="table">
+<div class="table-responsive">
+  <table class="table">
     <thead>
         <tr>
             <th>店舗名</th>
@@ -60,15 +61,19 @@
         </tr>
     </thead>
 </table>
+</div>
 <td id="favorites_<%= @gym.id %>">
     <%= render 'favorite', gym: @gym %>
 </td>
 <%= link_to '今月のランキング',rank_path, class: "btn btn-primary" %>
-<div class="container">
+<section class="tasks">
     <h2>課題一覧</h2>
-    登れた課題にチェックをつけてください
-    <table class="table">
-        <thead>
+    <h3>課題名をクリックすると登れた人一覧が見れます
+    </h3>
+<div class="table-responsive">
+  <table class="table">
+  <thead>
+
             <tr>
                 <th>グレード</th>
                 <th>課題名</th>
@@ -98,7 +103,8 @@
             <% end %>
         </tbody>
     </table>
-</div>
+    </div>
+     </section>
 
 
 

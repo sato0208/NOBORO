@@ -8,12 +8,12 @@
     ーーーーー　絞り込み検索　ーーーーー<br>
     <%= gym_signed_in? %>
     <div class="row">
-        <h2>ジム一覧画面</h2>
+        <h2>店舗名で検索</h2>
     </div>
 
     <!-- 検索フォームここから -->
     <div class="search-form">
-        <h2>Search</h2>
+        <h4>　</h4>
         <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
             <%= f.text_field :gym_name %>
             <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-info' do %>

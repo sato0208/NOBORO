@@ -1,59 +1,61 @@
-<div class="sample">
-  <h2>ジム検索</h2><br>
-    
-</div>
-
+<div class="container">
+    NOBOROは<br>
+    クライミングを楽しむ全ての人のためのアプリです。<br>
+    お気に入りジムを登録して、お知らせを受け取ろう。<br>
+    一人でも楽しめるけど、ライバルがいた方がずっと楽しい！<br>
+    ランキングは毎月更新！上位を目指そう！<br>
+    登れたら課題をアンロック！グレードごとにトロフィーがもらえるぞ！いっぱい集めよう！<br>
     ーーーーー　絞り込み検索　ーーーーー<br>
-    ジムサインインしているか？
-    <%= gym_signed_in? %><br>
-    クライマーサインインしているか？
-    <%= climber_signed_in? %>
-
+    <%= gym_signed_in? %>
     <div class="row">
-            <%= form_with url:gyms_search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :gym_name %>
-                <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-info' do %>
-                    <i class="fa fa-search"> ジムを探す</i>
-                <% end %>
-            <% end %>
+        <h2>店舗名で検索</h2>
     </div>
-    
-    <!-- ジャンル検索 -->
 
-    <%= render 'genres', genres: @genres %>
-    <div class="table">
-        <table class="table table-hover table-inverse">
-            <thead>
-                <tr>
-                    <th>ジムの名前</th>
-                    <th>ジムの紹介文</th>
-                    <th>ジムのHP</th>
-                    <th>ジムのジャンル</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @gyms.each do |gym| %>
-                <tr>
-                    <td>
-                        <%= link_to gym.gym_name, gym_path(gym.id) %>
-                    </td>
-                    <td>
-                        <%= gym.description %>
-                    </td>
-                    <td>
-                        <%= gym.gym_url %>
-                    </td>
-                    <td>
-                        <%= gym.genre.genre_name %>
-                    </td>
-                    <td>
-                        <%= attachment_image_tag gym, :gym_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "bo2.jpeg", size:'40x40' %>
-                    </td>
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
+    <!-- 検索フォームここから -->
+    <div class="search-form">
+        <h4>店舗名でも検索ができます</h4>
+        <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
+            <%= f.text_field :gym_name %>
+            <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-info' do %>
+                <i class="fa fa-search"> ジムを探す</i>
+            <% end %>
+        <% end %>
     </div>
+    <!-- ジャンル検索用 -->
+<%= render 'genres', genres: @genres %>
+
+<div class="table">
+    <table class="table table-hover table-inverse">
+        <thead>
+            <tr>
+                <th>ジムの名前</th>
+                <th>ジムの紹介文</th>
+                <th>ジムのHP</th>
+                <th>ジムのジャンル</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @gyms.each do |gym| %>
+            <tr>
+                <td>
+                    <%= link_to gym.gym_name, gym_path(gym.id) %>
+                </td>
+                <td>
+                    <%= gym.description %>
+                </td>
+                <td>
+                    <%= gym.gym_url %>
+                </td>
+                <td>
+                    <%= gym.genre.genre_name %>
+                </td>
+                <td>
+                    <%= attachment_image_tag gym, :gym_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "bo2.jpeg", size:'40x40' %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
 
 

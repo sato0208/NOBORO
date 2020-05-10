@@ -20,6 +20,7 @@
 @import 'font-awesome'; 
 
 
+
 // @font-face {
 //     font-family: "komorebi";
 //     src: font-url("/komorebi-gothic-P.ttf") format("truetype");
@@ -63,16 +64,16 @@ div {
         padding-right: 50px;
     }
 
-    a {
-        color: rgb(70, 70, 70);
-        text-decoration: none;
-        font-weight: bold;
-    }
+a {
+    color: rgb(70, 70, 70);
+    text-decoration: none;
+    font-weight: bold;
+}
 
-    a:hover {
-        color: #337ab7;
-        text-decoration: none;
-    }
+a:hover {
+    color: #337ab7;
+    text-decoration: none;
+}
 
 header a{
     color: #fff;
@@ -98,7 +99,7 @@ header li {
     padding: 15px 15px;
     color: #fff;
     }
-    .navbar-inverse {
+.navbar-inverse {
         background-color: rgb(70, 70, 70);
         border-color: #090909;
     }
@@ -258,8 +259,29 @@ h3.feature-title{
 
 .trophys {
 	width: 100%;
-    border: solid 3px #364e96;/*線色*/
+    border: solid 3px;
     padding: 0.5em;/*文字周りの余白*/
     border-radius: 0.5em;/*角丸*/
 	padding-bottom: 90px;
 }
+.tasks {
+    margin: 0 0 90px;
+}
+.tasks h3 {
+    clear: left;
+    font-size: 100%;
+    font-weight: normal;
+    margin: 0;
+    background-color: #e6e4dd;
+    padding: 5px 10px;
+}
+
+// gymのジャンル検索の画像
+// ホバーした時に薄くしたい
+
+.strength a:hover {
+    opacity: .5;
+}
+h1 {
+    border-bottom: dashed 2px
+  }
