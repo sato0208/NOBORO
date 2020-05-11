@@ -1,4 +1,14 @@
-
+<%# <% if battles.present? && battles.battler.present? %> %>
+    <h2>
+        現在 <%= battles.count %> 人とバトルしています
+    </h2>
+    <p>バトルを終了すると勝敗がつきます</p>
+<%# <% else %> %>
+    <%# <h2>
+        まだ 誰ともバトルしていません
+    </h2>
+    <p>友達にバトル申請してみよう</p>
+<% end %> %>
 <table class="table">
     <thead>
         <tr>
@@ -6,27 +16,38 @@
             <th></th>
             <th>勝負中</th>
             <th>相手の登れた数</th>
+            <th>勝敗</th>
+            <th>勝負を終了する</th>
         </tr>
     </thead>
     <tbody>
         <% rank = 1 %>
         <% battles.each do |battle| %>
-        <tr>
-            <td>
-                <%= battle.updated_at.strftime("%Y-%m-%d %H:%M") %>
-            </td>
-            <td>
-            <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
-            </td>
-            <td>
-                <%= link_to climber_path(battle.battler.id) do %>
-                    <%= battle.battler.name %>
-                <% end %>
-            </td>
-            <td>
-                <%= battle.battler.done_tasks.count %>本
-            </td>
-        </tr>
+            <% if battle.present? && battle.battler.present? %>
+                <tr>
+                    <td>
+                        <%= battle.updated_at.strftime("%Y/%m/%d") %>
+                    </td>
+                    <td>
+                    <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
+                    </td>
+                    <td>
+                        <%= link_to climber_path(battle.battler.id) do %>
+
+                            <%= battle.battler.name %>
+                        <% end %>
+                    </td>
+                    <td>
+                        <%= battle.battler.done_tasks.count %>本
+                    </td>
+                    <td>
+                        登れた本数 > 相手の登れた本数比較...
+                    </td>
+                    <td>
+                        勝負を終了ボタン...
+                    </td>
+                </tr>
+            <% end %>
         <% end %>
     </tbody>
 </table>

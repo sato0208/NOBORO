@@ -18,11 +18,20 @@ class BattlesController < ApplicationController
   end
 
   def destroy
+    battle = Battle.find(params[:id])
+    battle.destroy
+    redirect_to request.referer, notice: 'バトル申請を取り消しました！'
   end
 
   def index
-    @now_battles = current_climber.battles.where(is_valid_status: true)
-    @request_battles = current_climber.active_notifications.where(confirm_status: "未確認")
+    # binding.pry
+    # バトル中一覧（承認済） 自分が送って承認されてものだけでてる 送られて承認したものが出ない
+    @now_battles = current_climber.battles
+    .where(is_valid_status: true)
+    .or(current_climber.battler.where(is_valid_status: true))
+    # binding.pry
+    # バトル申請中一覧（未確認）
+    @request_battles = current_climber.battles.where(is_valid_status: false)
   end
 
 
