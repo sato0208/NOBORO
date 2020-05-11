@@ -1,13 +1,32 @@
 <h1>通知一覧</h1>
 <p>Find me in app/views/notifications/index.html.erb</p>
 
-
-<% @notifications.each do |notification|%>
-  <%= notification.visiter.name %>さんからバトルを申し込まれました
- <%= form_with method: :put,model: notification, url:notification_path(notification.id),local: true do |f| %>
- <%= f.hidden_field :confirm_status, value:"承認" %>
- <%# <%= no.hidden_field :confirm_status, value:"拒否" %>
-      <%= f.submit "承認 する" %>
-      <%# <%= no.submit "拒否 する" %>
+<div class="row">
+  <% @notifications.each do |notification|%>
+    <div class="col-sm-1">
+      <%= attachment_image_tag notification.visiter, :profile_image, :fill, 40, 40,format: 'jpeg', class: "profile-icon", fallback: "no_image.png" %>
+    </div>
+    <div class="col-sm-5">col-sm-5
+      <%= link_to climber_path(notification.visiter.id) do %>
+        <%= notification.visiter.name %>
+      <% end %> さんからバトルを挑まれています　
+      <%= "  (#{time_ago_in_words(notification.created_at)}前)" %>
+    </div>
+    <div class="col-sm-3">col-sm-3
+      <%= form_with method: :put,model: notification, url:notification_path(notification.id),local: true do |f| %>
+        <%= f.hidden_field :confirm_status, value:"承認" %>
+        <%# <%= no.hidden_field :confirm_status, value:"拒否" %>
+        <%= f.submit "承認 する" %>
+        <%# <%= no.submit "拒否 する" %>
+      <% end %>
+    </div>
+    <div class="col-sm-3">col-sm-3
+      <%= form_with method: :put,model: notification, url:notification_path(notification.id),local: true do |no| %>
+        <%# <%= f.hidden_field :confirm_status, value:"承認" %> %>
+        <%= no.hidden_field :confirm_status, value:"拒否" %>
+        <%# <%= no.hidden_field :confirm_status, value:"拒否" %> %>
+      <%= no.submit "拒否 する" %>
     <% end %>
-<% end %>
+    </div>
+  <% end %>
+</div>

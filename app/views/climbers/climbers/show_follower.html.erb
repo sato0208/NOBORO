@@ -1,18 +1,31 @@
 <h1>フォローしてくれてる人一覧</h1>
-<table class="table">
-    <tr>
-        <th></th>
-        <th>名前</th>
-        <th></th>
-    </tr>
+
+<div class="row">
     <% @climbers.each do |climber| %>
-    <tr>
-        <td>
-            <%= climber.name %>
-        </td>
-        <td>
-            <%= link_to '詳細', climber_path(climber) %>
-        </td>
-    </tr>
+        <div class="col-sm-1">
+            <%= attachment_image_tag climber, :profile_image, :fill, 40, 40,format: 'jpeg', class: "profile-icon", fallback: "no_image.png" %>
+        </div>
+        <div class="col-sm-5">col-sm-5
+            <%= link_to climber_path(climber.id) do %>
+                <%= climber.name %>
+            <% end %>
+        </div>
+        <div class="col-sm-6">col-sm-3
+            <% if current_climber.following?(climber) %>
+                <%= form_for(current_climber.relationships.find_by(follow_id: climber.id), html: { method: :delete }) do |f| %>
+                    <%= hidden_field_tag :follow_id, climber.id %>
+                    <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
+                        <i class="fas fa-user-minus"> フォローを外す</i>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <%= form_for(current_climber.relationships.build) do |f| %>
+                    <%= hidden_field_tag :follow_id, climber.id %>
+                    <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
+                        <i class="fas fa-user-plus"> フォローする</i>
+                    <% end %>
+                <% end %>
+            <% end %>
+        </div>
     <% end %>
-</table>
+</div>

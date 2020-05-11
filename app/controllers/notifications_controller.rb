@@ -6,31 +6,27 @@ class NotificationsController < ApplicationController
     @update_notification = Notification.find(params[:id])
     @update_notification.update(notification_params)
       # binding.pry
-    # if params[:confirm_status] == "承認"
+      # ここのif文がうまく通らない
+    if params[:confirm_status] == "承認"
     # if params[:notification] => (:confirm_status "承認")
     # if params[:"承認"].present?
-      @update_notification.confirm_status.each_with_index do |o_i, index|
-      # binding.pry
-        unless o_i == "承認"
-          break
-        end
-        if index == @update_notification.battles.size - 1
-          @update_notification.update(confirm_status: "承認")
-          @update_notification.battles.update(is_valid_status: true)
-        end
-      end
-      flash[:notice] = "バトルを承認しました！"
+      @update_notification.update(confirm_status: "承認")
+      @update_notification.battle.update(is_valid_status: true)
+      #   end
+      # end
+      flash[:notice] = "バトルを承認しました"
     end
+    # end
     if params[:confirm_status] == "拒否"
-      @notification.confirm_status.each_with_index do |o_i, index|
-      unless o_i.confirm_status == "拒否"
-      end
-      if index == @notification.battles.size - 1
-          @notification.battles.destroy
-      end
-      end
+      # binding.pry
+      @update_notification.update(confirm_status: "拒否")
+      @update_notification.battle.destroy
+      flash[:notice] = "バトルを拒否しました"
+
     end
   end
+
+
 # # カートへ戻る
 #       if params[:back].present?
 #             render 'cart_items/index'
