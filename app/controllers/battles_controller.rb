@@ -21,8 +21,8 @@ class BattlesController < ApplicationController
   end
 
   def index
-    @now_battles = Battle.where(climber_id: current_climber.id)
-    # @win_lose = current_climber
+    @now_battles = current_climber.battles.where(is_valid_status: true)
+    @request_battles = current_climber.active_notifications.where(confirm_status: "未確認")
   end
 
 

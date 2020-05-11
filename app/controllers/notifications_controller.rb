@@ -3,28 +3,21 @@ class NotificationsController < ApplicationController
   end
 
   def update
+    # binding.pry
     @update_notification = Notification.find(params[:id])
     @update_notification.update(notification_params)
       # binding.pry
-      # ここのif文がうまく通らない
-    if params[:confirm_status] == "承認"
-    # if params[:notification] => (:confirm_status "承認")
-    # if params[:"承認"].present?
+    if params[:notification][:confirm_status] == "承認"
       @update_notification.update(confirm_status: "承認")
       @update_notification.battle.update(is_valid_status: true)
-      #   end
-      # end
+      @update_notification.destroy
       flash[:notice] = "バトルを承認しました"
     end
-    # end
-    if params[:confirm_status] == "拒否"
-      # binding.pry
+    if params[:notification][:confirm_status] == "拒否"
       @update_notification.update(confirm_status: "拒否")
       @update_notification.battle.destroy
       flash[:notice] = "バトルを拒否しました"
     end
-    # 承認か拒否を押したら通知を削除する
-    # @update_notification.destroy
   end
 
   def create

@@ -4,17 +4,19 @@
   <% if unchecked_notifications.any? %>
     <i class="fa fa-circle notification-circle">通知があります</i>
   <% end %>
-<div>
-  <h4 class="sub-title">通知</h4>
-  <% if @notifications.exists? %>
-    <div class="users-index">
-      <%= render 'climbers/climbers/notification', notifications: @notifications %>
-      <%# <%= paginate @notifications %>
-    </div>
-  <% else %>
-    <p>通知はありません</p>
-  <% end %>
-</div>
+  <div>
+    <h4 class="sub-title">通知</h4>
+    <% if @notifications.exists? %>
+      <div class="users-index">
+        <%= render 'climbers/climbers/notification', notifications: @notifications %>
+        <%# <%= paginate @notifications %>
+      </div>
+    <% else %>
+      <p>通知はありません</p>
+    <% end %>
+  </div>
+</li>
+</ul>
 <!-- ここからプロフィール -->
 	<div class="profile">
 		<div id="profile"></div>
@@ -31,7 +33,7 @@
           <h3 class="feature-title">
             フォロワー <%= link_to @climber.followers.count,follower_climber_path(@climber) %>
             フォロー中 <%= link_to @climber.followings.count,following_climber_path(@climber) %>
-            <%= link_to "　　　獲得したトロフィー　　　", trophy_path(@climber) %>
+            <%= link_to "獲得したトロフィー", trophy_path(@climber) %>
           </h3><br>
           <h3 class="feature-title">
           </h3>
