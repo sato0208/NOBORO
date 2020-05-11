@@ -1,2 +1,96 @@
-<h1>Battles#index</h1>
-<p>Find me in app/views/battles/index.html.erb</p>
+<h1>バトルページ</h1>
+<p>バトルに勝利するとプレンゼントトロフィーがもらえるぞ</p>
+
+ <div class="container">
+  <h2></h2>
+    <!-- 以下タブの表示設定 -->
+    <ul id="myTabs" class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <a href="#home"  aria-controls="home" role="tab" data-toggle="tab">
+          バトル中
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+          バトル申請中
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#message" aria-controls="message" role="tab" data-toggle="tab">
+          バトル履歴
+        </a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <h2>
+          現在 <%= current_climber.done_tasks.count %> 本登れています
+        </h2>
+          <%= render 'now_battle', battles: @now_battles %>
+        <br>
+          <%= link_to "＜＜ マイページに戻る", climber_path(current_climber.id) %>
+      </div>
+
+      <%# バトル申請中一覧表示 %>
+      <div role="tabpanel" class="tab-pane" id="profile">
+        <h2>バトル申請中</h2>
+        <p>許可されるまでお待ちください</p>
+        <%= @all_my_rank %>位
+        <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
+        <%= current_climber.name %>
+        <%= current_climber.done_tasks.count%>本
+      </div>
+    </div>
+  </div>
+<%
+=begin %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>順位</th>
+                    <th>写真</th>
+                    <th>名前</th>
+                    <th>登れた本数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% rank = 1 %>
+                <% @all_done_tasks.each do |rank_done_task| %>
+                <tr>
+                    <td>
+                        <%= rank %>位
+                        <% rank += 1 %>
+                    </td>
+                    <td>
+                    <%= attachment_image_tag rank_done_task.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
+                    </td>
+                    <td>
+                        <%= link_to climber_path(rank_done_task.climber_id) do %>
+                            <%= rank_done_task.climber.name %>
+                        <% end %>
+                    </td>
+                    <td>
+                        <%= rank_done_task.climber.done_tasks.count %>本
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+                <br>
+                <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
+                </p>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="message">
+                <h2>フォロワーランキング</h2>
+                <p>
+                <%# <%= render 'done_tasks/rank', rank_done_tasks: @fallow_done_tasks, my_rank: @fallow_my_rank %> %>
+                <br>
+                <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
+                </p>
+            </div>
+          </div>
+        </div>
+<%
+=end %>
+</div>

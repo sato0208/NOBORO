@@ -21,6 +21,8 @@ class BattlesController < ApplicationController
   end
 
   def index
+    @now_battles = Battle.where(climber_id: current_climber.id)
+    # @win_lose = current_climber
   end
 
 

@@ -4,7 +4,7 @@
 <div class="row">
   <% @notifications.each do |notification|%>
     <div class="col-sm-1">
-      <%= attachment_image_tag notification.visiter, :profile_image, :fill, 40, 40,format: 'jpeg', class: "profile-icon", fallback: "no_image.png" %>
+      <%= attachment_image_tag notification.visiter, :profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png" %>
     </div>
     <div class="col-sm-5">col-sm-5
       <%= link_to climber_path(notification.visiter.id) do %>
