@@ -63,7 +63,7 @@
             <% end %>
           </h3>
 
-          <p class="heading-p"><!-- カレントユーザーにはフォローボタンを表示させない -->
+          <p class="heading-p"><!-- カレントユーザーには表示させない -->
             <% unless current_climber.id == @climber.id %>
               <%= form_with method: :post, model: @new_battle,local: true, url:battles_path do |f| %>
                 <%= hidden_field_tag :battler_id, @climber.id %>
