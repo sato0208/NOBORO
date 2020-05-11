@@ -5,6 +5,7 @@ class Climbers::ClimbersController < ApplicationController
     @trophys = Trophy.where(climber_id: @climber.id,created_at: (now.beginning_of_month)..(now.end_of_month)).group(:climber_id)
     @favorites = Favorite.where(climber_id: @climber.id)
     @new_battle = Battle.new
+    # passive_notifications = 送られる側 visited_id
     @notifications = current_climber.passive_notifications.page(params[:page]).per(10)
   end
 

@@ -6,18 +6,15 @@ class BattlesController < ApplicationController
   end
 
   def create
+    # バトルを申し込んだ時に通知も作成する。battleモデルにメソッド記載
     @new_battle = Battle.new(battle_params)
     @new_battle.climber_id = current_climber.id
     if @new_battle.save
       @new_battle.create_notification_by(current_climber)
     else
+      redirect_to request.referer, notice: 'すでにバトルを申し込んできます。承認されるまでお待ちください'
     end
-    # @new_battle = Battle.find_by(batter_id: params[:battler_id])
-    #@new_battle.create_notification_by(current_climber)
-    respond_to do |format|
-      format.html {redirect_to request.referrer}
-      format.js
-    end
+      redirect_to request.referer, notice: 'バトルを申し込みました！承認されるとバトルページが使用できます'
   end
 
   def destroy

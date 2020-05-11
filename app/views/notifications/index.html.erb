@@ -1,2 +1,13 @@
-<h1>Notifications#index</h1>
+<h1>通知一覧</h1>
 <p>Find me in app/views/notifications/index.html.erb</p>
+
+
+<% @notifications.each do |notification|%>
+  <%= notification.visiter.name %>さんからバトルを申し込まれました
+ <%= form_with method: :put,model: notification, url:notification_path(notification.id),local: true do |f| %>
+ <%= f.hidden_field :confirm_status, value:"承認" %>
+ <%# <%= no.hidden_field :confirm_status, value:"拒否" %>
+      <%= f.submit "承認 する" %>
+      <%# <%= no.submit "拒否 する" %>
+    <% end %>
+<% end %>

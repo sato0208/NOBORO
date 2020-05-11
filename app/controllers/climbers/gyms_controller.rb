@@ -1,5 +1,6 @@
 class Climbers::GymsController < ApplicationController
   def index
+    # binding.pry
     @gyms = Gym.all
     @genres = Genre.all
     if params[:genre_id]
@@ -18,7 +19,6 @@ class Climbers::GymsController < ApplicationController
     # ジムの中の登れた課題ランキング
     now = Time.current
     # done_taskテーブルのtask_idからgym_idを条件に検索
-    #Order.select("date(created_at) as ordered_date, sum(price) as total_price").group("date(created_at)")
     @gym_done_tasks = DoneTask.where(
       task_id: Task.where(gym_id: @gym.id).pluck(:id),
       created_at: (now.beginning_of_month)..(now.end_of_month)
@@ -67,7 +67,6 @@ class Climbers::GymsController < ApplicationController
             else
               Gym.all
             end
-      
   end
 
   private

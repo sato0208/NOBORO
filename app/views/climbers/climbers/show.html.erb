@@ -1,15 +1,15 @@
 <ul class="nav">
  <li class="notification">
  <%= link_to '通知', notifications_path, class:"btn" %>
-  <%# <% if unchecked_notifications.any? %> %>
-    <i class="fa fa-circle notification-circle"></i>
-  <%# <% end %> %>
+  <% if unchecked_notifications.any? %>
+    <i class="fa fa-circle notification-circle">通知があります</i>
+  <% end %>
 <div>
   <h4 class="sub-title">通知</h4>
   <% if @notifications.exists? %>
     <div class="users-index">
       <%= render 'climbers/climbers/notification', notifications: @notifications %>
-      <%= paginate @notifications %>
+      <%# <%= paginate @notifications %>
     </div>
   <% else %>
     <p>通知はありません</p>
@@ -55,10 +55,10 @@
           </p>
 
           <h3 class="feature-title">
-          <% if current_climber.id == @climber.id %>
-            <%= link_to "ー　プロフィール編集　ー", edit_climber_path %><br>
-            <%= link_to "ー　お知らせ　ー", favorites_path %><br>
-          <% end %>
+            <% if current_climber.id == @climber.id %>
+              <%= link_to "ー　プロフィール編集　ー", edit_climber_path %><br>
+              <%= link_to "ー　お知らせ　ー", favorites_path %><br>
+            <% end %>
           </h3>
 
           <p class="heading-p"><!-- カレントユーザーにはフォローボタンを表示させない -->

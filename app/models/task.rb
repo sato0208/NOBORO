@@ -5,6 +5,5 @@ class Task < ApplicationRecord
 
   def achieved?(climber)
     done_tasks.where(climber_id: climber.id).exists?
-    # done_tasksテーブルの中のtask_idが既に入っている状態
   end
 end

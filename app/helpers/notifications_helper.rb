@@ -1,6 +1,6 @@
 module NotificationsHelper
-  # 通知機能
+  # current_climber が通知"未確認"のもの
   def unchecked_notifications
-    @notifications = current_climber.passive_notifications.where(checked: false)
+    @notifications = current_climber.passive_notifications.where(is_checked_status: "未確認")
   end
 end
