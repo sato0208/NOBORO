@@ -1,3 +1,5 @@
+<h1>マイページ</h1>
+
 <ul class="nav">
  <li class="notification">
  <%= link_to '通知', notifications_path, class:"btn" %>
@@ -41,7 +43,9 @@
             <%= @climber.name %>
           </h3>
           <p class="heading-p">
+          <div class="balloon1-left">
             <%= @climber.introduction %>
+          </div>
           </p>
           <h3 class="feature-title">お気に入りジム</h3>
           <p class="heading-p">
@@ -95,17 +99,11 @@
 	</div>
 	<!-- ここまでプロフィール -->
 
-
-
-
-
-
 	<!-- ここからプロフィール -->
   <h1>今月の獲得トロフィー</h1>
 	<div class="trophys">
 		<div id="profile"></div>
 		<div class="container">
-    
 			<h2 class="heading">マイページ</h2>
 			<p class="heading-p">
 			<div class="prof-group">
@@ -126,8 +124,8 @@
             <%= @climber.name %>
           </h3>
           <p class="heading-p">
-            <%= @climber.introduction %>
-          </p>
+              <%= @climber.introduction %>
+              <p>よろしくお願いします</p>
           <h3 class="feature-title">お気に入りジム</h3>
           <p class="heading-p">
           <% if @climber.favorite_by?(current_climber) %>

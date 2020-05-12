@@ -1,10 +1,10 @@
 <table class="table">
     <thead>
         <tr>
+            <th>バトル申請日</th>
             <th></th>
+            <th>申請中</th>
             <th></th>
-            <th>申請相手</th>
-            <th>申請をやめる</th>
         </tr>
     </thead>
     <tbody>
@@ -14,7 +14,7 @@
           <% if battle.present? && battle.battler.present? %>
             <tr>
                 <td>
-                    <%# <%= battle.updated_at.strftime("%Y-%m-%d %H:%M") %> %>
+                    <%= battle.created_at.strftime("%Y/%m/%d") %>
                 </td>
                 <td>
                 <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>

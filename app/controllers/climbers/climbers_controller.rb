@@ -36,6 +36,8 @@ class Climbers::ClimbersController < ApplicationController
   def trophy
     @climber = Climber.find(params[:id])
     @trophys = Trophy.where(climber_id: @climber.id)
+    # kaminari使えない
+    # .page(params[:page]).per(6).total_pages
   end
 
   private

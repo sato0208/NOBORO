@@ -12,7 +12,7 @@ class Climber < ApplicationRecord
 
   # バトル機能
   has_many :battles, class_name: 'Battle', foreign_key: 'climber_id'
-  has_many :battler, class_name: 'Battle', foreign_key: 'battler_id'
+  has_many :battlers, class_name: 'Battle', foreign_key: 'battler_id'
   # 通知機能
   # 送る側
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy

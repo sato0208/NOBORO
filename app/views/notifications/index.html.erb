@@ -1,5 +1,4 @@
 <h1>通知一覧</h1>
-<p>Find me in app/views/notifications/index.html.erb</p>
 
 <div class="row">
   <% @notifications.each do |notification|%>
@@ -15,16 +14,12 @@
     <div class="col-sm-3">col-sm-3
       <%= form_with method: :put,model: notification, url:notification_path(notification.id),local: true do |f| %>
         <%= f.hidden_field :confirm_status, value:"承認" %>
-        <%# <%= no.hidden_field :confirm_status, value:"拒否" %>
         <%= f.submit "承認 する" %>
-        <%# <%= no.submit "拒否 する" %>
       <% end %>
     </div>
     <div class="col-sm-3">col-sm-3
       <%= form_with method: :put,model: notification, url:notification_path(notification.id),local: true do |no| %>
-        <%# <%= f.hidden_field :confirm_status, value:"承認" %> %>
         <%= no.hidden_field :confirm_status, value:"拒否" %>
-        <%# <%= no.hidden_field :confirm_status, value:"拒否" %> %>
       <%= no.submit "拒否 する" %>
     <% end %>
     </div>

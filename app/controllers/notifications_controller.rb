@@ -10,6 +10,7 @@ class NotificationsController < ApplicationController
     if params[:notification][:confirm_status] == "承認"
       @update_notification.update(confirm_status: "承認")
       @update_notification.battle.update(is_valid_status: true)
+      @update_notification.battle.update(finish_at: @update_notification.battle.updated_at.next_day(3))
       @update_notification.destroy
       flash[:notice] = "バトルを承認しました"
     end
