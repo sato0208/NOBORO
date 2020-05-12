@@ -12,12 +12,18 @@ class NotificationsController < ApplicationController
       @update_notification.battle.update(is_valid_status: true)
       @update_notification.battle.update(finish_at: @update_notification.battle.updated_at.next_day(3))
       @update_notification.destroy
-      flash[:notice] = "バトルを承認しました"
+      redirect_to battles_path, notice: "バトルを承認しました"
     end
     if params[:notification][:confirm_status] == "拒否"
       @update_notification.update(confirm_status: "拒否")
       @update_notification.battle.destroy
-      flash[:notice] = "バトルを拒否しました"
+      redirect_to request.referer, notice: "バトルを拒否しました"
+    end
+    if params[:notification][:confirm_status] == "延長"
+      @update_notification.update(confirm_status: "延長")
+      @update_notification.battle.update(finish_at: @update_notification.battle.updated_at.next_day(3))
+      @update_notification.destroy
+      redirect_to battles_path, notice: "バトルを3日延長しました"
     end
   end
 

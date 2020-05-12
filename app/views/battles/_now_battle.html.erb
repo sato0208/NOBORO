@@ -51,7 +51,6 @@
                         <% battle_done_task = done_task.where(created_at: battle.updated_at..battle.finish_at) %>
                             <% rival_count = battle_done_task.count %>
                             <%= rival_count %>count
-                            <%= battle.climber.done_tasks.count %>本
                         </td>
                     <%# カレントユーザが勝負を申し込んだ側の場合、申しこまれた側の情報を表示させる #%>
                     <% elsif (current_climber == battle.climber) %>
@@ -78,22 +77,13 @@
 
 
 
-                    <%# カレントユーザが勝負を申し込まれた側の場合、申しこまれた側の情報を表示させる #%>
+                    <%# カレントユーザが勝負を申し込まれた側の場合、申しこんだ側の情報を表示させる #%>
                     <% if (current_climber == battle.battler) %>
-                        <td>
-                        <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
-                        </td>
-                        <td>
-                            <%= link_to climber_path(battle.battler.id) do %>
-                                <%= battle.battler.name %>
-                            <% end %>
-                        </td>
                         <td>
                         <% done_task = DoneTask.where(climber_id: Climber.find(battle.battler.id)) %>
                         <% battle_done_task = done_task.where(created_at: battle.updated_at..battle.finish_at) %>
                             <% my_count = battle_done_task.count %>
                             <%= my_count %>count
-                            <%= battle.battler.done_tasks.count %>本
                         </td>
                     <%# カレントユーザが勝負を申し込んだ側の場合、申し込んだ側の情報を表示させる #%>
                     <% elsif (current_climber == battle.climber) %>
@@ -113,13 +103,13 @@
 
 
                     <td>
-                        
-                    <% if my_count > rival_count %>
-                    win
+                    <% if my_count == rival_count %>
+                    Draw
                     <% elsif my_count < rival_count %>
-                    lose
+                    Lose
+                    <% else my_count < rival_count %>
+                    Win
                     <% end %>
-
                     </td>
                     <td>
                     <%#バトルを削除してバトル履歴テーブルへ登録する#%>
