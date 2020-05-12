@@ -47,8 +47,15 @@
                         <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
                     </li>
                     <li>
-                        <%= link_to " 通知", notifications_path,class:"fas fa-bell" %>
-                    </li>
+
+
+                        <% if unchecked_notifications.any? %>
+                            <i class="fa fa-circle" style="color: gold;"></i>
+                        <% end %>
+                        <li>
+                            <%= link_to " 通知", notifications_path,class:"fas fa-bell" %>
+                        </li>
+                        
                     <li>
                         <%= link_to " バトル", battles_path,class:"fas fa-fire" %>
                     </li>

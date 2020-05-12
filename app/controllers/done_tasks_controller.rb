@@ -31,12 +31,12 @@ class DoneTasksController < ApplicationController
           @new_trophy.my_trophy_name = grade.trophy_name
           @new_trophy.my_trophy_image_id = grade.trophy_image_id
           # binding.pry
-          if @new_trophy.save
-            # binding.pry
-          redirect_to request.referer, notice: "トロフィー#{@new_trophy.my_trophy_name}を獲得しました！"
-          else
-          redirect_to request.referer, notice: "同じトロフィーは獲得できません"
-          end
+            if @new_trophy.save
+              # binding.pry
+              redirect_to request.referer, notice: "トロフィー#{@new_trophy.my_trophy_name}を獲得しました！"
+            else
+              redirect_to request.referer, notice: "同じトロフィーは獲得できません"
+            end
         else
           redirect_to request.referer, notice: "課題 #{@new_done_task.task.task_name}が登れました!"
         end

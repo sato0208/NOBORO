@@ -42,6 +42,10 @@
                             <% end %>
                         </td>
                         <td>
+                        <% done_task = DoneTask.where(climber_id: Climber.find(battle.climber.id)) %>
+                            <% battle_done_task = done_task.where(created_at: battle.updated_at..battle.finish_at) %>
+                            <% count = battle_done_task.count %>
+                            <%= count %>count
                             <%= battle.climber.done_tasks.count %>本
                         </td>
                     <% elsif (current_climber == battle.climber) %>
@@ -54,7 +58,10 @@
                             <% end %>
                         </td>
                         <td>
-                            <%= battle.battler.done_tasks.count %>本
+                            <% done_task = DoneTask.where(climber_id: Climber.find(battle.battler.id)) %>
+                            <% battle_done_task = done_task.where(created_at: battle.updated_at..battle.finish_at) %>
+                            <% count = battle_done_task.count %>
+                            <%= count %>count
                         </td>
                     <% end %>
                     <td>

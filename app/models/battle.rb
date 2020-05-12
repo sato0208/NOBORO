@@ -14,9 +14,8 @@ class Battle < ApplicationRecord
       end
   end
 
-  # battle 申請中画面にnotification の confirm_statusが"未確認"のものを表示させる
-  def not_confirm_notifications_by(current_climber)
-    notification = current_climber.active_notifications.where(
-    confirm_status: "未確認"
-  )
+  def battle_done_tasks(done_tasks)
+    # current_climber.self.updated_atからfinish_atまでのdone_tasksをとりだしたい
+    # done_tasks = current_climber.self.where("updated_at >= finish_at AND updated_at < finish_at", date, date + 1)
+    done_tasks = current_climber.self.where(updated_at: search_date.finish_at)
   end
