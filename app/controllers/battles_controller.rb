@@ -30,7 +30,7 @@ class BattlesController < ApplicationController
 
   def index
     # binding.pry
-    # バトル中一覧（承認済） 自分が送って承認されてものだけでてる 送られて承認したものが出ない
+    # バトル中一覧（承認済）
     @now_battles = current_climber.battles
     .where(is_valid_status: true)
     .or(current_climber.battlers.where(is_valid_status: true))

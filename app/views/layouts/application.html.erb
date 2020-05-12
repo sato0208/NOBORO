@@ -46,13 +46,11 @@
                     <li>
                         <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
                     </li>
+                    
                     <li>
-
-
                         <% if unchecked_notifications.any? %>
-                            <i class="fa fa-circle" style="color: gold;"></i>
+                            <i class="fa fa-circle" style="color: red;"></i>
                         <% end %>
-                        <li>
                             <%= link_to " 通知", notifications_path,class:"fas fa-bell" %>
                         </li>
                         

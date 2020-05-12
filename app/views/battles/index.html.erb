@@ -3,7 +3,6 @@
 <div class="row">
   <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
   <h3><%= current_climber.name %>
-  <%= current_climber.done_tasks.count%>本</h3>
 </div>
 
   <h2></h2>
@@ -35,59 +34,7 @@
 
       <%# バトル申請中一覧表示 %>
       <div role="tabpanel" class="tab-pane" id="profile">
-        <h2>バトル申請中</h2>
-        <p>許可されるまでお待ちください</p>
         <%= render 'request_battle', battles: @request_battles%>
       </div>
     </div>
-<%
-=begin %>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>順位</th>
-                    <th>写真</th>
-                    <th>名前</th>
-                    <th>登れた本数</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% rank = 1 %>
-                <% @all_done_tasks.each do |rank_done_task| %>
-                <tr>
-                    <td>
-                        <%= rank %>位
-                        <% rank += 1 %>
-                    </td>
-                    <td>
-                    <%= attachment_image_tag rank_done_task.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
-                    </td>
-                    <td>
-                        <%= link_to climber_path(rank_done_task.climber_id) do %>
-                            <%= rank_done_task.climber.name %>
-                        <% end %>
-                    </td>
-                    <td>
-                        <%= rank_done_task.climber.done_tasks.count %>本
-                    </td>
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
-                <br>
-                <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
-                </p>
-              </div>
-              <div role="tabpanel" class="tab-pane" id="message">
-                <h2>フォロワーランキング</h2>
-                <p>
-                <%# <%= render 'done_tasks/rank', rank_done_tasks: @fallow_done_tasks, my_rank: @fallow_my_rank %> %>
-                <br>
-                <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
-                </p>
-            </div>
-          </div>
-        </div>
-<%
-=end %>
 </div>
