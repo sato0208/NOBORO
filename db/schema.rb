@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_083628) do
+ActiveRecord::Schema.define(version: 2020_05_13_054323) do
+
+  create_table "battle_histories", force: :cascade do |t|
+    t.integer "winner_id"
+    t.integer "winner_count"
+    t.integer "loser_id"
+    t.integer "loser_count"
+    t.boolean "is_draw_status", default: false, null: false
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.integer "present_trophy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loser_id"], name: "index_battle_histories_on_loser_id"
+    t.index ["winner_id"], name: "index_battle_histories_on_winner_id"
+  end
 
   create_table "battles", force: :cascade do |t|
     t.integer "climber_id"
