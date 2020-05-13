@@ -19,12 +19,11 @@ class NotificationsController < ApplicationController
       @update_notification.battle.destroy
       redirect_to request.referer, notice: "バトルを拒否しました"
     end
-    if params[:notification][:confirm_status] == "延長"
-      @update_notification.update(confirm_status: "延長")
-      @update_notification.battle.update(finish_at: @update_notification.battle.updated_at.next_day(3))
-      @update_notification.destroy
-      redirect_to battles_path, notice: "バトルを3日延長しました"
-    end
+    # if params[:notification][:confirm_status] == "延長"
+    #   @update_notification.update(confirm_status: "延長")
+    #   @update_notification.battle.update(finish_at: @update_notification.battle.updated_at.next_day(3))
+    #   redirect_to request.referer, notice: "バトルを3日延長しました"
+    # end
   end
 
   def create

@@ -4,6 +4,12 @@ class BattlesController < ApplicationController
   end
 
   def update
+    @update_battle = Battle.find(params[:id])
+    if params[:battle_status] == "延長"
+      # binding.pry
+      @update_battle.update(finish_at: @update_battle.finish_at.next_day(3))
+      redirect_to request.referer, notice: "バトルを3日延長しました"
+    end
   end
 
   def create
