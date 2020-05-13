@@ -1,5 +1,6 @@
 class BattleHistorysController < ApplicationController
   def index
+    @battle_history = current_climber.battle_history.all
   end
 
   def create

@@ -1,7 +1,16 @@
-<h2>
-    現在 <%= battles.count %> 人にバトル申請をしています
-</h2>
-<p>許可されるまでお待ちください</p>
+<% if battles.present? %>
+    <h2>
+        現在 <%= battles.count %> 人にバトル申請をしています
+    </h2>
+    <p>許可されるまでお待ちください</p>
+<% else %>
+    <h3>
+        まだ 誰にも申請していません
+    </h3>
+    <p>友達にバトル申請してみよう</p>
+<% end %>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -29,7 +38,7 @@
                     <% end %>
                 </td>
                 <td>
-                    <%= link_to  "申請をやめる", battle_path(battle.id), method: :delete%>
+                    <%= link_to  "申請をやめる", battle_path(battle.id), method: :delete %>
                 </td>
             </tr>
           <% else %>

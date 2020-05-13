@@ -190,12 +190,14 @@ p .copyright{
 //   }
 
 // トロフィー一覧ページ
-
-
 .strength {
     float: left;
     width: 320px;
-    margin-right: 10px;
+    padding-bottom: 30px;
+    border: solid 3px;
+    border-radius: 0.5em;
+    margin-right: 20px;
+    margin-bottom: 30px;
     text-align: center;
     font-size: 60px;
 }

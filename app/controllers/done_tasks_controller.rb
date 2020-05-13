@@ -18,7 +18,7 @@ class DoneTasksController < ApplicationController
         # @new_done_taskに対するtask_idのgymを取得
         gym = @new_done_task.task.gym
         # donetask.newしたtaskに紐ずくgymの一つのgradeのtask全てを取得（taskテーブルからgym_id && grade_id が一致する task.idを全て持ってくる）
-        task_ids = Task.where(gym_id: gym.id, grade_id: grade.id).pluck(:id)
+        task_ids = Task.where(gym_id: gym.id, grade_id: grade.id).select(:id)
         # 自分に紐ずくdone_taskの中から@new_done_taskのtask.idに紐ずくtaskを全て取得（32行目でとってきた同じジムの同じtaskのgradeがあるかをwhereで探す）
         done_tasks = current_climber.done_tasks.where(task_id: task_ids)
         # done_taskの中にtaskが全部あるかをチェック
