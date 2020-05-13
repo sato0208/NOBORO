@@ -10,11 +10,18 @@ class Climber < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :gym_favorites, through: :favorites, source: :gym
 
+  # バトル履歴
+  # 　勝者
+  has_many :winner, class_name: 'BattleHistorie', foreign_key: 'winner_id'
+  #   敗者
+  has_many :loser, class_name: 'BattleHistorie', foreign_key: 'loser_id'
+
   # バトル機能
   # 　挑む側
   has_many :battles, class_name: 'Battle', foreign_key: 'climber_id'
   #  挑まれる側
   has_many :battlers, class_name: 'Battle', foreign_key: 'battler_id'
+
   # 通知機能
   #  送る側
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
