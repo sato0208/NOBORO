@@ -1,0 +1,2 @@
+class BattleHistory < ApplicationRecord
+end
