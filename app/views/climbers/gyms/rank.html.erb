@@ -28,7 +28,7 @@
           <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
       </div>
       <div role="tabpanel" class="tab-pane" id="profile">
-        <h2>全ジム 登れた本数ランキング</h2>
+        <h2>全ジム 登れた本数総合ランキング</h2>
         <p>
         <%= @all_my_rank %>位
         <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
@@ -73,9 +73,21 @@
               </div>
               <div role="tabpanel" class="tab-pane" id="message">
                 <h2>フォロワーランキング</h2>
-                <p>
-                <%# <%= render 'done_tasks/rank', rank_done_tasks: @fallow_done_tasks, my_rank: @fallow_my_rank %> %>
                 <br>
+                  <p>
+                  COMING SOON!
+                  <%# <%= render 'done_tasks/rank', rank_done_tasks: @fallow_done_tasks, my_rank: @fallow_my_rank %>
+                  </p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
                 <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
                 </p>
             </div>

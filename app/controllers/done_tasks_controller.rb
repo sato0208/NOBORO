@@ -1,5 +1,14 @@
 class DoneTasksController < ApplicationController
   def index
+    now = Time.current
+    # 全ジムの登れた課題ランキング
+    @all_done_tasks = DoneTask.find(DoneTask.where(created_at:(now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(30).pluck(:id))
+    # 自分の順位
+    @all_my_rank = 1
+    @all_done_tasks.each do |rank|
+      break if rank.climber_id == current_climber.id
+      @all_my_rank += 1
+    end
   end
 
   def show
