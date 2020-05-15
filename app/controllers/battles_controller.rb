@@ -28,13 +28,18 @@ class BattlesController < ApplicationController
   def destroy
     # binding.pry
     @delete_battle = Battle.find(params[:id])
-    @delete_battle.battler
-    if @delete_battle.climber = current_climber
-      @opponent = @delete_battle.battler
-    else
-      @opponent = @delete_battle.climber
-    end
+    # @delete_battle.battler
     if params[:battle].present?
+      # カレントユーザが申し込んだ側の場合
+      if @delete_battle.climber = current_climber
+        # 相手の情報を@opponentへ代入
+        @opponent = @delete_battle.battler
+        # 自分の登れた数と相手の登れた数を比較する
+        current_climber.done_task_climber_by == @opponent.done_task_battler_by
+
+      else
+        @opponent = @delete_battle.climber
+      end
     # # バトル履歴に登録。モデルへ記述しなおす
     # # 自分の登れた本数が相手と同じ本数の場合winnerに自分を登録。is_draw_statusをtrueにする
       # if params[:battle][:result] == "Draw"
@@ -73,6 +78,7 @@ class BattlesController < ApplicationController
     @delete_battle.destroy
       redirect_to request.referer, notice: "バトルを終了しました"
     else
+      @delete_battle.destroy
       redirect_to request.referer, notice: 'バトル申請を取り消しました'
     end
   end

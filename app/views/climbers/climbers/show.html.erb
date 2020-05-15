@@ -70,7 +70,7 @@
               <% if current_climber.battle_now?(@climber) %>
                 <%= link_to  "申請をやめる", battle_path(@climber.id), method: :delete %>
                 <i class="fas fa-user-minus"></i>バトルを申込済み
-                <%= form_with method: :delete,local: true, url:battle_path(@climber.id) do |f| %>
+                <%= form_with method: :delete, model: @update_battle,local: true, url:battle_path(@climber.id) do |f| %>
                 <%= hidden_field_tag :battler_id, @climber.id %>
                   <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
                     <i class="fas fa-burn"> バトルを申しこんでいる</i>
