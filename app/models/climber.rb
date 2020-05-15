@@ -21,6 +21,11 @@ class Climber < ApplicationRecord
   has_many :battles, class_name: 'Battle', foreign_key: 'climber_id'
   #  挑まれる側
   has_many :battlers, class_name: 'Battle', foreign_key: 'battler_id'
+  # 挑まれているいる
+  has_many :battlwers, through: :battles, source: :climber
+  # 挑んでいる
+  has_many :battlwings, through: :battlers, source: :battler
+
 
   # 通知機能
   #  送る側
@@ -47,7 +52,7 @@ class Climber < ApplicationRecord
 
   # フォローがあればアンフォローする
   def unfollow(other_climber)
-    relationship = relationships.find_by(follow_id: other_climber)
+    relationship = relationships.find_by(follow_id: other_climber.id)
     # relationship が存在すれば destroy します
     relationship.destroy if relationship
   end
@@ -66,5 +71,17 @@ class Climber < ApplicationRecord
   # climberにはcurrent_climberが渡される
   def favorite_by?(climber)
     favorites.where(climber_id: climber.id).exists?
+  end
+
+  # バトルを申請しているか判定する
+  def battle_now?(other_climber)
+    battles.where(battler_id: other_climber.id).exists?
+  end
+
+  # バトル申請をしていた場合は解除する
+  def unbattle?(other_climber)
+    battle = battles.find_by(battler_id: other_climber.id)
+    # relationship が存在すれば destroy します
+    battle.destroy if battle
   end
 end

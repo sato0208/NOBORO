@@ -96,7 +96,7 @@ header li {
   header span{
     font-size: 20px;
     display: inline-block;
-    padding: 15px 15px;
+    // padding: 15px 15px;
     color: #fff;
     }
 .navbar-inverse {
@@ -315,8 +315,8 @@ h1 {
     font-size: 16px;
     background: #fff;
     border-radius: 15px;
-  }
-  
+}
+
   .balloon1-left:before {
     content: "";
     position: absolute;
@@ -325,10 +325,29 @@ h1 {
     margin-top: -15px;
     border: 15px solid transparent;
     border-right: 15px solid #fff;
+}
 
-  }
-  
-  .balloon1-left p {
+.balloon1-left p {
     margin: 0;
     padding: 0;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+   
+  h1{
+    text-align: center;
+    margin: 50px 0;
+  }
+   
+  .box{
+    height: 300px;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto 50px;
+    background-color: #eee;
   }

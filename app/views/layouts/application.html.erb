@@ -4,6 +4,7 @@
         <title>NOBORO</title>
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
@@ -15,7 +16,7 @@
                 </nav>
 
                 <% if gym_signed_in? %>
-                    <ul class="navbar-text navbar-right">
+                <ul class="navbar-text navbar-right">
                     <li>
                         <%= link_to " ジム情報編集", edit_gyms_gym_path(current_gym.id),class:"fas fa-cog"%>
                     </li>
@@ -46,14 +47,12 @@
                     <li>
                         <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
                     </li>
-                    
                     <li>
                         <% if unchecked_notifications.any? %>
                             <i class="fa fa-circle" style="color: red;"></i>
                         <% end %>
                             <%= link_to " 通知", notifications_path,class:"fas fa-bell" %>
-                        </li>
-                        
+                    </li>
                     <li>
                         <%= link_to " バトル", battles_path,class:"fas fa-fire" %>
                     </li>

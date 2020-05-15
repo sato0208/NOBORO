@@ -4,10 +4,10 @@ class Battle < ApplicationRecord
   has_many :notification, dependent: :destroy
 
   # battleテーブルのステータスがtrueのもの全てを取得
-  # scope :only_active -> {
+  # scope :only_active, -> {
   #   where(is_valid_status: true)
   # }
-    # scope :done_tasks -> {
+    # scope :done_tasks, -> {
     #   climber.done_tasks.where(created_at: self.updated..self.finished_at)
     # }
 
@@ -21,19 +21,15 @@ class Battle < ApplicationRecord
     notification.save if notification.valid?
   end
 
-# # battle レコード削除時にbattle_history レコードも作成する
-  # def create_battle_history_iam_winner(current_climber)
-  #   # カレントクライマーの登れた本数が相手より多い場合winnerに自分を登録
-  #   if my_count == rival_count
-  #   battle_history = current_climber.winner.new(
-  #   winner_id: self.id,
-  #   winner_count: my_count,
-  #   loser_id: 対戦相手のid,
-  #   loser_count: rival_count,
-  #   is_draw_status: true,
-  #   started_at: self.updated_at,
-  #   finished_at: self.finish_at
-  # )
-  #   notification.save if notification.valid?
-  # end
+  # 自分がバトルを申し込んだ場合の登れた課題全て
+  def done_task_climber_by
+    done_task = DoneTask.where(climber_id: Climber.find(self.climber.id))
+    battle_done_task = done_task.where(created_at: self.updated_at..self.finish_at)
+  end
+
+  # 自分がバトルを申し込まれた場合の登れた課題全て
+  def done_task_battler_by
+    done_task = DoneTask.where(climber_id: Climber.find(self.battler.id))
+    battle_done_task = done_task.where(created_at: self.updated_at..self.finish_at)
+  end
 end

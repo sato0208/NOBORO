@@ -37,7 +37,7 @@
                         <%= battle.finish_at.strftime("%Y/%m/%d")%>
                     </td>
 
-                    <%# カレントユーザが勝負を申し込まれた側の場合、申し込んだ側の情報を表示させる #%>
+                    <%# カレントユーザが勝負を申し込まれた場合 #%>
                     <% if (current_climber == battle.battler) %>
                         <td>
                             <%= attachment_image_tag battle.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
@@ -48,12 +48,12 @@
                             <% end %>
                         </td>
                         <td>
-                            <% done_task = DoneTask.where(climber_id: battle.climber.id) %>
-                            <% battle_done_task = done_task.where(created_at: battle.updated_at..battle.finish_at) %>
-                            <%= rival_count = battle_done_task.count %>
-                            <%#= <%= battle.done_tasks.count %>count
+                            <%= rival_count = battle.done_task_climber_by.count %>count
                         </td>
-                    <%# カレントユーザが勝負を申し込んだ側の場合、申しこまれた側の情報を表示させる #%>
+                        <td>
+                            <%= my_count = battle.done_task_battler_by.count %>count自分が申し込まれた
+                        </td>
+                    <%# カレントユーザが勝負を申し込んだ場合 #%>
                     <% elsif (current_climber == battle.climber) %>
                         <td>
                             <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
@@ -64,37 +64,28 @@
                             <% end %>
                         </td>
                         <td>
-                            <% done_task = DoneTask.where(climber_id: Climber.find(battle.battler.id)) %>
-                            <% battle_done_task = done_task.where(created_at: battle.updated_at..battle.finish_at) %>
-                            <%= rival_count = battle_done_task.count %>count
+                            <%= rival_count = battle.done_task_battler_by.count %>count
                         </td>
-                    <% end %>
-
-                    <%# カレントユーザが勝負を申し込まれた側の場合、申しこんだ側の情報を表示させる #%>
-                    <% if (current_climber == battle.battler) %>
                         <td>
-                            <% done_task = DoneTask.where(climber_id: Climber.find(battle.battler.id)) %>
-                            <% battle_done_task = done_task.where(created_at: battle.updated_at..battle.finish_at) %>
-                            <%= my_count = battle_done_task.count %>count
-                        </td>
-                    <%# カレントユーザが勝負を申し込んだ側の場合、申し込んだ側の情報を表示させる #%>
-                    <% elsif (current_climber == battle.climber) %>
-                        <td>
-                            <% done_task = DoneTask.where(climber_id: Climber.find(battle.climber.id)) %>
-                            <% battle_done_task = done_task.where(created_at: battle.updated_at..battle.finish_at) %>
-                            <%= my_count = battle_done_task.count %>count
+                            <%= my_count = battle.done_task_climber_by.count %>count自分が申し込んだとき
                         </td>
                     <% end %>
 
                     <td>
                         <% if my_count == rival_count %>
                             <%#= hidden_field_tag :code, @order_postcode %>
-                        Draw
+                            <i class="fas fa-balance-scale"></i>
+                            <% result = "Draw" %>
+                                <%= result %>
                         <% elsif my_count < rival_count %>
+                            <i class="fas fa-balance-scale-left"></i>
                             <%#= hidden_field_tag :code, @order_postcode %>
-                        Lose
-                        <% else my_count < rival_count %>
-                        Win
+                            <% result = "Lose" %>
+                                <%= result %>
+                        <% elsif my_count > rival_count %>
+                            <i class="fas fa-balance-scale-right"></i>
+                            <% result = "Win" %>
+                                <%= result %>
                         <% end %>
                     </td>
 
@@ -102,8 +93,9 @@
                         <%#バトルを削除してバトル履歴テーブルへ登録する#%>
                         <%= form_with method: :delete, model: @delete_battle, model: battle, url:battle_path(battle.id),local: true do |f| %>
                             <%= f.hidden_field :fin_battle, value:"終了" %>
+                            <%= f.hidden_field :result, value: result %>
                             <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
-                                <i class="fas fa-dragon"> 終了する</i>
+                                <i class="fas fa-bolt"> 終了する</i>
                             <% end %>
                         <% end %>
                     </td>
