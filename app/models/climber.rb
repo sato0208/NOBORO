@@ -81,7 +81,7 @@ class Climber < ApplicationRecord
   # バトル申請をしていた場合は解除する
   def unbattle?(other_climber)
     battle = battles.find_by(battler_id: other_climber.id)
-    # relationship が存在すれば destroy します
+    # battle が存在すれば destroy します
     battle.destroy if battle
   end
 end

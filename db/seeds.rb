@@ -602,7 +602,5 @@ Task.create(
       task_name: '3番',
       grade_id: 14
     },
-
-
   ]
 )

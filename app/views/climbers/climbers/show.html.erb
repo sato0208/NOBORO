@@ -70,7 +70,7 @@
               <%= link_to "ー　お知らせ　ー", favorites_path %><br>
           </h3>
             <% else %>
-            
+
               <% if current_climber.battle_now?(@climber) %>
                 <%= link_to  "申請をやめる", battle_path(@climber.id), method: :delete %>
                 バトルを申込済みです。了承されるまでお待ちください
@@ -89,9 +89,6 @@
                       <% end %>
                   <% end %>
               <% end %>
-
-
-
 
               <% if current_climber.following?(@climber) %>
                 <%= form_for(current_climber.relationships.find_by(follow_id: @climber.id), html: { method: :delete }) do |f| %>

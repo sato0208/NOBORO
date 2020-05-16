@@ -1,27 +1,30 @@
 <h1>通知一覧</h1>
   <% @notifications.each do |notification|%>
-
-<div class="row">
-    <div class="col-sm-1">
-      <%= attachment_image_tag notification.visiter, :profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png" %>
+    <div class="row">
+        <div class="col-sm-1">
+          <%= attachment_image_tag notification.visiter, :profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png" %>
+        </div>
+        <div class="col-sm-5">
+          <%= link_to climber_path(notification.visiter.id) do %>
+            <%= notification.visiter.name %>
+          <% end %> さんからバトルを挑まれています　
+          <%= "  (#{time_ago_in_words(notification.created_at)}前)" %>
+        </div>
+        <div class="col-sm-2">
+          <%= form_with method: :put,model: notification, url:notification_path(notification.id),local: true do |yes| %>
+            <%= yes.hidden_field :confirm_status, value:"承認" %>
+            <%= yes.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
+              <i class="fas fa-burn"> 承認する</i>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-sm-4">
+          <%= form_with method: :put,model: notification, url:notification_path(notification.id),local: true do |no| %>
+            <%= no.hidden_field :confirm_status, value:"拒否" %>
+            <%= no.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
+              <i class="fas fa-ban">拒否する</i>
+            <% end %>
+          <% end %>
+        </div>
     </div>
-    <div class="col-sm-5">col-sm-5
-      <%= link_to climber_path(notification.visiter.id) do %>
-        <%= notification.visiter.name %>
-      <% end %> さんからバトルを挑まれています　
-      <%= "  (#{time_ago_in_words(notification.created_at)}前)" %>
-    </div>
-    <div class="col-sm-3">col-sm-3
-      <%= form_with method: :put,model: notification, url:notification_path(notification.id),local: true do |f| %>
-        <%= f.hidden_field :confirm_status, value:"承認" %>
-        <%= f.submit "承認 する" %>
-      <% end %>
-    </div>
-    <div class="col-sm-3">col-sm-3
-      <%= form_with method: :put,model: notification, url:notification_path(notification.id),local: true do |no| %>
-        <%= no.hidden_field :confirm_status, value:"拒否" %>
-        <%= no.submit "拒否 する" %>
-      <% end %>
-    </div>
-</div>
   <% end %>
