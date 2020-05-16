@@ -30,51 +30,33 @@ class BattlesController < ApplicationController
     @delete_battle = Battle.find(params[:id])
     # @delete_battle.battler
     if params[:battle].present?
-      # カレントユーザが申し込んだ側の場合
-      if @delete_battle.climber = current_climber
+        # カレントユーザが申し込んだ側の場合
+      if @delete_battle.climber == current_climber
         # 相手の情報を@opponentへ代入
         @opponent = @delete_battle.battler
-        # 自分の登れた数と相手の登れた数を比較する
-        current_climber.done_task_climber_by == @opponent.done_task_battler_by
-      else
+        # 自分の登れた数と相手の登れた数を比較する 消したバトルの結果
+        result = @delete_battle.my_count_result_by(@opponent)
+        # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
+        if result == "Win" || result == "Draw"
+          create_battle_history(current_climber,@opponent,@delete_battle)
+          # create_battle_history(winner,loser,battle)
+        else
+          create_battle_history(@opponent,current_climber,@delete_battle)
+        end
+        # カレントユーザが申し込まれた側の場合
+      elsif @delete_battle.battler == current_climber
+        # 相手の情報を@opponentへ代入
         @opponent = @delete_battle.climber
+        # 自分の登れた数と相手の登れた数を比較する 消したバトルの結果
+        result = @delete_battle.my_count_result_by(@opponent)
+        # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
+        if result == "Win" || result == "Draw"
+          create_battle_history(current_climber,@opponent,@delete_battle)
+        else
+          create_battle_history(@opponent,current_climber,@delete_battle)
+        end
       end
-    # # バトル履歴に登録。モデルへ記述しなおす
-    # # 自分の登れた本数が相手と同じ本数の場合winnerに自分を登録。is_draw_statusをtrueにする
-      # if params[:battle][:result] == "Draw"
-      #   battle_history.new(
-      #   winner_id: current_climber.id,
-      #   winner_count: my_count,
-      #   loser_id: @opponent.id,
-      #   loser_count: rival_count,
-      #   is_draw_status: true,
-      #   started_at: @delite_battle.updated_at,
-      #   finished_at: @delite_battle.finish_at
-      # )
-    # # 自分の登れた本数が相手より多い場合winnerに自分を登録。is_draw_statusをfalseにする
-    #   elsif my_count > rival_count
-    #     battle_history.new(
-    #       winner_id: current_climber.id,
-    #       winner_count: my_count,
-    #       loser_id: 対戦相手のid,
-    #       loser_count: rival_count,
-    #       is_draw_status: false,
-    #       started_at: @delite_battle.updated_at,
-    #       finished_at: @delite_battle.finish_at
-    #     )
-    #   else
-    # # 自分の登れた本数が相手より多い場合winnerに自分を登録。is_draw_statusをfalseにする
-    #     battle_history.new(
-    #       winner_id: 対戦相手のid,
-    #       winner_count: rival_count,
-    #       loser_id: current_climber.id,
-    #       loser_count: my_count,
-    #       is_draw_status: false,
-    #       started_at: @delite_battle.updated_at,
-    #       finished_at: @delite_battle.finish_at
-    #     )
-    #   end
-    @delete_battle.destroy
+      @delete_battle.destroy
       redirect_to request.referer, notice: "バトルを終了しました"
     else
       @delete_battle.destroy
@@ -94,8 +76,25 @@ class BattlesController < ApplicationController
     @request_battles = current_climber.battles.where(is_valid_status: false)
   end
 
+  private
   def battle_params
     params.permit(:climber_id, :battler_id, :is_valid_status, :finish_at)
   end
-
+  # battle レコード作成時にnotification レコードも作成する
+  def create_battle_history(winner,loser,battle)
+    history = BattleHistory.new(
+      winner_id: winner.id,
+      winner_count: battle.done_task_by(winner),
+      loser_id: loser.id,
+      loser_count: battle.done_task_by(loser),
+      is_draw_status: battle.my_count_result_by(winner) == "Draw" ? true : false,
+      started_at: battle.updated_at,
+      finished_at: battle.finish_at
+      )
+    if history.save
+      return true
+    else
+      return false
+    end
+  end
 end

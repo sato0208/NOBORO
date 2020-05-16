@@ -33,16 +33,25 @@ class Battle < ApplicationRecord
     battle_done_task = done_task.where(created_at: self.updated_at..self.finish_at)
   end
 
+  # battle.done_task_by(current_climber)
+  # バトルがselfに入る。ユーザーが下の比較しているuserに入る
+  def done_task_by(user)
+    # 三項演算子
+    # 比較、trueの場合 climber.idが入る falseの場合 battler.idが入る
+    my_id = user == self.climber ? self.climber.id : self.battler.id
+    done_task = DoneTask.where(climber_id: Climber.find(my_id))
+    return done_task.where(created_at: self.updated_at..self.finish_at).count
+  end
 
+  # battle.my_count_result_by(user)
   # 勝敗の表示
-  def my_count_result_by
-    if my_count == rival_count
+  def my_count_result_by(opponent)
+    if self.done_task_by(self) == self.done_task_by(opponent)
       result = "Draw"
-    elsif my_count < rival_count
+    elsif self.done_task_by(self) < self.done_task_by(opponent)
       result = "Lose"
-    elsif my_count > rival_count
+    else self.done_task_by(self) > self.done_task_by(opponent)
       result = "Win"
     end
   end
-
 end

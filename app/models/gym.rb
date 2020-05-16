@@ -15,7 +15,6 @@ class Gym < ApplicationRecord
     favorites.where(climber_id: climber.id).exists?
   end
 
-  # リファクタリングするための記述
   def self.search(search)
     return Gym. unless search
     Gym.where(['content LIKE ?', "%#{search}%"])
