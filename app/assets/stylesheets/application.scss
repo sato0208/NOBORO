@@ -63,7 +63,17 @@ div {
         padding-left: 50px;
         padding-right: 50px;
     }
-
+p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+    h2, .h2 {
+        font-size: 30px;
+        display: block;
+    }
 a {
     color: #3e3e3e;
     text-decoration: none;
@@ -85,6 +95,7 @@ header a:hover {
     color: #9d9d9d;
     background-color: #3e3e3e;
     text-decoration:none;
+    opacity: .5;
 }
 
 header li {
@@ -295,6 +306,10 @@ h3.feature-title{
 
 .strength a:hover {
     opacity: .5;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
 }
 h1 {
     border-bottom: dashed 2px
@@ -351,3 +366,73 @@ h1 {
     margin: 0 auto 50px;
     background-color: #eee;
   }
+
+
+
+  .content {
+    background-color: #fff;
+    width: 600px;
+    margin: 10px auto;
+    border: 1px solid #d1d1d1;
+    padding: 30px;
+}
+
+input {
+    border: none;
+    border: 1px solid #d1d1d1;
+    font-size: 1.2em;
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+
+.control {
+    margin-bottom: 2em;
+}
+
+label {
+    display: block;
+    margin-top: .8em;
+}
+
+/* 必須ラベルの余白、カラー、フォントサイズ、背景色、太字指定 */
+.required {
+    margin-left: .3em;
+    color: #f33;
+    font-size: .9em;
+    padding: 3px;
+    background-color: #fee;
+    font-weight: bold;
+}
+
+textarea {
+    overflow: auto;
+    width: 100%;
+    height: 70px;
+    border: 1px solid #d1d1d1;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+input[type="file"] {
+    display: block;
+    border: none;
+}
+
+// gyms/showページ
+.description {
+    clear: left;
+}
+
+.description img {
+    float: left;
+    margin: 0 10px 10px 0;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+.task{
+    margin-top:100px;
+}

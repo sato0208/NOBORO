@@ -36,7 +36,6 @@ class BattlesController < ApplicationController
         @opponent = @delete_battle.battler
         # 自分の登れた数と相手の登れた数を比較する
         current_climber.done_task_climber_by == @opponent.done_task_battler_by
-
       else
         @opponent = @delete_battle.climber
       end
@@ -95,8 +94,8 @@ class BattlesController < ApplicationController
     @request_battles = current_climber.battles.where(is_valid_status: false)
   end
 
-
   def battle_params
     params.permit(:climber_id, :battler_id, :is_valid_status, :finish_at)
   end
+
 end

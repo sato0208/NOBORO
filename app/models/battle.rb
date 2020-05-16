@@ -32,4 +32,17 @@ class Battle < ApplicationRecord
     done_task = DoneTask.where(climber_id: Climber.find(self.battler.id))
     battle_done_task = done_task.where(created_at: self.updated_at..self.finish_at)
   end
+
+
+  # 勝敗の表示
+  def my_count_result_by
+    if my_count == rival_count
+      result = "Draw"
+    elsif my_count < rival_count
+      result = "Lose"
+    elsif my_count > rival_count
+      result = "Win"
+    end
+  end
+
 end

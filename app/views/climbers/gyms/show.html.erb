@@ -19,63 +19,35 @@
  </div>
 
 
-<h2><%= @gym.gym_name %></h2>
+<div class="description">
 <%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "bo2.jpeg", size:'400x300' %>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-        <tr>
-            <th>店舗名</th>
-            <td>
-                <%= @gym.gym_name %>
-            </td>
-        </tr>
-        <tr>
-            <th>紹介文</th>
-            <td>
-                <%= @gym.description %>
-            </td>
-        </tr>
-        <tr>
-            <th>アクセス</th>
-            <td>
-                <%= @gym.address %>
-            </td>
-        </tr>
-        <tr>
-            <th>電話番号</th>
-            <td>
-                <a class="heading-p" href="tel:">
-                    <%= @gym.phone_number %>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <th>HP</th>
-            <td>
-                <%= link_to @gym.gym_url %>
-            </td>
-        </tr>
-    </thead>
-</table>
-</div>
+<div class="prof-vi">
+        <h2 class="feature-title">
+           <%= @gym.gym_name %>
+            <%= @gym.address %>
+          </h2>
+          <h3 class="feature-title">
+          <%= @gym.description %>
+          </h3><br>
+          <h3 class="feature-title">
+          ホームページ
+          </h3>
+
+         
 <td id="favorites_<%= @gym.id %>">
     <%= render 'favorite', gym: @gym %>
 </td>
     <%= link_to ' 今月のランキング',rank_path, class: "btn btn-primary fas fa-chess-queen" %>
+     </div>
+</div>
 <section class="tasks">
+    <div class="task">
     <h2>課題一覧</h2>
     <h3>課題名をクリックすると登れた人一覧が見れます
     </h3>
         <div class="table-responsive">
         <table class="table">
-            <thead>
-                <tr>
-                    <th>グレード</th>
-                    <th>課題名</th>
-                    <th></th>
-                </tr>
-            </thead>
+           
             <tbody>
                 <!-- グレードのeach文 -->
                 <% @grades_all.each do |grade| %>
@@ -99,6 +71,7 @@
                 <% end %>
             </tbody>
         </table>
+    </div>
     </div>
 </section>
 

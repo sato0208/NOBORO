@@ -16,4 +16,25 @@ class DoneTask < ApplicationRecord
       climber_id: self.climber_id
     ).count
   end
+
+    # 全ジムの登れた課題ランキング
+  def all_done_tasks_by
+    now = Time.current
+    DoneTask.find(
+    DoneTask.where(
+    created_at:(now.beginning_of_month)..(now.end_of_month))
+    .group(:climber_id)
+    .order('count(task_id) desc')
+    .limit(30)
+    .pluck(:id))
+  end
+
+    # 自分の順位
+  def all_my_rank_by
+    all_my_rank = 1
+    all_done_tasks_by.each do |rank|
+    break if rank.climber_id == current_climber.id
+      all_my_rank += 1
+    end
+  end
 end

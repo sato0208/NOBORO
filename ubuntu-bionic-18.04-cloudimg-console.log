@@ -591,4 +591,9 @@ Welcome to [1mUbuntu 18.04.4 LTS[0m!
 
 Ubuntu 18.04.4 LTS ubuntu-bionic ttyS0
 
-ubuntu-bionic login: 
+ubuntu-bionic login: [222576.300687] Out of memory: Kill process 11731 (ruby2.5) score 551 or sacrifice child
+[222576.303446] Killed process 11731 (ruby2.5) total-vm:1587152kB, anon-rss:554392kB, file-rss:0kB, shmem-rss:0kB
+[223496.326841] Out of memory: Kill process 11754 (ruby2.5) score 551 or sacrifice child
+[223496.328763] Killed process 11754 (ruby2.5) total-vm:1653704kB, anon-rss:554912kB, file-rss:0kB, shmem-rss:0kB
+[226908.252080] Out of memory: Kill process 11783 (ruby2.5) score 553 or sacrifice child
+[226908.253533] Killed process 11783 (ruby2.5) total-vm:1655624kB, anon-rss:556408kB, file-rss:0kB, shmem-rss:0kB
