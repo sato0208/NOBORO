@@ -367,8 +367,6 @@ h1 {
     background-color: #eee;
   }
 
-
-
   .content {
     background-color: #fff;
     width: 600px;
@@ -381,7 +379,6 @@ input {
     border: none;
     border: 1px solid #d1d1d1;
     font-size: 1.2em;
-    width: 100%;
     padding: 5px;
     margin-top: 10px;
 }
@@ -435,4 +432,17 @@ input[type="file"] {
 }
 .task{
     margin-top:100px;
+}
+
+// ブロック要素の中央揃え
+.centering_parent {
+    padding: 20px;              /* 余白指定 */
+    height: 150px;              /* 高さ指定 */
+}
+ 
+.centering_item {
+    width: 400px;               /* 幅指定 */
+    height: 90px;               /* 高さ指定 */
+    margin:  0 auto;            /* 中央寄せ */
+    text-align:  center;
 }

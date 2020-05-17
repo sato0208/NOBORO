@@ -9,7 +9,7 @@
 		<% @trophys.each do |trophy| %>
 			<div class="strength">
 				<h3 class="feature-title">
-					<%= trophy.my_trophy_name%>
+					<%= trophy.my_trophy_name %>
 				</h3>
 					<%= attachment_image_tag trophy, :my_trophy_image, size: '100x100',format: "jpeg",fallback: "ira13.png" %>
 				<h3 class="feature-title">
@@ -18,7 +18,10 @@
 			</div>
 		<% end %>
 		</div>
-			<%= paginate @trophys %>
-
+		<div class="centering_parent">
+			<div class="centering_item">
+				<%= paginate @trophys %>
+			</div>
+		</div>
 	</section>
 </div>
