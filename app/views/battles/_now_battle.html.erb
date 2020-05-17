@@ -48,10 +48,10 @@
                             <% end %>
                         </td>
                         <td>
-                            <%= rival_count = battle.done_task_climber_by.count %>count
+                            <%= rival_count = battle.done_task_by(battle.climber) %>count
                         </td>
                         <td>
-                            <%= my_count = battle.done_task_battler_by.count %>count自分が申し込まれた
+                            <%= my_count = battle.done_task_by(current_climber) %>count自分が申し込まれた
                         </td>
                     <%# カレントユーザが勝負を申し込んだ場合 #%>
                     <% elsif (current_climber == battle.climber) %>
@@ -64,23 +64,20 @@
                             <% end %>
                         </td>
                         <td>
-                            <%= rival_count = battle.done_task_battler_by.count %>count
+                            <%= rival_count = battle.done_task_by(battle.battler) %>count
                         </td>
                         <td>
-                            <%= my_count = battle.done_task_climber_by.count %>count自分が申し込んだとき
+                            <%= my_count = battle.done_task_by(current_climber) %>count自分が申し込んだとき
                         </td>
                     <% end %>
 
                     <td>
-                    <%#= my_count_result_by(my_count,rival_count)%>
                         <% if my_count == rival_count %>
-                            <%#= hidden_field_tag :code, @order_postcode %>
                             <i class="fas fa-balance-scale"></i>
                             <% result = "Draw" %>
                                 <%= result %>
                         <% elsif my_count < rival_count %>
                             <i class="fas fa-balance-scale-left"></i>
-                            <%#= hidden_field_tag :code, @order_postcode %>
                             <% result = "Lose" %>
                                 <%= result %>
                         <% elsif my_count > rival_count %>
@@ -88,6 +85,8 @@
                             <% result = "Win" %>
                                 <%= result %>
                         <% end %>
+                        // ??一文でリザルトを表示させたい
+                        <%= battle.my_count_result_by(rival_count) %>
                     </td>
 
                     <td>

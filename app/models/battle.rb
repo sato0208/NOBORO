@@ -3,6 +3,10 @@ class Battle < ApplicationRecord
   belongs_to :battler, class_name: 'Climber'
   has_many :notification, dependent: :destroy
 
+  # 一つのclimber_id に対して同じbattler 情報を登録させないためのユニーク制約
+  validates :climber_id, uniqueness: { scope: [:battler_id] }
+
+
   # battleテーブルのステータスがtrueのもの全てを取得
   # scope :only_active, -> {
   #   where(is_valid_status: true)
@@ -35,6 +39,7 @@ class Battle < ApplicationRecord
 
   # battle.done_task_by(current_climber)
   # バトルがselfに入る。ユーザーが下の比較しているuserに入る
+  # userに入れたClimberの登れた課題の数を出すことができる。
   def done_task_by(user)
     # 三項演算子
     # 比較、trueの場合 climber.idが入る falseの場合 battler.idが入る

@@ -8,12 +8,17 @@
 		<div class="strength-group clearfix">
 		<% @trophys.each do |trophy| %>
 			<div class="strength">
-				<h3 class="feature-title"><%= trophy.my_trophy_name%></h3>
+				<h3 class="feature-title">
+					<%= trophy.my_trophy_name%>
+				</h3>
 					<%= attachment_image_tag trophy, :my_trophy_image, size: '100x100',format: "jpeg",fallback: "ira13.png" %>
-				<h3 class="feature-title"><%= trophy.updated_at.strftime("%Y/%m/%d") %></h3>
+				<h3 class="feature-title">
+					<%= trophy.updated_at.strftime("%Y/%m/%d") %>
+				</h3>
 			</div>
 		<% end %>
-			<%= paginate @trophys %>
 		</div>
+			<%= paginate @trophys %>
+
 	</section>
 </div>

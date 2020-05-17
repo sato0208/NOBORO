@@ -21,7 +21,7 @@
 	<div class="profile">
 		<div id="profile"></div>
 		<div class="container">
-			<h2 class="heading">マイページ</h2>
+			<h2 class="heading">ユーザーページ</h2>
 			<p class="heading-p">
 			<div class="prof-group">
           <div class="left-content">
@@ -44,7 +44,7 @@
           </h3>
           <p class="heading-p">
           <div class="balloon1-left">
-            <% if @climber.introduction.nil? %>
+            <% if @climber.introduction.present? %>
               <%= @climber.introduction %>
             <% elsif %>
               <%= "よろしくお願いします" %>
