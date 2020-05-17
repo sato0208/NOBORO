@@ -82,6 +82,7 @@ class BattlesController < ApplicationController
   end
   # battle レコード作成時にnotification レコードも作成する
   def create_battle_history(winner,loser,battle)
+    # binding.pry
     history = BattleHistory.new(
       winner_id: winner.id,
       winner_count: battle.done_task_by(winner),

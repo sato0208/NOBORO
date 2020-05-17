@@ -51,7 +51,7 @@
                             <%= rival_count = battle.done_task_by(battle.climber) %>count
                         </td>
                         <td>
-                            <%= my_count = battle.done_task_by(current_climber) %>count自分が申し込まれた
+                            <%= my_count = battle.done_task_by(current_climber) %>count(自分が申し込まれた側)
                         </td>
                     <%# カレントユーザが勝負を申し込んだ場合 #%>
                     <% elsif (current_climber == battle.climber) %>
@@ -67,7 +67,7 @@
                             <%= rival_count = battle.done_task_by(battle.battler) %>count
                         </td>
                         <td>
-                            <%= my_count = battle.done_task_by(current_climber) %>count自分が申し込んだとき
+                            <%= my_count = battle.done_task_by(current_climber) %>count(自分が申し込んだ側)
                         </td>
                     <% end %>
 
@@ -85,8 +85,7 @@
                             <% result = "Win" %>
                                 <%= result %>
                         <% end %>
-                        // ??一文でリザルトを表示させたい
-                        <%= battle.my_count_result_by(rival_count) %>
+                        <%#= battle.my_count_result_by(rival_count) %>
                     </td>
 
                     <td>

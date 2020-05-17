@@ -1,115 +1,27 @@
-<% if battles.present? %>
-    <h2>
-        現在 <%= battles.count %> 人とバトルしています
-    </h2>
-    <p>申請が承認されてから3日間でどれだけ登れたかを競おう！</p>
-    <p>延長すると終了日が3日延長されます</p>
-    <p>バトルを終了すると勝敗がつきます</p>
-<% else %>
-    <h3>
-        まだ 誰ともバトルしていません
-    </h3>
-    <p>友達にバトル申請してみよう</p>
-<% end %>
+<h1>バトル履歴</h1>
 <table class="table">
     <thead>
         <tr>
             <th>バトル開始日</th>
-            <th>バトル終了予定日</th>
+            <th>バトル終了日</th>
             <th></th>
-            <th>勝負中</th>
-            <th>相手の登れた数</th>
-            <th>自分の登れた数</th>
-            <th>勝敗</th>
+            <th></th>
             <th></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <% rank = 1 %>
-        <% battles.each do |battle| %>
-            <% if battle.present? && battle.battler.present? %>
-                <tr>
-                    <td>
-                        <%= battle.updated_at.strftime("%Y/%m/%d") %>
-                    </td>
-                    <td>
-                        <%= battle.finish_at.strftime("%Y/%m/%d")%>
-                    </td>
-
-                    <%# カレントユーザが勝負を申し込まれた場合 #%>
-                    <% if (current_climber == battle.battler) %>
-                        <td>
-                            <%= attachment_image_tag battle.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
-                        </td>
-                        <td>
-                            <%= link_to climber_path(battle.climber.id) do %>
-                                <%= battle.climber.name %>
-                            <% end %>
-                        </td>
-                        <td>
-                            <%= rival_count = battle.done_task_by(battle.climber) %>count
-                        </td>
-                        <td>
-                            <%= my_count = battle.done_task_by(current_climber) %>count自分が申し込まれた
-                        </td>
-                    <%# カレントユーザが勝負を申し込んだ場合 #%>
-                    <% elsif (current_climber == battle.climber) %>
-                        <td>
-                            <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
-                        </td>
-                        <td>
-                            <%= link_to climber_path(battle.battler.id) do %>
-                                <%= battle.battler.name %>
-                            <% end %>
-                        </td>
-                        <td>
-                            <%= rival_count = battle.done_task_by(battle.battler) %>count
-                        </td>
-                        <td>
-                            <%= my_count = battle.done_task_by(current_climber) %>count自分が申し込んだとき
-                        </td>
-                    <% end %>
-
-                    <td>
-                        <% if my_count == rival_count %>
-                            <i class="fas fa-balance-scale"></i>
-                            <% result = "Draw" %>
-                                <%= result %>
-                        <% elsif my_count < rival_count %>
-                            <i class="fas fa-balance-scale-left"></i>
-                            <% result = "Lose" %>
-                                <%= result %>
-                        <% elsif my_count > rival_count %>
-                            <i class="fas fa-balance-scale-right"></i>
-                            <% result = "Win" %>
-                                <%= result %>
-                        <% end %>
-                        // ??一文でリザルトを表示させたい
-                        <%= battle.my_count_result_by(rival_count) %>
-                    </td>
-
-                    <td>
-                        <%#バトルを削除してバトル履歴テーブルへ登録する#%>
-                        <%= form_with method: :delete, model: @delete_battle, model: battle, url:battle_path(battle.id),local: true do |f| %>
-                            <%= f.hidden_field :fin_battle, value:"終了" %>
-                            <%= f.hidden_field :result, value: result %>
-                            <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
-                                <i class="fas fa-bolt"> 終了する</i>
-                            <% end %>
-                        <% end %>
-                    </td>
-                    <td>
-                        <%#バトルを更新して、finish_atを今の日付から＋3日する#%>
-                        <%= form_with method: :put, model: @update_battle, url:battle_path(battle.id),local: true do |f| %>
-                            <%= f.hidden_field :battle_status, value:"延長" %>
-                            <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
-                                <i class="fas fa-dragon"> 延長する</i>
-                            <% end %>
-                        <% end %>
-                    </td>
-                </tr>
-            <% end %>
+        <% @battle_historys.each do |battle_history| %>
+        <tr>
+            <td><%= battle_history.started_at.strftime("%Y/%m/%d") %></td>
+            <td><%= battle_history.finished_at.strftime("%Y/%m/%d") %></td>
+            <td><%= attachment_image_tag battle_history.winner, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %></td>
+            <td>win <%= battle_history.winner.name%></td>
+            <td><%= battle_history.winner_count%>本</td>
+            <td><%= attachment_image_tag battle_history.loser, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %></td>
+            <td>lose <%= battle_history.loser.name%></td>
+            <td><%= battle_history.loser_count%>本</td>
+        </tr>
         <% end %>
     </tbody>
 </table>
