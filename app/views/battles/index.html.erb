@@ -1,10 +1,12 @@
 <h1>バトルページ</h1>
 <p>バトルに勝利するとプレンゼントトロフィーがもらえるぞ</p>
 <div class="row">
+ <%= link_to climber_path(current_climber.id) do %>
   <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
   <h3>
     <%= current_climber.name %>
   </h3>
+<% end %>
 </div>
 
   <h2></h2>
@@ -38,5 +40,9 @@
       <div role="tabpanel" class="tab-pane" id="profile">
         <%= render 'request_battle', battles: @request_battles, delete_battle: @delete_battle %>
       </div>
+
+      <%# バトル履歴一覧表示 %>
+      <div role="tabpanel" class="tab-pane" id="message">
+        <%= render 'battle_historys/battle_history', battle_historys: @battle_historys %>
+      </div>
     </div>
-</div>

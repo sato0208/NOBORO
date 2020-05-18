@@ -40,7 +40,9 @@
                     <%# カレントユーザが勝負を申し込まれた場合 #%>
                     <% if (current_climber == battle.battler) %>
                         <td>
-                            <%= attachment_image_tag battle.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
+                            <%= link_to climber_path(battle.climber.id) do %>
+                                <%= attachment_image_tag battle.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
+                            <% end %>
                         </td>
                         <td>
                             <%= link_to climber_path(battle.climber.id) do %>
@@ -56,7 +58,9 @@
                     <%# カレントユーザが勝負を申し込んだ場合 #%>
                     <% elsif (current_climber == battle.climber) %>
                         <td>
-                            <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
+                            <%= link_to climber_path(battle.battler.id) do %>
+                                <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
+                            <% end %>
                         </td>
                         <td>
                             <%= link_to climber_path(battle.battler.id) do %>
@@ -64,10 +68,12 @@
                             <% end %>
                         </td>
                         <td>
-                            <%= rival_count = battle.done_task_by(battle.battler) %>count
+                            <%= link_to done_tasks_path do %>
+                                <%= rival_count = battle.done_task_by(battle.battler) %><% end %> count
                         </td>
                         <td>
-                            <%= my_count = battle.done_task_by(current_climber) %>count(自分が申し込んだ側)
+                            <%= link_to done_tasks_path do %>
+                                <%= my_count = battle.done_task_by(current_climber) %><% end %> count(自分が申し込んだ側)
                         </td>
                     <% end %>
 

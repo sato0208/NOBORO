@@ -1,28 +1,2 @@
 <h1>バトル履歴</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>バトル開始日</th>
-            <th>バトル終了日</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @battle_historys.each do |battle_history| %>
-        <tr>
-            <td><%= battle_history.started_at.strftime("%Y/%m/%d") %></td>
-            <td><%= battle_history.finished_at.strftime("%Y/%m/%d") %></td>
-            <td><%= attachment_image_tag battle_history.winner, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %></td>
-            <td>win <%= battle_history.winner.name%></td>
-            <td><%= battle_history.winner_count%>本</td>
-            <td><%= attachment_image_tag battle_history.loser, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %></td>
-            <td>lose <%= battle_history.loser.name%></td>
-            <td><%= battle_history.loser_count%>本</td>
-            <td><%= battle_history.is_draw_status %>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+    <%= render 'battle_history', battle_historys: @battle_historys %>

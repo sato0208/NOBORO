@@ -1,8 +1,10 @@
+    <div class="row">
+        <h2>ジム検索</h2>
+    </div>
+        <h2>ジム検索</h2>
 
     <!-- 検索フォームここから -->
     <div class="search-form">
-        <h4>　</h4>
-        <h2></h2>
         <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
             <%= f.text_field :gym_name,{placeholder: "店名で検索"} %>
             <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
@@ -13,31 +15,43 @@
     <!-- ジャンル検索用 -->
 
     <%= render 'genres', genres: @genres %>
-    <div class="table">
-        <table class="table table-hover table-inverse">
-            <thead>
-                <tr>
-                    <th>ジムの名前</th>
-                    <th>ジムの紹介文</th>
-                    <th>ジムのHP</th>
-                    <th>ジムのジャンル</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @gyms.each do |gym| %>
-                <tr>
-                    <td>
-                        <%= link_to gym.gym_name, gym_path(gym.id) %>
-                    </td>
-                    <td>
-                        <%= gym.description %>
-                    </td>
-                    <td>
-                        <%= gym.gym_url %>
-                    </td>
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
+
+    <% @gyms.each do |gym| %>
+    <div class="blog-item clearfix">
+        <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: "bo2.jpeg" %>
+            <section class="blog-text">
+                <h3 class="blog-text-headline">
+                    <%= link_to gym.gym_name, gym_path(gym.id) %>
+                </h3>
+                <p class="blog-date">
+                    <%= gym.description %>
+                </p>
+                <span class="category">
+                    <%= gym.genre.genre_name %>
+                </span>
+            </section>
     </div>
-</div>
+    <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

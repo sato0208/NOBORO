@@ -1,4 +1,4 @@
-<h2>お知らせ</h2>
+<h1>お知らせ</h1>
 <table class="table">
   <thead>
     <tr>
@@ -11,7 +11,7 @@
   <% if @favorites.present? %>
     <% @favorites.each do |f|%>
       <tr>
-        <td><%= f.gym.gym_name %></td>
+        <td><%= link_to f.gym.gym_name,gym_path(f.gym.id) %></td>
       <% f.gym.infos.each do |info| %>
         <td><%= info.info %></td>
       <% end %>

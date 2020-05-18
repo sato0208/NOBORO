@@ -1,5 +1,5 @@
 <% if task.achieved?(current_climber)%>
-    <!-- done_taskテーブルに登録する -->
+    <!-- done_taskテーブルから削除する -->
     <%= form_with method: :delete, model: delete_done_task, url:done_task_path(delete_done_task), remote: true do |f| %>
       <!-- done_taskにcrrent_climberのidとdone_taskのclimber_idに同じものがある場合。（登録済みの場合） -->
       <!-- @task.idをtask_idとして送る -->

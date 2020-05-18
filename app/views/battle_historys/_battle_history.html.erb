@@ -1,0 +1,48 @@
+<h2>
+  バトル履歴一覧
+</h2>
+<p>勝率</p>
+<p>獲得したトロフィー</p>
+<p></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>バトル開始日</th>
+            <th>バトル終了日</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% battle_historys.each do |battle_history| %>
+        <tr>
+            <td><%= battle_history.started_at.strftime("%Y/%m/%d") %></td>
+            <td><%= battle_history.finished_at.strftime("%Y/%m/%d") %></td>
+            <td>
+            <%= link_to climber_path(battle_history.winner.id) do %>
+              <%= attachment_image_tag battle_history.winner, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %>
+            <% end %></td>
+            <td>win 
+              <%= link_to climber_path(battle_history.winner.id) do %>
+                <%= battle_history.winner.name%>
+              <% end %>
+            </td>
+            <td><%= battle_history.winner_count%>本</td>
+            <td>
+              <%= link_to climber_path(battle_history.loser.id) do %>
+                <%= attachment_image_tag battle_history.loser, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %>
+              <% end %>
+            </td>
+            <td>lose 
+              <%= link_to climber_path(battle_history.loser.id) do %>
+                <%= battle_history.loser.name%>
+              <% end %>
+            </td>
+            <td><%= battle_history.loser_count%>本</td>
+            <td><%= battle_history.is_draw_status %>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

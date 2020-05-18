@@ -23,14 +23,16 @@
     <tbody>
         <% rank = 1 %>
         <% battles.each do |battle| %>
-          <%# バトルがある時のみ通す %>
-          <% if battle.present? && battle.battler.present? %>
+        <%# バトルがある時のみ通す %>
+        <% if battle.present? && battle.battler.present? %>
             <tr>
                 <td>
                     <%= battle.created_at.strftime("%Y/%m/%d") %>
                 </td>
                 <td>
-                <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
+                    <%= link_to climber_path(battle.battler.id) do %>
+                        <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
+                    <% end %>
                 </td>
                 <td>
                     <%= link_to climber_path(battle.battler.id) do %>

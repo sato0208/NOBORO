@@ -5,7 +5,7 @@
 			<p class="main-visual-text">
                 クライミングを楽しむ人のために作られました<br>
                 お気に入りジムを登録して、お知らせを受け取ろう。<br>
-                一人でも楽しめるけど、ライバルがいた方がずっと楽しい！<br>
+                一人でも楽しめるけど、ライバルがいた方がずっと楽しい<br>
                 ランキングは毎月更新！上位を目指そう！<br>
                 登れた課題のグレードごとにトロフィーがもらえるぞ！<br>
                 いっぱい集めよう！<br>
@@ -27,38 +27,19 @@
     <!-- ジャンル検索用 -->
 <%= render 'genres', genres: @genres %>
 
-<div class="table">
-    <table class="table table-hover table-inverse">
-        <thead>
-            <tr>
-                <th>ジムの名前</th>
-                <th>ジムの紹介文</th>
-                <th>ジムのHP</th>
-                <th>ジムのジャンル</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @gyms.each do |gym| %>
-            <tr>
-                <td>
-                    <%= link_to gym.gym_name, gym_path(gym.id) %>
-                </td>
-                <td>
-                    <%= gym.description %>
-                </td>
-                <td>
-                    <%= gym.gym_url %>
-                </td>
-                <td>
-                    <%= gym.genre.genre_name %>
-                </td>
-                <td>
-                    <%= attachment_image_tag gym, :gym_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "bo2.jpeg", size:'40x40' %>
-                </td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
-</div>
-
-
+                <% @gyms.each do |gym| %>
+                <div class="blog-item clearfix">
+                <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: "bo2.jpeg" %>
+					<section class="blog-text">
+						<h3 class="blog-text-headline">
+							<%= link_to gym.gym_name, gym_path(gym.id) %>
+						</h3>
+						<p class="blog-date">
+                            <%= gym.description %>
+                        </p>
+						<span class="category">
+                            <%= gym.genre.genre_name %>
+                        </span>
+					</section>
+				</div>
+                <% end %>

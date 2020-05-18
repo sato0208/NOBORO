@@ -59,4 +59,11 @@ class Battle < ApplicationRecord
       result = "Win"
     end
   end
+
+  def battle_history_by
+    BattleHistory
+    .where(winner_id: self.id)
+    .or(BattleHistory
+    .where(loser_id: self.id))
+  end
 end

@@ -73,6 +73,10 @@ class BattlesController < ApplicationController
     # binding.pry
     # バトル申請中一覧（自分が挑んだ側 & 相手が未確認全て）
     @request_battles = current_climber.battles.where(is_valid_status: false)
+    @battle_historys = BattleHistory
+    .where(winner_id: current_climber.id)
+    .or(BattleHistory
+    .where(loser_id: current_climber.id))
   end
 
   private
@@ -91,7 +95,6 @@ class BattlesController < ApplicationController
       started_at: battle.updated_at,
       finished_at: battle.finish_at
       )
-      binding.pry
     if history.save
       return true
     else
