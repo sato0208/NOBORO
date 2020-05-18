@@ -1,27 +1,10 @@
-<ul class="nav">
- <li class="notification">
- <%= link_to '通知', notifications_path, class:"btn" %>
-  <% if unchecked_notifications.any? %>
-    <i class="fa fa-circle notification-circle">通知があります</i>
-  <% end %>
-  <div>
-    <h4 class="sub-title">通知</h4>
-    <% if @notifications.exists? %>
-      <div class="users-index">
-        <%= render 'climbers/climbers/notification', notifications: @notifications %>
-        <%# <%= paginate @notifications %>
-      </div>
-    <% else %>
-      <p>通知はありません</p>
-    <% end %>
-  </div>
-</li>
-</ul>
+
 <!-- ここからプロフィール -->
 	<div class="profile">
-		<div id="profile"></div>
 		<div class="container">
-			<h2 class="heading">ユーザーページ</h2>
+			<h2 class="heading">
+        ユーザーページ
+      </h2>
 			<p class="heading-p">
 			<div class="prof-group">
           <div class="left-content">
@@ -30,6 +13,9 @@
             </div>
           </div>
         <div class="prof-vi">
+
+
+
         <h2 class="feature-title">
             <%= @climber.name %>
           </h2>
@@ -63,7 +49,11 @@
                 お気に入りジム未登録
             <% end %>
           </p>
-
+            <div class="social">
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-twitter-square"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
           <h3 class="feature-title">
             <% if current_climber.id == @climber.id %>
               <%= link_to "ー　プロフィール編集　ー", edit_climber_path %><br>

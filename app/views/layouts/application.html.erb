@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-    <img src=>
+        <%= favicon_link_tag('favicon.ico') %>
         <title>NOBORO</title>
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-         <%= favicon_link_tag('favicon.ico') %>
-         <%= favicon_link_tag %>
-         <%= favicon_link_tag '/favicon.ico' %>
     </head>
     <body>
         <header class="navbar navbar-fixed-top navbar-inverse">
@@ -84,10 +80,10 @@
                         <%= link_to " about", '#',class:"fas fa-cat" %>
                     </li>
                     <li>
-                        <%= link_to " sign up", new_climber_registration_path,class:"fas fa-door-closed" %>
+                        <%= link_to " 新規登録", new_climber_registration_path,class:"fas fa-door-closed" %>
                     </li>
                     <li>
-                        <%= link_to " login", new_climber_session_path,class:"fas fa-key" %>
+                        <%= link_to " ログイン", new_climber_session_path,class:"fas fa-key" %>
                     </li>
                 </ul>
                 <% end %>
@@ -107,7 +103,7 @@
         </div>
         <footer class="fixed-bottom">
 
-        
+
         			<!-- ここからコンタクト -->
 	<div class="contact">
 		<div id="contact"></div>

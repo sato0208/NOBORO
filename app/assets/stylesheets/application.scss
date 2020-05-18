@@ -75,10 +75,9 @@ p {
         margin-inline-start: 0px;
         margin-inline-end: 0px;
     }
-    h2, .h2 {
-        font-size: 30px;
-        display: block;
-    }
+h2, .h2 {
+        margin-bottom: 20px;
+}
 a {
     color: #3e3e3e;
     text-decoration: none;
@@ -361,7 +360,7 @@ h1 {
    
   h1{
     text-align: center;
-    margin: 50px 0;
+    margin: 80px 0 40px 0;
   }
    
   .box{
@@ -375,7 +374,7 @@ h1 {
   .content {
     background-color: #fff;
     width: 600px;
-    margin: 10px auto;
+    margin: 100px auto;
     border: 1px solid #d1d1d1;
     padding: 30px;
 }

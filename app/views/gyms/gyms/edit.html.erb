@@ -54,6 +54,12 @@
                 <%= f.text_area :gym_url %>
             </td>
         </tr>
+         <tr>
+            <th>ログイン用email</th>
+            <td>
+                <%= f.text_field :email %>
+            </td>
+        </tr>
         <th>ジムの写真</th>
         <td>
             <%= f.attachment_field :gym_image, placeholder:"ジム画像", id:"gym_image" %>
