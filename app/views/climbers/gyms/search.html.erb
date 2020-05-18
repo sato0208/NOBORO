@@ -1,21 +1,11 @@
-    NOBOROは<br>
-    クライミングを楽しむ全ての人のためのアプリです。<br>
-    お気に入りジムを登録して、お知らせを受け取ろう。<br>
-    一人でも楽しめるけど、ライバルがいた方がずっと楽しい！<br>
-    ランキングは毎月更新！上位を目指そう！<br>
-    登れたら課題をアンロック！グレードごとにトロフィーがもらえるぞ！いっぱい集めよう！<br>
-    ーーーーー　絞り込み検索　ーーーーー<br>
-    <%= gym_signed_in? %>
-    <div class="row">
-        <h2>店舗名で検索</h2>
-    </div>
 
     <!-- 検索フォームここから -->
     <div class="search-form">
         <h4>　</h4>
+        <h2></h2>
         <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
-            <%= f.text_field :gym_name %>
-            <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-info' do %>
+            <%= f.text_field :gym_name,{placeholder: "店名で検索"} %>
+            <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
                 <i class="fa fa-search"> ジムを探す</i>
             <% end %>
         <% end %>

@@ -1,6 +1,5 @@
 class BattlesController < ApplicationController
   def show
-
   end
 
   def update
@@ -80,7 +79,7 @@ class BattlesController < ApplicationController
   def battle_params
     params.permit(:climber_id, :battler_id, :is_valid_status, :finish_at)
   end
-  # battle レコード作成時にnotification レコードも作成する
+
   def create_battle_history(winner,loser,battle)
     # binding.pry
     history = BattleHistory.new(
@@ -92,6 +91,7 @@ class BattlesController < ApplicationController
       started_at: battle.updated_at,
       finished_at: battle.finish_at
       )
+      binding.pry
     if history.save
       return true
     else

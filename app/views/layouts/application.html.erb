@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
+
+    <img src=>
         <title>NOBORO</title>
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+         <%= favicon_link_tag('favicon.ico') %>
+         <%= favicon_link_tag %>
+         <%= favicon_link_tag '/favicon.ico' %>
     </head>
     <body>
         <header class="navbar navbar-fixed-top navbar-inverse">
-            <div class="container">
                 <nav class="navbar-left">
-                    <span><%= link_to " NOBORO", root_path %></span>
+                    <span>
+                        <%= link_to root_path do %>
+                            <%= image_tag 'logo3.png', class:'logo' %>
+                        <% end %>
+                    </span>
                 </nav>
-
                 <% if gym_signed_in? %>
                 <ul class="navbar-text navbar-right">
                     <li>
@@ -84,7 +91,6 @@
                     </li>
                 </ul>
                 <% end %>
-            </div>
         </header>
         <div class="container">
             <!-- flashここからnotice：ログイン・ログアウト -->
@@ -100,6 +106,52 @@
                 <%= yield %>
         </div>
         <footer class="fixed-bottom">
+
+        
+        			<!-- ここからコンタクト -->
+	<div class="contact">
+		<div id="contact"></div>
+		<div class="contact-group">
+
+
+			<div class="headcontainer">
+			<h2 class="heading">Contact</h2>
+			<div class="ander"></div>
+			<p class="heading-p">It is a long established fact that a reader will be distracted by the readable<br>
+			content of a page when looking at its layout. The point of using Lorem Ipsum is that it has<br>
+			a more-or-less normal distribution of letters</p>
+			</div>
+			</div>
+
+		<div class="container clearfix">
+			<div class="contact-left">
+			<h3 class="feature-title">Mail</h3>
+			<a class="heading-p" href="mailto:user@dammy.com">xxx@xxx.com</a>
+			<h3 class="feature-title">Tell</h3>
+			<a class="heading-p" href="tel:">000-0000-0000</a>
+			</div>
+
+		<div class="contact-right">
+			<h2 class="feature-title">SNS</h2>
+			<div class="social">
+			<a href="#">
+			<i class="fab fa-facebook-square"></i></a>
+			<a href="#">
+			<i class="fab fa-twitter"></i></a>
+			<a href="#">
+			<i class="fab fa-instagram-square"></i></a>
+			</div>
+		</div>
+	</div>
+
+		</div>
+		</div>
+		</div>
+	</div>
+	<!-- ここまでコンタクト -->
+
+
+
             <p class="copyright">©︎ 2020 NOBORO</p>
         </footer>
     </body>

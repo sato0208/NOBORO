@@ -21,6 +21,7 @@
             <td><%= attachment_image_tag battle_history.loser, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %></td>
             <td>lose <%= battle_history.loser.name%></td>
             <td><%= battle_history.loser_count%>本</td>
+            <td><%= battle_history.is_draw_status %>
         </tr>
         <% end %>
     </tbody>
