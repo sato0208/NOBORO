@@ -1,6 +1,6 @@
     </div>
     <!-- main-visual用のdv -->
-	<div class="main-visual">
+    <div class="main-visual">
 		<div class="main-visual-content">
 			<p class="main-visual-text">
                 クライミングを楽しむ人のために作られました<br>
@@ -32,14 +32,13 @@
             <section class="blog-text">
                 <h3 class="blog-text-headline">
                     <%= link_to gym.gym_name, gym_path(gym.id) %>
-                     <span class="category">
+                    <span class="category">
                     <%= gym.genre.genre_name %>
                 </span>
                 </h3>
                 <p class="blog-date">
                     <%= gym.description %>
                 </p>
-               
             </section>
         </div>
     <% end %>

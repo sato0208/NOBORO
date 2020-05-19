@@ -34,7 +34,7 @@ class BattlesController < ApplicationController
         # 相手の情報を@opponentへ代入
         @opponent = @delete_battle.battler
         # 自分の登れた数と相手の登れた数を比較する 消したバトルの結果
-        result = @delete_battle.my_count_result_by(@opponent)
+        result = @delete_battle.my_count_result_by(current_climber, @opponent)
         # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
         if result == "Win" || result == "Draw"
           create_battle_history(current_climber,@opponent,@delete_battle)
@@ -47,7 +47,7 @@ class BattlesController < ApplicationController
         # 相手の情報を@opponentへ代入
         @opponent = @delete_battle.climber
         # 自分の登れた数と相手の登れた数を比較する 消したバトルの結果
-        result = @delete_battle.my_count_result_by(@opponent)
+        result = @delete_battle.my_count_result_by(current_climber, @opponent)
         # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
         if result == "Win" || result == "Draw"
           create_battle_history(current_climber,@opponent,@delete_battle)
@@ -91,7 +91,7 @@ class BattlesController < ApplicationController
       winner_count: battle.done_task_by(winner),
       loser_id: loser.id,
       loser_count: battle.done_task_by(loser),
-      is_draw_status: battle.my_count_result_by(winner) == "Draw" ? true : false,
+      is_draw_status: battle.my_count_result_by(winner,loser) == "Draw" ? true : false,
       started_at: battle.updated_at,
       finished_at: battle.finish_at
       )

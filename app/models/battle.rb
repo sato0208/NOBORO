@@ -50,12 +50,12 @@ class Battle < ApplicationRecord
 
   # battle.my_count_result_by(user)
   # 勝敗の表示
-  def my_count_result_by(opponent)
-    if self.done_task_by(self) == self.done_task_by(opponent)
+  def my_count_result_by(climber, opponent)
+    if self.done_task_by(climber) == self.done_task_by(opponent)
       result = "Draw"
-    elsif self.done_task_by(self) < self.done_task_by(opponent)
+    elsif self.done_task_by(climber) < self.done_task_by(opponent)
       result = "Lose"
-    else self.done_task_by(self) > self.done_task_by(opponent)
+    else self.done_task_by(climber) > self.done_task_by(opponent)
       result = "Win"
     end
   end
