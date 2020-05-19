@@ -61,6 +61,8 @@
           </h3>
             <% else %>
 
+        <%= render 'battle_now', climber: @climber %>
+
               <% if current_climber.battle_now?(@climber) %>
                 <%= link_to  "申請をやめる", battle_path(@climber.id), method: :delete %>
                 バトルを申込済みです。了承されるまでお待ちください

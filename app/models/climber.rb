@@ -84,4 +84,9 @@ class Climber < ApplicationRecord
     # battle が存在すれば destroy します
     battle.destroy if battle
   end
+
+  def month_done_tasks
+    now = Time.current
+    DoneTask.where(climber_id: self.id,created_at: (now.beginning_of_month)..(now.end_of_month))
+  end
 end

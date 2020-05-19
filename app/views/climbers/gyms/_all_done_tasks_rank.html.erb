@@ -35,6 +35,9 @@
                     <td>
                         <%= rank_done_task.climber.done_tasks.count %>本
                     </td>
+                    <td>
+                        <%= render 'climbers/climbers/battle_now', climber: rank_done_task.climber %>
+                    </td>
                 </tr>
                 <% end %>
             </tbody>

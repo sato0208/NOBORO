@@ -9,6 +9,10 @@ class Climbers::ClimbersController < ApplicationController
     @notifications = current_climber.passive_notifications.page(params[:page]).per(10)
   end
 
+  def index
+    @climbers = Climber.all
+  end
+
   def edit
     @climber = Climber.find(params[:id])
   end

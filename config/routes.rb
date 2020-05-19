@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get 'gyms/rank/:id' => 'gyms#rank', as: :rank
     get 'climbers/trophy/:id' => 'climbers#trophy', as: :trophy
     get 'following_climbers' => 'climbers#following_climbers'
-    resources :climbers, only: [:show, :edit, :update]do
+    resources :climbers, only: [:show, :edit, :update, :index]do
       member do
         get :follower, :following
       end
@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     end
   end
   # urlにclimbersを含めたくないのでわざとscopeから外してます
+  get 'homes/about' => 'homes#about'
   resources :genres, only: [:create, :index, :destroy, :new, :show, :edit, :update]
   resources :grades, only: [:create, :index, :destroy, :edit, :update]
   resources :tasks, only: [:index, :destroy, :show]

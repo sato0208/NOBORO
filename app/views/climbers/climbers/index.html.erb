@@ -1,0 +1,31 @@
+<h1>クライマー一覧ページ</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>名前</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @climbers.each do |climber| %>
+        <tr>
+            <td>
+                <%= attachment_image_tag climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
+            </td>
+            <td>
+                <%= link_to climber_path(climber.id) do %>
+                  <%= climber.name%>
+                <% end %>
+            </td>
+            <td>
+                <%= climber.month_done_tasks.count %>　本
+            </td>
+            <td>
+                <%= render 'battle_now', climber: climber %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

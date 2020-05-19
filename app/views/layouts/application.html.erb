@@ -54,7 +54,7 @@
                         <% if unchecked_notifications.any? %>
                             <i class="fa fa-circle" style="color: red;"></i>
                         <% end %>
-                            <%= link_to " 通知", notifications_path,class:"fas fa-bell" %>
+                        <%= link_to " 通知", notifications_path,class:"fas fa-bell" %>
                     </li>
                     <li>
                         <%= link_to " バトル", battles_path,class:"fas fa-fire" %>
@@ -77,7 +77,7 @@
                         <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
                     </li>
                     <li>
-                        <%= link_to " about", '#',class:"fas fa-cat" %>
+                        <%= link_to " about", homes_about_path,class:"fas fa-cat" %>
                     </li>
                     <li>
                         <%= link_to " 新規登録", new_climber_registration_path,class:"fas fa-door-closed" %>

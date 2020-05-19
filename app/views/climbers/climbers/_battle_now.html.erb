@@ -1,0 +1,18 @@
+<% if current_climber.battle_now?(climber) %>
+  <%= link_to  "申請をやめる", battle_path(climber.id), method: :delete %>
+  バトルを申込済みです。了承されるまでお待ちください
+  <%= form_with method: :delete, model: @update_battle,local: true, url:battle_path(climber.id) do |f| %>
+  <%= hidden_field_tag :battler_id, climber.id %>
+    <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
+      <i class="fas fa-burn"> - バトルを申しこんでいる。押したら取り消しできる様にする</i>
+    <% end %>
+  <% end %>
+<% else %>
+    <p class="heading-p"><!-- カレントユーザーには表示させない -->
+    <%= form_with method: :post, model: @new_battle,local: true, url:battles_path do |f| %>
+      <%= hidden_field_tag :battler_id, climber.id %>
+        <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
+          <i class="fas fa-burn"> バトルを申し込む</i>
+        <% end %>
+    <% end %>
+<% end %>

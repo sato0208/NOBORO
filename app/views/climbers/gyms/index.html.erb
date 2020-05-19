@@ -25,21 +25,21 @@
 	</div>
     <div class="container">
     <!-- ジャンル検索用 -->
-<%= render 'genres', genres: @genres %>
-
-                <% @gyms.each do |gym| %>
-                <div class="blog-item clearfix">
-                <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: "bo2.jpeg" %>
-					<section class="blog-text">
-						<h3 class="blog-text-headline">
-							<%= link_to gym.gym_name, gym_path(gym.id) %>
-						</h3>
-						<p class="blog-date">
-                            <%= gym.description %>
-                        </p>
-						<span class="category">
-                            <%= gym.genre.genre_name %>
-                        </span>
-					</section>
-				</div>
-                <% end %>
+    <%= render 'genres', genres: @genres %>
+    <% @gyms.each do |gym| %>
+        <div class="blog-item clearfix">
+        <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: "bo2.jpeg" %>
+            <section class="blog-text">
+                <h3 class="blog-text-headline">
+                    <%= link_to gym.gym_name, gym_path(gym.id) %>
+                     <span class="category">
+                    <%= gym.genre.genre_name %>
+                </span>
+                </h3>
+                <p class="blog-date">
+                    <%= gym.description %>
+                </p>
+               
+            </section>
+        </div>
+    <% end %>
