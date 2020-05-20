@@ -6,7 +6,7 @@
 .main-visual{
 	width: 100%;/*横幅*/
 	height:500px;/*高さ*/
-	background-image: url('../top2.jpg');
+	background-image: image-url('top2.jpg');
   background-size: cover;/*縦横比率を維持したまま背景領域を埋め尽くす*/
   background-position: center;
 }

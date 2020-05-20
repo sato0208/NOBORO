@@ -37,11 +37,11 @@ class BattlesController < ApplicationController
         result = @delete_battle.my_count_result_by(current_climber, @opponent)
         # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
         if result == "Win" || result == "Draw"
-          current_climber.create_battle_count(current_climber)
+          create_battle_count(current_climber)
           create_battle_history(current_climber,@opponent,@delete_battle)
           # create_battle_history(winner,loser,battle)
         else
-          @opponent.create_battle_count
+          create_battle_count(@opponent)
           create_battle_history(@opponent,current_climber,@delete_battle)
         end
         # カレントユーザが申し込まれた側の場合
@@ -53,9 +53,9 @@ class BattlesController < ApplicationController
         # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
         if result == "Win" || result == "Draw"
           create_battle_history(current_climber,@opponent,@delete_battle)
-          current_climber.create_battle_count(current_climber)
+          create_battle_count(current_climber)
         else
-          @opponent.create_battle_count(@opponent)
+          create_battle_count(@opponent)
           create_battle_history(@opponent,current_climber,@delete_battle)
         end
       end
@@ -107,7 +107,7 @@ class BattlesController < ApplicationController
   end
 
   def create_battle_count(winner)
-    winner.win_count =+ 1
-    winner.update
+    winner.win_count = winner.win_count + 1
+    winner.save
   end
 end
