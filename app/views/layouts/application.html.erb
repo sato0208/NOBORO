@@ -43,7 +43,6 @@
 
                 <!-- クライマーがサインインしている場合 -->
                 <% elsif climber_signed_in? %>
-
                 <ul class="navbar-text navbar-right">
                     <li>
                 <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "head-profile-icon", fallback: "no_image.png", size:'40x40' %>

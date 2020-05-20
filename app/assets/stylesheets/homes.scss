@@ -5,8 +5,9 @@
 
 .top-visual{
 	width: 100%;/*横幅*/
-	height:10000px;/*高さ*/
-  background-image: url('top.jpg');
+  height:10000px;/*高さ*/
+  background-image: image-url('top.jpg');
+  // background-image: url('top.jpg');
   background-attachment: fixed;
   background-size: cover;/*縦横比率を維持したまま背景領域を埋め尽くす*/
   background-position: center;

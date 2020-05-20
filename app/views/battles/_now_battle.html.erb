@@ -69,12 +69,10 @@
                             <% end %>
                         </td>
                         <td>
-                            <%= link_to done_tasks_path do %>
-                                <%= rival_count = battle.done_task_by(battle.battler) %><% end %> count
+                                <%= rival_count = battle.done_task_by(battle.battler) %> count
                         </td>
                         <td>
-                            <%= link_to done_tasks_path do %>
-                                <%= my_count = battle.done_task_by(current_climber) %><% end %> count(自分が申し込んだ側)
+                                <%= my_count = battle.done_task_by(current_climber) %> count(自分が申し込んだ側)
                         </td>
                     <% end %>
 
