@@ -1,4 +1,10 @@
 class Climbers::ClimbersController < ApplicationController
+
+# authenticate_user！でログイン認証されてない場合home画面へリダイレクトとする
+	before_action :authenticate_climber!
+	# カレントユーザーだけしかedit,update,destroyアクションは使えない。
+	# before_action :ensure_correct_climber, {only: [:edit, :update]}
+
   def show
     @climber = Climber.find(params[:id])
     now = Time.current

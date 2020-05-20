@@ -35,13 +35,6 @@
 	padding:70px 0;/*上下に70px、左右に0pの内側余白*/
 }
 
-.kv-title {
-  font-size: 96px;
-  font-weight: 900;
-  line-height: 1.2;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-}
 
 .kv-description, .kv-title {
   font-family: Prompt,sans-serif;
@@ -49,17 +42,12 @@
   font-weight: 700;
 }
 
-.l-kv .tx-mask {
-  overflow: hidden;
-}
 .l-kv .tx-mask, .l-kv .tx-mask span {
   display: block;
   font-style: normal;
   color: #72BC46;
 }
 
-
-
 .kv-title {
   font-size: 96px;
   font-weight: 900;
@@ -74,9 +62,6 @@
   font-weight: 700;
 }
 
-.l-kv .tx-mask {
-  overflow: hidden;
-}
 .l-kv .tx-mask, .l-kv .tx-mask span {
   display: block;
   font-style: normal;
@@ -94,8 +79,6 @@
 .kv-description {
   -webkit-transform: scale(.8);
   transform: scale(.8);
-}
-.kv-description {
   font-size: 10px;
   font-weight: 200;
   line-height: 3;
@@ -118,8 +101,6 @@
     z-index: 1;
     padding-bottom: 24px;
     margin-bottom: 64px;
-}
-.c-topTitle {
     font-family: Prompt,sans-serif;
     font-style: normal;
     text-transform: uppercase;
@@ -129,8 +110,6 @@
 }
 .c-topTitle b {
   margin-bottom: 8px;
-}
-.c-topTitle b {
   font-size: 66px;
   line-height: 1.38;
   letter-spacing: .24em;
@@ -142,7 +121,7 @@
 .l-intro>* {
   position: relative;
 }
-  .l-intro .lead {
+.l-intro .lead {
     font-size: 16px;
     line-height: 2.5;
     letter-spacing: .32em;
@@ -161,11 +140,8 @@
   letter-spacing: inherit;
 }
 
-
 .l-intro .copy {
     margin: .8em 0 1em;
-}
-.l-intro .copy {
     font-size: 42px;
     font-weight: 700;
     letter-spacing: .24em;

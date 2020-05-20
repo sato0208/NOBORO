@@ -54,26 +54,15 @@ body {
 
 div {
     display: block;
-    }
+}
 
-    .logo{
-        width: 190px;
-        height: 60px;
-        margin-left: 35%;
-      }
-.container {
-        margin-right: auto;
-        margin-left: auto;
-        padding-left: 50px;
-        padding-right: 50px;
-    }
 p {
-        display: block;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-    }
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
 h2, .h2 {
         margin-bottom: 20px;
 }
@@ -93,16 +82,27 @@ header a{
     margin: 0,auto;
 }
 
+
+.logo{
+    width: 190px;
+    height: 60px;
+    margin-left: 35%;
+    }
+.container {
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
 .mark {
     background-color: #72BC46;
-  }
-  
-  
-  .kv-copy a:hover {
-    color: whitesmoke;
-  }
-  
 
+}
+
+.kv-copy a:hover {
+    color: whitesmoke;
+}
 
 header a:hover {
     color: #9d9d9d;
@@ -112,21 +112,22 @@ header a:hover {
 }
 
 header li {
-  display: inline-block;
-  padding: 0 30px 0 0;
-  color: #fff;
-  font-family: 'Glyphicons Halflings';
-  }
-  header span{
+    display: inline-block;
+    padding: 0 30px 0 0;
+    color: #fff;
+    font-family: 'Glyphicons Halflings';
+}
+header span{
     font-size: 20px;
     display: inline-block;
     // padding: 15px 15px;
     color: #fff;
-    }
-    .navbar {
-        margin-bottom: 0;
-        border-radius: 0;
-    }
+}
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
 .navbar-inverse {
         background-color: #3e3e3e;
         border-color: #090909;
@@ -146,78 +147,7 @@ footer {
 p .copyright{
         font-size: 16px;
         color: #FAFAFA;
-    }
-
-    
-
-
-
-// #signup-form, #login-form {
-//     width: 100%;
-//   }
-
-// // ここからモーダル
-//   .login-modal-wrapper {
-//     position: fixed;
-//     top: 0;
-//     right: 0;
-//     bottom: 0;
-//     left: 0;
-//     background-color: rgba(0, 0, 0, 0.6);
-//     z-index: 100;
-//     /* display: none;を追加してください */
-//     display: none;
-//   }
-  
-//   .modal {
-//     position: absolute;
-//     top: 20%;
-//     left: 34%;
-//     background-color: #e6ecf0;
-//     padding: 20px 0 40px;
-//     border-radius: 10px;
-//     width: 450px;
-//     height: auto;
-//     text-align: center;
-//   }
-  
-//   .fa-times {
-//     position: absolute;
-//     top: 12px;
-//     right: 12px;
-//     color: rgba(128, 128, 128, 0.46);
-//     cursor: pointer;
-//   }
-  
-//   #signup-form, #login-form {
-//     width: 100%;
-//   }
-  
-//   #signup-form h2, #login-form h2 {
-//     color: #5f5d60;
-//     letter-spacing: 1px;
-//     margin-bottom: 40px;
-//   }
-  
-//   #signup-form input, #login-form input {
-//     width: 320px;
-//     margin-bottom: 20px;
-//     font-size: 12px;
-//     padding: 12px 12px;
-//     border: 1px solid #d0d5d8;
-//     border-radius: 5px;
-//   }
-  
-//   #submit-btn {
-//     display: inline-block;
-//     padding: 14px 140px;
-//     background-color: #5dca88;
-//     border: none;
-//     border-radius: 3px;
-//     color: blue;
-//     margin: 10px auto;
-//     cursor: pointer;
-//   }
+}
 
 // トロフィー一覧ページ
 .strength {
@@ -264,7 +194,7 @@ h3.feature-title{
     margin: 0 auto;
     border-radius: 50%;
     float: left;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .profile-icon {
@@ -275,6 +205,14 @@ h3.feature-title{
     float: left;
     margin: 0 auto;
 
+}
+
+.head-profile-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    border-radius: 50%;
+    float: left;
 }
 
 .heading{
@@ -383,21 +321,21 @@ h1 {
     padding: 0;
     box-sizing: border-box;
   }
-   
+
   h1{
     text-align: center;
     margin: 50px 0 40px 0;
   }
-   
-  .box{
+
+.box{
     height: 300px;
     width: 90%;
     max-width: 600px;
     margin: 0 auto 50px;
     background-color: #eee;
-  }
+}
 
-  .content {
+.content {
     background-color: #fff;
     width: 600px;
     margin: 0px auto;
@@ -412,7 +350,6 @@ input {
     padding: 5px;
     margin-top: 10px;
 }
-
 
 .control {
     margin-bottom: 1em;

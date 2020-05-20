@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'climbers/gyms#index'
+  get 'homes/about' => 'homes#about'
 
   devise_for :gyms, controllers: {
     sessions: 'gyms/sessions',

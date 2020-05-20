@@ -43,9 +43,12 @@
 
                 <!-- クライマーがサインインしている場合 -->
                 <% elsif climber_signed_in? %>
+
                 <ul class="navbar-text navbar-right">
                     <li>
-                        <%= link_to " マイページ", climber_path(current_climber.id),class:"fas fa-dove"%>
+                <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "head-profile-icon", fallback: "no_image.png", size:'40x40' %>
+
+                        <%= link_to " マイページ", climber_path(current_climber.id)%>
                     </li>
                     <li>
                         <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
@@ -99,7 +102,7 @@
                     <%= alert %>
                 </div>
             <% end %>
-                <%= yield %>
+            <%= yield %>
         </div>
         <footer class="fixed-bottom">
 
