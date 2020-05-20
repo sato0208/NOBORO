@@ -1,3 +1,186 @@
 // Place all the styles related to the Homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.top-visual{
+	width: 100%;/*横幅*/
+	height:10000px;/*高さ*/
+  background-image: url('top.jpg');
+  background-attachment: fixed;
+  background-size: cover;/*縦横比率を維持したまま背景領域を埋め尽くす*/
+  background-position: center;
+}
+
+.top-visual-content{
+	width:100%;
+  height:750px;
+  text-align: center;/*文字を中央揃えにする*/
+	background-color: rgba(0,0,0,0.5);/*背景色を半透明の黒にする*/
+	padding-top:105px;/*上側の内側余白で垂直方向の位置を調整*/
+}
+
+.main-visual-text{
+	color:#fff;/*文字色を白に変更*/
+}
+
+.main-visual-name{
+	margin-top:30px;/*上側の外側の余白*/
+	color: #fff;/*文字色を白に変更*/
+}
+
+.main{
+	width: 800px;
+	margin: 0 auto;/*領域を中央揃え*/
+	padding:70px 0;/*上下に70px、左右に0pの内側余白*/
+}
+
+.kv-title {
+  font-size: 96px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+
+.kv-description, .kv-title {
+  font-family: Prompt,sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.l-kv .tx-mask {
+  overflow: hidden;
+}
+.l-kv .tx-mask, .l-kv .tx-mask span {
+  display: block;
+  font-style: normal;
+  color: #72BC46;
+}
+
+
+
+.kv-title {
+  font-size: 96px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: #72BC46;
+}
+.kv-description, .kv-title {
+  font-family: Prompt,sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.l-kv .tx-mask {
+  overflow: hidden;
+}
+.l-kv .tx-mask, .l-kv .tx-mask span {
+  display: block;
+  font-style: normal;
+}
+
+.kv-copy {
+  font-family: "Noto Sans Japanese",sans-serif;
+  font-size: 18px;
+  font-weight: 200;
+  font-weight: 400;
+  color: #72BC46;
+  letter-spacing: .5em;
+}
+
+.kv-description {
+  -webkit-transform: scale(.8);
+  transform: scale(.8);
+}
+.kv-description {
+  font-size: 10px;
+  font-weight: 200;
+  line-height: 3;
+  margin:0,auto;
+  color: #72BC46;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+.kv-description, .kv-title {
+  font-family: Prompt,sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.l-intro>* {
+    position: relative;
+}
+.c-topTitle {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 24px;
+    margin-bottom: 64px;
+}
+.c-topTitle {
+    font-family: Prompt,sans-serif;
+    font-style: normal;
+    text-transform: uppercase;
+}
+.l-intro .wrap {
+  overflow: hidden;
+}
+.c-topTitle b {
+  margin-bottom: 8px;
+}
+.c-topTitle b {
+  font-size: 66px;
+  line-height: 1.38;
+  letter-spacing: .24em;
+}
+
+.l-txtContainer:not([style]) {
+  z-index: 1;
+}
+.l-intro>* {
+  position: relative;
+}
+  .l-intro .lead {
+    font-size: 16px;
+    line-height: 2.5;
+    letter-spacing: .32em;
+}
+.l-main * {
+    box-sizing: border-box;
+}
+
+.l-intro .lead span {
+  display: block;
+}
+.l-intro .wrap {
+  overflow: hidden;
+}
+.l-intro .lead * {
+  letter-spacing: inherit;
+}
+
+
+.l-intro .copy {
+    margin: .8em 0 1em;
+}
+.l-intro .copy {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: .24em;
+}
+
+.l-intro .txt {
+  font-size: 14px;
+  line-height: 3;
+  letter-spacing: .16em;
+  color: floralwhite;
+}
+
+.l-txtContainer:not([style]) {
+  z-index: 1;
+}
+.l-intro>* {
+  position: relative;
+}

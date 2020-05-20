@@ -40,7 +40,7 @@
 
 html {
     font-size: 10px;
-    font-family: sans-serif;
+    font-family: Prompt,sans-serif;
 }
 
 body {
@@ -61,7 +61,6 @@ div {
         height: 60px;
         margin-left: 35%;
       }
-
 .container {
         margin-right: auto;
         margin-left: auto;
@@ -93,6 +92,16 @@ header a{
     color: #fff;
     margin: 0,auto;
 }
+
+.mark {
+    background-color: #72BC46;
+  }
+  
+  
+  .kv-copy a:hover {
+    color: whitesmoke;
+  }
+  
 
 
 header a:hover {
@@ -391,7 +400,7 @@ h1 {
   .content {
     background-color: #fff;
     width: 600px;
-    margin: 100px auto;
+    margin: 0px auto;
     border: 1px solid #d1d1d1;
     padding: 30px;
 }
@@ -545,7 +554,7 @@ input[type="file"] {
   margin-left: 20px;
   margin-top: 5px;
   font-size: 60px;
-}
+} 
 
 
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */

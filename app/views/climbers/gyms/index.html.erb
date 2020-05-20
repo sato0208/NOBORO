@@ -1,29 +1,29 @@
-    </div>
-    <!-- main-visual用のdv -->
-    <div class="main-visual">
-		<div class="main-visual-content">
-			<p class="main-visual-text">
-                クライミングを楽しむ人のために作られました<br>
-                お気に入りジムを登録して、お知らせを受け取ろう。<br>
-                一人でも楽しめるけど、ライバルがいた方がずっと楽しい<br>
-                ランキングは毎月更新！上位を目指そう！<br>
-                登れた課題のグレードごとにトロフィーがもらえるぞ！<br>
-                いっぱい集めよう！<br>
-			</p>
-            <div class="search-form">
-                <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
-                    <%= f.text_field :gym_name,{placeholder: "ジムを検索"} %>
-                    <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
-                        <i class="fa fa-search"></i>
+        </div>
+        <!-- main-visual用のdv -->
+        <div class="main-visual">
+            <div class="main-visual-content">
+                <p class="main-visual-text">
+                    クライミングを楽しむ人のために作られました<br>
+                    お気に入りジムを登録して、お知らせを受け取ろう。<br>
+                    一人でも楽しめるけど、ライバルがいた方がずっと楽しい<br>
+                    ランキングは毎月更新！上位を目指そう！<br>
+                    登れた課題のグレードごとにトロフィーがもらえるぞ！<br>
+                    いっぱい集めよう！<br>
+                </p>
+                <div class="search-form">
+                    <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
+                        <%= f.text_field :gym_name,{placeholder: "ジムを検索"} %>
+                        <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
+                            <i class="fa fa-search"></i>
+                        <% end %>
                     <% end %>
-                <% end %>
+                </div>
+                <p class="main-visual-name">
+                    St. NOBORO
+                </p>
             </div>
-			<p class="main-visual-name">
-				St. NOBORO
-			</p>
-		</div>
-	</div>
-    <div class="container">
+        </div>
+        <div class="container">
     <!-- ジャンル検索用 -->
     <%= render 'genres', genres: @genres %>
     <% @gyms.each do |gym| %>
