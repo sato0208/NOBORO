@@ -28,7 +28,15 @@
             <td>
             <% if battle_history.is_draw_status == false %>
             win
+            <% else%>
+            引き分け
             <% end %>
+            
+            
+            <% battle_history.result_battle_is_win %>
+
+
+
             </td>
             <td>
               <%= link_to climber_path(battle_history.winner.id) do %>
@@ -44,7 +52,9 @@
             <td>
               <% if battle_history.is_draw_status == false %>
                 lose
-              <% end %>
+               <% else%>
+            引き分け
+            <% end %>
             </td>
             <td>
               <%= link_to climber_path(battle_history.loser.id) do %>
