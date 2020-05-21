@@ -9,6 +9,4 @@ class BattleHistory < ApplicationRecord
       p = '引き分け'
     end
   end
-
-
 end
