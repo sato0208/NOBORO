@@ -21,10 +21,16 @@
             <td><%= battle_history.started_at.strftime("%Y/%m/%d") %></td>
             <td><%= battle_history.finished_at.strftime("%Y/%m/%d") %></td>
             <td>
-            <%= link_to climber_path(battle_history.winner.id) do %>
-              <%= attachment_image_tag battle_history.winner, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %>
-            <% end %></td>
-            <td>win 
+              <%= link_to climber_path(battle_history.winner.id) do %>
+                <%= attachment_image_tag battle_history.winner, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %>
+              <% end %>
+            </td>
+            <td>
+            <% if battle_history.is_draw_status == false %>
+            win
+            <% end %>
+            </td>
+            <td>
               <%= link_to climber_path(battle_history.winner.id) do %>
                 <%= battle_history.winner.name%>
               <% end %>
@@ -35,14 +41,21 @@
                 <%= attachment_image_tag battle_history.loser, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %>
               <% end %>
             </td>
-            <td>lose 
+            <td>
+              <% if battle_history.is_draw_status == false %>
+                lose
+              <% end %>
+            </td>
+            <td>
               <%= link_to climber_path(battle_history.loser.id) do %>
                 <%= battle_history.loser.name%>
               <% end %>
             </td>
             <td><%= battle_history.loser_count%>本</td>
-            <td><%= battle_history.is_draw_status %>
         </tr>
         <% end %>
     </tbody>
 </table>
+<div class="centering_item">
+  <%= paginate battle_historys %>
+</div>

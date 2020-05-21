@@ -1,9 +1,5 @@
 class BattleHistorysController < ApplicationController
   def index
-    @battle_historys = BattleHistory
-    .where(winner_id: current_climber.id)
-    .or(BattleHistory
-    .where(loser_id: current_climber.id))
   end
 
   def create

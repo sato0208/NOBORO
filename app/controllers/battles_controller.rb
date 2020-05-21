@@ -26,6 +26,7 @@ class BattlesController < ApplicationController
 
   def destroy
     # binding.pry
+    # @cancel_battler = Climber.find(params[:battler_id])
     @delete_battle = Battle.find(params[:id])
     # @delete_battle.battler
     if params[:battle].present?
@@ -80,7 +81,7 @@ class BattlesController < ApplicationController
     @battle_historys = BattleHistory
     .where(winner_id: current_climber.id)
     .or(BattleHistory
-    .where(loser_id: current_climber.id))
+    .where(loser_id: current_climber.id)).page(params[:page]).per(6)
   end
 
   private

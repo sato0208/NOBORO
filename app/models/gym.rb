@@ -10,6 +10,8 @@ class Gym < ApplicationRecord
   belongs_to :genre
   has_many :favorites, dependent: :destroy
 
+  validates :gym_name, presence: true
+
   # お気に入り登録しているか判定
   def favorite_by?(climber)
     favorites.where(climber_id: climber.id).exists?

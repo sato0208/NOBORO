@@ -20,8 +20,8 @@
         </tr>
     </thead>
     <tbody>
-        <% rank = 1 %>
-        <% battles.each do |battle| %>
+    <% rank = 1 %>
+    <% battles.each do |battle| %>
         <%# バトルがある時のみ通す %>
         <% if battle.present? && battle.battler.present? %>
             <tr>
@@ -42,13 +42,13 @@
                     <%= link_to  "申請をやめる", battle_path(battle.id), method: :delete %>
                 </td>
             </tr>
-          <% else %>
+        <% else %>
             <tr>
                 <td>
-                    <%# <%= battle.updated_at.strftime("%Y-%m-%d %H:%M") %> %>
                 </td>
             </tr>
-          <% end %>
         <% end %>
+    <% end %>
     </tbody>
 </table>
+

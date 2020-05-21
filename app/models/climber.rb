@@ -26,7 +26,6 @@ class Climber < ApplicationRecord
   # 挑んでいる
   has_many :battlwings, through: :battlers, source: :battler
 
-
   # 通知機能
   #  送る側
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
@@ -40,6 +39,9 @@ class Climber < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :climber
   # フォローしてる数
   has_many :followings, through: :relationships, source: :follow
+
+  validates :name, presence: true
+  validates :introduction, length:{ maximum: 30}
 
   def follow(other_climber)
     # フォローしようとしている other_climber が自分自身ではないかを検証
