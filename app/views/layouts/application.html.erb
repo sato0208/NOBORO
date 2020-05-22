@@ -54,9 +54,12 @@
                     </li>
                     <li>
                         <% if unchecked_notifications.any? %>
+                        <%= link_to " 通知 ", notifications_path,class:"fas fa-bell" %>
                             <i class="fa fa-circle" style="color: red;"></i>
-                        <% end %>
+                        <li class="fa-layers-counter"><%= current_climber.battlwings.count %>件</li>
+                        <% else %>
                         <%= link_to " 通知", notifications_path,class:"fas fa-bell" %>
+                        <% end %>
                     </li>
                     <li>
                         <%= link_to " バトル", battles_path,class:"fas fa-fire" %>
@@ -138,6 +141,7 @@
 			<i class="fab fa-twitter"></i></a>
 			<a href="#">
 			<i class="fab fa-instagram-square"></i></a>
+            <p><i class="fab fa-twitter"></i></p>
 			</div>
 		</div>
 	</div>

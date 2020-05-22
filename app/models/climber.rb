@@ -21,9 +21,9 @@ class Climber < ApplicationRecord
   has_many :battles, class_name: 'Battle', foreign_key: 'climber_id'
   #  挑まれる側
   has_many :battlers, class_name: 'Battle', foreign_key: 'battler_id'
-  # 挑まれているいる
-  has_many :battlwers, through: :battles, source: :climber
   # 挑んでいる
+  has_many :battlwers, through: :battles, source: :climber
+  # 挑まれている
   has_many :battlwings, through: :battlers, source: :battler
 
   # 通知機能

@@ -5,13 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Genre.create!(
-  [
-    {
-      genre_name: '初心者歓迎'
-    }
-  ]
-)
+# Genre.create!(
+#   [
+#     {
+#       genre_name: '初心者歓迎'
+#     },
+#     {
+#       genre_name: 'リード壁あり'
+#     },
+#     {
+#       genre_name: '親子で登れる'
+#     },
+#     {
+#       genre_name: '女性歓迎'
+#     },
+#     {
+#       genre_name: 'コンペ課題あり'
+#     },
+#     {
+#       genre_name: '駅から徒歩5分'
+#     },
+#   ]
+# )
+
 # Gym.create!(
 #   [
 #     {

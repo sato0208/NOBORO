@@ -28,6 +28,7 @@ class BattlesController < ApplicationController
     # binding.pry
     # @cancel_battler = Climber.find(params[:battler_id])
     @delete_battle = Battle.find(params[:id])
+    ＠unbattle = Battle.find_by(battler_id: @climber)
     # @delete_battle.battler
     if params[:battle].present?
         # カレントユーザが申し込んだ側の場合
@@ -108,7 +109,11 @@ class BattlesController < ApplicationController
   end
 
   def create_battle_count(winner)
-    winner.win_count = winner.win_count + 1
+    if winner.win_count == nil
+      winner.win_count = 1
+    else
+      winner.win_count = winner.win_count + 1
+    end
     winner.save
   end
 end
