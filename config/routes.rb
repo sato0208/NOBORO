@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :gyms, only: [:edit, :update, :show]
     resources :genres, only: [:create, :index, :destroy, :new, :show, :edit, :update]
     resources :grades, only: [:create, :index, :destroy, :edit, :update]
-    resources :tasks, only: [:create, :index, :destroy, :new, :show, :edit, :update]
+    resources :tasks, only: [:create, :index, :destroy, :edit, :update]
     resources :infos, only: [:create, :index, :destroy]
     resources :done_tasks, only: [:index]
   end

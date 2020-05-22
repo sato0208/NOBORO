@@ -30,8 +30,11 @@ class Climbers::ClimbersController < ApplicationController
 
   def update
     @climber = Climber.find(params[:id])
-    @climber.update(climber_params)
-    redirect_to climber_path(@climber), notice: 'プロフィールをupdateしました！'
+    if @climber.update(climber_params)
+      redirect_to climber_path(@climber), notice: 'プロフィールをupdateしました！'
+    else
+      redirect_to request.referer
+    end
   end
 
   # フォローしている人

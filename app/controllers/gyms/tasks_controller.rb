@@ -20,9 +20,6 @@ class Gyms::TasksController < ApplicationController
     end
   end
 
-  def new
-  end
-
   def edit
     @task = Task.find(params[:id])
     @genres = Genre.all

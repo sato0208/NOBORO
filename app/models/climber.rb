@@ -40,7 +40,7 @@ class Climber < ApplicationRecord
   # フォローしてる数
   has_many :followings, through: :relationships, source: :follow
 
-  validates :name, presence: true
+  validates :name, presence: true, length: {maximum: 10, minimum: 2}
   validates :introduction, length:{ maximum: 30}
 
   def follow(other_climber)

@@ -9,8 +9,7 @@ class Gym < ApplicationRecord
   has_many :infos, dependent: :destroy
   belongs_to :genre
   has_many :favorites, dependent: :destroy
-
-  validates :gym_name, presence: true
+  validates :gym_name, presence: true 
 
   # お気に入り登録しているか判定
   def favorite_by?(climber)

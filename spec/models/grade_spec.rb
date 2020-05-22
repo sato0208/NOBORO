@@ -1,5 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Grade, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+  RSpec.describe 'Gradeモデルのテスト', type: :model do
+    describe 'アソシエーションのテスト' do
+      context 'Taskモデルとの関係' do
+        it '1:Nとなっている' do
+          expect(Grade.reflect_on_association(:tasks).macro).to eq :has_many
+        end
+      end
+    end
+  end

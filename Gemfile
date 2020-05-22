@@ -46,6 +46,11 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-puma'
   gem 'capistrano-rbenv'
+  gem 'capybara', '>= 2.15'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
@@ -70,7 +75,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
-gem 'rspec-rails'
 gem 'font-awesome-sass'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
