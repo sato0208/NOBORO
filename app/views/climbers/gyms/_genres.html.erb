@@ -2,7 +2,7 @@
 <% genres.each do |genre| %>
     <div class="strength">
       <%= link_to gyms_path(genre_id: genre.id) do %>
-        <%= attachment_image_tag genre, :genre_image, size: '160x160',format: "jpeg",fallback: asset_path("ira13.png") %>
+        <%= attachment_image_tag genre, :genre_image, size: '160x160',format: "jpeg",fallback: "ira13.png" %>
       <% end %>
       <h3 class="feature-title"><%= genre.genre_name %></h3>
       <p class="heading-p"></p>

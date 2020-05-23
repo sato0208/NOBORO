@@ -28,7 +28,7 @@
     <%= render 'genres', genres: @genres %>
     <% @gyms.each do |gym| %>
         <div class="blog-item clearfix">
-        <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: asset_path("bo2.jpeg") %>
+        <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: "bo2.jpeg" %>
             <section class="blog-text">
                 <h3 class="blog-text-headline">
                     <%= link_to gym.gym_name, gym_path(gym.id) %>
