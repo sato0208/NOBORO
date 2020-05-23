@@ -1,5 +1,8 @@
 class HomesController < ApplicationController
   def about
+  end
+
+  def top
     @array_copy = [
       "不可能なことは何もない", #不思議の国のアリス
       "世界は遊び場", #yesマン
@@ -20,7 +23,11 @@ class HomesController < ApplicationController
       "持てるチカラを すべて出せ！", #スクールオブロック
       "さあゲームを始めよう", #saw
       "Some people are worth melting for.", #アナと雪の女王
-      "人の価値は行動で決まる" #バットマンビギンズ
+      "人の価値は行動で決まる", #バットマンビギンズ
+      "私たちが行くところに道なんて必要ないさ", #BTF
+      "諦めるな 一度諦めたらそれが習慣となる", #頑張れベアーズ
+      "Don't think, feel", #燃えよドラゴン
+      "最後に自分の心に素直になったのはいつ？", #アラジン
     ]
   end
 end

@@ -14,7 +14,7 @@ class Climbers::ClimbersController < ApplicationController
     # passive_notifications = 送られる側 visited_id
     @notifications = current_climber.passive_notifications.page(params[:page]).per(10)
     # battleのidを渡す
-    ＠unbattle = Battle.find_by(battler_id: @climber)
+    ＠unbattle = Battle.find_by(battler_id: @climber.id)
     # # part2
     # @targetClimber = Climber.find(2)
     # Climber.unfollow(@targetClimber)

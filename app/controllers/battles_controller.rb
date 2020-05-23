@@ -28,7 +28,6 @@ class BattlesController < ApplicationController
     # binding.pry
     # @cancel_battler = Climber.find(params[:battler_id])
     @delete_battle = Battle.find(params[:id])
-    ＠unbattle = Battle.find_by(battler_id: @climber)
     # @delete_battle.battler
     if params[:battle].present?
         # カレントユーザが申し込んだ側の場合
