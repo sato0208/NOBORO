@@ -4,7 +4,7 @@
 <%= link_to "<< ランキングページへ", done_tasks_path %>
 <div class="row">
  <%= link_to climber_path(current_climber.id) do %>
-  <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: "no_image.png", size:'40x40' %>
+  <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
   <h3>
     <%= current_climber.name %>
   </h3>

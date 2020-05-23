@@ -45,7 +45,7 @@
                 <% elsif climber_signed_in? %>
                 <ul class="navbar-text navbar-right">
                     <li>
-                <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "head-profile-icon", fallback: "no_image.png", size:'40x40' %>
+                <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "head-profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
 
                         <%= link_to " マイページ", climber_path(current_climber.id)%>
                     </li>
@@ -110,53 +110,6 @@
             <%= yield %>
         </div>
         <footer class="fixed-bottom">
-
-
-        			<!-- ここからコンタクト -->
-	<div class="contact">
-		<div id="contact"></div>
-		<div class="contact-group">
-
-
-			<div class="headcontainer">
-			<h2 class="heading">Contact</h2>
-			<div class="ander"></div>
-			<p class="heading-p">It is a long established fact that a reader will be distracted by the readable<br>
-			content of a page when looking at its layout. The point of using Lorem Ipsum is that it has<br>
-			a more-or-less normal distribution of letters</p>
-			</div>
-			</div>
-
-		<div class="container clearfix">
-			<div class="contact-left">
-			<h3 class="feature-title">Mail</h3>
-			<a class="heading-p" href="mailto:user@dammy.com">xxx@xxx.com</a>
-			<h3 class="feature-title">Tell</h3>
-			<a class="heading-p" href="tel:">000-0000-0000</a>
-			</div>
-
-		<div class="contact-right">
-			<h2 class="feature-title">SNS</h2>
-			<div class="social">
-			<a href="#">
-			<i class="fab fa-facebook-square"></i></a>
-			<a href="#">
-			<i class="fab fa-twitter"></i></a>
-			<a href="#">
-			<i class="fab fa-instagram-square"></i></a>
-            <p><i class="fab fa-twitter"></i></p>
-			</div>
-		</div>
-	</div>
-
-		</div>
-		</div>
-		</div>
-	</div>
-	<!-- ここまでコンタクト -->
-
-
-
             <p class="copyright">©︎ 2020 NOBORO</p>
         </footer>
     </body>

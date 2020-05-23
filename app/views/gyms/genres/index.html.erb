@@ -32,7 +32,7 @@
                 </td>
 
                 <td>
-                    <%= attachment_image_tag genre, :genre_image, size: '100x100',format: "jpeg",fallback: "ira13.png" %>
+                    <%= attachment_image_tag genre, :genre_image, size: '100x100',format: "jpeg",fallback: asset_path("ira13.png") %>
                 </td>
                 <td>
                     <%= link_to "編集する", edit_gyms_genre_path(genre.id) ,class: "btn btn-primary"%>

@@ -3,7 +3,7 @@
     <% @climbers.each do |climber| %>
         <div class="col-sm-1">
             <%= link_to climber_path(climber.id) do %>
-                <%= attachment_image_tag climber, :profile_image,format: 'jpeg', class: "profile-icon", fallback: "no_image.png" %>
+                <%= attachment_image_tag climber, :profile_image,format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png") %>
         </div>
         <div class="col-sm-5">
                 <%= climber.name %>

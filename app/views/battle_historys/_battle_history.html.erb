@@ -30,7 +30,7 @@
             <td><%= battle_history.finished_at.strftime("%Y/%m/%d") %></td>
             <td>
               <%= link_to climber_path(battle_history.winner.id) do %>
-                <%= attachment_image_tag battle_history.winner, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %>
+                <%= attachment_image_tag battle_history.winner, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: asset_path("no_image.png") %>
               <% end %>
             </td>
             <td>
@@ -49,7 +49,7 @@
             <td><%= battle_history.winner_count%>本</td>
             <td>
               <%= link_to climber_path(battle_history.loser.id) do %>
-                <%= attachment_image_tag battle_history.loser, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: "no_image.png" %>
+                <%= attachment_image_tag battle_history.loser, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: asset_path("no_image.png") %>
               <% end %>
             </td>
             <td>

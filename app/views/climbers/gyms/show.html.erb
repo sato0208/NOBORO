@@ -10,7 +10,7 @@
          <h4 class="modal-title">トロフィーを獲得しました</h4>
        </div>
        <div class="modal-body">
-         <%= attachment_image_tag @new_trophy, :my_trophy_image, :fill, 50, 50, format: 'jpeg', class: "pull-left profile-img", fallback: "bo2.jpeg", size:'50x50' %>
+         <%= attachment_image_tag @new_trophy, :my_trophy_image, :fill, 50, 50, format: 'jpeg', class: "pull-left profile-img", fallback: asset_path("bo2.jpeg"), size:'50x50' %>
          <br>
          <p>笑顔でボルダリングする女<%= image_tag 'new1.png' %></p>
        </div>
@@ -20,7 +20,7 @@
 
 
 <div class="description">
-<%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "bo2.jpeg", size:'400x300' %>
+<%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: asset_path("bo2.jpeg"), size:'400x300' %>
 <div class="prof-vi">
         <h2 class="feature-title">
             <%= @gym.gym_name %>

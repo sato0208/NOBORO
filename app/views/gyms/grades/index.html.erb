@@ -34,7 +34,7 @@
         <% @grades.each do |grade| %>
         <tr>
           <td><%= grade.grade %></td>
-          <td><%= attachment_image_tag grade, :trophy_image, size: '100x100',format: "jpeg",fallback: "ira13.png" %></td>
+          <td><%= attachment_image_tag grade, :trophy_image, size: '100x100',format: "jpeg",fallback: asset_path("ira13.png") %></td>
           <td><%= grade.trophy_name %></td>
 
           <td><%= link_to "編集する", edit_gyms_grade_path(grade.id) ,class: "btn btn-primary"%></td>
