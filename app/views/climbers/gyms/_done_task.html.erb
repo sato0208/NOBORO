@@ -1,6 +1,6 @@
 <% if task.achieved?(current_climber)%>
     <!-- done_taskテーブルから削除する -->
-    <%= form_with method: :delete, model: delete_done_task, url:done_task_path(delete_done_task), remote: true do |f| %>
+    <%= form_with method: :delete, model: delete_done_task, url: done_task_path(delete_done_task), remote: true do |f| %>
       <!-- done_taskにcrrent_climberのidとdone_taskのclimber_idに同じものがある場合。（登録済みの場合） -->
       <!-- @task.idをtask_idとして送る -->
       <%= f.hidden_field :task_id, value: task.id %>
@@ -20,4 +20,7 @@
       <i class="far fa-circle" aria-hidden="true"></i>
     <% end %>
   <% end %>
+<% end %>
+<%= link_to task_path(task.id) do %>
+  <%= task.task_name %>
 <% end %>

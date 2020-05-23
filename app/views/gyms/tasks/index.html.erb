@@ -14,7 +14,7 @@
         <%= f.text_field :task_name %>
 
         <th>グレード</th>
-        <td><%= f.collection_select :grade_id, @grades, :id, :grade %></td>
+        <td><%= f.collection_select :grade_id, @grades_all, :id, :grade %></td>
       <%= f.submit "追加", class: "btn btn-primary" %>
       </div>
     <% end %>
@@ -29,12 +29,15 @@
       </thead>
 
       <tbody>
-        <% @tasks.each do |task| %>
+        <% @grades_all.each do |grade| %>
         <tr>
-          <td><%= task.task_name %></td>
-          <td><%= task.grade.grade %></td>
-          <td><%= link_to "編集する", edit_gyms_task_path(task.id) ,class: "btn btn-primary"%></td>
-          <td><%= link_to "Destroy", gyms_task_path(task.id), method: :delete , class: "btn btn-danger" %></td>
+          <td><%= grade.grade%></td>
+            <% gym_tasks = grade.tasks.where(gym_id: current_gym.id ) %>
+            <% gym_tasks.each do |task| %>
+              <td><%= task.task_name %></td>
+              <td><%= link_to "編集する", edit_gyms_task_path(task.id) ,class: "btn btn-primary"%></td>
+              <td><%= link_to "Destroy", gyms_task_path(task.id), method: :delete , class: "btn btn-danger" %></td>
+            <% end %>
         </tr>
         <% end %>
       </tbody>

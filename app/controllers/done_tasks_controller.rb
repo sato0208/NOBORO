@@ -20,6 +20,7 @@ class DoneTasksController < ApplicationController
   def create
     # あとでリファクタリングする。モデルに記述して短くする
     @new_done_task = DoneTask.new(done_task_params)
+    @task = Task.find(@new_done_task.task_id)
     @new_done_task.climber_id = current_climber.id
     if @new_done_task.save
       # @new_done_task に入っている task_idからgradeを取得
@@ -42,12 +43,15 @@ class DoneTasksController < ApplicationController
           # binding.pry
             if @new_trophy.save
               # binding.pry
-              redirect_to request.referer, notice: "トロフィー#{@new_trophy.my_trophy_name}を獲得しました！"
+              flash.now[:notice] = "トロフィー#{@new_trophy.my_trophy_name}を獲得しました！"
+              #redirect_to request.referer, notice: "トロフィー#{@new_trophy.my_trophy_name}を獲得しました！"
             else
               redirect_to request.referer, notice: "同じトロフィーは獲得できません"
             end
         else
-          redirect_to request.referer, notice: "課題 #{@new_done_task.task.task_name}が登れました!"
+          flash.now[:notice] = "課題 #{@new_done_task.task.task_name}が登れました!"
+          render 'create'
+          #redirect_to request.referer, notice: "課題 #{@new_done_task.task.task_name}が登れました!"
         end
     end
   end

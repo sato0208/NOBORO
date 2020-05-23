@@ -1,1 +1,2 @@
-$('#done_task_<%= f.id %>').html("<%= j(render 'done_task/done_task', locals: task: f, new_done_task: @new_done_task, delete_done_task: @delete_done_task) %>");
+// console.log(<%#= @new_done_task.id %>)
+$('#done_task_<%= @task.id %>').html("<%= j(render 'climbers/gyms/done_task', task: @task, new_done_task: nil, delete_done_task: @new_done_task) %>");
