@@ -10,11 +10,12 @@
   background-attachment: fixed;
   background-size: cover;/*縦横比率を維持したまま背景領域を埋め尽くす*/
   background-position: center;
+  scroll-snap-type: y mandatory;
 }
 
 .about-visual-content{
 	width:100%;
-  height:5600px;
+  height:5400px;
   text-align: center;/*文字を中央揃えにする*/
 	background-color: rgba(0,0,0,0.5);/*背景色を半透明の黒にする*/
 	padding-top:105px;/*上側の内側余白で垂直方向の位置を調整*/
@@ -38,6 +39,19 @@
 	padding-top:105px;/*上側の内側余白で垂直方向の位置を調整*/
 }
 
+.l-kv .tx-mask, .l-kv .tx-mask span {
+  display: block;
+  font-style: normal;
+  color: #71B945;
+  display: block;
+  font-style: normal;
+  // overflow-y: scroll;
+  // scroll-snap-points-y: repeat(320px);
+  // scroll-snap-destination: 0 0;
+  // scroll-snap-type: y mandatory;
+  // scroll-snap-type: mandatory;
+}
+
 .main-visual-text{
 	color:#fff;/*文字色を白に変更*/
 }
@@ -59,13 +73,10 @@
   font-style: normal;
   font-weight: 700;
 }
+h1{
+  scroll-snap-align: start;
 
-.l-kv .tx-mask, .l-kv .tx-mask span {
-  display: block;
-  font-style: normal;
-  color: #71B945;
 }
-
 .kv-title {
   font-size: 96px;
   font-weight: 900;
@@ -73,6 +84,7 @@
   text-transform: uppercase;
   letter-spacing: .2em;
   color: #71B945;
+
 }
 .kv-description, .kv-title {
   font-family: Prompt,sans-serif;
@@ -80,10 +92,7 @@
   font-weight: 700;
 }
 
-.l-kv .tx-mask, .l-kv .tx-mask span {
-  display: block;
-  font-style: normal;
-}
+
 
 .kv-copy {
   font-family: "Noto Sans Japanese",sans-serif;
@@ -168,6 +177,7 @@
 
 .l-intro .txt {
   font-size: 14px;
+  scroll-snap-align: start;
   line-height: 3;
   letter-spacing: .16em;
   color: floralwhite;

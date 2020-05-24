@@ -35,10 +35,25 @@
                     <span class="category">
                     <%= gym.genre.genre_name %>
                 </span>
+                <h5 id="favorites_<%= gym.id %>">
+                    <%= render 'favorite', gym: gym %>
+                </h5>
                 </h3>
                 <p class="blog-date">
+                    営業時間
                     <%= gym.description %>
-                </p>
+                </p><br>
+                <p class="blog-date">
+                    住所
+                    〒<%= gym.post_code %>
+                    <%= gym.address %>
+                </p><br>
+                <!-- クライマーがサインインしている場合 -->
+                <% if climber_signed_in? %>
+                    >> <%= link_to ' このジムのランキング',rank_path(gym.id), class: "fas fa-chess-queen" %>
+                <% else climber_signed_in? %>
+                    ログインしたらこのジムのランキングがみれます
+                <% end %>
             </section>
         </div>
     <% end %>

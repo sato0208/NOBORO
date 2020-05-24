@@ -44,6 +44,7 @@ class DoneTasksController < ApplicationController
             if @new_trophy.save
               # binding.pry
               flash.now[:notice] = "トロフィー#{@new_trophy.my_trophy_name}を獲得しました！"
+              render 'modal'
               #redirect_to request.referer, notice: "トロフィー#{@new_trophy.my_trophy_name}を獲得しました！"
             else
               redirect_to request.referer, notice: "同じトロフィーは獲得できません"

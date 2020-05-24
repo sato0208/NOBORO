@@ -1,2 +1,2 @@
-// console.log(<%#= @new_done_task.id %>)
+//console.log("コンソールログ")
 $('#done_task_<%= @task.id %>').html("<%= j(render 'climbers/gyms/done_task', task: @task, new_done_task: nil, delete_done_task: @new_done_task) %>");

@@ -29,11 +29,11 @@ RSpec.describe 'Climberモデルのテスト', type: :model do
     end
   end
   describe 'アソシエーションのテスト' do
-    context 'BattleHistorieモデルとの関係' do
-      it '1:Nとなっている' do
-        expect(Climber.reflect_on_association(:battle_historoys).macro).to eq :belongs_to
-      end
-    end
+  #   context 'BattleHistorieモデルとの関係' do
+  #     it '1:Nとなっている' do
+  #       expect(Climber.reflect_on_association(:battle_historoys).macro).to eq :belongs_to
+  #     end
+  #   end
     context 'Battleモデルとの関係' do
       it '1:Nとなっている' do
         expect(Climber.reflect_on_association(:battles).macro).to eq :has_many
@@ -49,11 +49,11 @@ RSpec.describe 'Climberモデルのテスト', type: :model do
         expect(Climber.reflect_on_association(:favorites).macro).to eq :has_many
       end
     end
-    context 'Notificationモデルとの関係' do
-      it '1:Nとなっている' do
-        expect(Climber.reflect_on_association(:notifications).macro).to eq :has_many
-      end
-    end
+    # context 'Notificationモデルとの関係' do
+    #   it '1:Nとなっている' do
+    #     expect(Climber.reflect_on_association(:notifications).macro).to eq :has_many
+    #   end
+    # end
     context 'Trophieモデルとの関係' do
       it '1:Nとなっている' do
         expect(Climber.reflect_on_association(:trophies).macro).to eq :has_many

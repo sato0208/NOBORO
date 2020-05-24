@@ -14,6 +14,7 @@
                     <th>写真</th>
                     <th>名前</th>
                     <th>登れた本数</th>
+                    <th>バトル申し込み</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,7 +37,9 @@
                         <%= rank_done_task.climber.done_tasks.count %>本
                     </td>
                     <td>
-                        <%= render 'climbers/climbers/battle_now', climber: rank_done_task.climber, unbattle:rank_done_task.climber.battles %>
+                        <% unless current_climber.id == rank_done_task.climber.id %>
+                            <%= render 'climbers/climbers/battle_now', climber: rank_done_task.climber%>
+                        <% end %>
                     </td>
                 </tr>
                 <% end %>

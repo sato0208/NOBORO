@@ -10,6 +10,7 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
     <body>
+      <div id="wrapper">
         <header class="navbar navbar-inverse", id="header">
                 <nav class="navbar-left">
                     <span>
@@ -84,7 +85,7 @@
                     <li>
                         <%= link_to " about", about_path,class:"fas fa-cat" %>
                     </li>
-                     <li>
+                    <li>
                         <%= link_to " top", top_path,class:"fas fa-cat" %>
                     </li>
                     <li>
@@ -112,6 +113,7 @@
         <footer class="fixed-bottom">
             <p class="copyright">©︎ 2020 NOBORO</p>
         </footer>
+        </body>
     </body>
 </html>
 

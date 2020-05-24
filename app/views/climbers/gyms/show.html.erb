@@ -1,18 +1,15 @@
 
- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-1">
-   トロフィーを獲得しましたDEMO
+ <button type="button" class="btn demo" data-toggle="modal" data-target="#modal-1">
  </button>
  <div class="modal fade" id="modal-1" tabindex="-1">
    <div class="modal-dialog">
      <div class="modal-content">
        <div class="modal-header">
          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-         <h4 class="modal-title">トロフィーを獲得しました</h4>
+         <h3 class="modal-title"><%= image_tag 'toro.png' %> トロフィーを獲得しました <%= image_tag 'toro.png' %></h4>
        </div>
        <div class="modal-body">
-         <%= attachment_image_tag @new_trophy, :my_trophy_image, :fill, 50, 50, format: 'jpeg', class: "pull-left profile-img", fallback: asset_path("bo2.jpeg"), size:'50x50' %>
-         <br>
-         <p>笑顔でボルダリングする女<%= image_tag 'new1.png' %></p>
+         <p>ここにトロフィー名が入る</p>
        </div>
      </div>
    </div>
@@ -24,19 +21,40 @@
 <div class="prof-vi">
         <h2 class="feature-title">
             <%= @gym.gym_name %>
-            <%= @gym.address %>
         </h2>
         <h3 class="feature-title">
-          <%= @gym.description %>
-        </h3><br>
-        <h3 class="feature-title">
-          ホームページ
+        住所
+          〒<%= @gym.post_code %>
+          <%= @gym.address %>
         </h3>
-
-<td id="favorites_<%= @gym.id %>">
-    <%= render 'favorite', gym: @gym %>
-</td>
+        <h3 class="feature-title">
+        営業時間
+          <%= @gym.description %>
+        </h3>
+        <h3 class="feature-title">
+          HP
+          <%= @gym.gym_url %>
+        </h3>
+        <h3 class="feature-title">
+          電話番号
+          <%= @gym.phone_number %>
+        </h3>
+    <div class="contact-right">
+      <h2 class="feature-title">SNS</h2>
+			<div class="social">
+        <a href="#">
+          <i class="fab fa-instagram"></i>
+        </a>
+			</div>
+		</div>
+    <div class="row">
+      <div class="contact-right">
+        <h4 id="favorites_<%= @gym.id %>">
+          <%= render 'favorite', gym: @gym %>
+        </h4>
+      </div>
     <%= link_to ' 今月のランキング',rank_path, class: "btn btn-primary fas fa-chess-queen" %>
+    </div>
 </div>
 </div>
 <section class="tasks">

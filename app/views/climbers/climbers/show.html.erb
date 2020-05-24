@@ -46,20 +46,14 @@
               お気に入りジム未登録
             <% end %>
           </p>
-            <div class="social">
-                <i class="fab fa-facebook-square"></i>
-                <i class="fab fa-twitter-square"></i>
-                <i class="fab fa-instagram"></i>
-            </div>
+
           <h3 class="feature-title">
             <% if current_climber.id == @climber.id %>
               <%= link_to "ー　プロフィール編集　ー", edit_climber_path %><br>
               <%= link_to "ー　お知らせ　ー", favorites_path %><br>
           </h3>
             <% else %>
-
-            <%= render 'battle_now', climber: @climber, unbattle: ＠unbattle%>
-
+              <%#= render 'battle_now', climber: @climber　%>
               <% if current_climber.battle_now?(@climber) %>
                 <%#= button_to  "申請をやめる", battle_path(@unbattle), method: :delete %>
                 バトルを申込済みです。了承されるまでお待ちください

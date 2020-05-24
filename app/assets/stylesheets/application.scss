@@ -52,6 +52,17 @@ body {
     background-color: #fff;
     }
 
+body,
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
+}
+
 div {
     display: block;
 }
@@ -67,12 +78,7 @@ h2, .h2 {
         margin-bottom: 20px;
 }
 
-#header {
-    z-index: 9999;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-  }
+
 a {
     color: #3e3e3e;
     text-decoration: none;

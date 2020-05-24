@@ -51,7 +51,6 @@ end
 describe 'ユーザーのテスト' do
   let(:climber) { create(:climber) }
   let!(:test_climber2) { create(:climber) }
-  let!(:done_task) { create(:done_task, climber: climber) }
   before do
     visit new_climber_session_path
     fill_in 'climber[email]', with: climber.email
@@ -62,42 +61,9 @@ describe 'ユーザーのテスト' do
   describe '編集のテスト' do
     context '自分の編集画面への遷移' do
       it '遷移できる' do
-        visit edit_climber_path(climber)
+        visit edit_climber_path(climber.id)
         expect(current_path).to eq('/climbers/' + climber.id.to_s + '/edit')
       end
     end
-    # context '他人の編集画面への遷移' do
-    #   it '遷移できない' do
-    #     visit edit_climber_path(test_climber2)
-    #     expect(current_path).to eq('/climbers/' + climber.id.to_s)
-    #   end
-    # end
-
-    # context '表示の確認' do
-    #   before do
-    #     visit edit_climber_path(climber)
-    #   end
-    #   it '名前編集フォームに自分の名前が表示される' do
-    #     expect(page).to have_field 'climber[name]', with: climber.name
-    #   end
-    #   it '画像編集フォームが表示される' do
-    #     expect(page).to have_field 'climber[profile_image]'
-    #   end
-    #   it '自己紹介編集フォームに自分の自己紹介が表示される' do
-    #     expect(page).to have_field 'climber[introduction]', with: climber.introduction
-    #   end
-    #   it '編集に成功する' do
-    #     click_button '編集内容を保存する'
-    #     expect(page).to have_content 'update'
-    #     expect(current_path).to eq('/climbers/' + climber.id.to_s)
-    #   end
-    #   it '編集に失敗する' do
-    #     fill_in 'climber[name]', with: ''
-    #     click_button '編集内容を保存する'
-    #     expect(page).to have_content 'error'
-		# 		#もう少し詳細にエラー文出したい
-    #     expect(current_path).to eq('/climbers/' + climber.id.to_s)
-    #   end
-    # end
   end
 end

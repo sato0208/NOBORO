@@ -1,22 +1,21 @@
 <!-- イイねボタンここから -->
-<% if gym.favorite_by?(current_climber) %>
-  <!-- favorited_by?自分が含まれている場合 -->
-  <td>
-    <%= link_to gym_favorites_path(gym.id),method: :delete, remote: true do %>
-      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-    <% end %>
-      お気に入り登録済です<br>
-    お気に入り登録<%= gym.favorites.count %>人<br>
-  </td>
-  <td>
-  </td>
-  <!-- favorited_by?自分が含まれていない場合 -->
-  <% else %>
-  <td>
+<% unless current_climber.nil? %>
+  <% if gym.favorite_by?(current_climber) %>
+    <!-- favorited_by?自分が含まれている場合 -->
+      <%= link_to gym_favorites_path(gym.id),method: :delete, remote: true do %>
+        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+      <% end %>
+      お気に入り登録 <%= gym.favorites.count %>人<br>
+    <!-- favorited_by?自分が含まれていない場合 -->
+    <% else %>
+      <%= link_to gym_favorites_path(gym.id),method: :post,remote: true do %>
+        <i class="fa fa-heart" aria-hidden="true"></i>
+      <% end %>
+      お気に入り登録 <%= gym.favorites.count %>人<br>
+  <% end %>
+  <%else%>
     <%= link_to gym_favorites_path(gym.id),method: :post,remote: true do %>
       <i class="fa fa-heart" aria-hidden="true"></i>
     <% end %>
-    まだお気に入り登録していません<br>
-    お気に入り登録<%= gym.favorites.count %>人<br>
-  </td>
+    お気に入り登録 <%= gym.favorites.count %>人<br>
 <% end %>
