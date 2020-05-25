@@ -46,8 +46,7 @@
                 <% elsif climber_signed_in? %>
                 <ul class="navbar-text navbar-right">
                     <li>
-                <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "head-profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
-
+                        <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "head-profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
                         <%= link_to " マイページ", climber_path(current_climber.id)%>
                     </li>
                     <li>

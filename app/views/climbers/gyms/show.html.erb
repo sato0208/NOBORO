@@ -62,62 +62,39 @@
 <section class="tasks">
     <div class="task">
     <h2>課題一覧</h2>
-  <% if climber_signed_in? %>
+  <% if climber_signed_in? && current_climber.present? %>
     <h3>課題名をクリックすると登れた人一覧が見れます
     </h3>
-        <div class="table-responsive">
-        <table class="table">
-            <tbody>
-                <!-- グレードのeach文 -->
-                <% @grades_all.each do |grade| %>
-                    <tr>
-                        <td>
-                            <%= grade.grade %>
-                        </td>
-                        <%# グレードに紐づくeach文 %>
-                        <% gym_tasks = grade.tasks.where(gym_id: @gym.id)%>
-                        <% gym_tasks.each do |gym_task| %>
-                        <% @new_done_task = DoneTask.new %>
-                            <% @delete_done_task = current_climber.done_tasks.find_by(task_id: gym_task.id)%>
-                                <td id="done_task_<%= gym_task.id %>">
-                                    <%= render 'done_task', task: gym_task, new_done_task: @new_done_task, delete_done_task: @delete_done_task %>
-                                </td>
-                        <% end %>
-                    </tr>
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <!-- グレードのeach文 -->
+          <% @grades_all.each do |grade| %>
+            <tr>
+                <td>
+                  <%= grade.grade %>
+                </td>
+                <%# グレードに紐づくeach文 %>
+                <% gym_tasks = grade.tasks.where(gym_id: @gym.id)%>
+                <% gym_tasks.each do |gym_task| %>
+                  <% @new_done_task = DoneTask.new %>
+                      <% @delete_done_task = current_climber.done_tasks.find_by(task_id: gym_task.id)%>
+                  <td id="done_task_<%= gym_task.id %>">
+                      <%= render 'done_task', task: gym_task, new_done_task: @new_done_task, delete_done_task: @delete_done_task %>
+                  </td>
                 <% end %>
-            </tbody>
-        </table>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-    <% else %>
+  <% else %>
       <h3>
         <p>課題一覧とチェックシートを使用するためには、
-        <%= link_to ">> 新規登録 / ログイン ", new_climber_registration_path %>が必要です</p> 
+          <%= link_to ">> 新規登録 / ログイン ", new_climber_registration_path %>が必要です</p> 
       </h3>
-        <div class="table-responsive">
-        <table class="table">
-            <tbody>
-                <!-- グレードのeach文 -->
-                <% @grades_all.each do |grade| %>
-                    <tr>
-                        <td>
-                            <%= grade.grade %>
-                        </td>
-                        <%# グレードに紐づくeach文 %>
-                        <% gym_tasks = grade.tasks.where(gym_id: @gym.id)%>
-                        <% gym_tasks.each do |gym_task| %>
-                        <% @new_done_task = DoneTask.new %>
-                            <% @delete_done_task = current_climber.done_tasks.find_by(task_id: gym_task.id)%>
-                                <td id="done_task_<%= gym_task.id %>">
-                                    <%= render 'done_task', task: gym_task, new_done_task: @new_done_task, delete_done_task: @delete_done_task %>
-                                </td>
-                        <% end %>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-    </div>
-    <% end %>
-    </div>
+  <% end %>
+  </div>
 </section>
 <%= link_to "＜＜戻る", gyms_path %>
 

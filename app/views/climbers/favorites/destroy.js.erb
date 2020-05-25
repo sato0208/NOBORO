@@ -1,1 +1,1 @@
-$('#favorites_<%= @gym.id %>').html("<%= j(render 'favorites/favorite', locals: gym: @gym) %>");
+$('#favorites_<%= @gym.id %>').html("<%= j(render 'gyms/favorite', gym: @gym) %>");
