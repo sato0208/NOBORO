@@ -17,7 +17,7 @@
 
 
 <div class="description">
-  <%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: asset_path("bo2.jpeg"), size:'400x300' %>
+  <%= attachment_image_tag @gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: asset_path("bo2.jpeg") %>
 <div class="prof-vi">
         <h2 class="feature-title">
             <%= @gym.gym_name %>
