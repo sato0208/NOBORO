@@ -1,5 +1,5 @@
 class InfosController < ApplicationController
-	before_action :authenticate_climber!
+  before_action :authenticate_climber!
 
   def index
     @infos = Info.all
@@ -11,6 +11,7 @@ class InfosController < ApplicationController
   end
 
   private
+
   def info_params
     params.require(:info).permit(:gym_id, :info)
   end

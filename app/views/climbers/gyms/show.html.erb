@@ -15,7 +15,6 @@
   </div>
 </div>
 
-
 <div class="description">
   <%= attachment_image_tag @gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: asset_path("bo2.jpeg") %>
 <div class="prof-vi">
@@ -91,10 +90,9 @@
   <% else %>
       <h3>
         <p>課題一覧とチェックシートを使用するためには、
-          <%= link_to ">> 新規登録 / ログイン ", new_climber_registration_path %>が必要です</p> 
+          <%= link_to " 新規登録 / ログイン ", new_climber_registration_path %>が必要です</p> 
       </h3>
   <% end %>
   </div>
 </section>
 <%= link_to "＜＜戻る", gyms_path %>
-

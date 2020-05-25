@@ -44,7 +44,7 @@
                     <%= gym.address %>
                 </p><br>
                 <!-- クライマーがサインインしている場合 -->
-                    >> <%= link_to ' このジムのランキング',rank_path(gym.id), class: "fas fa-chess-queen" %>
+                    <%= link_to ' このジムのランキング',rank_path(gym.id), class: "fas fa-chess-queen" %>
             </section>
         </div>
     <% end %>

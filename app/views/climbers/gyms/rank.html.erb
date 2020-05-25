@@ -1,5 +1,4 @@
-
- <div class="container">
+<div class="container">
   <h2><%= Date.today.month %>月 ランキング</h2>
     <!-- 以下タブの表示設定 -->
     <ul id="myTabs" class="nav nav-tabs">
@@ -31,30 +30,21 @@
         <h2>全ジム 登れた本数総合ランキング</h2>
         <%= render 'all_done_tasks_rank', rank_done_tasks: @all_done_tasks %>
 
-                <br>
-                <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
-                </p>
-              </div>
-              <div role="tabpanel" class="tab-pane" id="message">
-                <h2>フォロワーランキング</h2>
-                <br>
-                  <p>
-                  COMING SOON!
-                  <%# <%= render 'done_tasks/rank', rank_done_tasks: @fallow_done_tasks, my_rank: @fallow_my_rank %>
-                  </p>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+        <br>
+        <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
+        </p>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="message">
+        <h2>フォロワーランキング</h2>
+        <br>
+          <p>
+          COMING SOON!
+          <%# <%= render 'done_tasks/rank', rank_done_tasks: @fallow_done_tasks, my_rank: @fallow_my_rank %>
+          </p>
 
-                <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
-                </p>
-            </div>
-          </div>
-        </div>
+        <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
+        </p>
+    </div>
+  </div>
+</div>
 

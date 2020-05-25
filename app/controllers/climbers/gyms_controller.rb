@@ -1,6 +1,8 @@
 class Climbers::GymsController < ApplicationController
 # authenticate_user！でログイン認証されてない場合home画面へリダイレクトとする
 before_action :authenticate_climber!, :only => [:rank, :favorites]
+before_action :set_climber_gym, only: %i[show rank]
+
 
   # before_action :authenticate_climber, {only: [:favorites]}
   def index
@@ -16,7 +18,6 @@ before_action :authenticate_climber!, :only => [:rank, :favorites]
   end
 
   def rank
-    @gym = Gym.find(params[:id])
     # ランキング機能
     # 1日から月末までを集計する
     # 見やすく書き直したい
@@ -53,7 +54,6 @@ before_action :authenticate_climber!, :only => [:rank, :favorites]
   end
 
   def show
-    @gym = Gym.find(params[:id])
     @tasks = @gym.tasks
     @grades_all = Grade.all
   end
@@ -74,6 +74,9 @@ before_action :authenticate_climber!, :only => [:rank, :favorites]
   end
 
   private
+  def set_climber_gym
+    @gym = Gym.find(params[:id])
+  end
   def gym_params
     params.require(:gym).permit(:genre_id, :description, :gym_name, :post_code, :address, :gym_url, :gym_image)
   end
