@@ -26,7 +26,6 @@
         </tr>
     </thead>
     <tbody>
-        <% rank = 1 %>
         <% battles.each do |battle| %>
             <% if battle.present? && battle.battler.present? %>
                 <tr>
@@ -54,7 +53,7 @@
                         </td>
                         <td>
 
-                            <%= my_count = battle.done_task_by(current_climber) %>count(自分が申し込まれた側)
+                            <%= my_count = battle.done_task_by(current_climber) %>count
                         </td>
                     <%# カレントユーザが勝負を申し込んだ場合 #%>
                     <% elsif (current_climber == battle.climber) %>
@@ -72,7 +71,7 @@
                                 <%= rival_count = battle.done_task_by(battle.battler) %> count
                         </td>
                         <td>
-                                <%= my_count = battle.done_task_by(current_climber) %> count(自分が申し込んだ側)
+                                <%= my_count = battle.done_task_by(current_climber) %> count
                         </td>
                     <% end %>
 

@@ -10,8 +10,6 @@
 <p>勝利数 <%= current_climber.win_count %></p>
 <p>勝負数 <%= battle_historys.count %></p>
 
-<p>獲得したトロフィー</p>
-<p></p>
 <table class="table">
     <thead>
         <tr>
@@ -35,7 +33,7 @@
             </td>
             <td>
             <% if battle_history.is_draw_status == false %>
-            win
+             win
             <% else%>
             引き分け
             <% end %>
@@ -46,7 +44,8 @@
                 <%= battle_history.winner.name%>
               <% end %>
             </td>
-            <td><%= battle_history.winner_count%>本</td>
+            <td><%= image_tag 'winn.png' %>
+            <%= battle_history.winner_count %>本</td>
             <td>
               <%= link_to climber_path(battle_history.loser.id) do %>
                 <%= attachment_image_tag battle_history.loser, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: asset_path("no_image.png") %>

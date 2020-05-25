@@ -44,17 +44,11 @@ class DoneTasksController < ApplicationController
           @new_trophy.my_trophy_image_id = grade.trophy_image_id
           # binding.pry
             if @new_trophy.save
-              # binding.pry
-              flash.now[:notice] = "トロフィー#{@new_trophy.my_trophy_name}を獲得しました！"
               render 'modal'
-              #redirect_to request.referer, notice: "トロフィー#{@new_trophy.my_trophy_name}を獲得しました！"
             else
               redirect_to request.referer, notice: "同じトロフィーは獲得できません"
             end
         else
-          flash.now[:notice] = "課題 #{@new_done_task.task.task_name}が登れました!"
-          render 'create'
-          #redirect_to request.referer, notice: "課題 #{@new_done_task.task.task_name}が登れました!"
         end
     end
   end

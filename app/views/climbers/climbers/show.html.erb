@@ -39,7 +39,7 @@
             <% if @climber.favorite_by?(@climber) %>
                 <% @favorites.each do |f|%>
                   <%= link_to gym_path(f.gym) do %>
-                      <%= f.gym.gym_name %>
+                      <%= f.gym.gym_name %> /
                     <% end %>
                 <% end %>
             <% else %>

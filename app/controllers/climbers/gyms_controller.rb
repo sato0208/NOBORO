@@ -1,6 +1,8 @@
 class Climbers::GymsController < ApplicationController
 # authenticate_user！でログイン認証されてない場合home画面へリダイレクトとする
-  before_action :authenticate_climber, {only: [:favorites]}
+before_action :authenticate_climber!, :only => [:rank, :favorites]
+
+  # before_action :authenticate_climber, {only: [:favorites]}
   def index
     # binding.pry
     @gyms = Gym.all.page(params[:page]).per(6)

@@ -1,5 +1,5 @@
 class Climbers::FavoritesController < ApplicationController
-  before_action :authenticate_climber!
+before_action :authenticate_climber!, :only => [:create, :destroy]
   # before_action :ensure_correct_climber, {only: [:create, :destroy, :index]}
 
   def create

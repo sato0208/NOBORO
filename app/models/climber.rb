@@ -2,8 +2,8 @@ class Climber < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-       
+        :recoverable, :rememberable, :validatable
+
   attachment :profile_image
   has_many :done_tasks, dependent: :destroy
   has_many :trophies, dependent: :destroy
@@ -72,7 +72,7 @@ class Climber < ApplicationRecord
   # gymをお気に入りにしているか判定をする
   # climberにはcurrent_climberが渡される
   def favorite_by?(climber)
-    favorites.where(climber_id: climber.id).nil?
+    favorites.where(climber_id: climber.id).exists?
   end
 
   # バトルを申請しているか判定する
@@ -90,5 +90,12 @@ class Climber < ApplicationRecord
   def month_done_tasks
     now = Time.current
     DoneTask.where(climber_id: self.id,created_at: (now.beginning_of_month)..(now.end_of_month))
+  end
+
+  def my_trophys_by
+    now = Time.current
+    Trophy.where(
+      climber_id: self.id,
+      created_at: (now.beginning_of_month)..(now.end_of_month))
   end
 end

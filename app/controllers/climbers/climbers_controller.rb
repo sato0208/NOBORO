@@ -1,23 +1,14 @@
 class Climbers::ClimbersController < ApplicationController
-
-# authenticate_user！でログイン認証されてない場合home画面へリダイレクトとする
 	before_action :authenticate_climber!
-	# カレントユーザーだけしかedit,update,destroyアクションは使えない。
-	# before_action :ensure_correct_climber, {only: [:edit, :update]}
 
   def show
     @climber = Climber.find(params[:id])
     now = Time.current
-    @trophys = Trophy.where(climber_id: @climber.id,created_at: (now.beginning_of_month)..(now.end_of_month)).group(:climber_id)
     @favorites = Favorite.where(climber_id: @climber.id)
     @new_battle = Battle.new
-    # passive_notifications = 送られる側 visited_id
     @notifications = current_climber.passive_notifications.page(params[:page]).per(10)
     # battleのidを渡す
     ＠unbattle = Battle.find_by(battler_id: @climber.id)
-    # # part2
-    # @targetClimber = Climber.find(2)
-    # Climber.unfollow(@targetClimber)
   end
 
   def index

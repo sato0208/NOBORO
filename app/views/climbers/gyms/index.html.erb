@@ -2,9 +2,9 @@
         <!-- main-visual用のdv -->
         <div class="main-visual">
             <div class="main-visual-content">
-                <p class="main-visual-text">
-                    ジムの店舗名で検索できます<br>
-                </p>
+            <p class="main-visual-text">
+                ジムの店舗名で検索できます<br>
+            </p>
                 <div class="search-form">
                     <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
                         <%= f.text_field :gym_name,{placeholder: "ジムを検索"} %>
@@ -44,11 +44,7 @@
                     <%= gym.address %>
                 </p><br>
                 <!-- クライマーがサインインしている場合 -->
-                <% if climber_signed_in? %>
                     >> <%= link_to ' このジムのランキング',rank_path(gym.id), class: "fas fa-chess-queen" %>
-                <% else climber_signed_in? %>
-                    ログインしたらこのジムのランキングがみれます
-                <% end %>
             </section>
         </div>
     <% end %>
