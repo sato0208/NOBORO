@@ -1,4 +1,6 @@
 class RelationshipsController < ApplicationController
+	before_action :authenticate_climber!
+
   def create
     # フォローされる側のID
     @climber = Climber.find(params[:follow_id])

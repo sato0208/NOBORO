@@ -6,11 +6,11 @@
      <div class="modal-content">
        <div class="modal-header">
          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-         <h3 class="modal-title"><%= image_tag 'toro.png' %> トロフィーを獲得しました <%= image_tag 'toro.png' %></h4>
+         <h3 class="modal-title"><%= image_tag 'toro.png' %> トロフィーを獲得しました！</h3>
        </div>
-       <div class="modal-body">
-         <p>ここにトロフィー名が入る</p>
-       </div>
+        <div class="modal-body">
+          <h4>ここにトロフィー名が入る</h4>
+        </div>
      </div>
    </div>
  </div>
@@ -60,6 +60,7 @@
 <section class="tasks">
     <div class="task">
     <h2>課題一覧</h2>
+  <% if climber_signed_in? %>
     <h3>課題名をクリックすると登れた人一覧が見れます
     </h3>
         <div class="table-responsive">
@@ -73,11 +74,11 @@
                         </td>
                         <%# グレードに紐づくeach文 %>
                         <% gym_tasks = grade.tasks.where(gym_id: @gym.id)%>
-                        <% gym_tasks.each do |f| %>
-                            <% @new_done_task = DoneTask.new %>
-                            <% @delete_done_task = current_climber.done_tasks.find_by(task_id: f.id)%>
-                                <td id="done_task_<%= f.id %>">
-                                    <%= render 'done_task', task: f, new_done_task: @new_done_task, delete_done_task: @delete_done_task %>
+                        <% gym_tasks.each do |gym_task| %>
+                        <% @new_done_task = DoneTask.new %>
+                            <% @delete_done_task = current_climber.done_tasks.find_by(task_id: gym_task.id)%>
+                                <td id="done_task_<%= gym_task.id %>">
+                                    <%= render 'done_task', task: gym_task, new_done_task: @new_done_task, delete_done_task: @delete_done_task %>
                                 </td>
                         <% end %>
                     </tr>
@@ -85,6 +86,10 @@
             </tbody>
         </table>
     </div>
+    <% else %>
+        <h3>ログインしたら課題一覧が見れます
+    </h3>
+    <% end %>
     </div>
 </section>
 

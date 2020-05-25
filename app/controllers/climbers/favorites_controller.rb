@@ -1,4 +1,7 @@
 class Climbers::FavoritesController < ApplicationController
+  before_action :authenticate_climber!
+  # before_action :ensure_correct_climber, {only: [:create, :destroy, :index]}
+
   def create
     favorite = current_climber.favorites.build(gym_id: params[:gym_id])
     favorite.save!

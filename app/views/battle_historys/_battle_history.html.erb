@@ -27,7 +27,7 @@
         <% battle_historys.each do |battle_history| %>
         <tr>
             <td><%= battle_history.started_at.strftime("%Y/%m/%d") %></td>
-            <td><%= battle_history.finished_at.strftime("%Y/%m/%d") %></td>
+            <td><%= battle_history.created_at.strftime("%Y/%m/%d") %></td>
             <td>
               <%= link_to climber_path(battle_history.winner.id) do %>
                 <%= attachment_image_tag battle_history.winner, :profile_image, format: 'jpeg', class: "pull-left profile-icon", fallback: asset_path("no_image.png") %>

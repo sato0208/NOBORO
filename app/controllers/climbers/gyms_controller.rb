@@ -3,13 +3,13 @@ class Climbers::GymsController < ApplicationController
   before_action :authenticate_climber, {only: [:favorites]}
   def index
     # binding.pry
-    @gyms = Gym.all
+    @gyms = Gym.all.page(params[:page]).per(6)
     @genres = Genre.all
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @gyms = @genre.gyms.page(params[:page]).order('updated_at DESC')
+      @gyms = @genre.gyms.page(params[:page]).order('updated_at DESC').page(params[:page]).per(6)
     else
-      @gyms = Gym.page(params[:page]).order('updated_at DESC')
+      @gyms = Gym.page(params[:page]).order('updated_at DESC').page(params[:page]).per(6)
     end
   end
 
@@ -65,9 +65,9 @@ class Climbers::GymsController < ApplicationController
     @genres = Genre.all
     # 値が入力されていれば、whereメソッドと部分一致検索で、店舗情報を取得する。
     @gyms = if params[:gym_name]
-              Gym.where('gym_name LIKE ?', "%#{params[:gym_name]}%")
+              Gym.where('gym_name LIKE ?', "%#{params[:gym_name]}%").page(params[:page]).per(6)
             else
-              Gym.all
+              Gym.all.page(params[:page]).per(6)
             end
   end
 

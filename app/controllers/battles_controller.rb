@@ -1,4 +1,6 @@
 class BattlesController < ApplicationController
+	before_action :authenticate_climber!
+
   def show
   end
 

@@ -2,7 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-#modal-1{
+.btn.demo{
   display:none;
+}
+
+.modal-body {
+  font-size: 18px;
+  line-height: 2.5;
+  font-family: Prompt,sans-serif;
+  font-weight: 500;
 }

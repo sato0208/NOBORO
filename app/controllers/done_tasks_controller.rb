@@ -1,4 +1,6 @@
 class DoneTasksController < ApplicationController
+	before_action :authenticate_climber!
+
   def index
     now = Time.current
     # 全ジムの登れた課題ランキング

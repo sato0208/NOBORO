@@ -3,12 +3,7 @@
         <div class="main-visual">
             <div class="main-visual-content">
                 <p class="main-visual-text">
-                    クライミングを楽しむ人のために作られました<br>
-                    お気に入りジムを登録して、お知らせを受け取ろう。<br>
-                    一人でも楽しめるけど、ライバルがいた方がずっと楽しい<br>
-                    ランキングは毎月更新！上位を目指そう！<br>
-                    登れた課題のグレードごとにトロフィーがもらえるぞ！<br>
-                    いっぱい集めよう！<br>
+                    ジムの店舗名で検索できます<br>
                 </p>
                 <div class="search-form">
                     <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
@@ -57,3 +52,6 @@
             </section>
         </div>
     <% end %>
+<div class="centering_item">
+    <%= paginate @gyms %>
+</div>

@@ -1,4 +1,6 @@
 class BattleHistorysController < ApplicationController
+	before_action :authenticate_climber!
+
   def index
   end
 

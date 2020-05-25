@@ -1,4 +1,6 @@
 class InfosController < ApplicationController
+	before_action :authenticate_climber!
+
   def index
     @infos = Info.all
   end
