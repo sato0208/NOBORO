@@ -24,7 +24,7 @@ class RelationshipsController < ApplicationController
 
   def destroy
     @climber = Climber.find(params[:follow_id])
-    following = current_climber.unfollow(@climber.id)
+    following = current_climber.unfollow(@climber)
     if following.destroy
       flash[:success] = 'ユーザーのフォローを解除しました'
       redirect_to request.referer

@@ -50,13 +50,13 @@
                         <%= link_to " マイページ", climber_path(current_climber.id)%>
                     </li>
                     <li>
-                        <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
+                        <%= link_to " 友達検索", climbers_path,class:"fa fa-search" %>
                     </li>
                     <li>
                         <% if unchecked_notifications.any? %>
-                        <%= link_to " 通知 ", notifications_path,class:"fas fa-bell" %>
-                            <i class="fa fa-circle" style="color: red;"></i>
-                        <li class="fa-layers-counter"><%= current_climber.battlwings.count %>件</li>
+                        <i class="fas fa-bell" style="color: yellow;"></i>
+                        <%= link_to " 通知", notifications_path %>
+                        <%= current_climber.passive_notifications.count %>件</li>
                         <% else %>
                         <%= link_to " 通知", notifications_path,class:"fas fa-bell" %>
                         <% end %>
@@ -82,10 +82,10 @@
                         <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
                     </li>
                     <li>
-                        <%= link_to " about", about_path,class:"fas fa-cat" %>
+                        <%= link_to " about", about_path,class:"fas fa-frog" %>
                     </li>
                     <li>
-                        <%= link_to " top", top_path,class:"fas fa-cat" %>
+                        <%= link_to " top", top_path,class:"fas fa-frog" %>
                     </li>
                     <li>
                         <%= link_to " 新規登録", new_climber_registration_path,class:"fas fa-door-closed" %>

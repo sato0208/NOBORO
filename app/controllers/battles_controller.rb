@@ -7,7 +7,6 @@ class BattlesController < ApplicationController
   def update
     @update_battle = Battle.find(params[:id])
     if params[:battle_status] == "延長"
-      # binding.pry
       @update_battle.update(finish_at: @update_battle.finish_at.next_day(3))
       redirect_to request.referer, notice: "バトルを3日延長しました"
     end
@@ -71,13 +70,11 @@ class BattlesController < ApplicationController
   end
 
   def index
-    # binding.pry
     # バトル中一覧（自分が挑んだ側 or 挑まれた側 の承認済の全て）
     @now_battles = current_climber.battles
     .where(is_valid_status: true)
     .or(current_climber.battlers
     .where(is_valid_status: true))
-    # binding.pry
     # バトル申請中一覧（自分が挑んだ側 & 相手が未確認全て）
     @request_battles = current_climber.battles.where(is_valid_status: false)
     @battle_historys = BattleHistory
@@ -92,7 +89,6 @@ class BattlesController < ApplicationController
   end
 
   def create_battle_history(winner,loser,battle)
-    # binding.pry
     history = BattleHistory.new(
       winner_id: winner.id,
       winner_count: battle.done_task_by(winner),

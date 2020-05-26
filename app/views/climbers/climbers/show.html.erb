@@ -53,25 +53,9 @@
               <%= link_to "ー　お知らせ　ー", favorites_path %><br>
           </h3>
             <% else %>
-              <%#= render 'battle_now', climber: @climber　%>
-              <% if current_climber.battle_now?(@climber) %>
-                <%#= button_to  "申請をやめる", battle_path(@unbattle), method: :delete %>
-                バトルを申込済みです。了承されるまでお待ちください
-                <%#= form_with method: :delete, local: true, url:battle_path(@unbattle) do |f| %>
-                <%#= hidden_field_tag :battler_id, @climber.id %>
-                  <%#= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
-                    <i class="fas fa-burn"> - バトルを申しこんでいる。押したら取り消しできる様にする</i>
-                  <%# end %>
-                <%# end %>
-              <% else %>
-                  <p class="heading-p"><!-- カレントユーザーには表示させない -->
-                  <%= form_with method: :post, model: @new_battle,local: true, url:battles_path do |f| %>
-                    <%= hidden_field_tag :battler_id, @climber.id %>
-                      <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
-                        <i class="fas fa-burn"> バトルを申し込む</i>
-                      <% end %>
-                  <% end %>
-              <% end %>
+            <%= render 'climbers/climbers/battle_now', climber: @climber%>
+
+              <%= render 'follow_unfollow', climber: @climber %>
 
               <% if current_climber.following?(@climber) %>
                 <%= form_for(current_climber.relationships.find_by(follow_id: @climber.id), html: { method: :delete }) do |f| %>

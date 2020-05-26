@@ -21,11 +21,6 @@ class NotificationsController < ApplicationController
       @update_notification.battle.destroy
       redirect_to request.referer, notice: "バトルを拒否しました"
     end
-    # if params[:notification][:confirm_status] == "延長"
-    #   @update_notification.update(confirm_status: "延長")
-    #   @update_notification.battle.update(finish_at: @update_notification.battle.updated_at.next_day(3))
-    #   redirect_to request.referer, notice: "バトルを3日延長しました"
-    # end
   end
 
   def create
@@ -35,11 +30,10 @@ class NotificationsController < ApplicationController
   end
 
   def index
-    # @update_notification = Notification.update
     @notifications = current_climber.passive_notifications.page(params[:page]).per(10)
     @notifications.where(is_checked_status: false).each do |notification|
       notification.update(is_checked_status: true)
-    end 
+    end
   end
 
 private

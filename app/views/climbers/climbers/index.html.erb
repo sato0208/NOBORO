@@ -1,11 +1,30 @@
-<h1>クライマー一覧ページ</h1>
+<h1>
+    クライマー一覧ページ
+</h1>
+<section class="tasks">
+    <h2>
+        友達検索
+    </h2>
+    <h3>
+        ここからバトルを申し込んだりフォローすることができます
+    </h3>
+</section>
 <table class="table">
     <thead>
         <tr>
             <th></th>
-            <th>名前</th>
-            <th></th>
-            <th></th>
+            <th>
+                名前
+            </th>
+            <th>
+                今月登った本数
+            </th>
+            <th>
+                バトル
+            </th>
+            <th>
+                フォロー
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +43,9 @@
             </td>
             <td>
                 <%= render 'battle_now', climber: climber %>
+            </td>
+            <td>
+                <%= render 'follow_unfollow', climber: climber %>
             </td>
         </tr>
         <% end %>
