@@ -30,7 +30,7 @@ class NotificationsController < ApplicationController
   end
 
   def index
-    @notifications = current_climber.passive_notifications.page(params[:page]).per(10)
+    @notifications = current_climber.passive_notifications.page(params[:page]).per(6)
     @notifications.where(is_checked_status: false).each do |notification|
       notification.update(is_checked_status: true)
     end

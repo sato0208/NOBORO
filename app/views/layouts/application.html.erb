@@ -95,16 +95,7 @@
           </ul>
         <% end %>
       </header>
-        <!-- flashここからnotice：ログイン・ログアウト -->
-        <% if notice %>
-        <div class="success">
-          <%= notice %>
-        </div>
-        <% elsif alert %>
-          <div class="info">
-            <%= alert %>
-          </div>
-        <% end %>
+  
         <%= yield %>
       <footer class="fixed-bottom">
         <p class="copyright">©︎ 2020 NOBORO <%= image_tag 'keroro.png' %></p>

@@ -6,9 +6,9 @@ class BattlesController < ApplicationController
 
   def update
     @update_battle = Battle.find(params[:id])
-    if params[:battle_status] == "延長"
-      @update_battle.update(finish_at: @update_battle.finish_at.next_day(3))
-      redirect_to request.referer, notice: "バトルを3日延長しました"
+    if params[:battle_status] == "リセット"
+      @update_battle.update(finish_at: @update_battle.created_at.next_day(3))
+      redirect_to request.referer, notice: "バトルをリセットしました"
     end
   end
 
@@ -22,7 +22,7 @@ class BattlesController < ApplicationController
     else
       redirect_to request.referer, notice: 'すでにバトルを申し込んできます! 承認されるまでお待ちください'
     end
-      redirect_to request.referer, notice: 'バトルを申し込みました! 承認されるとバトルページが使用できます'
+      redirect_to request.referer, notice: "バトルを申し込みました! 承認されるとバトルページが使用できます"
   end
 
   def destroy
@@ -62,7 +62,7 @@ class BattlesController < ApplicationController
         end
       end
       @delete_battle.destroy
-      redirect_to request.referer, notice: "バトルを終了しました"
+      redirect_to request.referer, notice: "バトルを終了しました!　バトル履歴に情報が登録されました"
     else
       @delete_battle.destroy
       redirect_to request.referer, notice: 'バトル申請を取り消しました'

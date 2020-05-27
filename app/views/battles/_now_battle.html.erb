@@ -123,9 +123,9 @@
           <td>
             <%#バトルを更新して、finish_atを今の日付から＋3日する#%>
             <%= form_with method: :put, model: @update_battle, url:battle_path(battle.id),local: true do |f| %>
-              <%= f.hidden_field :battle_status, value:"延長" %>
+              <%= f.hidden_field :battle_status, value:"リセット" %>
               <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
-                <i class="fas fa-dragon"> 延長する</i>
+                <i class="fas fa-dragon"> リセット</i>
               <% end %>
             <% end %>
           </td>
