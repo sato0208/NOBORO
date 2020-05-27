@@ -1,20 +1,22 @@
 <div class="main-visual">
-  <%= render 'layouts/alert' %>
+  <div class="container">
+    <%= render 'layouts/alert' %>
+  </div>
     <div class="main-visual-content">
-    <p class="main-visual-text">
-      ジムの店舗名で検索できます<br>
-    </p>
-      <div class="search-form">
-        <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
-          <%= f.text_field :gym_name,{placeholder: "ジムを検索"} %>
-          <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
-            <i class="fa fa-search"></i>
-          <% end %>
-        <% end %>
-      </div>
-      <p class="main-visual-name">
-        >><%= link_to "　HOW TO USE NOBORO",about_path %>
+      <p class="main-visual-text">
+        ジムの店舗名で検索できます<br>
       </p>
+        <div class="search-form">
+          <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
+            <%= f.text_field :gym_name,{placeholder: "ジムを検索"} %>
+            <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
+              <i class="fa fa-search"></i>
+            <% end %>
+          <% end %>
+        </div>
+        <p class="main-visual-name">
+          >><%= link_to "　HOW TO USE NOBORO",about_path %>
+        </p>
     </div>
 </div>
 <div class="container">

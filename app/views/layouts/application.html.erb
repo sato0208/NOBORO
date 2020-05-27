@@ -53,6 +53,7 @@
               <%= link_to " 友達検索", climbers_path,class:"fa fa-search" %>
             </li>
             <li>
+            <%# binding.pry %>
               <% if unchecked_notifications.any? %>
                 <i class="fas fa-bell" style="color: yellow;"></i>
                 <%= link_to " 通知", notifications_path %>

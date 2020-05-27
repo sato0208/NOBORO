@@ -21,7 +21,6 @@
         <h2>
           <%= @gym.gym_name%> 登れた本数ランキング
         </h2>
-
           <%= render 'done_tasks/rank', rank_done_tasks: @gym_done_tasks, my_rank: @gym_my_rank %>
         <br>
           <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
@@ -29,7 +28,6 @@
       <div role="tabpanel" class="tab-pane" id="profile">
         <h2>全ジム 登れた本数総合ランキング</h2>
         <%= render 'all_done_tasks_rank', rank_done_tasks: @all_done_tasks %>
-
         <br>
         <%= link_to "＜＜ ジムの詳細に戻る", gym_path(@gym.id) %>
         </p>

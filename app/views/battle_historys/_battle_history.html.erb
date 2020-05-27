@@ -32,60 +32,59 @@
           <td>
             <%= battle_history.created_at.strftime("%Y/%m/%d")%>
           </td>
-      
-                <%# カレントユーザが勝負を申し込まれた場合 #%>
+      <%# カレントユーザが勝負を申し込まれた場合 #%>
       <% if (current_climber == battle_history.winner) %>
-              <td>
-                <%= link_to climber_path(battle_history.loser.id) do %>
-                    <%= attachment_image_tag battle_history.loser,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to climber_path(battle_history.loser.id) do %>
-                    <%= battle_history.loser.name %>
-                <% end %>
-              </td>
-              <td>
-                <% if battle_history.is_draw_status == false %>
-              <%= image_tag 'winn.png' %> win
-              <% else%>
-              <i class="fas fa-balance-scale"></i>
-                Draw
-              <i class="fas fa-balance-scale"></i>
-              <% end %>
-              </td>
-              <td>
-                <%= battle_history.winner_count%>本
-              </td>
-              <td>
-              <%= battle_history.loser_count%>本
-              </td>
+        <td>
+          <%= link_to climber_path(battle_history.loser.id) do %>
+              <%= attachment_image_tag battle_history.loser,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to climber_path(battle_history.loser.id) do %>
+              <%= battle_history.loser.name %>
+          <% end %>
+        </td>
+        <td>
+          <% if battle_history.is_draw_status == false %>
+        <%= image_tag 'winn.png' %> Win 
+        <% else%>
+        <i class="fas fa-balance-scale"></i>
+          Draw
+        <i class="fas fa-balance-scale"></i>
+        <% end %>
+        </td>
+        <td>
+          <%= battle_history.winner_count%>本
+        </td>
+        <td>
+          <%= battle_history.loser_count%>本
+        </td>
       <% elsif (current_climber == battle_history.loser) %>
-            <td>
-              <%= link_to climber_path(battle_history.winner.id) do %>
-                  <%= attachment_image_tag battle_history.winner,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to climber_path(battle_history.winner.id) do %>
-                  <%= battle_history.winner.name %>
-              <% end %>
-            </td>
-            <td>
-            <% if battle_history.is_draw_status == false %>
-                lose <%= image_tag 'saru.png' %>
-            <% else%>
-              <i class="fas fa-balance-scale"></i>
-                Draw
-              <i class="fas fa-balance-scale"></i>
-            <% end %>
-            </td>
-            <td>
-              <%= battle_history.loser_count %>本
-            </td>
-            <td>
-            <%= battle_history.winner_count %>本
-            </td>
+        <td>
+          <%= link_to climber_path(battle_history.winner.id) do %>
+              <%= attachment_image_tag battle_history.winner,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to climber_path(battle_history.winner.id) do %>
+              <%= battle_history.winner.name %>
+          <% end %>
+        </td>
+        <td>
+        <% if battle_history.is_draw_status == false %>
+            <%= image_tag 'kinoko.png' %> Lose
+        <% else%>
+          <i class="fas fa-balance-scale"></i>
+            Draw
+          <i class="fas fa-balance-scale"></i>
+        <% end %>
+        </td>
+        <td>
+          <%= battle_history.loser_count %>本
+        </td>
+        <td>
+        <%= battle_history.winner_count %>本
+        </td>
       <% end %>
     <% end %>
   <% end %>

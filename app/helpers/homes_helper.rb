@@ -27,6 +27,10 @@ module HomesHelper
       "最後に自分の心に素直になったのはいつ？", #アラジン
       "俺の一日の最高な瞬間を教えてやろうか？", #グッドウィルハンティング
       "to boldly go where no one has gone before!", #スタートレック
+      "this is me",#グレイステッドショーマン
+      "The noblest art is that of making others happy",#グレイステッドショーマン
+      "一番怖いのは、理由もなく怖がること",#ズートピア
+      "Okay, oh you bunnies, you’re so emotional",#ズートピア
     ]
   end
 end
