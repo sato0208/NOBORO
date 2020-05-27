@@ -1,18 +1,8 @@
 <div class="container">
-  <h1>
-      クライマー 一覧ページ
-  </h1>
+  <h1>検索結果</h1>
   <%= form_with url: climber_search_path, method: :get, local: true do |f| %>
     <%= f.text_field :name,{placeholder: "名前で検索"} %>
     <%= f.submit :search %>
   <% end %>
-  <section class="tasks">
-      <h2>
-        友達検索
-      </h2>
-      <h3>
-        ここからバトルを申し込んだり、フォローすることができます
-      </h3>
-  </section>
   <%= render 'climbers', climbers: @climbers %>
 </div>

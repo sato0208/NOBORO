@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :gyms do
     resources :favorites, only: [:index]
     resources :climbers, only: [:index]
-    resources :gyms, only: [:edit, :update, :show]
+    resources :gyms, only: [:edit, :update]
     resources :genres, only: [:create, :index, :destroy, :show, :edit, :update]
     resources :grades, only: [:create, :index, :destroy, :edit, :update]
     resources :tasks, only: [:create, :index, :destroy, :edit, :update]
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get 'gyms/search' => 'gyms#search'
     get 'gyms/rank/:id' => 'gyms#rank', as: :rank
     get 'climbers/trophy/:id' => 'climbers#trophy', as: :trophy
+    get 'climbers/search' => 'climbers#search', as: :climber_search
     get 'following_climbers' => 'climbers#following_climbers'
     resources :climbers, only: [:show, :edit, :update, :index]do
       member do

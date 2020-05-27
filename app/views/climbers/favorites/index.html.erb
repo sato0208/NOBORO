@@ -1,27 +1,29 @@
-<h1>お知らせ</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>ジム</th>
-      <th>お知らせ</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% if @favorites.present? %>
-    <% @favorites.each do |f|%>
+<div class="container">
+  <h1>お知らせ</h1>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= link_to f.gym.gym_name,gym_path(f.gym.id) %></td>
-      <% f.gym.infos.each do |info| %>
-        <td><%= info.info %></td>
+        <th>ジム</th>
+        <th>お知らせ</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if @favorites.present? %>
+      <% @favorites.each do |f|%>
+        <tr>
+          <td><%= link_to f.gym.gym_name,gym_path(f.gym.id) %></td>
+        <% f.gym.infos.each do |info| %>
+          <td><%= info.info %></td>
+        <% end %>
+          <td><%= f.updated_at.strftime("%Y/%m/%d") %></td>
+        </tr>
       <% end %>
-        <td><%= f.updated_at.strftime("%Y/%m/%d") %></td>
+    <% else %>
+      <tr>
+        <h3 class="text-center">メッセージはまだありません</h3>
       </tr>
     <% end %>
-  <% else %>
-    <tr>
-      <h3 class="text-center">メッセージはまだありません</h3>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

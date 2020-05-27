@@ -3,10 +3,7 @@ class Climbers::GymsController < ApplicationController
 before_action :authenticate_climber!, :only => [:rank, :favorites]
 before_action :set_climber_gym, only: %i[show rank]
 
-
-  # before_action :authenticate_climber, {only: [:favorites]}
   def index
-    # binding.pry
     @gyms = Gym.all.page(params[:page]).per(6)
     @genres = Genre.all
     if params[:genre_id]
@@ -18,39 +15,36 @@ before_action :set_climber_gym, only: %i[show rank]
   end
 
   def rank
-    # ランキング機能
-    # 1日から月末までを集計する
-    # 見やすく書き直したい
     # ジムの中の登れた課題ランキング
     now = Time.current
     # done_taskテーブルのtask_idからgym_idを条件に検索
     @gym_done_tasks = DoneTask.where(
       task_id: Task.where(gym_id: @gym.id).pluck(:id),
-      created_at: (now.beginning_of_month)..(now.end_of_month)
-    )
+      created_at: (now.beginning_of_month)..(now.end_of_month))
     .group(:climber_id)
     .order('count(task_id) desc')
     .limit(10)
-    # 自分の順位
+    # ジム内の自分の順位
     @gym_my_rank = 1
     # @rank_done_task（多い順に並んでいる）にあるclimber_idとcurrent_climber.idが一致するまで1ずつ増やすことで順位を出す
     @gym_done_tasks.each do |rank|
       break if rank.climber_id == current_climber.id
       @gym_my_rank += 1
     end
-
     # 全ジムの登れた課題ランキング
-    @all_done_tasks = DoneTask.find(DoneTask.where(created_at:(now.beginning_of_month)..(now.end_of_month)).group(:climber_id).order('count(task_id) desc').limit(30).pluck(:id))
-    # 自分の順位
+    @all_done_tasks = DoneTask.find(
+      DoneTask.where(
+        created_at:(now.beginning_of_month)..(now.end_of_month))
+        .group(:climber_id)
+        .order('count(task_id) desc')
+        .limit(30)
+        .pluck(:id))
+    # 全てのジム内の自分の順位
     @all_my_rank = 1
     @all_done_tasks.each do |rank|
       break if rank.climber_id == current_climber.id
       @all_my_rank += 1
     end
-
-    # フォロワーの登れた課題ランキング
-    # @fallow_done_tasks =DoneTasks.
-
   end
 
   def show

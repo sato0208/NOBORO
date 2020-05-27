@@ -14,6 +14,11 @@ class Climbers::ClimbersController < ApplicationController
 
   def index
     @climbers = Climber.all
+    if params[:name].present?
+      @climbers_search = Climber.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @climbers_search = Climber.all
+    end
   end
 
   def edit
@@ -41,6 +46,14 @@ class Climbers::ClimbersController < ApplicationController
 
   def trophy
     @trophys = Trophy.where(climber_id: @climber.id).page(params[:page]).per(6)
+  end
+
+  def search
+    if params[:name].present?
+      @climbers = Climber.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @climbers = Climber.all
+    end
   end
 
   private

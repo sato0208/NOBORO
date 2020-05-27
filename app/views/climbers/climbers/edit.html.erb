@@ -1,29 +1,31 @@
-<div class="content">
-   <h1>登録情報編集</h1>
-    <%= form_with method: :patch, model: @climber, url:climber_path(@climber.id), local: true do |f| %>
-      <div class="field row">
-        <%= f.label :name, "プロフィール画像" %>
-        <%= f.attachment_field :profile_image, placeholder:"プロフィール画像", id:"profile_icon" %>
-      </div>
+<div class="container">
+  <div class="content">
+    <h1>登録情報編集</h1>
+      <%= form_with method: :patch, model: @climber, url:climber_path(@climber.id), local: true do |f| %>
+        <div class="field row">
+          <%= f.label :name, "プロフィール画像" %>
+          <%= f.attachment_field :profile_image, placeholder:"プロフィール画像", id:"profile_icon" %>
+        </div>
 
-      <div class="field row">
-        <%= f.label :name, "名前" %>
-        <%= f.text_field :name %>
-      </div>
+        <div class="field row">
+          <%= f.label :name, "名前" %>
+          <%= f.text_field :name %>
+        </div>
 
-      <div class="field row">
-        <%= f.label :introduction, "自己紹介" %>
-        <%= f.text_area :introduction %>
-      </div>
+        <div class="field row">
+          <%= f.label :introduction, "自己紹介" %>
+          <%= f.text_area :introduction %>
+        </div>
 
-      <div class="field row">
-        <%= f.label :email, "メールアドレス" %>
-        <%= f.text_field :email %>
-      </div>
+        <div class="field row">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.text_field :email %>
+        </div>
 
-      <div class="action row">
-        <%= f.submit '編集内容を保存する', class: "btn btn-primary" %>
-      </div>
-    <% end %>
+        <div class="action row">
+          <%= f.submit '編集内容を保存する', class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
 </div>
 

@@ -1,16 +1,18 @@
-NOBORO登録者一覧
+<div class="container">
+  NOBORO登録者一覧
 
-<table>
-  <thead>
+  <table>
+    <thead>
+        <tr>
+          <th>名前</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @climbers.each do |f| %>
       <tr>
-        <th>名前</th>
+        <td><%= f.name%></td>
       </tr>
-  </thead>
-  <tbody>
-  <% @climbers.each do |f| %>
-    <tr>
-      <td><%= f.name%></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -19,22 +19,10 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome'; 
 
-
-
-// @font-face {
-//     font-family: "komorebi";
-//     src: font-url("/komorebi-gothic-P.ttf") format("truetype");
-//     font-weight: normal;
-//     font-style: normal;
-//   }
-//   .sample h2 {
-//     font-family: "komorebi";
-//   }
-
-
-
-
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   margin:0; padding:0;
 }
 
@@ -74,10 +62,16 @@ p {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-h2, .h2 {
-        margin-bottom: 20px;
+
+h1{
+  text-align: center;
+  margin: 50px 0 40px 0;
+  border-bottom: dashed 2px
 }
 
+h2{
+  margin-bottom: 20px;
+}
 
 a {
     color: #3e3e3e;
@@ -107,19 +101,15 @@ header a{
         padding-right: 50px;
     }
 
-.mark {
-    background-color: #72BC46;
-
-}
-
 .kv-copy a:hover {
     color: whitesmoke;
 }
 
-/*Twitter*/
-.fa-twitter{color:#1da1f2;}
-/*Facebook*/
-.fa-facebook-square{color:#3b5998;}
+// about,home 画面で使用
+.mark {
+  background-color: #72BC46;
+}
+
 /*instagram*/
 .fa-instagram{color:#e1306c;}
 
@@ -248,22 +238,23 @@ h3.feature-title{
 }
 
 .ander {
-    content: "";
-    display: block;
-    width: 70px;
-    height: 3px;
-    margin: 8px auto 40px auto;
-    background-color:  rgb(70, 70, 70);
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  margin: 8px auto 40px auto;
+  background-color:  rgb(70, 70, 70);
 }
 
 .trophys {
 	width: 100%;
-    border: solid 3px;
-    padding: 0.5em;/*文字周りの余白*/
-    border-radius: 0.5em;/*角丸*/
+  border: solid 3px;
+  padding: 0.5em;/*文字周りの余白*/
+  border-radius: 0.5em;/*角丸*/
 	padding-bottom: 90px;
 }
 
+// ページネーション
 .pagination > li > a, .pagination > li > span {
     color:  rgb(70, 70, 70);
 }
@@ -273,7 +264,7 @@ h3.feature-title{
 }
 
 .tasks {
-    margin: 0 0 90px;
+    margin: 0 0 60px;
 }
 .tasks h3 {
     clear: left;
@@ -285,21 +276,13 @@ h3.feature-title{
 }
 
 // gymのジャンル検索の画像
-// ホバーした時に薄くしたい
-
+// ホバーした時に薄くする
 .strength a:hover {
     opacity: .5;
     transition-property: opacity;
     transition-duration: 1s;
     transition-timing-function: ease;
     transition-delay: 0s;
-}
-h1 {
-    border-bottom: dashed 2px
-  }
-
-  .table {
-    margin-top: 40px;
 }
 
 // マイページの吹き出し
@@ -333,18 +316,6 @@ h1 {
     margin: 0;
     padding: 0;
 }
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  h1{
-    text-align: center;
-    margin: 50px 0 40px 0;
-  }
 
 .box{
     height: 300px;

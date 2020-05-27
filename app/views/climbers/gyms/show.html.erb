@@ -1,100 +1,102 @@
-<button type="button" class="btn demo" data-toggle="modal" data-target="#modal-1">
-</button>
-<div class="modal fade" id="modal-1" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-        <h3 class="modal-title">
-          <%= image_tag 'toro.png' %>
-          トロフィーを獲得しました！
-        </h3>
-      </div>
-      <div class="modal-body">
-        <h4>ここにトロフィー名が入る</h4>
+<div class="container">
+  <button type="button" class="btn demo" data-toggle="modal" data-target="#modal-1">
+  </button>
+  <div class="modal fade" id="modal-1" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+          <h3 class="modal-title">
+            <%= image_tag 'toro.png' %>
+            トロフィーを獲得しました！
+          </h3>
+        </div>
+        <div class="modal-body">
+          <h4>ここにトロフィー名が入る</h4>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="description">
-  <%= attachment_image_tag @gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: asset_path("bo2.jpeg") %>
-<div class="prof-vi">
-        <h2 class="feature-title">
-            <%= @gym.gym_name %>
-        </h2>
-        <h3 class="feature-title">
-          住所
-          〒<%= @gym.post_code %>
-          <%= @gym.address %>
-        </h3>
-        <h3 class="feature-title">
-          営業時間
-          <%= @gym.description %>
-        </h3>
-        <h3 class="feature-title">
-          HP
-          <%= @gym.gym_url %>
-        </h3>
-        <h3 class="feature-title">
-          電話番号
-          <%= @gym.phone_number %>
-        </h3>
-    <div class="contact-right">
-      <h2 class="feature-title">
-        SNS
-      </h2>
-			<div class="social">
-        <a href="#">
-          <i class="fab fa-instagram"></i>
-        </a>
-			</div>
-		</div>
-    <div class="row">
+  <div class="description">
+    <%= attachment_image_tag @gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: asset_path("bo2.jpeg") %>
+  <div class="prof-vi">
+          <h2 class="feature-title">
+              <%= @gym.gym_name %>
+          </h2>
+          <h3 class="feature-title">
+            住所
+            〒<%= @gym.post_code %>
+            <%= @gym.address %>
+          </h3>
+          <h3 class="feature-title">
+            営業時間
+            <%= @gym.description %>
+          </h3>
+          <h3 class="feature-title">
+            HP
+            <%= @gym.gym_url %>
+          </h3>
+          <h3 class="feature-title">
+            電話番号
+            <%= @gym.phone_number %>
+          </h3>
       <div class="contact-right">
-        <h4 id="favorites_<%= @gym.id %>">
-          <%= render 'favorite', gym: @gym %>
-        </h4>
+        <h2 class="feature-title">
+          SNS
+        </h2>
+        <div class="social">
+          <a href="#">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
       </div>
-    <%= link_to ' 今月のランキング',rank_path, class: "btn btn-primary fas fa-chess-queen" %>
-    </div>
-</div>
-</div>
-<section class="tasks">
-    <div class="task">
-    <h2>課題一覧</h2>
-  <% if climber_signed_in? && current_climber.present? %>
-    <h3>課題名をクリックすると登れた人一覧が見れます
-    </h3>
-    <div class="table-responsive">
-      <table class="table">
-        <tbody>
-          <!-- グレードのeach文 -->
-          <% @grades_all.each do |grade| %>
+      <div class="row">
+        <div class="contact-right">
+          <h4 id="favorites_<%= @gym.id %>">
+            <%= render 'favorite', gym: @gym %>
+          </h4>
+        </div>
+      <%= link_to ' 今月のランキング',rank_path, class: "btn btn-primary fas fa-chess-queen" %>
+      </div>
+  </div>
+  </div>
+  <section class="tasks">
+      <div class="task">
+      <h2>課題一覧</h2>
+    <% if climber_signed_in? && current_climber.present? %>
+      <h3>課題名をクリックすると登れた人一覧が見れます
+      </h3>
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <!-- グレードのeach文 -->
+            <% @grades_all.each do |grade| %>
             <tr>
-                <td>
-                  <%= grade.grade %>
+              <td>
+                <%= grade.grade %>
+              </td>
+              <%# グレードに紐づくeach文 %>
+              <% gym_tasks = grade.tasks.where(gym_id: @gym.id)%>
+              <% gym_tasks.each do |gym_task| %>
+                <% @new_done_task = DoneTask.new %>
+                  <% @delete_done_task = current_climber.done_tasks.find_by(task_id: gym_task.id)%>
+                <td id="done_task_<%= gym_task.id %>">
+                  <%= render 'done_task', task: gym_task, new_done_task: @new_done_task, delete_done_task: @delete_done_task %>
                 </td>
-                <%# グレードに紐づくeach文 %>
-                <% gym_tasks = grade.tasks.where(gym_id: @gym.id)%>
-                <% gym_tasks.each do |gym_task| %>
-                  <% @new_done_task = DoneTask.new %>
-                      <% @delete_done_task = current_climber.done_tasks.find_by(task_id: gym_task.id)%>
-                  <td id="done_task_<%= gym_task.id %>">
-                      <%= render 'done_task', task: gym_task, new_done_task: @new_done_task, delete_done_task: @delete_done_task %>
-                  </td>
                 <% end %>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  <% else %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
       <h3>
         <p>課題一覧とチェックシートを使用するためには、
           <%= link_to " 新規登録 / ログイン ", new_climber_registration_path %>が必要です</p> 
       </h3>
-  <% end %>
-  </div>
-</section>
-<%= link_to "＜＜戻る", gyms_path %>
+    <% end %>
+    </div>
+  </section>
+    <%= link_to "＜＜戻る", gyms_path %>
+</div>

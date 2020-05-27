@@ -1,53 +1,51 @@
-        </div>
-        <!-- main-visual用のdv -->
-        <div class="main-visual">
-            <div class="main-visual-content">
-            <p class="main-visual-text">
-                ジムの店舗名で検索できます<br>
-            </p>
-                <div class="search-form">
-                    <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
-                        <%= f.text_field :gym_name,{placeholder: "ジムを検索"} %>
-                        <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
-                            <i class="fa fa-search"></i>
-                        <% end %>
-                    <% end %>
-                </div>
-                <p class="main-visual-name">
-                >><%= link_to "　HOW TO USE NOBORO",about_path %>
-                </p>
-            </div>
-        </div>
-        <div class="container">
-    <!-- ジャンル検索用 -->
-    <%= render 'genres', genres: @genres %>
-    <% @gyms.each do |gym| %>
-        <div class="blog-item clearfix">
-        <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: "bo2.jpeg" %>
-            <section class="blog-text">
-                <h3 class="blog-text-headline">
-                    <%= link_to gym.gym_name, gym_path(gym.id) %>
-                    <span class="category">
-                    <%= gym.genre.genre_name %>
-                </span>
-                <h5 id="favorites_<%= gym.id %>">
-                    <%= render 'favorite', gym: gym %>
-                </h5>
-                </h3>
-                <p class="blog-date">
-                    営業時間
-                    <%= gym.description %>
-                </p><br>
-                <p class="blog-date">
-                    住所
-                    〒<%= gym.post_code %>
-                    <%= gym.address %>
-                </p><br>
-                <!-- クライマーがサインインしている場合 -->
-                    <%= link_to ' このジムのランキング',rank_path(gym.id), class: "fas fa-chess-queen" %>
-            </section>
-        </div>
-    <% end %>
-<div class="centering_item">
+<div class="main-visual">
+    <div class="main-visual-content">
+    <p class="main-visual-text">
+      ジムの店舗名で検索できます<br>
+    </p>
+      <div class="search-form">
+        <%= form_with method: :get,local: true, url:gyms_search_path do |f| %>
+          <%= f.text_field :gym_name,{placeholder: "ジムを検索"} %>
+          <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
+            <i class="fa fa-search"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <p class="main-visual-name">
+        >><%= link_to "　HOW TO USE NOBORO",about_path %>
+      </p>
+    </div>
+</div>
+<div class="container">
+  <!-- ジャンル検索用 -->
+  <%= render 'genres', genres: @genres %>
+  <% @gyms.each do |gym| %>
+    <div class="blog-item clearfix">
+      <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: "bo2.jpeg" %>
+        <section class="blog-text">
+          <h3 class="blog-text-headline">
+            <%= link_to gym.gym_name, gym_path(gym.id) %>
+            <span class="category">
+            <%= gym.genre.genre_name %>
+          </span>
+          <h5 id="favorites_<%= gym.id %>">
+            <%= render 'favorite', gym: gym %>
+          </h5>
+          </h3>
+          <p class="blog-date">
+            営業時間
+            <%= gym.description %>
+          </p><br>
+          <p class="blog-date">
+            住所
+            〒<%= gym.post_code %>
+            <%= gym.address %>
+          </p><br>
+            <%= link_to ' このジムのランキング',rank_path(gym.id), class: "fas fa-chess-queen" %>
+        </section>
+      </div>
+  <% end %>
+  <div class="centering_item">
     <%= paginate @gyms %>
+  </div>
 </div>

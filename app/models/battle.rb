@@ -42,7 +42,6 @@ class Battle < ApplicationRecord
   # バトルがselfに入る。ユーザーが下の比較しているuserに入る
   # userに入れたClimberの登れた課題の数を出すことができる。
   def done_task_by(user)
-    # 三項演算子
     # 比較、trueの場合 climber.idが入る falseの場合 battler.idが入る
     my_id = user == self.climber ? self.climber.id : self.battler.id
     done_task = DoneTask.where(climber_id: Climber.find(my_id))
@@ -59,12 +58,5 @@ class Battle < ApplicationRecord
     else self.done_task_by(climber) > self.done_task_by(opponent)
       result = "Win"
     end
-  end
-
-  def battle_history_by
-    BattleHistory
-    .where(winner_id: self.id)
-    .or(BattleHistory
-    .where(loser_id: self.id))
   end
 end
