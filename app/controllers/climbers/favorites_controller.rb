@@ -18,7 +18,6 @@ before_action :set_gym, only: %i[create destroy]
   end
 
   private
-
   def set_gym
     @gym = Gym.find(params[:gym_id])
   end

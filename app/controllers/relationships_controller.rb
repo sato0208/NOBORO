@@ -1,9 +1,9 @@
 class RelationshipsController < ApplicationController
-	before_action :authenticate_climber!
+  before_action :authenticate_climber!
+  before_action :set_relationship, only: %i[create following follower destroy]
 
   def create
     # フォローされる側のID
-    @climber = Climber.find(params[:follow_id])
     following = current_climber.follow(@climber.id)
     if following.save
       flash[:success] = 'ユーザーをフォローしました'
@@ -14,16 +14,13 @@ class RelationshipsController < ApplicationController
     end
   end
 
-  def following　
-    @climber = Climber.find(params[:follow_id])
+  def following
   end
 
   def follower
-    @climber = Climber.find(params[:follow_id])
   end
 
   def destroy
-    @climber = Climber.find(params[:follow_id])
     following = current_climber.unfollow(@climber)
     if following.destroy
       flash[:success] = 'ユーザーのフォローを解除しました'
@@ -35,8 +32,11 @@ class RelationshipsController < ApplicationController
   end
 
   private
-
   def relationship_params
     params.require(:relationship).permit(:climber_id, :follow_id)
+  end
+
+  def set_relationship
+    @climber = Climber.find(params[:follow_id])
   end
 end

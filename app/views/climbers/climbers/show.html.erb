@@ -13,9 +13,8 @@
             </div>
           </div>
         <div class="prof-vi">
-
           <h2 class="feature-title">
-              <%= @climber.name %>
+            <%= @climber.name %>
           </h2>
           <h3 class="feature-title">
             フォロワー <%= link_to @climber.followers.count,follower_climber_path(@climber) %>
@@ -40,14 +39,13 @@
             <% if @climber.favorite_by?(@climber) %>
                 <% @favorites.each do |f|%>
                   <%= link_to gym_path(f.gym) do %>
-                      <%= f.gym.gym_name %> /
-                    <% end %>
+                    <%= f.gym.gym_name %>
+                  <% end %>/
                 <% end %>
             <% else %>
               お気に入りジム未登録
             <% end %>
           </p>
-
           <h3 class="feature-title">
             <% if current_climber.id == @climber.id %>
               <%= link_to "ー　プロフィール編集　ー", edit_climber_path %><br>

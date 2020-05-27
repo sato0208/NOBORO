@@ -11,7 +11,6 @@ class InfosController < ApplicationController
   end
 
   private
-
   def info_params
     params.require(:info).permit(:gym_id, :info)
   end

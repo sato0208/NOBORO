@@ -26,12 +26,9 @@ class BattlesController < ApplicationController
   end
 
   def destroy
-    # binding.pry
-    # @cancel_battler = Climber.find(params[:battler_id])
     @delete_battle = Battle.find(params[:id])
-    # @delete_battle.battler
     if params[:battle].present?
-        # カレントユーザが申し込んだ側の場合
+      # カレントユーザが申し込んだ側の場合
       if @delete_battle.climber == current_climber
         # 相手の情報を@opponentへ代入
         @opponent = @delete_battle.battler
@@ -40,13 +37,13 @@ class BattlesController < ApplicationController
         # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
         if result == "Win" || result == "Draw"
           create_battle_count(current_climber)
-          create_battle_history(current_climber,@opponent,@delete_battle)
           # create_battle_history(winner,loser,battle)
+          create_battle_history(current_climber,@opponent,@delete_battle)
         else
           create_battle_count(@opponent)
           create_battle_history(@opponent,current_climber,@delete_battle)
         end
-        # カレントユーザが申し込まれた側の場合
+      # カレントユーザが申し込まれた側の場合
       elsif @delete_battle.battler == current_climber
         # 相手の情報を@opponentへ代入
         @opponent = @delete_battle.climber

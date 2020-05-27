@@ -4,7 +4,10 @@ class Climbers::ClimbersController < ApplicationController
 
   def show
     now = Time.current
-    @trophys = Trophy.where(climber_id: @climber.id,created_at: (now.beginning_of_month)..(now.end_of_month)).group(:climber_id)
+    @trophys = Trophy.where(
+      climber_id: @climber.id,
+      created_at: (now.beginning_of_month)..(now.end_of_month))
+      .group(:climber_id)
     @favorites = Favorite.where(climber_id: @climber.id)
     @new_battle = Battle.new
     @notifications = current_climber.passive_notifications.page(params[:page]).per(10)
@@ -13,11 +16,11 @@ class Climbers::ClimbersController < ApplicationController
   end
 
   def index
-    @climbers = Climber.all
+    @climbers = Climber.all.page(params[:page]).per(10)
     if params[:name].present?
       @climbers_search = Climber.where('name LIKE ?', "%#{params[:name]}%")
     else
-      @climbers_search = Climber.all
+      @climbers_search = Climber.all.page(params[:page]).per(10)
     end
   end
 
@@ -57,7 +60,6 @@ class Climbers::ClimbersController < ApplicationController
   end
 
   private
-
   def set_climber
     @climber = Climber.find(params[:id])
   end
