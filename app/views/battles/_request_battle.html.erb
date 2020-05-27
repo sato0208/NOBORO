@@ -1,54 +1,57 @@
 <% if battles.present? %>
     <h2>
-        現在 <%= battles.count %> 人にバトル申請をしています
+      現在 <%= battles.count %> 人にバトル申請をしています
     </h2>
-    <p>許可されるまでお待ちください</p>
+    <p>
+      許可されるまでお待ちください
+    </p>
 <% else %>
     <h3>
         まだ 誰にも申請していません
     </h3>
-    <p>友達にバトル申請してみよう</p>
+    <p>
+      友達にバトル申請してみよう
+    </p>
 <% end %>
 
 <table class="table">
-    <thead>
+  <thead>
+    <tr>
+      <th>バトル申請日</th>
+      <th></th>
+      <th>申請中</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% rank = 1 %>
+  <% battles.each do |battle| %>
+    <%# バトルがある時のみ通す %>
+    <% if battle.present? && battle.battler.present? %>
+      <tr>
+        <td>
+          <%= battle.created_at.strftime("%Y/%m/%d") %>
+        </td>
+        <td>
+          <%= link_to climber_path(battle.battler.id) do %>
+            <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to climber_path(battle.battler.id) do %>
+            <%= battle.battler.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to  "申請をやめる", battle_path(battle.id), method: :delete %>
+        </td>
+      </tr>
+    <% else %>
         <tr>
-            <th>バトル申請日</th>
-            <th></th>
-            <th>申請中</th>
-            <th></th>
+          <td></td>
         </tr>
-    </thead>
-    <tbody>
-    <% rank = 1 %>
-    <% battles.each do |battle| %>
-        <%# バトルがある時のみ通す %>
-        <% if battle.present? && battle.battler.present? %>
-            <tr>
-                <td>
-                    <%= battle.created_at.strftime("%Y/%m/%d") %>
-                </td>
-                <td>
-                    <%= link_to climber_path(battle.battler.id) do %>
-                        <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
-                    <% end %>
-                </td>
-                <td>
-                    <%= link_to climber_path(battle.battler.id) do %>
-                        <%= battle.battler.name %>
-                    <% end %>
-                </td>
-                <td>
-                    <%= link_to  "申請をやめる", battle_path(battle.id), method: :delete %>
-                </td>
-            </tr>
-        <% else %>
-            <tr>
-                <td>
-                </td>
-            </tr>
-        <% end %>
     <% end %>
-    </tbody>
+  <% end %>
+  </tbody>
 </table>
 

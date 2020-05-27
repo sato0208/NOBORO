@@ -3,14 +3,14 @@
     <%= form_with method: :delete, local: true, url:battle_path(@unbattle.id) do |f| %>
     <%= hidden_field_tag :battler_id, climber.id %>
       <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
-        <i class="fas fa-burn"> 取り消す</i>
+        <i class="fas fa-burn"> バトルを取り消す</i>
       <% end %> 
     <% end %>
   <% else %>
       <%= form_with method: :post, model: @new_battle,local: true, url:battles_path do |f| %>
         <%= hidden_field_tag :battler_id, climber.id %>
           <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
-            <i class="fas fa-burn"> 申し込む</i>
+            <i class="fas fa-burn"> バトルを申し込む</i>
           <% end %>
       <% end %>
   <% end %>

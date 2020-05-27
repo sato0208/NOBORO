@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :favorites, only: [:index]
     resources :climbers, only: [:index]
     resources :gyms, only: [:edit, :update, :show]
-    resources :genres, only: [:create, :index, :destroy, :new, :show, :edit, :update]
+    resources :genres, only: [:create, :index, :destroy, :show, :edit, :update]
     resources :grades, only: [:create, :index, :destroy, :edit, :update]
     resources :tasks, only: [:create, :index, :destroy, :edit, :update]
     resources :infos, only: [:create, :index, :destroy]
@@ -44,13 +44,12 @@ Rails.application.routes.draw do
   get 'homes/about' => 'homes#about', as: :about
   get 'homes/top' => 'homes#top', as: :top
   resources :genres, only: [:create, :index, :destroy, :new, :show, :edit, :update]
-  resources :grades, only: [:create, :index, :destroy, :edit, :update]
-  resources :tasks, only: [:index, :destroy, :show]
+  resources :tasks, only: [:show]
   resources :infos, only: [:index]
-  resources :done_tasks, only: [:index, :create, :update, :show, :destroy]
+  resources :done_tasks, only: [:index, :create, :update, :destroy]
   resources :trophys, only: [:create]
   resources :relationships, only: [:create, :destroy]
   resources :battles, only: [:create, :destroy, :show, :update, :index]
-  resources :notifications, only: [:create, :destroy, :show, :update, :index]
+  resources :notifications, only: [:create, :destroy, :update, :index]
   resources :battle_historys, only: [:create, :index]
 end

@@ -53,25 +53,8 @@
               <%= link_to "ー　お知らせ　ー", favorites_path %><br>
           </h3>
             <% else %>
-            <%= render 'climbers/climbers/battle_now', climber: @climber%>
-
+              <%= render 'climbers/climbers/battle_now', climber: @climber%>
               <%= render 'follow_unfollow', climber: @climber %>
-
-              <% if current_climber.following?(@climber) %>
-                <%= form_for(current_climber.relationships.find_by(follow_id: @climber.id), html: { method: :delete }) do |f| %>
-                  <%= hidden_field_tag :follow_id, @climber.id %>
-                      <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
-                        <i class="fas fa-user-minus"> フォローを外す</i>
-                      <% end %>
-                  <% end %>
-              <% else %>
-                <%= form_for(current_climber.relationships.build) do |f| %>
-                  <%= hidden_field_tag :follow_id, @climber.id %>
-                      <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
-                        <i class="fas fa-user-plus"> フォローする</i>
-                      <% end %>
-                  <% end %>
-              <% end %>
             <% end %>
           </p>
         </div>
