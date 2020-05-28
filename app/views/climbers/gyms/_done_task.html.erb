@@ -6,10 +6,10 @@
       <%= f.hidden_field :task_id, value: task.id %>
       <%= f.hidden_field :climber_id, value: current_climber.id %>
       <%= f.button :type => "submit", style: 'border-style: none;' do %>
-      <i class="fas fa-check-circle", aria-hidden="true" style="color: green;"></i>
+        <i class="fas fa-check-circle", aria-hidden="true" style="color: green;"></i>
+      <% end %>
     <% end %>
-    <% end %>
-  <% else %>
+<% else %>
     <!-- done_taskテーブルに登録する -->
     <%= form_with method: :post, model: new_done_task, url:done_tasks_path, remote: true do |f| %>
         <!-- done_taskにcrrent_climberのidとdone_taskのclimber_idに同じものがある場合。（登録済みの場合） -->
@@ -17,9 +17,9 @@
         <%= f.hidden_field :task_id, value: task.id %>
         <%= f.hidden_field :climber_id, value: current_climber.id %>
       <%= f.button :type => "submit", style: 'border-style: none;' do %>
-      <i class="far fa-circle" aria-hidden="true"></i>
+        <i class="far fa-circle" aria-hidden="true"></i>
+      <% end %>
     <% end %>
-  <% end %>
 <% end %>
 <%= link_to task_path(task.id) do %>
   <%= task.task_name %>

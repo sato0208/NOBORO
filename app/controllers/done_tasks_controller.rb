@@ -52,7 +52,6 @@ class DoneTasksController < ApplicationController
             if @new_trophy.save
               render 'modal'
             else
-              redirect_to request.referer, notice: "同じトロフィーは獲得できません"
             end
         else
         end
@@ -60,9 +59,11 @@ class DoneTasksController < ApplicationController
   end
 
   def destroy
+    @new_done_task = DoneTask.new
     @delete_done_task = DoneTask.find(params[:id])
+    @task = Task.find(@delete_done_task.task_id)
     @delete_done_task.destroy
-    redirect_to request.referer, notice: "課題 #{@delete_done_task.task.task_name}を取り消しました"
+    # redirect_to request.referer, notice: "課題 #{@delete_done_task.task.task_name}を取り消しました"
   end
 
   private

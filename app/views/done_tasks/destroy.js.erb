@@ -1,1 +1,1 @@
-$('#done_task_<%= task.id %>').html("<%= j(render 'climbers/gyms/done_task', task: task, new_done_task:  @new_done_task, delete_done_task: @delete_done_task) %>");
+$('#done_task_<%= @task.id %>').html("<%= j(render 'climbers/gyms/done_task', task: @task, new_done_task:  @new_done_task, delete_done_task: @delete_done_task) %>");
