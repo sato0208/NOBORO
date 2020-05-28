@@ -2,7 +2,7 @@
   <%= form_for(current_climber.relationships.find_by(follow_id: climber.id), html: { method: :delete }) do |f| %>
     <%= hidden_field_tag :follow_id, climber.id %>
         <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-danger' do %>
-          <i class="fas fa-user-minus"> フォローを外す</i>
+          <i class="fas fa-user-minus"> フォロー 中</i>
         <% end %>
     <% end %>
 <% else %>

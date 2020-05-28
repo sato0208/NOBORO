@@ -1,7 +1,6 @@
 <%= my_rank %>位
 <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
 <%= current_climber.name %>
-<%# <%= current_climber.done_tasks.task.count_per_gym %>
 
 <table class="table">
   <thead>
@@ -24,27 +23,27 @@
     <% rank = 1 %>
     <% rank_done_tasks.each do |rank_done_task| %>
       <tr>
-          <td>
-            <%= rank %>位
-            <% rank += 1 %>
-          </td>
-          <td>
+        <td>
+          <%= rank %>位
+          <% rank += 1 %>
+        </td>
+        <td>
           <%= attachment_image_tag rank_done_task.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
-          </td>
-          <td>
-            <%= link_to climber_path(rank_done_task.climber_id) do %>
-              <%= rank_done_task.climber.name %>
-            <% end %>
-          </td>
-          <td>
-            <%= rank_done_task.count_per_gym %>本
-          </td>
-          <td>
-            <% unless current_climber.id == rank_done_task.climber.id %>
-              <%= render 'climbers/climbers/battle_now', climber: rank_done_task.climber%>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
+        </td>
+        <td>
+          <%= link_to climber_path(rank_done_task.climber_id) do %>
+            <%= rank_done_task.climber.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= rank_done_task.count_per_gym %>本
+        </td>
+        <td>
+          <% unless current_climber.id == rank_done_task.climber.id %>
+            <%= render 'climbers/climbers/battle_now', climber: rank_done_task.climber%>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

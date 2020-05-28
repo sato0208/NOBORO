@@ -171,6 +171,23 @@ p .copyright{
     font-size: 60px;
 }
 
+.btn {
+  margin: 10px 0;
+}
+
+// バトルのボタン
+.btn-battle {
+  color: #fff;
+  background-color: #D88644;
+  border-color: #D88644;
+}
+
+.btn-unbattle {
+  color: #fff;
+  background-color: #81C2CD;
+  border-color: #81C2CD;
+}
+
 h3.feature-title{
 	margin-bottom: 5px;
 	font-size: 20px;
@@ -263,10 +280,8 @@ h3.feature-title{
     border-color: rgb(70, 70, 70);
 }
 
-.tasks {
-    margin: 0 0 60px;
-}
 .tasks h3 {
+    margin: 0 0 40px;
     clear: left;
     font-size: 100%;
     font-weight: normal;
@@ -443,9 +458,6 @@ input[type="file"] {
     transition-duration: 1s;
     transition-timing-function: ease;
     transition-delay: 0s;
-}
-.task{
-    margin-top:100px;
 }
 
 // ブロック要素の中央揃え

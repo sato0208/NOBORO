@@ -14,7 +14,7 @@ before_action :set_gym, only: %i[create destroy]
   end
 
   def index
-    @favorites = Favorite.where(climber_id: current_climber.id)
+    @favorites = Favorite.where(climber_id: current_climber.id).page(params[:page]).per(10)
   end
 
   private

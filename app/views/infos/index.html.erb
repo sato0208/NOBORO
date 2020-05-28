@@ -1,1 +1,44 @@
-後で消す
+<div class="container">
+  <h1>お知らせ</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          ジム
+        </th>
+        <th>
+          日時
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if @infos.present? %>
+      <% @infos.each do |f|%>
+        <tr>
+          <td>
+            <%= link_to f.gym.gym_name,gym_path(f.gym.id) %>
+          </td>
+        <% f.gym.each do |info| %>
+          <td>
+            <%= info.info %>
+          </td>
+        <% end %>
+          <td>
+            <%= f.created_at.strftime("%Y/%m/%d") %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <h3 class="text-center">
+          メッセージはまだありません
+        </h3>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="centering_item">
+    <%= paginate @favorites %>
+  </div>
+</div>

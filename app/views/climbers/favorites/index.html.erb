@@ -1,44 +1,57 @@
 <div class="container">
   <h1>お知らせ</h1>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>
-          ジム
-        </th>
-        <th>
-          お知らせ
-        </th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
     <% if @favorites.present? %>
-      <% @favorites.each do |f|%>
+    <table class="table">
+      <thead>
         <tr>
-          <td>
-            <%= link_to f.gym.gym_name,gym_path(f.gym.id) %>
-          </td>
-        <% f.gym.infos.each do |info| %>
-          <td>
-            <%= info.info %>
-          </td>
+          <th>
+            ジム
+          </th>
+          <th>
+            内容
+          </th>
+          <th>
+            日時
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @favorites.each do |f|%>
+          <tr>
+            <td>
+              <%= link_to f.gym.gym_name,gym_path(f.gym.id) %>
+            </td>
+          <% if f.gym.infos.present? %>
+            <% f.gym.infos.each do |info| %>
+              <td>
+                <%= info.info %>
+              </td>
+            <% end %>
+              <td>
+                <%= f.created_at.strftime("%Y/%m/%d") %>
+              </td>
+          <% else %>
+            <td>
+            お知らせはありません
+            </td>
+            <td>
+            </td>
+          <% end %>
+          </tr>
         <% end %>
-          <td>
-            <%= f.updated_at.strftime("%Y/%m/%d") %>
-          </td>
+      <% else %>
+        <tr>
+          <h3>
+            お気に入り登録しているジムがありません
+          </h3>
+        </tr>
+        <tr>
+          <%= link_to ">> お気に入りジムを探す", gyms_path %>
         </tr>
       <% end %>
-    <% else %>
-      <tr>
-        <h3 class="text-center">
-          メッセージはまだありません
-        </h3>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
   <div class="centering_item">
-    <%= paginate @trophys %>
+    <%= paginate @favorites %>
   </div>
 </div>

@@ -62,7 +62,6 @@
   </div>
   </div>
   <section class="tasks">
-      <div class="task">
       <h2>課題一覧</h2>
     <% if climber_signed_in? && current_climber.present? %>
       <h3>課題名をクリックすると登れた人一覧が見れます
@@ -96,7 +95,6 @@
           <%= link_to " 新規登録 / ログイン ", new_climber_registration_path %>が必要です</p> 
       </h3>
     <% end %>
-    </div>
   </section>
     <%= link_to "＜＜戻る", gyms_path %>
 </div>

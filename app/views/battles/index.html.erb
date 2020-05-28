@@ -1,26 +1,18 @@
 <div class="container">
   <%= render 'layouts/alert' %>
-<button type="button" class="btn demo" data-toggle="modal" data-target="#modal-1">
-バトル勝敗DEMO
-</button>
-<div class="modal fade" id="modal-1" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-        <h3 class="modal-title"><%= image_tag 'toro.png' %> バトルを終了しました！</h3>
-      </div>
-      <div class="modal-body">
-        <h4>ここに勝敗が入る</h4>
-      </div>
-    </div>
-  </div>
-</div>
+<h1>3Daysバトル</h1>
 
-<h1>バトルページ</h1>
-<p>バトルに勝利するとプレンゼントトロフィーがもらえるぞ</p>
-<p>同じくらい登ってる人にバトルを挑もう！</p>
-<%= link_to "<< ランキングページへ", done_tasks_path %>
+<h3>バトル申請が承認されてから3日間でどれだけ登れたかを競おう！</h3>
+   <section class="tasks">
+    <h3>
+      ※ バトル開始日から終了予定日までの登れた本数を集計しています
+    </h3>
+  </section>
+  <h3 class="feature-title">
+    <%= link_to  climbers_path do %>
+      誰かにバトルを申請する<%= image_tag 'battlee.png' %>
+    <% end %>
+  </h3>
 <div class="row">
  <%= link_to climber_path(current_climber.id) do %>
   <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>

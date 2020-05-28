@@ -12,11 +12,11 @@ class Climbers::ClimbersController < ApplicationController
   end
 
   def index
-    @climbers = Climber.all.page(params[:page]).per(10)
+    @climbers = Climber.all.page(params[:page]).per(8)
     if params[:name].present?
       @climbers_search = Climber.where('name LIKE ?', "%#{params[:name]}%")
     else
-      @climbers_search = Climber.all.page(params[:page]).per(10)
+      @climbers_search = Climber.all.page(params[:page]).per(8)
     end
   end
 
@@ -51,7 +51,7 @@ class Climbers::ClimbersController < ApplicationController
     if params[:name].present?
       @climbers = Climber.where('name LIKE ?', "%#{params[:name]}%")
     else
-      @climbers = Climber.all
+      @climbers = Climber.all.page(params[:page]).per(8)
     end
   end
 

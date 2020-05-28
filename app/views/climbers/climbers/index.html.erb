@@ -1,19 +1,21 @@
 <div class="container">
   <%= render 'layouts/alert' %>
-  <h1>
-    クライマー 一覧ページ
-  </h1>
-  <%= form_with url: climber_search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :name,{placeholder: "名前で検索"} %>
-    <%= f.submit :search %>
-  <% end %>
-  <section class="tasks">
-      <h2>
-        友達検索
-      </h2>
-      <h3>
-        ここからバトルを申し込んだり、フォローすることができます
-      </h3>
-  </section>
-  <%= render 'climbers', climbers: @climbers %>
+    <h1>
+      クライマー 一覧ページ
+    </h1>
+    <%= form_with url: climber_search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :name,{placeholder: "名前で検索"} %>
+      <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
+        <i class="fa fa-search"></i>
+      <% end %>
+    <% end %>
+    <section class="tasks">
+        <h3>
+          ここからバトルを申し込んだり、フォローすることができます
+        </h3>
+    </section>
+    <%= render 'climbers', climbers: @climbers %>
+    <div class="centering_item">
+      <%= paginate @climbers %>
+    </div>
 </div>

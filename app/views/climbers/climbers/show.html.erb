@@ -19,45 +19,49 @@
           <h3 class="feature-title">
             フォロワー <%= link_to @climber.followers.count,follower_climber_path(@climber) %>
             フォロー中 <%= link_to @climber.followings.count,following_climber_path(@climber) %>
-          </h3><br>
-          <h3 class="feature-title">
-          </h3>
-          <h3 class="feature-title">
-            <%= link_to "獲得したトロフィー", trophy_path(@climber) %>
+            <%= link_to trophy_path(@climber) do %>
+              <%= image_tag 'tororo.png' %>
+            <% end %>
           </h3>
           <p class="heading-p">
-          <div class="balloon1-left">
-            <% if @climber.introduction.present? %>
-              <%= @climber.introduction %>
-            <% elsif %>
-              <%= "よろしくお願いします" %>
+            <div class="balloon1-left">
+              <% if @climber.introduction.present? %>
+                <%= @climber.introduction %>
+              <% elsif %>
+                <%= "よろしくお願いします" %>
+              <% end %>
+            </div>
+            <% if current_climber.id == @climber.id %>
+              <h3 class="feature-title">
+                <%= image_tag 'purof.png' %>
+                <%= link_to "プロフィール編集", edit_climber_path %>
+              </h3>
+              <h3 class="feature-title">
+                <%= image_tag 'info.png' %>
+                <%= link_to "お気に入りジムからのお知らせ", favorites_path %>
+              </h3>
+            <% else %>
+              <h3 class="feature-title">
+                <%= render 'climbers/climbers/battle_now', climber: @climber%>
+                <%= render 'follow_unfollow', climber: @climber %>
+              </h3>
             <% end %>
-          </div>
           </p>
           <h3 class="feature-title">お気に入りジム</h3>
           <p class="heading-p">
             <% if @climber.favorite_by?(@climber) %>
                 <% @favorites.each do |f|%>
                   <%= link_to gym_path(f.gym) do %>
-                    <%= f.gym.gym_name %>
-                  <% end %>/
+                    <%= f.gym.gym_name %> /
+                  <% end %>
                 <% end %>
             <% else %>
               お気に入りジム未登録
             <% end %>
           </p>
-          <h3 class="feature-title">
-            <% if current_climber.id == @climber.id %>
-              <%= link_to "ー　プロフィール編集　ー", edit_climber_path %><br>
-              <%= link_to "ー　お知らせ　ー", favorites_path %><br>
-          </h3>
-            <% else %>
-              <%= render 'climbers/climbers/battle_now', climber: @climber%>
-              <%= render 'follow_unfollow', climber: @climber %>
-            <% end %>
-          </p>
         </div>
-			</div>
-		</div>
-	</div>
+      </div>
+    </p>
+  </div>
+</div>
 </div>
