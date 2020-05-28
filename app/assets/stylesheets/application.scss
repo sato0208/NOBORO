@@ -280,8 +280,10 @@ h3.feature-title{
     border-color: rgb(70, 70, 70);
 }
 
-.tasks h3 {
+.tasks {
     margin: 0 0 40px;
+}
+.tasks h3 {
     clear: left;
     font-size: 100%;
     font-weight: normal;
@@ -459,6 +461,7 @@ input[type="file"] {
     transition-timing-function: ease;
     transition-delay: 0s;
 }
+
 
 // ブロック要素の中央揃え
 .centering_parent {
