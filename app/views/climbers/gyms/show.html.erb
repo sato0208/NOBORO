@@ -21,26 +21,26 @@
   <div class="description">
     <%= attachment_image_tag @gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: asset_path("bo2.jpeg") %>
   <div class="prof-vi">
-          <h2 class="feature-title">
-              <%= @gym.gym_name %>
-          </h2>
-          <h3 class="feature-title">
-            住所
-            〒<%= @gym.post_code %>
-            <%= @gym.address %>
-          </h3>
-          <h3 class="feature-title">
-            営業時間
-            <%= @gym.description %>
-          </h3>
-          <h3 class="feature-title">
-            HP
-            <a href="<%= @gym.gym_url %>"><%= @gym.gym_url %></a>
-          </h3>
-          <h3 class="feature-title">
-            電話番号
-            <%= @gym.phone_number %>
-          </h3>
+        <h2 class="feature-title">
+            <%= @gym.gym_name %>
+        </h2>
+        <h3 class="feature-title">
+          住所
+          〒<%= @gym.post_code %>
+          <%= @gym.address %>
+        </h3>
+        <h3 class="feature-title">
+          営業時間
+          <%= @gym.description %>
+        </h3>
+        <h3 class="feature-title">
+          HP
+          <a href="<%= @gym.gym_url %>"><%= @gym.gym_url %></a>
+        </h3>
+        <h3 class="feature-title">
+          電話番号
+          <%= @gym.phone_number %>
+        </h3>
       <div class="contact-right">
         <h2 class="feature-title">
           SNS

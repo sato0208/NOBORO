@@ -2,9 +2,6 @@
 	<div class="profile">
 		<div class="container">
         <%= render 'layouts/alert' %>
-			<h2 class="heading">
-        ユーザーページ
-      </h2>
 			<p class="heading-p">
 			<div class="prof-group">
           <div class="left-content">
@@ -36,10 +33,8 @@
                 <%= image_tag 'purof.png' %>
                 <%= link_to "プロフィール編集", edit_climber_path %>
               </h3>
-              <h3 class="feature-title">
-                <%= image_tag 'info.png' %>
-                <%= link_to "お気に入りジムからのお知らせ", favorites_path %>
-              </h3>
+              <div class="ander"></div>
+
             <% else %>
               <h3 class="feature-title">
                 <%= render 'climbers/climbers/battle_now', climber: @climber%>
@@ -56,9 +51,15 @@
                   <% end %>
                 <% end %>
             <% else %>
-              お気に入りジム未登録
+              <p>まだお気に入りジムを登録していません</p>
             <% end %>
           </p>
+          <% if current_climber.id == @climber.id %>
+            <h3 class="feature-title">
+              <%= image_tag 'info.png' %>
+              <%= link_to "お気に入りジムからのお知らせ", favorites_path %>
+            </h3>
+          <% end %>
         </div>
       </div>
     </p>

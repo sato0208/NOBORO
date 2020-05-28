@@ -1,15 +1,13 @@
 <h2>
   バトル履歴一覧
 </h2>
-<p>勝率
 <% if current_climber.win_count == nil %>
   まだ勝負をしてません
 <% else %>
-  <%= (current_climber.win_count.to_f) / (battle_historys.count) %>
-<% end %></p>
-<p>勝利数 <%= current_climber.win_count %></p>
-<p>勝負数 <%= battle_historys.count %></p>
-
+  <p>勝率<%= (current_climber.win_count.to_f) / (battle_historys.count) %></p>
+  <p>勝利数 <%= current_climber.win_count %></p>
+  <p>勝負数 <%= battle_historys.count %></p>
+<% end %>
 <table class="table">
   <thead>
     <tr>

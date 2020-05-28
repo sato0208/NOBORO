@@ -1,44 +1,9 @@
 <div class="container">
-  <table>
-      <thead>
-          <tr>
-              <th>グレード</th>
-              <th>課題名</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td>
-                  <%= @task.grade.grade %>
-              </td>
-              <td>
-                  <%= @task.task_name %>
-              </td>
-          </tr>
-      </tbody>
-  </table>
-      <% if @task.achieved?(current_climber)%>
-          <!-- done_taskテーブルに登録する -->
-          <%= form_with method: :delete, model: @delete_done_task, url:done_task_path(@delete_done_task), local: true do |f| %>
-            <!-- done_taskにcrrent_climberのidとdone_taskのclimber_idに同じものがある場合。（登録済みの場合） -->
-            <!-- @task.idをtask_idとして送る -->
-            <%= f.hidden_field :task_id, value: @task.id %>
-            <%= f.submit"取り消し！", class:"btn btn-primary btn-lg pull-left" %>
-          <% end %>
-      <% else %>
-        <!-- done_taskテーブルに登録する -->
-        <%= form_with method: :post, model: @new_done_task, url:done_tasks_path, local: true do |f| %>
-          <!-- done_taskにcrrent_climberのidとdone_taskのclimber_idに同じものがある場合。（登録済みの場合） -->
-          <!-- @task.idをtask_idとして送る -->
-          <%= f.hidden_field :task_id, value: @task.id %>
-          <%= f.submit"登れた！", class:"btn btn-primary btn-lg pull-left" %>
-        <% end %>
-      <% end %>
-  <h2>登れた人一覧</h2>
-
-  <table>
+  <h2><%= @task.grade.grade %><%= @task.task_name %> を登れた人</h2>
+  <table class="table">
     <thead>
       <tr>
+        <th>登った日</th>
         <th>名前</th>
       </tr>
     </thead>
@@ -46,8 +11,12 @@
       <% @done_tasks.each do |f| %>
       <tr>
         <td>
-          <%= link_to climber_path(f.climber_id) do %>
-            <%= f.climber.name %>
+          <%= f.created_at.strftime("%Y/%m/%d")%>
+        </td>
+        <td>
+          <%= link_to climber_path(f.climber.id) do %>
+            <%= attachment_image_tag f.climber, :profile_image,format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png") %>
+            <br><%= f.climber.name %>
           <% end %>
         </td>
       </tr>
