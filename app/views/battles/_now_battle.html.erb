@@ -65,10 +65,10 @@
               <% end %>
             </td>
             <td>
-              <%= rival_count = battle.done_task_by(battle.climber) %>count
+              <%= rival_count = battle.done_task_by(battle.climber) %> 本
             </td>
             <td>
-              <%= my_count = battle.done_task_by(current_climber) %>count
+              <%= my_count = battle.done_task_by(current_climber) %> 本
             </td>
           <%# カレントユーザが勝負を申し込んだ場合 #%>
           <% elsif (current_climber == battle.climber) %>
@@ -83,10 +83,10 @@
                 <% end %>
               </td>
               <td>
-                <%= rival_count = battle.done_task_by(battle.battler) %> count
+                <%= rival_count = battle.done_task_by(battle.battler) %> 本
               </td>
               <td>
-                <%= my_count = battle.done_task_by(current_climber) %> count
+                <%= my_count = battle.done_task_by(current_climber) %> 本
               </td>
           <% end %>
 

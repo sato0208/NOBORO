@@ -30,8 +30,10 @@
             </div>
             <% if current_climber.id == @climber.id %>
               <h3 class="feature-title">
+              <%= link_to edit_climber_path do %>
                 <%= image_tag 'purof.png' %>
                 <%= link_to "プロフィール編集", edit_climber_path %>
+              <% end %>
               </h3>
             <% else %>
               <h3 class="feature-title">
@@ -54,8 +56,10 @@
           </p>
           <% if current_climber.id == @climber.id %>
             <h3 class="feature-title">
-              <%= image_tag 'info.png' %>
-              <%= link_to "お気に入りジムからのお知らせ", favorites_path %>
+              <%= link_to favorites_path do %>
+                <%= image_tag 'info.png' %>
+                <%= link_to "お気に入りジムからのお知らせ", favorites_path %>
+              <% end %>
             </h3>
           <% end %>
           </div>

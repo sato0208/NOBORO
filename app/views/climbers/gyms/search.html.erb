@@ -1,48 +1,49 @@
 <div class="container">
-  <h2>ジム検索</h2>
-  <!-- 検索フォームここから -->
-  <div class="search-form">
-    <%= form_with method: :get, local: true, url:gyms_search_path do |f| %>
-      <%= f.text_field :gym_name,{placeholder: "店名で検索"} %>
-      <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
-        <i class="fa fa-search"> ジムを探す</i>
-      <% end %>
-    <% end %>
-  </div>
-  <!-- ジャンル検索 -->
-  <%= render 'genres', genres: @genres %>
-
-  <% @gyms.each do |gym| %>
-  <div class="blog-item clearfix">
-    <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: "bo2.jpeg" %>
-      <section class="blog-text">
-        <h3 class="blog-text-headline">
-            <%= link_to gym.gym_name, gym_path(gym.id) %>
-          <span class="category">
-            <%= gym.genre.genre_name %>
-          </span>
-          <h5 id="favorites_<%= gym.id %>">
-            <%= render 'favorite', gym: gym %>
-          </h5>
-        </h3>
-        <p class="blog-date">
-          営業時間
-          <%= gym.description %>
-        </p><br>
-        <p class="blog-date">
-          住所
-          〒<%= gym.post_code %>
-          <%= gym.address %>
-        </p><br>
-        <!-- クライマーがサインインしている場合 -->
-        <% if climber_signed_in? %>
-          >> <%= link_to ' このジムのランキング',rank_path(gym.id), class: "fas fa-chess-queen" %>
-        <% else climber_signed_in? %>
-          ログインしたらこのジムのランキングがみれます
+    <h2>ジム検索</h2>
+    <!-- 検索フォームここから -->
+    <div class="search-form">
+      <%= form_with method: :get, local: true, url:gyms_search_path do |f| %>
+        <%= f.text_field :gym_name,{placeholder: "店名で検索"} %>
+        <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
+          <i class="fa fa-search"> ジムを探す</i>
         <% end %>
-      </section>
+      <% end %>
     </div>
-  <% end %>
-<div class="centering_item">
-  <%= paginate @gyms %>
+    <!-- ジャンル検索 -->
+    <%= render 'genres', genres: @genres %>
+
+    <% @gyms.each do |gym| %>
+    <div class="blog-item clearfix">
+      <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: "bo2.jpeg" %>
+        <section class="blog-text">
+          <h3 class="blog-text-headline">
+              <%= link_to gym.gym_name, gym_path(gym.id) %>
+            <span class="category">
+              <%= gym.genre.genre_name %>
+            </span>
+            <h5 id="favorites_<%= gym.id %>">
+              <%= render 'favorite', gym: gym %>
+            </h5>
+          </h3>
+          <p class="blog-date">
+            営業時間
+            <%= gym.description %>
+          </p><br>
+          <p class="blog-date">
+            住所
+            〒<%= gym.post_code %>
+            <%= gym.address %>
+          </p><br>
+          <!-- クライマーがサインインしている場合 -->
+          <% if climber_signed_in? %>
+            >> <%= link_to ' このジムのランキング',rank_path(gym.id), class: "fas fa-chess-queen" %>
+          <% else climber_signed_in? %>
+            ログインしたらこのジムのランキングがみれます
+          <% end %>
+        </section>
+    </div>
+    <% end %>
+    <div class="centering_item">
+      <%= paginate @gyms %>
+    </div>
 </div>

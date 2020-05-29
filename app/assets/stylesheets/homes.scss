@@ -39,6 +39,14 @@
 	padding-top:60px;/*上側の内側余白で垂直方向の位置を調整*/
 }
 
+.log-visual {
+  width: 100%;
+  background-image:image-url('top.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
 .l-kv .tx-mask, .l-kv .tx-mask span {
   display: block;
   font-style: normal;
