@@ -251,16 +251,17 @@ h3.feature-title{
 	margin: 10px auto 30px auto;
 	font-size: 16px;
 	color:  #ECEFF1;
-	// text-align: center;
 }
 
+// ジムの詳細ページの下線
 .ander {
   content: "";
   display: block;
-  width: 70px;
+  width: 600px;
   height: 3px;
-  margin: 8px auto 40px auto;
-  background-color:  rgb(70, 70, 70);
+  margin: 8px auto 20px auto;
+  background-color: #e6e4dd;
+  border-bottom: dashed 2px;
 }
 
 .trophys {

@@ -26,7 +26,6 @@ class DoneTasksController < ApplicationController
   end
 
   def create
-    # あとでリファクタリングする。モデルに記述して短くする
     @new_done_task = DoneTask.new(done_task_params)
     @task = Task.find(@new_done_task.task_id)
     @new_done_task.climber_id = current_climber.id
@@ -41,14 +40,12 @@ class DoneTasksController < ApplicationController
         done_tasks = current_climber.done_tasks.where(task_id: task_ids)
         # done_taskの中にtaskが全部あるかをチェック
         # 32行目でとってきたtaskと34行目でとってきたtaskの中身の数が一緒であれば全て達成したことになる。
-        # binding.pry
         # 登れた課題のtaskのidの数とそのgradeの全部のtaskの数が同じ場合トロフィーを獲得する
         if done_tasks.count == task_ids.count
           @new_trophy = Trophy.new
           @new_trophy.climber_id = current_climber.id
           @new_trophy.my_trophy_name = grade.trophy_name
           @new_trophy.my_trophy_image_id = grade.trophy_image_id
-          # binding.pry
             if @new_trophy.save
               render 'modal'
             else
@@ -63,11 +60,9 @@ class DoneTasksController < ApplicationController
     @delete_done_task = DoneTask.find(params[:id])
     @task = Task.find(@delete_done_task.task_id)
     @delete_done_task.destroy
-    # redirect_to request.referer, notice: "課題 #{@delete_done_task.task.task_name}を取り消しました"
   end
 
   private
-
   def done_task_params
     params.require(:done_task).permit(:task_id, :climber_id)
   end

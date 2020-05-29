@@ -8,8 +8,11 @@ class Gyms::InfosController < ApplicationController
     @infos = Info.all
     @new_info = Info.new(info_params)
     @new_info.gym_id = current_gym.id
-    @new_info.save
-    redirect_to request.referer, notice: 'successfully created Info!'
+    if @new_info.save
+      redirect_to request.referer, notice: 'お知らせを投稿しました!'
+    else
+      render :index
+    end
   end
 
   def destroy

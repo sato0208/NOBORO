@@ -19,6 +19,7 @@
                 <%= climber.name %>
               <% end %>
             </td>
+          <% unless current_climber.id == climber.id %>
             <td>
             <%= render 'climbers/climbers/battle_now', climber: climber%>
             </td>
@@ -26,6 +27,7 @@
             <%= render 'follow_unfollow', climber: climber %>
             </td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>

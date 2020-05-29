@@ -2,12 +2,12 @@
   <h1><%= @climber.name %> フォロワー 一覧</h1>
     <table class="table">
       <thead>
-          <tr>
-              <th></th>
-              <th>名前</th>
-              <th>バトル</th>
-              <th>フォロー</th>
-          </tr>
+        <tr>
+          <th></th>
+          <th>名前</th>
+          <th>バトル</th>
+          <th>フォロー</th>
+        </tr>
       </thead>
       <tbody>
         <% @climbers.each do |climber| %>
@@ -20,13 +20,15 @@
                 <%= climber.name %>
               <% end %>
             </td>
-            <td>
-            <%= render 'climbers/climbers/battle_now', climber: climber%>
-            </td>
-            <td>
-            <%= render 'follow_unfollow', climber: climber %>
-            </td>
-          </tr>
+            <% unless current_climber.id == climber.id %>
+              <td>
+                <%= render 'climbers/climbers/battle_now', climber: climber%>
+              </td>
+              <td>
+                <%= render 'follow_unfollow', climber: climber %>
+              </td>
+            </tr>
+            <% end %>
         <% end %>
       </tbody>
     </table>

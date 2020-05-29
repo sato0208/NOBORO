@@ -1,5 +1,6 @@
 class Climbers::ClimbersController < ApplicationController
   before_action :authenticate_climber!
+  before_action :ensure_correct_climber, {only: [:edit, :update]}
   before_action :set_climber, only: %i[show edit update following follower trophy]
 
   def show
@@ -27,7 +28,7 @@ class Climbers::ClimbersController < ApplicationController
     if @climber.update(climber_params)
       redirect_to climber_path(@climber), notice: 'プロフィールをupdateしました！'
     else
-      redirect_to request.referer
+      render :edit
     end
   end
 
@@ -49,7 +50,7 @@ class Climbers::ClimbersController < ApplicationController
 
   def search
     if params[:name].present?
-      @climbers = Climber.where('name LIKE ?', "%#{params[:name]}%")
+      @climbers = Climber.where('name LIKE ?', "%#{params[:name]}%").page(params[:page]).per(8)
     else
       @climbers = Climber.all.page(params[:page]).per(8)
     end
@@ -58,6 +59,14 @@ class Climbers::ClimbersController < ApplicationController
   private
   def set_climber
     @climber = Climber.find(params[:id])
+  end
+
+  # ※カレントユーザー以外は直接リンクを入力しても編集ページにいけないようにする
+  def ensure_correct_climber
+    @climber = Climber.find(params[:id])
+    if current_climber.id != @climber.id
+      redirect_to edit_climber_path(current_climber)
+    end
   end
 
   def climber_params

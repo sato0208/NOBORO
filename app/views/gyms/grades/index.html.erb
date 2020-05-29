@@ -1,13 +1,14 @@
 <div class="container">
   <h2>グレード追加・一覧画面</h2>
-      <% if @new_grade.errors.any? %>
+    <% if @new_grade.errors.any? %>
       <div class="alert alert-danger">
-          <h2><%= @new_grade.errors.count %>つ空白があります</h2>
-          <% @new_grade.errors.full_messages.each do |message| %>
+        <h2><%= @new_grade.errors.count %>つ空白があります</h2>
+        <% @new_grade.errors.full_messages.each do |message| %>
           <%= message %><br>
-          <% end %>
+        <% end %>
       </div>
     <% end %>
+
     <%= form_with method: :post, model:@new_grade,local: true, url: gyms_grades_path do |f| %>
       <div class="field row">
         <%= f.label :グレード %>
@@ -36,7 +37,6 @@
           <td><%= grade.grade %></td>
           <td><%= attachment_image_tag grade, :trophy_image, size: '100x100',format: "jpeg",fallback: asset_path("ira13.png") %></td>
           <td><%= grade.trophy_name %></td>
-
           <td><%= link_to "編集する", edit_gyms_grade_path(grade.id) ,class: "btn btn-primary"%></td>
           <td><%= link_to "Destroy", gyms_grade_path(grade.id), method: :delete , class: "btn btn-danger" %></td>
         </tr>

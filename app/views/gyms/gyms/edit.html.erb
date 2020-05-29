@@ -1,74 +1,48 @@
 <div class="container">
-    <h1>ジム情報　編集画面</h1>
+
+  <% if @gym.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>
+        <%= @gym.errors.count %>件のエラーがあります
+      </h4>
+      <% @gym.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    </div>
+  <% end %>
+    <h1>
+      ジム情報　編集画面
+    </h1>
     <%= form_with method: :patch, model: @gym, local: true, url: gyms_gym_path(@gym) do |f| %>
-    <label>
-    </label>
-    <% if @gym.errors.any? %>
-    <%= @gym.errors.count %>件のerrorが発生しました
-    <% @gym.errors.full_messages.each do |message| %>
-    <%= message %>
+
+        <%= f.label :gym_name %>
+        <%= f.text_field :gym_name %>
+
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+
+        <%= f.label :post_code %>
+        <%= f.text_field :post_code %>
+
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number %>
+
+        <%= f.label :genre_id %>
+        <%= f.collection_select :genre_id, @genres, :id, :genre_name %>
+
+        <%= f.label :gym_url %>
+        <%= f.text_area :gym_url %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.attachment_field :gym_image, placeholder:"ジム画像", id:"gym_image" %>
+
+      <div class="row">
+        <%= f.submit "変更を保存" %>
+      </div>
     <% end %>
-    <% end %>
-</div>
-<div class="col-xs-5">
-    <table class="table table-borderless">
-        <tr>
-            <th>ジムの名前</th>
-            <td>
-                <%= f.text_field :gym_name %>
-            </td>
-        </tr>
-        <tr>
-            <th>ジムの紹介文</th>
-            <td>
-                <%= f.text_area :description %>
-            </td>
-        </tr>
-        <tr>
-            <th>ジムの郵便番号</th>
-            <td>
-                <%= f.text_field :post_code %>
-            </td>
-        </tr>
-        <tr>
-            <th>ジムの住所</th>
-            <td>
-                <%= f.text_field :address %>
-            </td>
-        </tr>
-        <tr>
-            <th>ジムの電話番号</th>
-            <td>
-                <%= f.text_field :phone_number %>
-            </td>
-        </tr>
-        <tr>
-            <th>ジムの特徴</th>
-            <td>
-                <%= f.collection_select :genre_id, @genres, :id, :genre_name %>
-            </td>
-        </tr>
-        <tr>
-            <th>ジムのurl</th>
-            <td>
-                <%= f.text_area :gym_url %>
-            </td>
-        </tr>
-         <tr>
-            <th>ログイン用email</th>
-            <td>
-                <%= f.text_field :email %>
-            </td>
-        </tr>
-        <th>ジムの写真</th>
-        <td>
-            <%= f.attachment_field :gym_image, placeholder:"ジム画像", id:"gym_image" %>
-        </td>
-    </table>
-</div>
-<div class="row">
-    <button type="submit" class="btn btn-primary btn-lg pull-right">変更を保存</button>
-</div>
-<% end %>
-</div>
 </div>

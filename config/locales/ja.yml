@@ -89,4 +89,5 @@ ja:
         phone_number: 電話番号
         gym_url: HPのURL
         gym_image_id: ジムの写真
-
+      info:
+        info: お知らせ

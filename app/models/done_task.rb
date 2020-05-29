@@ -16,4 +16,16 @@ class DoneTask < ApplicationRecord
       climber_id: self.climber_id
     ).count
   end
+
+  # 全ジムの登れた課題ランキング(未使用)
+  def all_done_tasks(climber)
+    now = Time.current
+    DoneTask.find(
+      DoneTask.where(
+        created_at:(now.beginning_of_month)..(now.end_of_month))
+        .group(:climber_id)
+        .order('count(task_id) desc')
+        .limit(30)
+        .pluck(:id))
+  end
 end

@@ -42,22 +42,17 @@
           <%= @gym.phone_number %>
         </h3>
       <div class="contact-right">
-        <h2 class="feature-title">
-          SNS
-        </h2>
-        <div class="social">
-          <a href="#">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
       </div>
+      <div class="ander"></div>
       <div class="row">
         <div class="contact-right">
           <h4 id="favorites_<%= @gym.id %>">
             <%= render 'favorite', gym: @gym %>
           </h4>
         </div>
-      <%= link_to ' 今月のランキング',rank_path, class: "btn btn-primary fas fa-chess-queen" %>
+    <h3 class="feature-title">
+      <%= link_to ' 今月のランキング',rank_path, class: "fas fa-chess-queen" %>
+    </h3>
       </div>
   </div>
   </div>

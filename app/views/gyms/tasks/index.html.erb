@@ -8,16 +8,15 @@
           <% end %>
       </div>
     <% end %>
-    <%= form_with method: :post, model:@new_task,local: true, url: gyms_tasks_path do |f| %>
-      <div class="field row">
+    <div class="field row">
+      <%= form_with method: :post, model:@new_task,local: true, url: gyms_tasks_path do |f| %>
         <%= f.label :課題 %>
         <%= f.text_field :task_name %>
-
-        <th>グレード</th>
-        <td><%= f.collection_select :grade_id, @grades_all, :id, :grade %></td>
-      <%= f.submit "追加", class: "btn btn-primary" %>
-      </div>
-    <% end %>
+        グレード
+        <%= f.collection_select :grade_id, @grades_all, :id, :grade %>
+        <%= f.submit "追加", class: "btn btn-primary" %>
+      <% end %>
+    </div>
 
     <table class="table">
       <thead class="thead-light">

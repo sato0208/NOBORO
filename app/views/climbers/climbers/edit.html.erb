@@ -1,5 +1,15 @@
 <div class="container">
   <div class="content">
+    <% if @climber.errors.any? %>
+      <div class="alert alert-danger">
+        <h2>
+          <%= @climber.errors.count %>つ空白があります
+        </h2>
+        <% @climber.errors.full_messages.each do |message| %>
+          <%= message %><br>
+        <% end %>
+      </div>
+    <% end %>
     <h1>登録情報編集</h1>
       <%= form_with method: :patch, model: @climber, url:climber_path(@climber.id), local: true do |f| %>
         <div class="field row">
@@ -14,7 +24,7 @@
 
         <div class="field row">
           <%= f.label :introduction, "自己紹介" %>
-          <%= f.text_area :introduction %>
+          <%= f.text_area :introduction,{placeholder: "30文字以内で一言！"} %>
         </div>
 
         <div class="field row">
