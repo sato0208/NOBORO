@@ -33,8 +33,6 @@
                 <%= image_tag 'purof.png' %>
                 <%= link_to "プロフィール編集", edit_climber_path %>
               </h3>
-              <div class="ander"></div>
-
             <% else %>
               <h3 class="feature-title">
                 <%= render 'climbers/climbers/battle_now', climber: @climber%>
@@ -60,9 +58,9 @@
               <%= link_to "お気に入りジムからのお知らせ", favorites_path %>
             </h3>
           <% end %>
+          </div>
         </div>
-      </div>
-    </p>
+      </p>
+    </div>
   </div>
-</div>
 </div>
