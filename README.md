@@ -74,7 +74,19 @@ HPで一つずつ情報を見ていくのは手間なので、見やすくて分
 申し込まれた人が承認ボタンをクリックすると、それから3日間でどれだけの数を登れたか勝負できます。<br>
 バトルに勝利しないと手に入らないプレゼントトロフィーがあるので頑張って勝利しよう。
 
-
+## 🔧使用技術
+### フロントエンド
+- HTML/CSS<br>
+- JavaScript/jQuery<br>
+- luxy.js
+### サーバサイド
+- Ruby-2.5.7<br>
+- Ruby_on_rails-5.2.4.2
+### 開発環境
+- Vagrant(2.2.4)<br>
+### 本番環境・デプロイ
+- AWS(EC2,nginx)<br>
+- SQL mysql-0.5.3
 
 ## 📃 設計書
 ### [ワイヤーフレーム　user側](https://drive.google.com/file/d/1EYJ_Tr6NmMoKJcZVwmTYLYZ9u4tLszQg/view?usp=sharing)
