@@ -210,7 +210,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.4)
-    puma (3.12.4)
+    puma (3.12.6)
     rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
@@ -375,7 +375,7 @@ DEPENDENCIES
   pry-byebug
   pry-doc
   pry-rails
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 5.2.4, >= 5.2.4.2)
   rails-i18n
   refile!
