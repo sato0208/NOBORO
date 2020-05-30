@@ -59,7 +59,7 @@
   <section class="tasks">
       <h2>課題一覧</h2>
     <% if climber_signed_in? && current_climber.present? %>
-      <h3>課題名をクリックすると登れた人一覧が見れます
+      <h3>一つの級の課題を全部登れたらトロフィーが獲得できます
       </h3>
       <div class="table-responsive">
         <table class="table">
@@ -78,7 +78,7 @@
                 <td id="done_task_<%= gym_task.id %>">
                   <%= render 'done_task', task: gym_task, new_done_task: @new_done_task, delete_done_task: @delete_done_task %>
                 </td>
-                <% end %>
+              <% end %>
             </tr>
             <% end %>
           </tbody>

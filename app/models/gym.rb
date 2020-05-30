@@ -20,7 +20,7 @@ class Gym < ApplicationRecord
     return Gym. unless search
     Gym.where(['content LIKE ?', "%#{search}%"])
   end
-  
+
   # ジムごとの登れた課題ランキング
   def gym_done_tasks_by
     now = Time.current

@@ -10,7 +10,7 @@
     </p>
 <% else %>
   <h3>
-      まだ 誰ともバトルしていません
+    まだ 誰ともバトルしていません
   </h3>
   <p>
     友達にバトル申請してみよう
@@ -18,29 +18,29 @@
 <% end %>
 <table class="table">
   <thead>
-      <tr>
-        <th>
-          バトル開始日
-        </th>
-          <th>
-            バトル終了予定日
-          </th>
-          <th></th>
-          <th>
-            勝負中
-          </th>
-          <th>
-            相手の登れた数
-          </th>
-          <th>
-            自分の登れた数
-          </th>
-          <th>
-            勝敗
-          </th>
-          <th></th>
-          <th></th>
-      </tr>
+    <tr>
+      <th>
+        バトル開始日
+      </th>
+      <th>
+        バトル終了予定日
+      </th>
+      <th></th>
+      <th>
+        勝負中
+      </th>
+      <th>
+        相手の登れた数
+      </th>
+      <th>
+        自分の登れた数
+      </th>
+      <th>
+        勝敗
+      </th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <% battles.each do |battle| %>
@@ -53,42 +53,42 @@
             <%= battle.finish_at.strftime("%Y/%m/%d")%>
           </td>
           <%# カレントユーザが勝負を申し込まれた場合 #%>
-          <% if (current_climber == battle.battler) %>
-            <td>
-              <%= link_to climber_path(battle.climber.id) do %>
-                <%= attachment_image_tag battle.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to climber_path(battle.climber.id) do %>
-                <%= battle.climber.name %>
-              <% end %>
-            </td>
-            <td>
-              <%= rival_count = battle.done_task_by(battle.climber) %> 本
-            </td>
-            <td>
-              <%= my_count = battle.done_task_by(current_climber) %> 本
-            </td>
-          <%# カレントユーザが勝負を申し込んだ場合 #%>
-          <% elsif (current_climber == battle.climber) %>
-              <td>
-                <%= link_to climber_path(battle.battler.id) do %>
-                  <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to climber_path(battle.battler.id) do %>
-                  <%= battle.battler.name %>
-                <% end %>
-              </td>
-              <td>
-                <%= rival_count = battle.done_task_by(battle.battler) %> 本
-              </td>
-              <td>
-                <%= my_count = battle.done_task_by(current_climber) %> 本
-              </td>
-          <% end %>
+        <% if (current_climber == battle.battler) %>
+          <td>
+            <%= link_to climber_path(battle.climber.id) do %>
+              <%= attachment_image_tag battle.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to climber_path(battle.climber.id) do %>
+              <%= battle.climber.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= rival_count = battle.done_task_by(battle.climber) %> 本
+          </td>
+          <td>
+            <%= my_count = battle.done_task_by(current_climber) %> 本
+          </td>
+        <%# カレントユーザが勝負を申し込んだ場合 #%>
+        <% elsif (current_climber == battle.climber) %>
+          <td>
+            <%= link_to climber_path(battle.battler.id) do %>
+              <%= attachment_image_tag battle.battler,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to climber_path(battle.battler.id) do %>
+              <%= battle.battler.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= rival_count = battle.done_task_by(battle.battler) %> 本
+          </td>
+          <td>
+            <%= my_count = battle.done_task_by(current_climber) %> 本
+          </td>
+        <% end %>
 
           <td>
             <% if my_count == rival_count %>

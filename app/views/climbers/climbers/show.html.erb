@@ -1,14 +1,15 @@
 <div class="container">
 	<div class="profile">
 		<div class="container">
-        <%= render 'layouts/alert' %>
+      <%= render 'layouts/alert' %>
 			<p class="heading-p">
 			<div class="prof-group">
-          <div class="left-content">
-            <div class="my-icon">
-              <%= attachment_image_tag @climber, :profile_image, format: 'jpeg', class: "pull-left my-icon", fallback: asset_path("no_image.png") %>
-            </div>
+        <div class="left-content">
+          <div class="my-icon">
+            <%= attachment_image_tag @climber, :profile_image, format: 'jpeg', class: "pull-left my-icon", fallback: asset_path("no_image.png") %>
           </div>
+        </div>
+
         <div class="prof-vi">
           <h2 class="feature-title">
             <%= @climber.name %>

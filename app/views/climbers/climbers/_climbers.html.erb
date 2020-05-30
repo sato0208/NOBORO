@@ -9,10 +9,10 @@
                 今月登った本数
             </th>
             <th>
-                バトル
+                フォロー
             </th>
             <th>
-                フォロー
+                バトル
             </th>
         </tr>
     </thead>
@@ -20,7 +20,9 @@
         <% climbers.each do |climber| %>
         <tr>
             <td>
+              <%= link_to climber_path(climber.id) do %>
                 <%= attachment_image_tag climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
+              <% end %>
             </td>
             <td>
                 <%= link_to climber_path(climber.id) do %>
@@ -30,12 +32,12 @@
             <td>
                 <%= climber.month_done_tasks.count %>　本
             </td>
-            <% unless current_climber.id == climber.id %>
+              <% unless current_climber.id == climber.id %>
             <td>
-                <%= render 'battle_now', climber: climber %>
+              <%= render 'follow_unfollow', climber: climber %>
             </td>
             <td>
-                <%= render 'follow_unfollow', climber: climber %>
+              <%= render 'battle_now', climber: climber %>
             </td>
             <% end %>
             <td></td>

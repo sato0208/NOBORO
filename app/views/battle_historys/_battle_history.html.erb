@@ -4,11 +4,11 @@
   <% if current_climber.win_count == nil %>
     まだ勝負をしてません
   <% else %>
-            <h4 class="feature-title">
-    勝率<%= (current_climber.win_count.to_f) / (battle_historys.count) %>
-    勝利数 <%= current_climber.win_count %>
-    勝負数 <%= battle_historys.count %></p>
-          </h4>
+  <h4 class="feature-title">
+    勝負数 <%= my_win = current_climber.win_count + current_climber.win_count %>回　
+    勝利数 <%= current_climber.win_count %>回　
+    勝率 <%= ((current_climber.win_count.to_f) / (my_win)).floor(2)  %></p>
+  </h4>
 
   <% end %>
     <table class="table">
