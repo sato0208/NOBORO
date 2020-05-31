@@ -88,6 +88,4 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
-# # for image uploader with AWS S3
-# gem 'carrierwave'
-# gem 'fog'
+gem "refile-s3"
