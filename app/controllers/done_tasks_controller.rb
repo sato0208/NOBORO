@@ -46,19 +46,18 @@ class DoneTasksController < ApplicationController
           @new_trophy = Trophy.new
           @new_trophy.climber_id = current_climber.id
           @new_trophy.my_trophy_name = grade.trophy_name
-          if Rails.env == "production"
-            target_path = "https://aws-and-infra-noboro.s3-ap-northeast-1.amazonaws.com/store/" + grade.trophy_image.id
-            File.open(target_path) do |file|
-              @new_trophy.my_trophy_image = file
-            end
-          else
+          # if Rails.env == "production"
+          #   target_path = "https://aws-and-infra-noboro.s3-ap-northeast-1.amazonaws.com/store/" + grade.trophy_image.id
+          #   File.open(target_path) do |file|
+          #     @new_trophy.my_trophy_image = file
+          #   end
+          # else
             # refileへの登録　@new_trophy.my_trophy_image_id = grade.trophy_image_id
             target_path = grade.trophy_image.backend.directory + '/' + grade.trophy_image.id
             File.open(target_path) do |file|
               @new_trophy.my_trophy_image = file
             end
-          end
-
+          # end
           if @new_trophy.save
             render 'modal'
           else
