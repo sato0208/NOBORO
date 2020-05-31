@@ -1,6 +1,6 @@
 require "refile/s3"
 # 本番環境のみAWSのS3へ保存
-if Rails.env == "production"
+# if Rails.env == "production"
 
   aws = {
     access_key_id: ENV["AWS_ACCESS_KEY_ID"],
@@ -11,4 +11,4 @@ if Rails.env == "production"
   Refile.cache = Refile::S3.new(prefix: "cache", **aws)
   Refile.store = Refile::S3.new(prefix: "store", **aws)
 
-end
+# end
