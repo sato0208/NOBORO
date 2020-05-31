@@ -45,7 +45,11 @@ class DoneTasksController < ApplicationController
           @new_trophy = Trophy.new
           @new_trophy.climber_id = current_climber.id
           @new_trophy.my_trophy_name = grade.trophy_name
-          @new_trophy.my_trophy_image_id = grade.trophy_image_id
+          # refileへの登録　@new_trophy.my_trophy_image_id = grade.trophy_image_id
+          target_path = grade.trophy_image.backend.directory + '/' + grade.trophy_image.id
+          File.open(target_path) do |file|
+            @new_trophy.my_trophy_image = file
+          end
             if @new_trophy.save
               render 'modal'
             else

@@ -45,7 +45,9 @@ class Climbers::ClimbersController < ApplicationController
   end
 
   def trophy
-    @trophys = Trophy.where(climber_id: @climber.id).page(params[:page]).per(6)
+    ActiveRecord::Base.uncached do
+      @trophys = Trophy.where(climber_id: @climber.id).page(params[:page]).per(6)
+    end
   end
 
   def search
