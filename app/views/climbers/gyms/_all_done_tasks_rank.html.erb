@@ -9,41 +9,42 @@
 
         <table class="table">
             <thead>
-                <tr>
-                    <th>順位</th>
-                    <th>写真</th>
-                    <th>名前</th>
-                    <th>登れた本数</th>
-                    <th>バトル申し込み</th>
-                </tr>
+              <tr>
+                <th>順位</th>
+                <th>写真</th>
+                <th>名前</th>
+                <th>登れた本数</th>
+                <th>バトル申し込み</th>
+              </tr>
             </thead>
             <tbody>
-                <% rank = 1 %>
-                <% @all_done_tasks.each do |rank_done_task| %>
+              <% rank = 1 %>
+              <% @all_done_tasks.each do |rank_done_task| %>
                 <tr>
-                    <td>
-                        <%= rank %>位
-                        <% rank += 1 %>
-                    </td>
-                    <td>
+                  <td>
+                    <%= rank %>位
+                    <% rank += 1 %>
+                  </td>
+                  <td>
                     <%= link_to climber_path(rank_done_task.climber_id) do %>
                       <%= attachment_image_tag rank_done_task.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
                     <% end %>
-                    </td>
-                    <td>
-                        <%= link_to climber_path(rank_done_task.climber_id) do %>
-                            <%= rank_done_task.climber.name %>
-                        <% end %>
-                    </td>
-                    <td>
-                        <%= rank_done_task.climber.done_tasks.count %>本
-                    </td>
-                    <td>
-                        <% unless current_climber.id == rank_done_task.climber.id %>
-                            <%= render 'climbers/climbers/battle_now', climber: rank_done_task.climber%>
-                        <% end %>
-                    </td>
+                  </td>
+                  <td>
+                    <%= link_to climber_path(rank_done_task.climber_id) do %>
+                      <%= rank_done_task.climber.name %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% now = Time.current %>
+                    <%= rank_done_task.climber.done_tasks.where(created_at:(now.beginning_of_month)..(now.end_of_month)).count %>本
+                  </td>
+                  <td>
+                    <% unless current_climber.id == rank_done_task.climber.id %>
+                      <%= render 'climbers/climbers/battle_now', climber: rank_done_task.climber%>
+                    <% end %>
+                  </td>
                 </tr>
-                <% end %>
+              <% end %>
             </tbody>
         </table>

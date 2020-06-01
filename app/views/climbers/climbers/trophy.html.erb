@@ -5,19 +5,20 @@
         獲得したトロフィー
       </h1>
 
-    <div class="strength-group clearfix">
-    <% @trophys.each do |trophy| %>
-      <div class="strength">
-        <h3 class="feature-title">
-          <%= trophy.my_trophy_name %>
-        </h3>
-          <%= attachment_image_tag trophy, :my_trophy_image, size: '100x100',format: "jpeg",fallback: asset_path("ira13.png") %>
-        <h3 class="feature-title">
-          <%= trophy.updated_at.strftime("%Y/%m/%d") %>
-        </h3>
+      <div class="strength-group clearfix">
+        <% @trophys.each do |trophy| %>
+          <div class="strength">
+            <h3 class="feature-title">
+              <%= trophy.my_trophy_name %>
+            </h3>
+              <%= attachment_image_tag trophy, :my_trophy_image, size: '100x100',format: "jpeg",fallback: asset_path("ira13.png") %>
+            <h3 class="feature-title">
+              <%= trophy.updated_at.strftime("%Y/%m/%d") %>
+            </h3>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    </div>
+
       <div class="centering_item">
         <%= paginate @trophys %>
       </div>

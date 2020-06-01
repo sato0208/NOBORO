@@ -4,7 +4,7 @@
     <%= hidden_field_tag :battler_id, climber.id %>
       <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-unbattle' do %>
         <i class="fas fa-tint"> バトルを取り消す</i>
-      <% end %> 
+      <% end %>
     <% end %>
   <% else %>
       <%= form_with method: :post, model: @new_battle,local: true, url:battles_path do |f| %>
