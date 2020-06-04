@@ -1,4 +1,6 @@
 class Gyms::GradesController < ApplicationController
+  before_action :authenticate_gym!
+
   def index
     @new_grade = Grade.new
     @grades = Grade.all
@@ -6,7 +8,6 @@ class Gyms::GradesController < ApplicationController
 
   def update
     @grade = Grade.find(params[:id])
-    p grade_params
     if @grade.update(grade_params)
       redirect_to request.referer, notice: 'successfully update Genre!'
     else
@@ -17,8 +18,12 @@ class Gyms::GradesController < ApplicationController
   def create
     @grade = Grade.all
     @new_grade = Grade.new(grade_params)
-    @new_grade.save
-    redirect_to request.referer, notice: 'successfully created Genre!'
+    if @new_grade.save
+      redirect_to request.referer, notice: 'successfully created Genre!'
+    else
+      @grades = Grade.all
+        render :index
+    end
   end
 
   def new

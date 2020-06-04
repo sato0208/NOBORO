@@ -40,24 +40,17 @@ class DoneTasksController < ApplicationController
         # 自分に紐ずくdone_taskの中から@new_done_taskのtask.idに紐ずくtaskを全て取得（32行目でとってきた同じジムの同じtaskのgradeがあるかをwhereで探す）
         done_tasks = current_climber.done_tasks.where(task_id: task_ids)
         # done_taskの中にtaskが全部あるかをチェック
-        # 32行目でとってきたtaskと34行目でとってきたtaskの中身の数が一緒であれば全て達成したことになる。
-        # 登れた課題のtaskのidの数とそのgradeの全部のtaskの数が同じ場合トロフィーを獲得する
+        # 32行目でとってきたtaskと34行目でとってきたtaskの数が一緒であれば全て達成したことになる。
+        # 登れた課題のtask_idの数とそのgradeの全部のtask_idの数が同じ場合トロフィーを獲得する
         if done_tasks.count == task_ids.count
           @new_trophy = Trophy.new
           @new_trophy.climber_id = current_climber.id
           @new_trophy.my_trophy_name = grade.trophy_name
-          # if Rails.env == "production"
-          #   target_path = "https://aws-and-infra-noboro.s3-ap-northeast-1.amazonaws.com/store/" + grade.trophy_image.id
-          #   File.open(target_path) do |file|
-          #     @new_trophy.my_trophy_image = file
-          #   end
-          # else
             # refileへの登録　@new_trophy.my_trophy_image_id = grade.trophy_image_id
             target_path = grade.trophy_image.backend.directory + '/' + grade.trophy_image.id
             File.open(target_path) do |file|
               @new_trophy.my_trophy_image = file
             end
-          # end
           if @new_trophy.save
             render 'modal'
           else

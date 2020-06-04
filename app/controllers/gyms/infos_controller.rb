@@ -1,4 +1,6 @@
 class Gyms::InfosController < ApplicationController
+  before_action :authenticate_gym!
+
   def index
     @new_info = Info.new
     @infos = Info.all
@@ -11,7 +13,8 @@ class Gyms::InfosController < ApplicationController
     if @new_info.save
       redirect_to request.referer, notice: 'お知らせを投稿しました!'
     else
-      render :index
+      @infos = Info.all
+        render :index
     end
   end
 

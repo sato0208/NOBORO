@@ -1,17 +1,40 @@
 <div class="container">
-  NOBORO登録者一覧
-
-  <table>
+  <h1>NOBORO登録者一覧</h1>
+  <table class="table">
     <thead>
-        <tr>
-          <th>名前</th>
-        </tr>
+      <tr>
+        <th></th>
+        <th>
+            名前
+        </th>
+        <th>
+            今月登った本数
+        </th>
+        <th>
+            退会させる
+        </th>
+      </tr>
     </thead>
     <tbody>
-    <% @climbers.each do |f| %>
-      <tr>
-        <td><%= f.name%></td>
-      </tr>
+      <% @climbers.each do |climber| %>
+        <tr>
+          <td>
+            <%= link_to climber_path(climber.id) do %>
+              <%= attachment_image_tag climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
+            <% end %>
+          </td>
+          <td>
+              <%= link_to climber_path(climber.id) do %>
+                <%= climber.name%>
+              <% end %>
+          </td>
+          <td>
+              <%= climber.month_done_tasks.count %>　本
+          </td>
+          <td>
+            <%= link_to "退会させる", gyms_climber_path(climber.id),class:"btn btn-danger", method: :delete, data: {confirm: '本当に退会させますか？'} %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

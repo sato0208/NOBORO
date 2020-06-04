@@ -1,4 +1,6 @@
 class Gyms::TasksController < ApplicationController
+  before_action :authenticate_gym!
+
   def index
     @tasks = current_gym.tasks
     @new_task = Task.new
@@ -17,6 +19,10 @@ class Gyms::TasksController < ApplicationController
     @new_task.gym_id = current_gym.id
     if @new_task.save
       redirect_to request.referer, notice: 'successfully created Task!'
+    else
+      @tasks = current_gym.tasks
+      @grades_all = Grade.all
+        render :index
     end
   end
 

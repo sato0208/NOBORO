@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/' => 'tasks#index'
   namespace :gyms do
     resources :favorites, only: [:index]
-    resources :climbers, only: [:index]
+    resources :climbers, only: [:index, :destroy]
     resources :gyms, only: [:edit, :update]
     resources :genres, only: [:create, :index, :destroy, :show, :edit, :update]
     resources :grades, only: [:create, :index, :destroy, :edit, :update]
@@ -41,16 +41,16 @@ Rails.application.routes.draw do
       get :favorites, on: :collection
     end
   end
-  # urlにclimbersを含めたくないのでわざとscopeから外してます
-  get 'homes/about' => 'homes#about', as: :about
-  get 'homes/top' => 'homes#top', as: :top
-  resources :genres, only: [:create, :index, :destroy, :new, :show, :edit, :update]
-  resources :tasks, only: [:show]
-  resources :infos, only: [:index]
-  resources :done_tasks, only: [:index, :create, :update, :destroy]
-  resources :trophys, only: [:create]
-  resources :relationships, only: [:create, :destroy]
-  resources :battles, only: [:create, :destroy, :show, :update, :index]
-  resources :notifications, only: [:create, :destroy, :update, :index]
-  resources :battle_historys, only: [:create, :index]
+    # urlにclimbersを含めたくないのでわざとscopeから外してます
+    get 'homes/about' => 'homes#about', as: :about
+    get 'homes/top' => 'homes#top', as: :top
+    resources :genres, only: [:create, :index, :destroy, :new, :show, :edit, :update]
+    resources :tasks, only: [:show]
+    resources :infos, only: [:index]
+    resources :done_tasks, only: [:index, :create, :update, :destroy]
+    resources :trophys, only: [:create]
+    resources :relationships, only: [:create, :destroy]
+    resources :battles, only: [:create, :destroy, :update, :index]
+    resources :notifications, only: [:create, :destroy, :update, :index]
+    resources :battle_historys, only: [:create, :index]
 end

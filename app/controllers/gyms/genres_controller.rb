@@ -1,4 +1,6 @@
 class Gyms::GenresController < ApplicationController
+  before_action :authenticate_gym!
+
   def index
     @new_genre = Genre.new
     @genres = Genre.all
@@ -13,8 +15,11 @@ class Gyms::GenresController < ApplicationController
   def create
     @genres = Genre.all
     @new_genre = Genre.new(genre_params)
-    @new_genre.save
-    redirect_to request.referer, notice: 'successfully created Genre!'
+    if @new_genre.save
+      redirect_to request.referer, notice: 'successfully created Genre!'
+    else
+      render :index
+    end
   end
 
   def new

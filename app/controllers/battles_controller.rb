@@ -1,8 +1,6 @@
 class BattlesController < ApplicationController
 	before_action :authenticate_climber!
 
-  def show
-  end
 
   def update
     @update_battle = Battle.find(params[:id])
