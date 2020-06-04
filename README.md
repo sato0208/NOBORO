@@ -78,15 +78,18 @@ HPで一つずつ情報を見ていくのは手間なので、見やすくて分
 ### フロントエンド
 - HTML/CSS<br>
 - JavaScript/jQuery<br>
-- luxy.js
 ### サーバサイド
 - Ruby-2.5.7<br>
 - Ruby_on_rails-5.2.4.2
 ### 開発環境
 - Vagrant(2.2.4)<br>
+### テスト
+- rspec-rails
 ### 本番環境・デプロイ
-- AWS(EC2,nginx)<br>
-- SQL mysql-0.5.3
+- AWS (EC2,RDS)<br>
+- web server (nginx)<br>
+- application server (puma)<br>
+- SQL (mysql-0.5.3)
 
 ## 📃 設計書
 ### [ワイヤーフレーム　user側](https://drive.google.com/file/d/1EYJ_Tr6NmMoKJcZVwmTYLYZ9u4tLszQg/view?usp=sharing)
