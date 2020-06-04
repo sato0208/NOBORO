@@ -91,3 +91,5 @@ ja:
         gym_image_id: ジムの写真
       info:
         info: お知らせ
+      task:
+        task_name: 課題
