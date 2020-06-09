@@ -96,7 +96,7 @@ HPで一つずつ情報を見ていくのは手間なので、見やすくて分
 ### [ワイヤーフレーム　admin側](https://app.diagrams.net/#G1GQshFpEhRTq3xialP9dOQHu8DJ1hrjtE)
 ### [ER図](https://app.diagrams.net/#G1wzUQNLwBpJw6pwcnkBhbnAf4EVFQD2om)
 ### [テーブル提議書](https://docs.google.com/spreadsheets/d/1NkqBkop23iWMGou29T9cCjX-nU4dwcR6I1jlKRXh_2k/edit#gid=313609131)
-### [アプリケーション詳細設計](https://docs.google.com/sprÂeadsheets/d/1NkqBkop23iWMGou29T9cCjX-nU4dwcR6I1jlKRXh_2k/edit#gid=485630087)
+### [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1NkqBkop23iWMGou29T9cCjX-nU4dwcR6I1jlKRXh_2k/edit?usp=sharing)
 ## 💻 機能一覧
 ### [機能一覧](https://docs.google.com/spreadsheets/d/1NkqBkop23iWMGou29T9cCjX-nU4dwcR6I1jlKRXh_2k/edit?usp=sharing)
 
