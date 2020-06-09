@@ -26,41 +26,47 @@
   margin:0; padding:0;
 }
 
+$main-color: #3e3e3e;
+
+body {
+  color: $main-color;
+}
+
 html {
-    font-size: 10px;
-    font-family: Prompt,sans-serif;
+  font-size: 10px;
+  font-family: Prompt,sans-serif;
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
-    line-height: 1.42857143;
-    display: block;
-    color: #3e3e3e;
-    background-color: #fff;
-    }
+  font-family: "Helvetica Neue", Helvetica, Arial,
+  sans-serif;
+  line-height: 1.42857143;
+  display: block;
+  color: $main-color;
+  background-color: #fff;
+}
 
 body,
-#wrapper {
+  #wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 footer {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 div {
-    display: block;
+  display: block;
 }
 
 p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
 h1{
@@ -73,36 +79,73 @@ h2{
   margin-bottom: 20px;
 }
 
+h3.feature-title{
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
 a {
-    color: #3e3e3e;
-    text-decoration: none;
-    font-weight: bold;
+  color: $main-color;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 a:hover {
-    color: #337ab7;
-    text-decoration: none;
+  color: #337ab7;
+  text-decoration: none;
+}
+// ヘッダー
+header a{
+  color: #fff;
+  margin: 0,auto;
 }
 
-header a{
-    color: #fff;
-    margin: 0,auto;
+header a:hover {
+  color: #9d9d9d;
+  background-color: $main-color;
+  text-decoration:none;
+  opacity: .5;
+}
+
+header li {
+  display: inline-block;
+  padding: 0 30px 0 0;
+  color: #fff;
+  font-family: 'Glyphicons Halflings';
+}
+
+header span{
+  font-size: 20px;
+  display: inline-block;
+  color: #fff;
+}
+
+// フッダー
+footer {
+  width: 100%;
+  height: 200px;
+  background-color: $main-color;
+  font-size: 16px;
+  color: #FAFAFA;
+  text-align: center;
+  padding: 40px;
 }
 
 .logo{
-    width: 190px;
-    height: 60px;
-    margin-left: 35%;
-    }
+  width: 190px;
+  height: 60px;
+  margin-left: 35%;
+}
+
 .container {
-        margin-right: auto;
-        margin-left: auto;
-        padding-left: 50px;
-        padding-right: 50px;
-    }
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+}
 
 .kv-copy a:hover {
-    color: whitesmoke;
+  color: whitesmoke;
 }
 
 // about,home 画面で使用
@@ -110,92 +153,56 @@ header a{
   background-color: #72BC46;
 }
 
-/*instagram*/
-.fa-instagram{color:#e1306c;}
-
-header a:hover {
-    color: #9d9d9d;
-    background-color: #3e3e3e;
-    text-decoration:none;
-    opacity: .5;
-}
-
-header li {
-    display: inline-block;
-    padding: 0 30px 0 0;
-    color: #fff;
-    font-family: 'Glyphicons Halflings';
-}
-header span{
-    font-size: 20px;
-    display: inline-block;
-    // padding: 15px 15px;
-    color: #fff;
-}
 .navbar {
-    margin-bottom: 0;
-    border-radius: 0;
-    min-height: 60px;
+  margin-bottom: 0;
+  border-radius: 0;
+  min-height: 60px;
 }
 
 .navbar-inverse {
-        background-color: #3e3e3e;
-        border-color: #090909;
-    }
-
-footer {
-        width: 100%;
-        height: 200px;
-        background-color: #3e3e3e;
-        font-size: 16px;
-        color: #FAFAFA;
-        text-align: center;
-        padding: 40px;
-    }
+  background-color: $main-color;
+  border-color: #090909;
+}
 
 p .copyright{
-        font-size: 16px;
-        color: #FAFAFA;
+  font-size: 16px;
+  color: #FAFAFA;
 }
 
 // トロフィー一覧ページ
 .strength {
-    float: left;
-    width: 320px;
-    padding-bottom: 30px;
-    // border: solid 3px;
-    // border-radius: 0.5em;
-    margin-right: 20px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 60px;
+  float: left;
+  width: 320px;
+  padding-bottom: 30px;
+  // border: solid 3px;
+  // border-radius: 0.5em;
+  margin-right: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 60px;
 }
 
 .btn {
   margin: 10px 0;
 }
 
-// バトルのボタン
+// バトル申し込みのボタン
 .btn-battle {
   color: #fff;
   background-color: #D88644;
   border-color: #D88644;
 }
 
+// バトル取り消しのボタン
 .btn-unbattle {
   color: #fff;
   background-color: #81C2CD;
   border-color: #81C2CD;
 }
 
-h3.feature-title{
-	margin-bottom: 5px;
-	font-size: 20px;
-}
-
 #feature {
-    background-size: cover;
-    background-position: center;
+  background-size: cover;
+  background-position: center;
 }
 
 
@@ -207,43 +214,44 @@ h3.feature-title{
 }
 
 .left-content {
-    width: 30%;
-    float: left;
+  width: 30%;
+  float: left;
 }
 
 .prof-vi{
 	text-align: left;
 }
+
 .my-icon {
-    width: 250px;
-    height: 250px;
-    margin: 0 auto;
-    border-radius: 50%;
-    float: left;
-    margin: 0 auto;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  border-radius: 50%;
+  float: left;
+  margin: 0 auto;
 }
 
 .profile-icon {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto;
-    border-radius: 50%;
-    float: left;
-    margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 50%;
+  float: left;
+  margin: 0 auto;
 
 }
 
 .head-profile-icon {
-    width: 40px;
-    height: 40px;
-    margin: 0 10px;
-    border-radius: 50%;
-    float: left;
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+  border-radius: 50%;
+  float: left;
 }
 
 .heading{
 	font-size: 32px;
-    padding-top: 50px;
+  padding-top: 50px;
 	text-align: center;
 }
 
@@ -274,107 +282,108 @@ h3.feature-title{
 
 // ページネーション
 .pagination > li > a, .pagination > li > span {
-    color:  rgb(70, 70, 70);
+  color:  rgb(70, 70, 70);
 }
+
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
-    background-color:rgb(70, 70, 70);
-    border-color: rgb(70, 70, 70);
+  background-color:rgb(70, 70, 70);
+  border-color: rgb(70, 70, 70);
 }
 
 .tasks {
-    margin: 0 0 40px;
+  margin: 0 0 40px;
 }
+
 .tasks h3 {
-    clear: left;
-    font-size: 100%;
-    font-weight: normal;
-    margin: 0;
-    background-color: #e6e4dd;
-    padding: 5px 10px;
+  clear: left;
+  font-size: 100%;
+  font-weight: normal;
+  margin: 0;
+  background-color: #e6e4dd;
+  padding: 5px 10px;
 }
 
 // gymのジャンル検索の画像
 // ホバーした時に薄くする
 .strength a:hover {
-    opacity: .5;
-    transition-property: opacity;
-    transition-duration: 1s;
-    transition-timing-function: ease;
-    transition-delay: 0s;
+  opacity: .5;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 }
 
 // マイページの吹き出し
-
 .balloon1-left {
-    position: relative;
-    display: inline-block;
-    margin: 0 0 1.5em 15px;
-    padding: 7px 10px;
-    min-width: 120px;
-    max-width: 100%;
-    height: 80px;
-    width: 300px;
-    color: #555;
-    font-size: 16px;
-    background: #fff;
-    border-radius: 15px;
+  position: relative;
+  display: inline-block;
+  margin: 0 0 1.5em 15px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  height: 80px;
+  width: 300px;
+  color: #555;
+  font-size: 16px;
+  background: #fff;
+  border-radius: 15px;
 }
 
 .balloon1-left:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -30px;
-    margin-top: -15px;
-    border: 15px solid transparent;
-    border-right: 15px solid #fff;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid #fff;
 }
 
 .balloon1-left p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .box{
-    height: 300px;
-    width: 90%;
-    max-width: 600px;
-    margin: 0 auto 50px;
-    background-color: #eee;
+  height: 300px;
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  background-color: #eee;
 }
 
 .content {
-    background-color: #fff;
-    width: 600px;
-    margin: 30px auto;
-    border: 1px solid #d1d1d1;
-    padding: 30px;
+  background-color: #fff;
+  width: 600px;
+  margin: 30px auto;
+  border: 1px solid #d1d1d1;
+  padding: 30px;
 }
 
 input {
-    border: none;
-    border: 1px solid #d1d1d1;
-    font-size: 1.2em;
-    padding: 5px;
-    margin-top: 10px;
+  border: none;
+  border: 1px solid #d1d1d1;
+  font-size: 1.2em;
+  padding: 5px;
+  margin-top: 10px;
 }
 
 .control {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 label {
-    display: block;
-    margin-top: .8em;
+  display: block;
+  margin-top: .8em;
 }
 
 // gym/index
 .gym-icon {
-    width: 400px;
-    height: 300px;
-    margin: 0 auto;
-    float: left;
-    margin: 0 auto; 
+  width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  float: left;
+  margin: 0 auto;
 }
 
 .blog{
@@ -427,54 +436,53 @@ label {
 
 /* 必須ラベルの余白、カラー、フォントサイズ、背景色、太字指定 */
 .required {
-    margin-left: .3em;
-    color: #f33;
-    font-size: .9em;
-    padding: 3px;
-    background-color: #fee;
-    font-weight: bold;
+  margin-left: .3em;
+  color: #f33;
+  font-size: .9em;
+  padding: 3px;
+  background-color: #fee;
+  font-weight: bold;
 }
 
 textarea {
-    overflow: auto;
-    width: 100%;
-    height: 70px;
-    border: 1px solid #d1d1d1;
-    padding: 5px;
-    margin-top: 10px;
+  overflow: auto;
+  width: 100%;
+  height: 70px;
+  border: 1px solid #d1d1d1;
+  padding: 5px;
+  margin-top: 10px;
 }
 
 input[type="file"] {
-    display: block;
-    border: none;
+  display: block;
+  border: none;
 }
 
 // gyms/showページ
 .description {
-    clear: left;
+  clear: left;
 }
 
 .description img {
-    float: left;
-    margin: 0 10px 10px 0;
-    transition-property: opacity;
-    transition-duration: 1s;
-    transition-timing-function: ease;
-    transition-delay: 0s;
+  float: left;
+  margin: 0 10px 10px 0;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 }
-
 
 // ブロック要素の中央揃え
 .centering_parent {
-    padding: 20px;              /* 余白指定 */
-    height: 150px;              /* 高さ指定 */
+  padding: 20px;              /* 余白指定 */
+  height: 150px;              /* 高さ指定 */
 }
 
 .centering_item {
-    width: 400px;               /* 幅指定 */
-    height: 90px;               /* 高さ指定 */
-    margin:  0 auto;            /* 中央寄せ */
-    text-align:  center;
+  width: 400px;               /* 幅指定 */
+  height: 90px;               /* 高さ指定 */
+  margin:  0 auto;            /* 中央寄せ */
+  text-align:  center;
 }
 
 .contact {
@@ -497,26 +505,4 @@ input[type="file"] {
   margin-left: 20px;
   margin-top: 5px;
   font-size: 60px;
-} 
-
-
-/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
-@media screen and (max-width:1024px) {  
-    .social i {    
-        color: green;  
-        }
-}
- 
-/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
-@media screen and (max-width:768px) {  
-    .social i {    
-        color: red;  
-        }
-}
- 
-/* スマートフォンサイズ（425px）以下の際に適用される設定 */
-@media screen and (max-width:425px) {  
-    .social i {
-        color: blue;
-        }
 }
