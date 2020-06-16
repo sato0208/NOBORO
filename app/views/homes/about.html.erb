@@ -146,16 +146,15 @@
                   <span class="wrap mark">
                     <%= link_to " > 友達を探しにいく",climbers_path %>
                   </span>
+                  <h2 class="c-topTitle">
+                    <span class="ja wrap"><span>
+                  </h2>
                 <% else climber_signed_in? %>
                 <h2 class="c-topTitle">
                   <span class="ja wrap"><span>
                 </h2>
                 <% end %>
               </p>
-              <h2 class="c-topTitle">
-                <span class="ja wrap"><span>
-              </h2>
-
 
               <p class="copy c-boxTxt">
                 <h1 class="kv-title v-pc">
@@ -212,15 +211,15 @@
                   <span class="wrap mark">
                     <%= link_to "> まずはお気に入りジムを探そう", root_path %>
                   </span>
+                  <h2 class="c-topTitle">
+                    <span class="ja wrap"></span>
+                  </h2>
                 <% else climber_signed_in? %>
                 <h2 class="c-topTitle">
                   <span class="ja wrap"><span>
                 </h2>
                 <% end %>
               </p>
-              <h2 class="c-topTitle">
-                <span class="ja wrap"><span></span></span>
-              </h2>
 
               <p class="copy c-boxTxt">
                 <h1 class="kv-title v-pc">
@@ -284,15 +283,15 @@
                   <span class="wrap mark">
                     <%= link_to "> 今月のランキングページへ", done_tasks_path %>
                   </span>
+                  <h2 class="c-topTitle">
+                    <span class="ja wrap"></span>
+                  </h2>
                 <% else climber_signed_in? %>
                 <h2 class="c-topTitle">
                   <span class="ja wrap"><span>
                 </h2>
                 <% end %>
               </p>
-              <h2 class="c-topTitle">
-                <span class="ja wrap"><span></span></span>
-              </h2>
 
               <p class="copy c-boxTxt">
                 <h1 class="kv-title v-pc">
@@ -343,15 +342,15 @@
                 <span class="wrap mark">
                   <%= link_to "> 獲得したトロフィーを見にいく", trophy_path(current_climber.id) %>
                 </span>
+                <h2 class="c-topTitle">
+                  <span class="ja wrap"></span>
+                </h2>
               <% else climber_signed_in? %>
                 <h2 class="c-topTitle">
                   <span class="ja wrap"><span>
                 </h2>
               <% end %>
               </p>
-              <h2 class="c-topTitle">
-                <span class="ja wrap"><span></span></span>
-              </h2>
 
               <p class="copy c-boxTxt">
                 <h1 class="kv-title v-pc">
@@ -398,15 +397,16 @@
                   <span class="wrap mark">
                     <%= link_to "> バトルを始めちゃう", battles_path %>
                   </span>
+                  <h2 class="c-topTitle">
+                    <span class="ja wrap"></span>
+                  </h2>
                 <% else climber_signed_in? %>
                 <h2 class="c-topTitle">
                   <span class="ja wrap"><span>
                 </h2>
                 <% end %>
               </p>
-              <h2 class="c-topTitle">
-                <span class="ja wrap"><span></span></span>
-              </h2>
+              
 
 
               <p class="copy c-boxTxt">
@@ -467,17 +467,20 @@
                 <span class="wrap mark">
                   <%= link_to "> ようこそ私のマイページへ！", climber_path(current_climber.id)%>
                 </span>
-                <% else climber_signed_in? %>
                 <h2 class="c-topTitle">
+                  <span class="ja wrap"></span>
+                </h2>
+              <% else climber_signed_in? %>
+                <h2 class="c-aboutPage">
                   <span class="ja wrap"><span>
                 </h2>
-                <% end %>
+              <% end %>
               </p>
 
               <p class="copy c-boxTxt">
                 <h1 class="kv-title v-pc">
-                  <span class="tx-mask"><span>
-                    ボルダリング？</span></span><br>
+                  <span class="tx-mask">
+                    ボルダリング?</span><br>
                 </h1>
               </p>
 
