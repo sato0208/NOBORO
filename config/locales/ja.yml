@@ -56,10 +56,10 @@ ja:
       not_found: 'は見つかりませんでした。'
       not_locked: 'は凍結されていません。'
       not_saved:
-        one: "エラーが発生したため %{resource} は保存されませんでした:"
-        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした:"
+        one: "エラーが発生したため %{resource} は保存されませんでした"
+        other: "保存に失敗しました"
       taken: "は既に使用されています。"
-      blank: "が入力されていません。"
+      blank: "が空白です。"
       too_short: "は%{count}文字以上に設定して下さい。"
       too_long: "は%{count}文字以下に設定して下さい。"
       invalid: "は有効でありません。"
@@ -67,7 +67,8 @@ ja:
   activerecord:
     attributes:
       climber:
-        name: 名前
+        password: パスワード
+        name: ニックネーム
         address: 住所
         post_code: 郵便番号
         email: メールアドレス

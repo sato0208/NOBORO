@@ -24,7 +24,7 @@
 
 .top-visual{
 	width: 100%;/*横幅*/
-  height:800px;/*高さ*/
+  height:100%;/*高さ*/
   background-image: image-url('top.jpg');
   background-attachment: fixed;
   background-size: cover;/*縦横比率を維持したまま背景領域を埋め尽くす*/
@@ -33,7 +33,7 @@
 
 .top-visual-content{
 	width:100%;
-  height:800px;
+  height:100%;
   text-align: center;/*文字を中央揃えにする*/
 	background-color: rgba(0,0,0,0.5);/*背景色を半透明の黒にする*/
 	padding-top:60px;/*上側の内側余白で垂直方向の位置を調整*/
