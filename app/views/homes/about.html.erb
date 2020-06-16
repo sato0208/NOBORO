@@ -84,7 +84,8 @@
 
               <p class="lead">
                 <span class="wrap mark">
-                  ※会員登録をしなくてもご利用いただけます
+                  <%= link_to  root_path do %> 会員登録をしなくてもご利用いただけます >>
+                  <% end %>
                 </span>
               </p>
               <h2 class="c-topTitle">
@@ -103,7 +104,7 @@
               <p class="copy c-boxTxt">
                 <strong class="box">
                   <span class="wrap multi">
-                    友達いるかな？
+                    友達も使ってるかな？
                   </span>
                 </strong><br>
                 <strong class="box">
@@ -139,6 +140,19 @@
                   検索フォームから友達の名前で探すこともできるぞ
                 </span>
               </p>
+
+              <p class="lead">
+                <% if climber_signed_in? %>
+                  <span class="wrap mark">
+                  <%= link_to " Where are my friends? >>",climbers_path %>
+                <% else climber_signed_in? %>
+                  </span>
+                <% end %>
+              </p>
+              <h2 class="c-topTitle">
+                <span class="ja wrap"><span></span></span>
+              </h2>
+
 
               <p class="copy c-boxTxt">
                 <h1 class="kv-title v-pc">
@@ -177,10 +191,29 @@
                 <span class="wrap multi">
                   ここでつけたチェックの数がランキングに反映されます
                 </span>
+                <br>
+                <span class="wrap multi">
+                  一つのグレードに対する全ての課題を登れたらトロフィーをゲットできます
+                </span>
+                <br>
+                <span class="wrap multi">
+                  例えば、5級の課題が3本あったとき、
+                </span>
+                <span class="wrap multi">
+                  3本全部登れたらトロフィーを獲得することができます
+                </span>
               </p>
 
+              <p class="lead">
+                <% if climber_signed_in? %>
+                  <span class="wrap mark">
+                    <%= link_to " まずはお気に入りジムを探そう >>", root_path %>
+                  </span>
+                <% else climber_signed_in? %>
+                <% end %>
+              </p>
               <h2 class="c-topTitle">
-                <span class="ja wrap"></span>
+                <span class="ja wrap"><span></span></span>
               </h2>
 
               <p class="copy c-boxTxt">
@@ -240,8 +273,16 @@
                 </span>
               </p>
 
+              <p class="lead">
+                <% if climber_signed_in? %>
+                  <span class="wrap mark">
+                  <%= link_to " 今月のランキングページへ >>", done_tasks_path %>
+                <% else climber_signed_in? %>
+                  </span>
+                <% end %>
+              </p>
               <h2 class="c-topTitle">
-                <span class="ja wrap"></span>
+                <span class="ja wrap"><span></span></span>
               </h2>
 
               <p class="copy c-boxTxt">
@@ -280,7 +321,7 @@
                 </span>
                 <br>
                 <span class="wrap multi">
-                  ゲットしたらマイページの「獲得したトロフィー」を見てみよう
+                  ゲットしたらマイページのトロフィーアイコンをクリックして見てみよう
                 </span>
                 <br>
                 <span class="wrap multi">
@@ -288,8 +329,16 @@
                 </span>
               </p>
 
+              <p class="lead">
+              <% if climber_signed_in? %>
+                <span class="wrap mark">
+                  <%= link_to " 獲得したトロフィー >>", trophy_path(current_climber.id) %>
+              <% else climber_signed_in? %>
+                </span>
+              <% end %>
+              </p>
               <h2 class="c-topTitle">
-                <span class="ja wrap"></span>
+                <span class="ja wrap"><span></span></span>
               </h2>
 
               <p class="copy c-boxTxt">
@@ -331,6 +380,18 @@
                   負けたくないから、いつもより頑張れるかも
                 </span>
               </p>
+
+              <p class="lead">
+                <% if climber_signed_in? %>
+                  <span class="wrap mark">
+                    <%= link_to " バトルを始める >>", battles_path %>
+                  </span>
+                <% else climber_signed_in? %>
+                <% end %>
+              </p>
+              <h2 class="c-topTitle">
+                <span class="ja wrap"><span></span></span>
+              </h2>
 
 
               <p class="copy c-boxTxt">
@@ -387,9 +448,12 @@
               </p>
 
               <p class="lead">
+              <% if climber_signed_in? %>
                 <span class="wrap mark">
-                  ※個人情報の取り扱いにご注意ください
+                  <%= link_to " ※個人情報の取り扱いにご注意ください >>", climber_path(current_climber.id)%>
+                <% else climber_signed_in? %>
                 </span>
+                <% end %>
               </p>
               <h2 class="c-topTitle">
                 <span class="ja wrap"></span>
