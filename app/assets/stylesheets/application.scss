@@ -141,12 +141,18 @@ header span{
 .dropdown-menu > li > a {
   font-size: 1.3rem;
   display: block;
-  padding: 12px 100px 12px 20px;
+  padding: 12px 110px 12px 20px;
   clear: both;
   font-weight: normal;
   line-height: 1.7;
   color: #333333;
   white-space: nowrap;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
 }
 
 .dropdown-menu {
