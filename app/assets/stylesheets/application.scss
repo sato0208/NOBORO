@@ -139,15 +139,20 @@ header span{
 }
 
 .dropdown-menu > li > a {
-  font-size: 16px;
+  font-size: 1.3rem;
   display: block;
-  padding: 3px 25px;
+  padding: 12px 100px 12px 20px;
   clear: both;
-  font-weight: 400;
-  line-height: 2;
+  font-weight: normal;
+  line-height: 1.7;
   color: #333333;
   white-space: nowrap;
 }
+
+.dropdown-menu {
+  width: 200px;
+}
+
 
 // フッダー
 footer {
