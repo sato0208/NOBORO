@@ -13,13 +13,13 @@
   <body>
     <div id="wrapper">
       <header class="navbar navbar-inverse", id="header">
-          <nav class="navbar-left">
-            <span>
-              <%= link_to root_path do %>
-                <%= image_tag 'logo3.png', class:'logo' %>
-              <% end %>
-            </span>
-          </nav>
+        <nav class="navbar-left">
+          <span>
+            <%= link_to root_path do %>
+              <%= image_tag 'logo3.png', class:'logo' %>
+            <% end %>
+          </span>
+        </nav>
         <% if gym_signed_in? %>
           <ul class="navbar-text navbar-right">
             <li>
@@ -37,7 +37,6 @@
             <li>
               <%= link_to " ジムのお知らせ登録", gyms_infos_path,class:"far fa-bell" %>
             </li>
-            <%# ログアウトは後で消す %>
             <li>
               <%= link_to " ログアウト", destroy_climber_session_path,class:"fas fa-door-open", method: :delete %>
             </li>
@@ -46,12 +45,14 @@
         <% elsif climber_signed_in? %>
           <ul class="navbar-text navbar-right">
             <li>
-              <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "head-profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
-              <%= link_to " マイページ", climber_path(current_climber.id)%>
-            </li>
-            <li>
               <%= link_to " 友達検索", climbers_path,class:"fa fa-search" %>
             </li>
+              <%#= link_to " バトル", battles_path,class:"fas fa-fire" %>
+            <li>
+              <%= link_to " ランキング", done_tasks_path,class:"fas fa-chess-queen" %>
+            </li>
+              <%#= link_to " トロフィー", trophy_path(current_climber.id),class:"fa fa-trophy" %>
+              <%#= link_to " ログアウト", destroy_climber_session_path,class:"fas fa-door-open", method: :delete %>
             <li>
             <%# binding.pry %>
               <% if unchecked_notifications.any? %>
@@ -62,41 +63,55 @@
                 <%= link_to " 通知", notifications_path,class:"fas fa-bell" %>
               <% end %>
             </li>
-            <li>
-              <%= link_to " バトル", battles_path,class:"fas fa-fire" %>
-            </li>
-            <li>
-              <%= link_to " ランキング", done_tasks_path,class:"fas fa-chess-queen" %>
-            </li>
-            <li>
-              <%= link_to " トロフィー", trophy_path(current_climber.id),class:"fa fa-trophy" %>
-            </li>
-            <li>
-              <%= link_to " ログアウト", destroy_climber_session_path,class:"fas fa-door-open", method: :delete %>
+
+            <li class="dropdown">
+              <%= link_to  climber_path(current_climber), class:"dropdown-toggle", 'data-toggle': :dropdown do %>
+                <%= attachment_image_tag current_climber,:profile_image, format: 'jpeg', class: "head-profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
+                <b class="caret"></b>
+              <% end %>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to " マイページ", climber_path(current_climber.id), class:"active dropdown-item"%>
+                </li>
+                  <li role="separator" class="divider"></li>
+                <li>
+                  <%= link_to " トロフィー", trophy_path(current_climber.id), class:"dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to " バトル", battles_path, class:"dropdown-item" %>
+                </li>
+                  <li role="separator" class="divider"></li>
+                <li>
+                  <%= link_to " ご利用方法", about_path %>
+                </li>
+                  <li role="separator" class="divider"></li>
+                <li>
+                  <%= link_to " ログアウト", destroy_climber_session_path, method: :delete, class:"dropdown-item" %>
+                </li>
+              </ul>
             </li>
           </ul>
         <!-- クライマーがサインインしていない場合 -->
         <% else %>
           <ul class="navbar-text navbar-right">
-              <li>
-                  <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
-              </li>
-              <li>
-                  <%= link_to " about", about_path,class:"fas fa-frog" %>
-              </li>
-              <li>
-                  <%= link_to " top", top_path,class:"fas fa-angle-double-right" %>
-              </li>
-              <li>
-                  <%= link_to " 新規登録", new_climber_registration_path,class:"fas fa-door-closed" %>
-              </li>
-              <li>
-                  <%= link_to " ログイン", new_climber_session_path,class:"fas fa-key" %>
-              </li>
+            <li>
+              <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
+            </li>
+            <li>
+              <%= link_to " about", about_path,class:"fas fa-frog" %>
+            </li>
+            <li>
+              <%= link_to " top", top_path,class:"fas fa-angle-double-right" %>
+            </li>
+            <li>
+              <%= link_to " 新規登録", new_climber_registration_path,class:"fas fa-door-closed" %>
+            </li>
+            <li>
+              <%= link_to " ログイン", new_climber_session_path,class:"fas fa-key" %>
+            </li>
           </ul>
         <% end %>
       </header>
-  
         <%= yield %>
       <footer class="fixed-bottom">
         <p class="copyright">©︎ 2020 NOBORO <%= image_tag 'keroro.png' %></p>
