@@ -1,7 +1,6 @@
 class BattlesController < ApplicationController
 	before_action :authenticate_climber!
 
-
   def update
     @update_battle = Battle.find(params[:id])
     if params[:battle_status] == "リセット"
@@ -33,28 +32,13 @@ class BattlesController < ApplicationController
         # 自分の登れた数と相手の登れた数を比較する 消したバトルの結果
         result = @delete_battle.my_count_result_by(current_climber, @opponent)
         # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
-        if result == "Win" || result == "Draw"
-          create_battle_count(current_climber)
-          # create_battle_history(winner,loser,battle)
-          create_battle_history(current_climber,@opponent,@delete_battle)
-        else
-          create_battle_count(@opponent)
-          create_battle_history(@opponent,current_climber,@delete_battle)
-        end
+        battle_result_by_battle_history(current_climber,@opponent,@delete_battle)
       # カレントユーザが申し込まれた側の場合
       elsif @delete_battle.battler == current_climber
         # 相手の情報を@opponentへ代入
         @opponent = @delete_battle.climber
-        # 自分の登れた数と相手の登れた数を比較する 消したバトルの結果
-        result = @delete_battle.my_count_result_by(current_climber, @opponent)
         # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
-        if result == "Win" || result == "Draw"
-          create_battle_history(current_climber,@opponent,@delete_battle)
-          create_battle_count(current_climber)
-        else
-          create_battle_count(@opponent)
-          create_battle_history(@opponent,current_climber,@delete_battle)
-        end
+        battle_result_by_battle_history(current_climber,@opponent,@delete_battle)
       end
       @delete_battle.destroy
       redirect_to request.referer, notice: "バトルを終了しました!　バトル履歴に情報が登録されました"
@@ -79,10 +63,8 @@ class BattlesController < ApplicationController
   end
 
   private
-  def battle_params
-    params.permit(:climber_id, :battler_id, :is_valid_status, :finish_at)
-  end
 
+  # バトル履歴を登録する
   def create_battle_history(winner,loser,battle)
     history = BattleHistory.new(
       winner_id: winner.id,
@@ -100,6 +82,7 @@ class BattlesController < ApplicationController
     end
   end
 
+  # 勝利したユーザーの勝利カラムを＋1する
   def create_battle_count(winner)
     if winner.win_count == nil
       winner.win_count = 1
@@ -108,4 +91,22 @@ class BattlesController < ApplicationController
     end
     winner.save
   end
+
+  # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
+  def battle_result_by_battle_history(current_climber,opponent,delete_battle)
+    # 自分の登れた数と相手の登れた数を比較する 消したバトルの結果
+    result = delete_battle.my_count_result_by(current_climber, opponent)
+    if result == "Win" || result == "Draw"
+      create_battle_count(current_climber)
+      create_battle_history(current_climber,opponent,delete_battle)
+    else
+      create_battle_count(opponent)
+      create_battle_history(opponent,current_climber,delete_battle)
+    end
+  end
+
+  def battle_params
+    params.permit(:climber_id, :battler_id, :is_valid_status, :finish_at)
+  end
+
 end
