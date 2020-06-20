@@ -12,3 +12,31 @@
   font-family: Prompt,sans-serif;
   font-weight: 500;
 }
+
+// ジムの詳細ページ
+.c-heading3__title {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  color: #13131e;
+  line-height: 1.2;
+  background-color: #fff;
+  padding: 0 1.2rem 0 0.8rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-left: solid 5px #72BC46;/*左線（実線 太さ 色）*/
+}
+
+// ジムのインデックスページ
+.c-heading4__title {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  color: #13131e;
+  line-height: 1.2;
+  background-color: #fff;
+  padding: 0 1.2rem 0 0.8rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-left: solid 5px #3e3e3e;/*左線（実線 太さ 色）*/
+}

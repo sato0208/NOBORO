@@ -25,7 +25,7 @@
         <section class="blog-text">
           <h3 class="blog-text-headline">
             <%= link_to gym.gym_name, gym_path(gym.id) %>
-            <span class="category">
+          <span class="category">
             <%= gym.genre.genre_name %>
           </span>
           <h5 id="favorites_<%= gym.id %>">
@@ -33,15 +33,19 @@
           </h5>
           </h3>
           <p class="blog-date">
+          <h5 class="c-heading3__title">
             営業時間
+          </h5>
             <%= gym.description %>
-          </p><br>
+          </p>
           <p class="blog-date">
+          <h5 class="c-heading3__title">
             住所
+          </h5>
             〒<%= gym.post_code %>
             <%= gym.address %>
-          </p><br>
-            <%= link_to ' このジムのランキング',rank_path(gym.id), class: "fas fa-chess-queen" %>
+          </p>
+            <%= link_to " #{gym.gym_name} 今月のランキング",rank_path(gym.id), class: "fas fa-chess-queen" %>
         </section>
       </div>
   <% end %>

@@ -1,6 +1,5 @@
 <div class="container">
-  <button type="button" class="btn demo" data-toggle="modal" data-target="#modal-1">
-  </button>
+  <button type="button" class="btn demo" data-toggle="modal" data-target="#modal-1"></button>
   <div class="modal fade" id="modal-1" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -20,46 +19,48 @@
 
   <div class="description">
     <%= attachment_image_tag @gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: asset_path("bo2.jpeg") %>
-  <div class="prof-vi">
-        <h2 class="feature-title">
-            <%= @gym.gym_name %>
-        </h2>
-        <h3 class="feature-title">
-          住所
-          〒<%= @gym.post_code %>
-          <%= @gym.address %>
-        </h3>
-        <h3 class="feature-title">
-          営業時間
-          <%= @gym.description %>
-        </h3>
-        <h3 class="feature-title">
-          HP
-          <a href="<%= @gym.gym_url %>"><%= @gym.gym_url %></a>
-        </h3>
-        <h3 class="feature-title">
-          電話番号
-          <%= @gym.phone_number %>
-        </h3>
-      <div class="contact-right">
-      </div>
+    <div class="prof-vi">
+      <h2 class="feature-title">
+        <a href="<%= @gym.gym_url %>">
+          <%= @gym.gym_name %>
+        </a>
+        <span class="category">
+          <%= @gym.genre.genre_name %>
+        </span>
+      </h2>
+      <h4 id="favorites_<%= @gym.id %>">
+        <%= render 'favorite', gym: @gym %>
+      </h4>
+      <h3 class="feature-title">
+        <%= link_to ' 今月のランキング',rank_path, class: "fas fa-chess-queen" %>
+      </h3>
       <div class="ander"></div>
-      <div class="row">
-        <div class="contact-right">
-          <h4 id="favorites_<%= @gym.id %>">
-            <%= render 'favorite', gym: @gym %>
-          </h4>
-        </div>
-    <h3 class="feature-title">
-      <%= link_to ' 今月のランキング',rank_path, class: "fas fa-chess-queen" %>
-    </h3>
-      </div>
-  </div>
+      <h3 class="feature-title">
+        <h5 class="c-heading3__title">
+          住所
+        </h5>
+        〒<%= @gym.post_code %>
+        <%= @gym.address %>
+      </h3>
+      <h3 class="feature-title">
+        <h5 class="c-heading3__title">
+          営業時間
+        </h5>
+        <%= @gym.description %>
+      </h3>
+      <h3 class="feature-title">
+        <h5 class="c-heading3__title">
+          電話番号
+        </h5>
+        <%= @gym.phone_number %>
+      </h3>
+    </div>
   </div>
   <section class="tasks">
-      <h2>課題一覧</h2>
+    <h1>課題一覧</h1>
     <% if climber_signed_in? && current_climber.present? %>
-      <h3>一つの級の課題を全部登れたらトロフィーが獲得できます
+      <h3>
+        一つの級の課題を全部登れたらトロフィーが獲得できます
       </h3>
       <div class="table-responsive">
         <table class="table">
