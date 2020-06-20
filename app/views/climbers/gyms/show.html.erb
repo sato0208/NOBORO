@@ -32,16 +32,14 @@
         <%= render 'favorite', gym: @gym %>
       </h4>
       <h3 class="feature-title">
-        <%= link_to ' 今月のランキング',rank_path, class: "fas fa-chess-queen" %>
+        <%= link_to " #{@gym.gym_name} 今月のランキング",rank_path, class: "fas fa-chess-queen" %>
       </h3>
       <div class="ander"></div>
-      <h3 class="feature-title">
         <h5 class="c-heading3__title">
           住所
         </h5>
         〒<%= @gym.post_code %>
         <%= @gym.address %>
-      </h3>
       <h3 class="feature-title">
         <h5 class="c-heading3__title">
           営業時間
@@ -56,6 +54,7 @@
       </h3>
     </div>
   </div>
+
   <section class="tasks">
     <h1>課題一覧</h1>
     <% if climber_signed_in? && current_climber.present? %>
@@ -92,5 +91,5 @@
       </h3>
     <% end %>
   </section>
-    <%= link_to "＜＜戻る", gyms_path %>
+  <%= link_to "＜＜戻る", gyms_path %>
 </div>
