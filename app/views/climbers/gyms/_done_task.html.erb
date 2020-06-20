@@ -1,25 +1,25 @@
 <% if task.achieved?(current_climber)%>
-    <!-- done_taskテーブルから削除する -->
-    <%= form_with method: :delete, model: delete_done_task, url: done_task_path(delete_done_task), remote: true do |f| %>
+  <!-- done_taskテーブルから削除する -->
+  <%= form_with method: :delete, model: delete_done_task, url: done_task_path(delete_done_task), remote: true do |f| %>
+    <!-- done_taskにcrrent_climberのidとdone_taskのclimber_idに同じものがある場合。（登録済みの場合） -->
+    <!-- @task.idをtask_idとして送る -->
+    <%= f.hidden_field :task_id, value: task.id %>
+    <%= f.hidden_field :climber_id, value: current_climber.id %>
+    <%= f.button :type => "submit", style: 'border-style: none;' do %>
+      <i class="fas fa-check-circle", aria-hidden="true" style="color: green;"></i>
+    <% end %>
+  <% end %>
+<% else %>
+  <!-- done_taskテーブルに登録する -->
+  <%= form_with method: :post, model: new_done_task, url:done_tasks_path, remote: true do |f| %>
       <!-- done_taskにcrrent_climberのidとdone_taskのclimber_idに同じものがある場合。（登録済みの場合） -->
       <!-- @task.idをtask_idとして送る -->
       <%= f.hidden_field :task_id, value: task.id %>
       <%= f.hidden_field :climber_id, value: current_climber.id %>
-      <%= f.button :type => "submit", style: 'border-style: none;' do %>
-        <i class="fas fa-check-circle", aria-hidden="true" style="color: green;"></i>
-      <% end %>
+    <%= f.button :type => "submit", style: 'border-style: none;' do %>
+      <i class="far fa-circle" aria-hidden="true"></i>
     <% end %>
-<% else %>
-    <!-- done_taskテーブルに登録する -->
-    <%= form_with method: :post, model: new_done_task, url:done_tasks_path, remote: true do |f| %>
-        <!-- done_taskにcrrent_climberのidとdone_taskのclimber_idに同じものがある場合。（登録済みの場合） -->
-        <!-- @task.idをtask_idとして送る -->
-        <%= f.hidden_field :task_id, value: task.id %>
-        <%= f.hidden_field :climber_id, value: current_climber.id %>
-      <%= f.button :type => "submit", style: 'border-style: none;' do %>
-        <i class="far fa-circle" aria-hidden="true"></i>
-      <% end %>
-    <% end %>
+  <% end %>
 <% end %>
 <%= link_to task_path(task.id) do %>
   <%= task.task_name %>
