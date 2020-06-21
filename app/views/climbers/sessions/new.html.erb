@@ -1,8 +1,8 @@
 <div class="log-visual">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="content">
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <%#= render 'layouts/alert' %>
+    <%#= render "devise/shared/error_messages", resource: resource %>
+    <%= render 'layouts/alert' %>
 
         <h1>ログインフォーム</h1>
         <div class="control">
