@@ -1,9 +1,11 @@
 <% if notice %>
-  <div class="success">
+  <div class="alert alert-info">
     <%= notice %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
 <% elsif alert %>
-  <div class="info">
+  <div class="alert alert-danger">
     <%= alert %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
 <% end %>

@@ -41,8 +41,8 @@ ja:
       update_needs_confirmation: 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
       updated: 'アカウント情報を変更しました。'
     sessions:
-      signed_in: 'ログインしました。'
-      signed_out: 'ログアウトしました。'
+      signed_in: 'ログインしました'
+      signed_out: 'ログアウトしました。またきてね!'
       already_signed_out: '既にログアウト済みです。'
     unlocks:
       send_instructions: 'アカウントの凍結解除方法を数分以内にメールでご連絡します。'

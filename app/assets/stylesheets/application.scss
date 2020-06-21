@@ -554,3 +554,25 @@ input[type="file"] {
   margin-top: 5px;
   font-size: 60px;
 }
+
+.alert {
+	text-align: center;
+}
+
+.alert-info {
+    color: $main-color;
+    border-color: #e6e4dd;
+    background-color:#e6e4dd;
+}
+
+.alert-danger {
+    color:  $main-color;
+}
+
+
+.alert {
+  padding: 15px;
+  margin-bottom: 0px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
