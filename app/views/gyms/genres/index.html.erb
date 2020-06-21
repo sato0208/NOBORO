@@ -1,47 +1,42 @@
 <div class="container">
-    <h1>ジャンル追加・一覧画面</h1>
-    <% if @new_genre.errors.any? %>
-    <div class="alert alert-danger">
-        <h2>
-            <%= @new_genre.errors.count %>つ空白があります</h2>
-        <% @new_genre.errors.full_messages.each do |message| %>
-        <%= message %><br>
-        <% end %>
-    </div>
-    <% end %>
+<h1>ジャンル追加・一覧画面</h1>
+  <div class="content">
+  <h3>課題を追加する</h3>
+    <%= render "devise/shared/error_messages", resource: @new_genre %>
     <%= form_with method: :post, model:@new_genre,local: true, url: gyms_genres_path do |f| %>
     <div class="field row">
-        <%= f.label :ジャンル %>
-        <%= f.text_field :genre_name %>
-        <%= f.submit "追加", class: "btn btn-primary" %>
+      <%= f.label :ジャンル %>
+      <%= f.text_field :genre_name %>
+      <%= f.submit "追加", class: "btn btn-primary" %>
     </div>
     <% end %>
-    <table class="table">
-        <thead class="thead-light">
-            <tr>
-                <th>ジャンル名</th>
-                <th>ジャンル写真</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @genres.each do |genre| %>
-            <tr>
-                <td>
-                    <%= genre.genre_name %>
-                </td>
+  </div>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>ジャンル名</th>
+        <th>ジャンル写真</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @genres.each do |genre| %>
+      <tr>
+        <td>
+          <%= genre.genre_name %>
+        </td>
 
-                <td>
-                    <%= attachment_image_tag genre, :genre_image, size: '100x100',format: "jpeg",fallback: asset_path("ira13.png") %>
-                </td>
-                <td>
-                    <%= link_to "編集する", edit_gyms_genre_path(genre.id) ,class: "btn btn-primary"%>
-                </td>
-                <td>
-                    <%= link_to "Destroy", gyms_genre_path(genre.id), method: :delete , class: "btn btn-danger" %>
-                </td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
+        <td>
+          <%= attachment_image_tag genre, :genre_image, size: '100x100',format: "jpeg",fallback: asset_path("ira13.png") %>
+        </td>
+        <td>
+          <%= link_to "編集する", edit_gyms_genre_path(genre.id) ,class: "btn btn-primary"%>
+        </td>
+        <td>
+          <%= link_to "Destroy", gyms_genre_path(genre.id), method: :delete , class: "btn btn-danger" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

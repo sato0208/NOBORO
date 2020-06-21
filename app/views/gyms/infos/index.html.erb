@@ -1,13 +1,8 @@
 <div class="container">
   <h1>お知らせ追加・一覧画面</h1>
-      <% if @new_info.errors.any? %>
-      <div class="alert alert-danger">
-          <h2><%= @new_info.errors.count %>つ空白があります</h2>
-          <% @new_info.errors.full_messages.each do |message| %>
-          <%= message %><br>
-          <% end %>
-      </div>
-    <% end %>
+    <div class="content">
+  <h3>課題を追加する</h3>
+    <%= render "devise/shared/error_messages", resource: @new_info %>
     <%= form_with method: :post, model:@new_info,local: true, url: gyms_infos_path do |f| %>
       <div class="field row">
         <%= f.label :お知らせ %>
@@ -15,6 +10,7 @@
       <%= f.submit "追加", class: "btn btn-primary" %>
       </div>
     <% end %>
+    </div>
 
     <table class="table table-striped">
       <thead>
