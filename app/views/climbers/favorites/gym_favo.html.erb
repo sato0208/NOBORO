@@ -42,7 +42,9 @@
     <% else %>
       まだ誰もお気に入り登録していません
     <% end %>
-          <%= link_to "このジムの詳細ページへ", gym_path(@gym_favo.id) %>
+    <div class="left_item">
+      <%= link_to "このジムの詳細ページへ", gym_path(@gym_favo.id) %>
+    </div>
   <div class="centering_item">
     <%= paginate @favorites %>
   </div>

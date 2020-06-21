@@ -19,7 +19,7 @@ before_action :set_gym, only: %i[create destroy]
 
   def gym_favo
     @gym_favo = Gym.find(params[:favorite_id])
-    @favorites = Favorite.where(gym_id: @gym_favo.id).page(params[:page]).per(10)
+    @favorites = Favorite.where(gym_id: @gym_favo.id).page(params[:page]).per(6)
   end
 
   private
