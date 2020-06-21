@@ -35,7 +35,9 @@ Rails.application.routes.draw do
         get :follower, :following
       end
     end
-    resources :favorites, only: [:index]
+    resources :favorites, only: [:index] do
+      get 'gym_favo' => 'favorites#gym_favo', as: :gym_favo
+    end
     resources :gyms, only: [:index, :show], shallow: true do
       resource :favorites, only: [:create, :destroy]
       get :favorites, on: :collection

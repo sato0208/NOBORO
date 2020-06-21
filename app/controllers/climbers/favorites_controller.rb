@@ -1,6 +1,6 @@
 class Climbers::FavoritesController < ApplicationController
 before_action :authenticate_climber!, :only => [:create, :destroy]
-before_action :set_gym, only: %i[create destroy]
+before_action :set_gym, only: %i[create destroy gym_favo]
   # before_action :ensure_correct_climber, {only: [:create, :destroy, :index]}
 
   def create
@@ -15,6 +15,10 @@ before_action :set_gym, only: %i[create destroy]
 
   def index
     @favorites = Favorite.where(climber_id: current_climber.id).page(params[:page]).per(10)
+  end
+
+  def gym_favo
+    @favorites = Favorite.where(gym_id: @gym.id).page(params[:page]).per(10)
   end
 
   private
