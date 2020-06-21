@@ -24,9 +24,11 @@
         <a href="<%= @gym.gym_url %>">
           <%= @gym.gym_name %>
         </a>
-        <span class="category">
-          <%= @gym.genre.genre_name %>
-        </span>
+        <%= link_to gyms_path(genre_id: @gym.genre.id) do %>
+          <span class="category">
+            <%= @gym.genre.genre_name %>
+          </span>
+        <% end %>
       </h2>
       <h4 id="favorites_<%= @gym.id %>">
         <%= render 'favorite', gym: @gym %>
