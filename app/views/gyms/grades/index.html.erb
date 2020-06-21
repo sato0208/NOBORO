@@ -1,48 +1,43 @@
 <div class="container">
   <h1>グレード追加・一覧画面</h1>
-    <% if @new_grade.errors.any? %>
-      <div class="alert alert-danger">
-        <h2><%= @new_grade.errors.count %>つ空白があります</h2>
-        <% @new_grade.errors.full_messages.each do |message| %>
-          <%= message %><br>
-        <% end %>
-      </div>
-    <% end %>
-
+    <div class="content">
+    <h3>グレードを追加する</h3>
+      <%= render "devise/shared/error_messages", resource: @new_grade %>
     <%= form_with method: :post, model:@new_grade,local: true, url: gyms_grades_path do |f| %>
       <div class="field row">
         <%= f.label :グレード %>
-        <%= f.text_field :grade %>
+        <%= f.text_field :grade,{placeholder: "4級"} %>
         <%= f.label :トロフィー名 %>
-        <%= f.text_field :trophy_name %>
-        <%= f.label :image, "トロフィー画像選択", class: "image_input_btn btn-primary" %>
+        <%= f.text_field :trophy_name,{placeholder: "トロフィー名を入力"} %>
+        <%= f.label :image, "トロフィー画像選択" %>
         <%= f.attachment_field :trophy_image %>
-      <%= f.submit "追加", class: "btn btn-primary" %>
+        <%= f.submit "追加", class: "btn btn-primary" %>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>グレード</th>
-          <th>トロフィー写真</th>
-          <th>トロフィーの名前</th>
-          <th></th>
-        </tr>
-      </thead>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>グレード</th>
+        <th>トロフィー写真</th>
+        <th>トロフィーの名前</th>
+        <th></th>
+      </tr>
+    </thead>
 
-      <tbody>
-        <% @grades.each do |grade| %>
-        <tr>
-          <td><%= grade.grade %></td>
-          <td><%= attachment_image_tag grade, :trophy_image, size: '100x100',format: "jpeg",fallback: asset_path("ira13.png") %></td>
-          <td><%= grade.trophy_name %></td>
-          <td><%= link_to "編集する", edit_gyms_grade_path(grade.id) ,class: "btn btn-primary"%></td>
-          <td><%= link_to "Destroy", gyms_grade_path(grade.id), method: :delete , class: "btn btn-danger" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <tbody>
+      <% @grades.each do |grade| %>
+      <tr>
+        <td><%= grade.grade %></td>
+        <td><%= attachment_image_tag grade, :trophy_image, size: '100x100',format: "jpeg",fallback: asset_path("ira13.png") %></td>
+        <td><%= grade.trophy_name %></td>
+        <td><%= link_to "編集する", edit_gyms_grade_path(grade.id) ,class: "btn btn-primary"%></td>
+        <td><%= link_to "Destroy", gyms_grade_path(grade.id), method: :delete , class: "btn btn-danger" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
 
