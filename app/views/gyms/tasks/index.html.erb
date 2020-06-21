@@ -1,18 +1,18 @@
 <div class="container">
-  <h1>課題一覧</h1> 
   <div class="content">
-  <h3>課題を追加する</h3>
-    <%= render "devise/shared/error_messages", resource: @new_task %>
-  <div class="field row">
-    <%= form_with method: :post, model:@new_task,local: true, url: gyms_tasks_path do |f| %>
-    <%= f.label :課題名 %>
-    <%= f.text_field :task_name,{placeholder: "1番"} %>
-    <%= f.label :グレード %>
-    <%= f.collection_select :grade_id, @grades_all, :id, :grade %><br>
-      <%= f.submit "追加", class: "btn btn-primary" %>
-    <% end %>
+    <h3>課題を追加する</h3>
+      <%= render "devise/shared/error_messages", resource: @new_task %>
+    <div class="field row">
+      <%= form_with method: :post, model:@new_task,local: true, url: gyms_tasks_path do |f| %>
+      <%= f.label :課題名 %>
+      <%= f.text_field :task_name,{placeholder: "1番"} %>
+      <%= f.label :グレード %>
+      <%= f.collection_select :grade_id, @grades_all, :id, :grade %><br>
+        <%= f.submit "追加", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
-  </div>
+  <h1>課題一覧</h1> 
 
   <table class="table">
     <thead class="thead-light">

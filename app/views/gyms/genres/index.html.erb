@@ -1,16 +1,17 @@
 <div class="container">
-<h1>ジャンル追加・一覧画面</h1>
   <div class="content">
-  <h3>課題を追加する</h3>
+  <h3>ジャンルを追加する</h3>
     <%= render "devise/shared/error_messages", resource: @new_genre %>
     <%= form_with method: :post, model:@new_genre,local: true, url: gyms_genres_path do |f| %>
     <div class="field row">
       <%= f.label :ジャンル %>
-      <%= f.text_field :genre_name %>
+      <%= f.text_field :genre_name,{placeholder: "初心者歓迎"} %>
       <%= f.submit "追加", class: "btn btn-primary" %>
     </div>
     <% end %>
   </div>
+<h1>ジャンル一覧</h1>
+
   <table class="table">
     <thead class="thead-light">
       <tr>
