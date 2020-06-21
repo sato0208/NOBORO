@@ -4,9 +4,12 @@
     <section class="blog-text">
       <h3 class="blog-text-headline">
         <%= link_to gym.gym_name, gym_path(gym.id) %>
+        <%= link_to gyms_path(genre_id: gym.genre.id) do %>
       <span class="category">
         <%= gym.genre.genre_name %>
       </span>
+      <% end %>
+
       <h5 id="favorites_<%= gym.id %>">
         <%= render 'favorite', gym: gym %>
       </h5>
