@@ -3,7 +3,7 @@
     <% if @climber.errors.any? %>
       <div class="alert alert-danger">
         <h2>
-          <%= @climber.errors.count %>つ空白があります
+          <%= @climber.errors.count %>件の空白があります
         </h2>
         <% @climber.errors.full_messages.each do |message| %>
           <%= message %><br>

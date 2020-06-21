@@ -84,7 +84,7 @@ ja:
         email: メールアドレス
         genre_id: ジャンル
         gym_name: 名前
-        description: 紹介文
+        description: 営業時間
         post_code: 郵便番号
         address: 住所
         phone_number: 電話番号

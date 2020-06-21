@@ -563,12 +563,12 @@ input[type="file"] {
     color: $main-color;
     border-color: #e6e4dd;
     background-color:#e6e4dd;
+    font-size: initial;
 }
 
 .alert-danger {
-    color:  $main-color;
+    color: #a94442;
 }
-
 
 .alert {
   padding: 15px;

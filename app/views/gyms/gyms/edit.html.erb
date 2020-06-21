@@ -1,15 +1,6 @@
 <div class="container">
-
-  <% if @gym.errors.any? %>
-    <div class="alert alert-danger">
-      <h4>
-        <%= @gym.errors.count %>件のエラーがあります
-      </h4>
-      <% @gym.errors.full_messages.each do |message| %>
-        <%= message %>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="content">
+    <%= render "devise/shared/error_messages", resource: @gym %>
     <h1>
       ジム情報　編集画面
     </h1>
@@ -19,7 +10,7 @@
         <%= f.text_field :gym_name %>
 
         <%= f.label :description %>
-        <%= f.text_area :description %>
+        <%= f.text_field :description %>
 
         <%= f.label :post_code %>
         <%= f.text_field :post_code %>
@@ -34,7 +25,7 @@
         <%= f.collection_select :genre_id, @genres, :id, :genre_name %>
 
         <%= f.label :gym_url %>
-        <%= f.text_area :gym_url %>
+        <%= f.text_field :gym_url %>
 
         <%= f.label :email %>
         <%= f.text_field :email %>
@@ -45,4 +36,5 @@
         <%= f.submit "変更を保存" %>
       </div>
     <% end %>
+  </div>
 </div>

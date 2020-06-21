@@ -1,46 +1,48 @@
 <div class="container">
-  <h1>課題追加・一覧画面</h1>
-      <% if @new_task.errors.any? %>
-      <div class="alert alert-danger">
-          <h2><%= @new_task.errors.count %>つ空白があります</h2>
-          <% @new_task.errors.full_messages.each do |message| %>
-          <%= message %><br>
-          <% end %>
-      </div>
-    <% end %>
-    <div class="field row">
-      <%= form_with method: :post, model:@new_task,local: true, url: gyms_tasks_path do |f| %>
-        <%= f.label :課題 %>
-        <%= f.text_field :task_name %>
-        グレード
-        <%= f.collection_select :grade_id, @grades_all, :id, :grade %>
-        <%= f.submit "追加", class: "btn btn-primary" %>
-      <% end %>
-    </div>
+<h1>課題一覧</h1> 
+  <div class="content">
 
-    <table class="table">
-      <thead class="thead-light">
-        <tr>
-          <th>課題</th>
-          <th>グレード</th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @grades_all.each do |grade| %>
-        <tr>
-          <td><%= grade.grade%></td>
-            <% gym_tasks = grade.tasks.where(gym_id: current_gym.id ) %>
-            <% gym_tasks.each do |task| %>
-              <td><%= task.task_name %></td>
-              <td><%= link_to "編集する", edit_gyms_task_path(task.id) ,class: "btn btn-primary"%></td>
-              <td><%= link_to "Destroy", gyms_task_path(task.id), method: :delete , class: "btn btn-danger" %></td>
-            <% end %>
-        </tr>
+  <h3>課題を追加する</h3>
+    <%= render "devise/shared/error_messages", resource: @new_task %>
+  <div class="field row">
+    <%= form_with method: :post, model:@new_task,local: true, url: gyms_tasks_path do |f| %>
+    <%= f.text_field :task_name,{placeholder: "課題名を入力"} %>
+          グレード
+      <%= f.collection_select :grade_id, @grades_all, :id, :grade %>
+        <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-success' do %>
+            新規追加
         <% end %>
-      </tbody>
-    </table>
-</div>
+    <% end %>
+  </div>
+  </div>
 
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>課題</th>
+        <th>グレード</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @grades_all.each do |grade| %>
+      <tr>
+        <td>
+          <%= grade.grade%>
+        </td>
+        <% gym_tasks = grade.tasks.where(gym_id: current_gym.id ) %>
+        <% gym_tasks.each do |task| %>
+          <td>
+            <%= link_to edit_gyms_task_path(task.id) do %>
+              <%= task.task_name %>
+            <% end %><br>
+            <%= link_to "削除", gyms_task_path(task.id), method: :delete , class: "btn btn-danger" %>
+          </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 

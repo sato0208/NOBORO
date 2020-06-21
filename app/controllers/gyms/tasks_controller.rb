@@ -28,7 +28,7 @@ class Gyms::TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
-    @genres = Genre.all
+    @grades = Grade.all
   end
 
   def destroy
