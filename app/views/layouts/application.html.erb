@@ -114,7 +114,11 @@
       </header>
         <%= yield %>
       <footer class="fixed-bottom">
-        <p class="copyright">©︎ 2020 NOBORO <%= image_tag 'keroro.png' %></p>
+        <p class="copyright">©︎ 2020 NOBORO 
+          <%= link_to top_path do %>
+            <%= image_tag 'keroro.png' %>
+          <% end %>
+            </p>
       </footer>
   </body>
 </html>

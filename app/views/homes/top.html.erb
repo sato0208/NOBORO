@@ -20,7 +20,12 @@
       </p>
     </div>
     <p class="kv-copy mark">
-      <%= link_to "> Sign Up", new_climber_registration_path %>
+      <% if climber_signed_in? %>
+      
+        <%= link_to "frog love ? ", "https://tenaya.net/en/" %>
+      <% else %>
+        <%= link_to "> Sign Up", new_climber_registration_path %>
+      <% end %>
       <a class="c-scroll"></a>
     </p>
 
