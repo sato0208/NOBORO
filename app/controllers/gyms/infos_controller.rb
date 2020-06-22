@@ -18,6 +18,19 @@ class Gyms::InfosController < ApplicationController
     end
   end
 
+  def edit
+    @info = Info.find(params[:id])
+  end
+
+  def update
+    @info = Info.find(params[:id])
+    if @info.update(info_params)
+      redirect_to gyms_infos_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
   end
 

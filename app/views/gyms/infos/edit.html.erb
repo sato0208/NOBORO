@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="content">
+  <h1>お知らせ 編集</h1>
+    <%= form_with method: :patch, model: @info, local: true, url: gyms_info_path(@info) do |f| %>
+        <%= render "devise/shared/error_messages", resource: @info %>
+      <div class="field row">
+        <%= f.label :info, "お知らせ" %>
+        <%= f.text_area :info %>
+      </div>
+      <div class="action row">
+        <%= f.submit "変更を保存" %>
+      </div>
+    <% end %>
+  </div>
+</div>

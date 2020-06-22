@@ -25,8 +25,8 @@
         <tr>
           <td><%= info.info %></td>
           <td><%= info.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
-
-          <td><%= link_to "Destroy", gyms_info_path(info.id), method: :delete , class: "btn btn-danger" %></td>
+          <td><%= link_to "編集", edit_gyms_info_path(info.id) ,class: "btn btn-primary"%></td>
+          <td><%= link_to "削除", gyms_info_path(info.id), method: :delete , class: "btn btn-danger" %></td>
         </tr>
         <% end %>
       </tbody>

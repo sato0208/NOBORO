@@ -1,33 +1,17 @@
 <div class="container">
-    <h1>ジャンル　編集画面</h1>
-    <div class="row">
-        <div class="col-xs-5 ">
-            <%= form_with method: :patch, model: @genre, local: true, url: gyms_genre_path(@genre) do |f| %>
-
-            <% if @genre.errors.any? %>
-                <%= @genre.errors.count %>件のerrorが発生しました
-                <% @genre.errors.full_messages.each do |message| %>
-                    <%= message %>
-                <% end %>
-            <% end %>
+  <div class="content">
+    <h1>ジャンル 編集</h1>
+      <%= form_with method: :patch, model: @genre, local: true, url: gyms_genre_path(@genre) do |f| %>
+        <%= render "devise/shared/error_messages", resource: @genre %>
+        <div class="field row">
+          <%= f.label :genre_name, "ジャンル" %>
+          <%= f.text_field :genre_name %>
+          <%= f.label :genre_image, "ジャンル画像選択" %>
+          <%= f.attachment_field :genre_image, class: "image_form" %>
         </div>
-        <div class="col-xs-5">
-            <table class="table table-borderless">
-                <tr>
-                    <th>ジャンル</th>
-                    <td>
-                        <%= f.text_field :genre_name %>
-                    </td>
-                </tr>
-                <tr>
-                    <th>画像を選択</th>
-                    <td>
-                        <%= f.attachment_field :genre_image, class: "image_form" %>
-                    </td>
-                </tr>
-            </table>
+        <div class="action row">
+          <%= f.submit "変更を保存" %>
         </div>
-        <%= f.submit "変更を保存" %>
-        <% end %>
-    </div>
+      <% end %>
+  </div>
 </div>

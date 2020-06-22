@@ -1,38 +1,19 @@
 <div class="container">
-    <h1>グレード　編集画面</h1>
-    <div class="row">
-        <div class="col-xs-5 ">
-
-            <% if @grade.errors.any? %>
-              <%= @grade.errors.count %>件のerrorが発生しました
-              <% @grade.errors.full_messages.each do |message| %>
-                <%= message %>
-              <% end %>
-            <% end %>
-        </div>
-        <%= form_with method: :patch, model: @grade, local: true, url: gyms_grade_path(@grade) do |f| %>
-        <div class="col-xs-5">
-            <table class="table table-borderless">
-                <tr>
-                    <th>グレード</th>
-                    <td>
-                        <%= f.text_field :grade %>
-                    </td>
-                </tr>
-                <th>画像を選択</th>
-                <td>
-                    <%= f.attachment_field :trophy_image, class: "image_form" %>
-                </td>
-                </label>
-                <tr>
-                    <th>トロフィー名</th>
-                    <td>
-                        <%= f.text_area :trophy_name %>
-                    </td>
-                </tr>
-            </table>
-        </div>
+  <div class="content">
+  <h1>グレード 編集</h1>
+    <%= form_with method: :patch, model: @grade, local: true, url: gyms_grade_path(@grade) do |f| %>
+        <%= render "devise/shared/error_messages", resource: @grade %>
+      <div class="field row">
+        <%= f.label :grade, "グレード" %>
+        <%= f.text_field :grade %>
+        <%= f.label :image, "トロフィー画像選択" %>
+        <%= f.attachment_field :trophy_image, class: "image_form" %>
+        <%= f.label :trophy_name,"トロフィー名" %>
+        <%= f.text_field :trophy_name %>
+      </div>
+      <div class="action row">
         <%= f.submit "変更を保存" %>
-        <% end %>
-    </div>
+      </div>
+    <% end %>
+  </div>
 </div>

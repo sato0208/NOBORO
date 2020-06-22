@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :index, :destroy, :show, :edit, :update]
     resources :grades, only: [:create, :index, :destroy, :edit, :update]
     resources :tasks, only: [:create, :index, :destroy, :edit, :update]
-    resources :infos, only: [:create, :index, :destroy]
+    resources :infos, only: [:create, :index, :destroy, :edit, :update]
     resources :done_tasks, only: [:index]
   end
 
