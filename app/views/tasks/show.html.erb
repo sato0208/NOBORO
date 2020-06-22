@@ -3,8 +3,10 @@
   <table class="table">
     <thead>
       <tr>
-        <th>登った日</th>
+        <th>完登日</th>
         <th>名前</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +21,17 @@
             <br><%= f.climber.name %>
           <% end %>
         </td>
+        <% if current_climber.id != f.climber.id %>
+          <td>
+            <%= render 'climbers/climbers/battle_now', climber: f.climber%>
+          </td>
+          <td>
+            <%= render 'climbers/climbers/follow_unfollow', climber: f.climber %>
+          </td>
+        <% else %>
+            <td></td>
+            <td></td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>

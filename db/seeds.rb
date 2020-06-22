@@ -223,7 +223,7 @@
 #       updated_at: Time.now,
 #     },
 #     {
-#       email: 'noa@noah',
+#       email: 'noah@noah',
 #       password: 'aaaaaa',
 #       genre_id: '2',
 #       # encrypted_password: 'aaaaaa',
