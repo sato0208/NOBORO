@@ -3,7 +3,7 @@ class Gyms::InfosController < ApplicationController
 
   def index
     @new_info = Info.new
-    @infos = Info.all
+    @infos = current_gym.infos
   end
 
   def create

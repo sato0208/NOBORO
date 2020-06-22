@@ -1,15 +1,15 @@
 <div class="container">
-    <div class="content">
-    <h3>お知らせを追加する</h3>
-      <%= render "devise/shared/error_messages", resource: @new_info %>
-      <%= form_with method: :post, model:@new_info,local: true, url: gyms_infos_path do |f| %>
-        <div class="field row">
-          <%= f.label :お知らせ %>
-          <%= f.text_field :info,{placeholder: "コンペがあります"} %>
-        <%= f.submit "追加", class: "btn btn-primary" %>
-        </div>
+  <div class="content">
+  <h3>お知らせを追加する</h3>
+    <%= render "devise/shared/error_messages", resource: @new_info %>
+    <%= form_with method: :post, model:@new_info,local: true, url: gyms_infos_path do |f| %>
+      <div class="field row">
+        <%= f.label :お知らせ %>
+        <%= f.text_field :info,{placeholder: "コンペがあります"} %>
+      <%= f.submit "追加", class: "btn btn-primary" %>
+      </div>
     <% end %>
-    </div>
+  </div>
   <h1>お知らせ一覧</h1>
     <table class="table table-striped">
       <thead>
