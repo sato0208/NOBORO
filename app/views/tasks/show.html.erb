@@ -1,5 +1,9 @@
 <div class="container">
-  <h2><%= @task.grade.grade %><%= @task.task_name %> を登れた人</h2>
+  <h2>
+    <%= @task.grade.grade %>
+    <%= @task.task_name %>
+    を登れた人
+  </h2>
   <table class="table">
     <thead>
       <tr>
@@ -17,8 +21,8 @@
         </td>
         <td>
           <%= link_to climber_path(f.climber.id) do %>
-            <%= attachment_image_tag f.climber, :profile_image,format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png") %>
-            <br><%= f.climber.name %>
+            <%= attachment_image_tag f.climber, :profile_image,format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png") %><br>
+            <%= f.climber.name %>
           <% end %>
         </td>
         <% if current_climber.id != f.climber.id %>

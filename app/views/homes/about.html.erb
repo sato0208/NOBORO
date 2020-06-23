@@ -23,6 +23,7 @@
                   <span class="ja wrap">
                     ↓ How to use NOBORO ↓
                   </span>
+                </p>
               </h2>
 
               <p class="copy c-boxTxt">
@@ -406,8 +407,6 @@
                 </h2>
                 <% end %>
               </p>
-              
-
 
               <p class="copy c-boxTxt">
                 <h1 class="kv-title v-pc">
@@ -476,6 +475,9 @@
                 </h2>
               <% end %>
               </p>
+              <h2 class="c-topTitle">
+                <span class="ja wrap">
+              </h2>
 
               <p class="copy c-boxTxt">
                 <h1 class="kv-title v-pc">
@@ -576,7 +578,7 @@
               <p class="lead">
                 <% if climber_signed_in? %>
                   <span class="wrap mark">
-                    <%= link_to "> GO TO NOBORO", new_climber_registration_path %>
+                    <%= link_to "> GO TO NOBORO", root_path %>
                   </span>
                 <% else climber_signed_in? %>
                   <span class="wrap mark">

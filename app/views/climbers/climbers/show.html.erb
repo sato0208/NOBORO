@@ -43,7 +43,10 @@
               </h3>
             <% end %>
           </p>
-          <h3 class="feature-title">お気に入りジム</h3>
+
+        <div class="content">
+          <h3 class="feature-favo">
+          お気に入りジム</h3>
           <p class="heading-p">
             <% if @climber.favorite_by?(@climber) %>
                 <% @favorites.each do |f|%>
@@ -63,6 +66,8 @@
               <% end %>
             </h3>
           <% end %>
+          </div>
+
           </div>
         </div>
       </p>
