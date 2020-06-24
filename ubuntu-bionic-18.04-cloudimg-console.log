@@ -603,4 +603,7 @@ Welcome to [1mUbuntu 18.04.4 LTS[0m!
 
 Ubuntu 18.04.4 LTS ubuntu-bionic ttyS0
 
-ubuntu-bionic login: 
+ubuntu-bionic login: [43878.776456] Out of memory: Kill process 5139 (chrome) score 435 or sacrifice child
+[43878.778822] Killed process 5139 (chrome) total-vm:5001356kB, anon-rss:36168kB, file-rss:0kB, shmem-rss:99148kB
+[44341.518218] Out of memory: Kill process 5507 (chrome) score 766 or sacrifice child
+[44341.519439] Killed process 5507 (chrome) total-vm:5214772kB, anon-rss:211388kB, file-rss:0kB, shmem-rss:257132kB

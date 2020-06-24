@@ -8,26 +8,23 @@ describe 'ヘッダーのテスト' do
     context 'ヘッダーの表示を確認' do
       subject { page }
       it 'topが表示される' do
-        is_expected.to have_content 'top'
+        is_expected.to have_content ' top'
       end
       # it 'Aboutリンクが表示される' do
-      #   subject { page }
       #   it 'aboutが表示される' do
-      #     is_expected.to have_content 'about'
+      #     is_expected.to have_content ' about'
       #   end
       # end
       # it 'Sign upリンクが表示される' do
-      #   subject { page }
       #   it 'Sign upリンクが表示される' do
-      #     is_expected.to have_content '新規登録'
+      #     is_expected.to have_content ' 新規登録'
       #   end
       # end
       # it 'loginリンクが表示される' do
-      #   subject { page }
       #   it 'loginリンクが表示される' do
-      #     is_expected.to have_content 'ログイン'
+      #     is_expected.to have_content ' ログイン'
       #   end
-      end
+      # end
     end
     # context 'ヘッダーのリンクを確認' do
     #   subject { current_path }
@@ -62,9 +59,10 @@ describe 'ヘッダーのテスト' do
     end
     context 'ヘッダーの表示を確認' do
       subject { page }
-      it 'マイページが表示される' do
-        is_expected.to have_content 'マイページ'
+      it 'ランキングリンクが表示される' do
+        is_expected.to have_content 'ランキング'
       end
+    end
       # it 'Homeリンクが表示される' do
       #   home_link = find_all('a')[0].native.inner_text
       #   expect(home_link).to match(/home/i)
@@ -82,14 +80,28 @@ describe 'ヘッダーのテスト' do
       #   expect(logout_link).to match(/logout/i)
       # end
     # end
+    # context 'ヘッダーのリンクを確認' do
+    #   it '友達検索リンクが表示される' do
+    #     ###
+    #     # click_on 'attachment'
+    #     expect(page).to have_link '友達検索'
+    #     # expect(page).to click_on 'dropdown-toggle'
+    #     click_link '友達検索'
+    #     ###
+    #     # expect(page).to have_content 'ログアウトしました'
+    #   end
+    # end
+    context 'ヘッダーのリンクを確認' do
+      it '通知リンクが表示される' do
+        expect(page).to have_link '通知'
+        click_link '通知'
+      end
+    end
 
     context 'ヘッダーのリンクを確認' do
-      it 'logoutする' do
-        ###
-        expect(page).to have_link 'ログアウト'
-        click_link 'ログアウト'
-        ###
-        expect(page).to have_content 'ログアウトしました'
+      it '友達検索リンクが表示される' do
+        expect(page).to have_link '友達検索'
+        click_link '友達検索'
       end
     end
   end
