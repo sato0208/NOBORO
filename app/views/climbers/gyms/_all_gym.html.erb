@@ -1,6 +1,8 @@
 <% gyms.each do |gym| %>
   <div class="blog-item clearfix">
-    <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: "bo2.jpeg" %>
+    <%= link_to gym_path(gym.id) do %>
+      <%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "pull-left gym-icon", fallback: "bo2.jpeg" %>
+    <% end %>
     <section class="blog-text">
       <h3 class="blog-text-headline">
         <%= link_to gym.gym_name, gym_path(gym.id) %>

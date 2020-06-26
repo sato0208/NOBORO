@@ -15,8 +15,10 @@
             <td>
               <%= link_to climber_path(climber.id) do %>
                 <%= attachment_image_tag climber, :profile_image,format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png") %>
+              <% end %>
             </td>
             <td>
+              <%= link_to climber_path(climber.id) do %>
                 <%= climber.name %>
               <% end %>
             </td>

@@ -15,27 +15,29 @@
       </thead>
       <tbody>
         <% @favorites.each do |favo|%>
-        <tr>
-          <td>
-            <%= link_to climber_path(favo.climber.id) do %>
-                <%= attachment_image_tag favo.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
-              <% end %>
-          </td>
+          <tr>
             <td>
-              <%= favo.climber.name %>
+              <%= link_to climber_path(favo.climber.id) do %>
+                  <%= attachment_image_tag favo.climber,:profile_image, format: 'jpeg', class: "profile-icon", fallback: asset_path("no_image.png"), size:'40x40' %>
+                <% end %>
             </td>
-            <% unless current_climber.id == favo.climber.id %>
-              <td>
-                <%= render 'climbers/climbers/follow_unfollow', climber: favo.climber %>
-              </td>
-              <td>
-                <%= render 'climbers/climbers/battle_now', climber: favo.climber %>
-              </td>
-            <% else %>
-            <td></td>
-            <td></td>
-            <% end %>
-        </tr>
+            <td>
+              <%= link_to climber_path(favo.climber.id) do %>
+                <%= favo.climber.name %>
+              <% end %>
+            </td>
+              <% unless current_climber.id == favo.climber.id %>
+                <td>
+                  <%= render 'climbers/climbers/follow_unfollow', climber: favo.climber %>
+                </td>
+                <td>
+                  <%= render 'climbers/climbers/battle_now', climber: favo.climber %>
+                </td>
+              <% else %>
+                <td></td>
+                <td></td>
+              <% end %>
+          </tr>
         <% end %>
       </tbody>
     </table>
