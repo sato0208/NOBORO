@@ -16,7 +16,7 @@ class Gyms::GenresController < ApplicationController
     @genres = Genre.all
     @new_genre = Genre.new(genre_params)
     if @new_genre.save
-      redirect_to request.referer, notice: 'successfully created Genre!'
+      redirect_to request.referrer || root_url, notice: 'successfully created Genre!'
     else
       render :index
     end

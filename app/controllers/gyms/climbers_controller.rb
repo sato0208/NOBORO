@@ -8,7 +8,7 @@ class Gyms::ClimbersController < ApplicationController
   def destroy
     @climber = Climber.find(params[:id])
     @climber.destroy
-    redirect_to request.referer, notice: 'ユーザーを退会させました'
+    redirect_to request.referrer || root_url, notice: 'ユーザーを退会させました'
   end
 
   private

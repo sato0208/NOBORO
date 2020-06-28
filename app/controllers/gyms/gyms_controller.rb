@@ -10,7 +10,7 @@ class Gyms::GymsController < ApplicationController
   def update
     @gym = Gym.find(params[:id])
     if @gym.update(gym_params)
-      redirect_to request.referer
+      redirect_to request.referrer || root_url
     else
       @genres = Genre.all
       render :edit
