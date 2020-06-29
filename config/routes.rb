@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   get 'homes/top' => 'homes#top'
 
   devise_for :gyms, controllers: {
-    sessions: 'gyms/sessions',
-    registrations: 'gyms/registrations'
+    sessions: 'gyms/sessions'
   }
   get '/' => 'tasks#index'
   namespace :gyms do
