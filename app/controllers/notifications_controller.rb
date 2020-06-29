@@ -5,10 +5,8 @@ class NotificationsController < ApplicationController
   end
 
   def update
-    # binding.pry
     @update_notification = Notification.find(params[:id])
     @update_notification.update(notification_params)
-      # binding.pry
     if params[:notification][:confirm_status] == "承認"
       update_notification_is_battle(@update_notification)
       @update_notification.destroy
@@ -42,7 +40,6 @@ private
 
   def update_notification_is_battle(notification)
     notification = Notification.find(params[:id])
-    # binding.pry
       notification.update(
         confirm_status: "承認",
         is_checked_status: true

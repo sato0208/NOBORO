@@ -7,15 +7,6 @@ class Battle < ApplicationRecord
   # 一つのclimber_id に対して同じbattler 情報を登録させないためのユニーク制約
   validates :climber_id, uniqueness: { scope: [:battler_id] }
 
-
-  # battleテーブルのステータスがtrueのもの全てを取得
-  # scope :only_active, -> {
-  #   where(is_valid_status: true)
-  # }
-    # scope :done_tasks, -> {
-    #   climber.done_tasks.where(created_at: self.updated..self.finished_at)
-    # }
-
   # battle レコード作成時にnotification レコードも作成する
   def create_notification_by(current_climber)
       notification = current_climber.active_notifications.new(

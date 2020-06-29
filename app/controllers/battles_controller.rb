@@ -31,13 +31,13 @@ class BattlesController < ApplicationController
         @opponent = @delete_battle.battler
         # 自分の登れた数と相手の登れた数を比較する 消したバトルの結果
         result = @delete_battle.my_count_result_by(current_climber, @opponent)
-        # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
+        # 勝ち、もしくは負けの時にカレントユーザをwinner として登録する
         battle_result_by_battle_history(current_climber,@opponent,@delete_battle)
       # カレントユーザが申し込まれた側の場合
       elsif @delete_battle.battler == current_climber
         # 相手の情報を@opponentへ代入
         @opponent = @delete_battle.climber
-        # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
+        # 勝ち、もしくは負けの時にカレントユーザをwinner として登録する
         battle_result_by_battle_history(current_climber,@opponent,@delete_battle)
       end
       @delete_battle.destroy
@@ -61,6 +61,7 @@ class BattlesController < ApplicationController
     .or(BattleHistory
     .where(loser_id: current_climber.id)).page(params[:page]).per(6)
   end
+
 
   private
 
@@ -92,7 +93,7 @@ class BattlesController < ApplicationController
     winner.save
   end
 
-  # 勝ち、もしくわ負けの時にカレントユーザをwinner として登録する
+  # 勝ち、もしくは負けの時にカレントユーザをwinner として登録する
   def battle_result_by_battle_history(current_climber,opponent,delete_battle)
     # 自分の登れた数と相手の登れた数を比較する 消したバトルの結果
     result = delete_battle.my_count_result_by(current_climber, opponent)
@@ -108,5 +109,4 @@ class BattlesController < ApplicationController
   def battle_params
     params.permit(:climber_id, :battler_id, :is_valid_status, :finish_at)
   end
-
 end

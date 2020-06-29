@@ -31,13 +31,4 @@ class Gym < ApplicationRecord
     .order('count(task_id) desc')
     .limit(10)
   end
-
-  # def gym_my_rank
-  #   # ジム内の自分の順位
-  #   my_rank = 1
-  #   # @rank_done_task（多い順に並んでいる）にあるclimber_idとcurrent_climber.idが一致するまで1ずつ増やすことで順位を出す
-  #   gym_done_tasks.each do |rank|
-  #   break if rank.climber_id == current_climber.id
-  #   gym_my_rank += 1
-  # end
 end
