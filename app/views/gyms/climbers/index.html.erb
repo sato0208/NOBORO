@@ -29,7 +29,7 @@
               <% end %>
           </td>
           <td>
-              <%= climber.month_done_tasks.count %>　本
+              <%= climber.month_done_tasks.count %> 本
           </td>
           <td>
             <%= link_to "退会させる", gyms_climber_path(climber.id),class:"btn btn-danger", method: :delete, data: {confirm: '本当に退会させますか？'} %>

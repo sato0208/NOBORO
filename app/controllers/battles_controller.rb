@@ -41,7 +41,7 @@ class BattlesController < ApplicationController
         battle_result_by_battle_history(current_climber,@opponent,@delete_battle)
       end
       @delete_battle.destroy
-      redirect_to request.referrer || root_url, notice: "バトルを終了しました!　バトル履歴に情報が登録されました"
+      redirect_to request.referrer || root_url, notice: "バトルを終了しました! バトル履歴に情報が登録されました"
     else
       @delete_battle.destroy
       redirect_to request.referrer || root_url, notice: 'バトル申請を取り消しました'

@@ -9,7 +9,7 @@
           <div class="col-sm-5">
             <%= link_to climber_path(notification.visiter.id) do %>
               <%= notification.visiter.name %>
-            <% end %> さんからバトルを挑まれています　
+            <% end %> さんからバトルを挑まれています
             <%= "  (#{time_ago_in_words(notification.created_at)}前)" %>
           </div>
           <div class="col-sm-2">

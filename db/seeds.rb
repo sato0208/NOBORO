@@ -48,7 +48,7 @@
 #       description: '12:00～23:00',
 #       gym_name: 'グラビティリサーチなんば',
 #       post_code:'5310075',
-#       address: '大阪府大阪市中央区難波千日前12-35　スイングよしもとビル3F・4F',
+#       address: '大阪府大阪市中央区難波千日前12-35 スイングよしもとビル3F・4F',
 #       phone_number: '0666450631',
 #       created_at: Time.now,
 #       updated_at: Time.now,

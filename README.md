@@ -1,7 +1,7 @@
 ## 🧗‍♀️ アプリ名
 ### [NOBORO](http://noboro.work/)
 
-## 🍀　サイト概要
+## 🍀 サイト概要
 クライミング専用のアプリです。<br>
 
 検索機能や、お気に入り機能、課題のチェック機能など便利な機能を付けました。<br>
@@ -16,14 +16,14 @@
 ぜひ使ってみてください。<br>
 
 
-## 💡　サイトテーマ
+## 💡 サイトテーマ
 - 自分の登った課題を管理することができる
 - ランキングを見ることで友達と競い合える
 - バトル機能で友達と勝負して遊べる
 - トロフィーを集めるという目標設定ができる
 - お気に入りのジムを探せる
 
-## 👀　テーマを選んだ理由
+## 👀 テーマを選んだ理由
 
 ### 1.自分が登った課題を簡単に管理したい
 課題をクリアした時に、チェックシートに丸をつけるのがめんどくさいので、簡単にチェックできるツールが欲しかった
@@ -44,18 +44,18 @@ HPで一つずつ情報を見ていくのは手間なので、見やすくて分
 
 
 
-## 🙋‍♀️　ターゲットユーザ
+## 🙋‍♀️ ターゲットユーザ
 - ボルダリングをもっと楽しみたい人
 - ジムの情報が欲しい人
 - ジムの管理者
 
-## 💪　主な利用シーン
+## 💪 主な利用シーン
 - 登った課題の管理がしたいとき
 - ランキングを見て上位にいこうとモチベーションを上げるとき
 - ジムの検索がしたいとき
 - トロフィー集めを楽しみたいとき
 
-## ✒️　使い方
+## ✒️ 使い方
 
 ### 1.ジム検索について
 カテゴリ別にジムを検索することができます。<br>
@@ -102,8 +102,8 @@ HPで一つずつ情報を見ていくのは手間なので、見やすくて分
 - SQL (mysql-0.5.3)
 
 ## 📃 設計書
-### [ワイヤーフレーム　user側](https://drive.google.com/file/d/1EYJ_Tr6NmMoKJcZVwmTYLYZ9u4tLszQg/view?usp=sharing)
-### [ワイヤーフレーム　admin側](https://app.diagrams.net/#G1GQshFpEhRTq3xialP9dOQHu8DJ1hrjtE)
+### [ワイヤーフレーム user側](https://drive.google.com/file/d/1EYJ_Tr6NmMoKJcZVwmTYLYZ9u4tLszQg/view?usp=sharing)
+### [ワイヤーフレーム admin側](https://app.diagrams.net/#G1GQshFpEhRTq3xialP9dOQHu8DJ1hrjtE)
 ### [ER図](https://app.diagrams.net/#G1wzUQNLwBpJw6pwcnkBhbnAf4EVFQD2om)
 ### [テーブル提議書](https://docs.google.com/spreadsheets/d/1NkqBkop23iWMGou29T9cCjX-nU4dwcR6I1jlKRXh_2k/edit#gid=313609131)
 ### [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1NkqBkop23iWMGou29T9cCjX-nU4dwcR6I1jlKRXh_2k/edit?usp=sharing)

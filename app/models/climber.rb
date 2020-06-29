@@ -11,13 +11,13 @@ class Climber < ApplicationRecord
   has_many :gym_favorites, through: :favorites, source: :gym
 
   # バトル履歴
-  # 　勝者
+  #  勝者
   has_many :winner, class_name: 'BattleHistorie', foreign_key: 'winner_id'
-  #   敗者
+  #  敗者
   has_many :loser, class_name: 'BattleHistorie', foreign_key: 'loser_id'
 
   # バトル機能
-  # 　挑む側
+  #  挑む側
   has_many :battles, class_name: 'Battle', foreign_key: 'climber_id'
   #  挑まれる側
   has_many :battlers, class_name: 'Battle', foreign_key: 'battler_id'
@@ -47,7 +47,7 @@ class Climber < ApplicationRecord
     # フォローしようとしている other_climber が自分自身ではないかを検証
     unless self == other_climber
       # self = current_climber
-      # find_or_create_by　 = 保存
+      # find_or_create_by = 保存
       relationships.find_or_create_by(follow_id: other_climber)
     end
   end

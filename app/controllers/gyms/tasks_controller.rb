@@ -37,6 +37,10 @@ class Gyms::TasksController < ApplicationController
     redirect_to request.referrer || root_url, notice: 'successfully delete Task!'
   end
 
+
+
+
+  
   private
 
   def task_params
