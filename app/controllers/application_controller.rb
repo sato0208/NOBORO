@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Gym
-      gyms_path
+      edit_gyms_gym_path(current_gym)
     when Climber
       root_path
     end
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     case resource
-    when :gym
+    when :gyms
       new_gym_session_path
     when :climber
       root_path

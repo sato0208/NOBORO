@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   root to: 'climbers/gyms#index'
-  get 'homes/top' => 'homes#top'
 
   devise_for :gyms, controllers: {
     sessions: 'gyms/sessions'
   }
-  get '/' => 'tasks#index'
   namespace :gyms do
     resources :favorites, only: [:index]
     resources :climbers, only: [:index, :destroy]
