@@ -23,7 +23,7 @@
         <% if gym_signed_in? %>
           <ul class="navbar-text navbar-right">
             <li>
-              <%= link_to " ジム情報編集", edit_gyms_gym_path(current_gym.id),class:"fas fa-cog"%>
+              <%= link_to " ジム情報編集", edit_gym_path(current_gym.id),class:"fas fa-cog"%>
             </li>
             <li>
               <%= link_to " ジム課題登録", gyms_tasks_path,class:"fas fa-feather" %>

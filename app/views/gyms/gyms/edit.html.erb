@@ -4,7 +4,7 @@
     <h1>
       ジム情報 編集画面
     </h1>
-    <%= form_with method: :patch, model: @gym, local: true, url: gyms_gym_path(@gym) do |f| %>
+    <%= form_with method: :patch, model: @gym, local: true, url: gym_path(@gym) do |f| %>
 
         <%= f.label :gym_name %>
         <%= f.text_field :gym_name %>

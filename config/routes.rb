@@ -4,16 +4,22 @@ Rails.application.routes.draw do
   devise_for :gyms, controllers: {
     sessions: 'gyms/sessions'
   }
+
+
   namespace :gyms do
     resources :favorites, only: [:index]
     resources :climbers, only: [:index, :destroy]
-    resources :gyms, only: [:edit, :update]
+    # resources :gyms, only: [:edit, :update]
     resources :genres, only: [:create, :index, :destroy, :show, :edit, :update]
     resources :grades, only: [:create, :index, :destroy, :edit, :update]
     resources :tasks, only: [:create, :index, :destroy, :edit, :update]
     resources :infos, only: [:create, :index, :destroy, :edit, :update]
     resources :done_tasks, only: [:index]
   end
+    # urlにgymsを含めたくないのでわざとnamespaceから外してます
+    scope module: :gyms do
+      resources :gyms, only: [:edit, :update]
+    end
 
   devise_for :climbers, controllers: {
     sessions: 'climbers/sessions',
