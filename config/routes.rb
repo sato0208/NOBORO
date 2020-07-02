@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'climbers/gyms#index'
+  root to: 'homes#top'
   
   devise_for :gyms, controllers: {
     sessions: 'gyms/sessions'
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get 'climbers/trophy/:id' => 'climbers#trophy', as: :trophy
     get 'climbers/search' => 'climbers#search', as: :climber_search
     get 'following_climbers' => 'climbers#following_climbers'
-    resources :climbers, only: [:show, :edit, :update, :index]do
+    resources :climbers, only: [:show, :edit, :update, :index] do
       member do
         get :follower, :following
       end

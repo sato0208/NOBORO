@@ -12,7 +12,7 @@ class HomesController < ApplicationController
       # climber.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
     sign_in climber
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to gyms_url, notice: 'ゲストユーザーとしてログインしました。'
   end
 end
 

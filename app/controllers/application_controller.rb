@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     when :gyms
       new_gym_session_path
     when :climber
-      root_path
+      gyms_url
     end
   end
 

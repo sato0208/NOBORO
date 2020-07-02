@@ -7,10 +7,10 @@ class RelationshipsController < ApplicationController
     following = current_climber.follow(@climber.id)
     if following.save
       flash[:success] = 'ユーザーをフォローしました'
-      redirect_to request.referrer || root_url
+      redirect_to request.referrer || gyms_url
     else
       flash.now[:alert] = 'ユーザーのフォローに失敗しました'
-      redirect_to request.referrer || root_url
+      redirect_to request.referrer || gyms_url
     end
   end
 
@@ -24,10 +24,10 @@ class RelationshipsController < ApplicationController
     following = current_climber.unfollow(@climber)
     if following.destroy
       flash[:success] = 'ユーザーのフォローを解除しました'
-      redirect_to request.referrer || root_url
+      redirect_to request.referrer || gyms_url
     else
       flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
-      redirect_to request.referrer || root_url
+      redirect_to request.referrer || gyms_url
     end
   end
 

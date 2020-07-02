@@ -11,7 +11,7 @@ class Gyms::InfosController < ApplicationController
     @new_info = Info.new(info_params)
     @new_info.gym_id = current_gym.id
     if @new_info.save
-      redirect_to request.referrer || root_url, notice: 'お知らせを投稿しました!'
+      redirect_to request.referrer || gyms_url, notice: 'お知らせを投稿しました!'
     else
       @infos = Info.all
         render :index

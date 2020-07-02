@@ -15,7 +15,7 @@ class NotificationsController < ApplicationController
     if params[:notification][:confirm_status] == "拒否"
       @update_notification.update(confirm_status: "拒否")
       @update_notification.battle.destroy
-      redirect_to request.referrer || root_url, notice: "バトルを拒否しました"
+      redirect_to request.referrer || gyms_url, notice: "バトルを拒否しました"
     end
   end
 

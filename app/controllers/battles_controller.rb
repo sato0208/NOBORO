@@ -5,7 +5,7 @@ class BattlesController < ApplicationController
     @update_battle = Battle.find(params[:id])
     if params[:battle_status] == "リセット"
       @update_battle.update(finish_at: @update_battle.created_at.next_day(3))
-      redirect_to request.referrer || root_url, notice: "バトルをリセットしました"
+      redirect_to request.referrer || gyms_url, notice: "バトルをリセットしました"
     end
   end
 
@@ -17,9 +17,9 @@ class BattlesController < ApplicationController
       # 通知に登録。モデルへ記述
       @new_battle.create_notification_by(current_climber)
     else
-      redirect_to request.referrer || root_url, notice: 'すでにバトルを申し込んできます! 承認されるまでお待ちください'
+      redirect_to request.referrer || gyms_url, notice: 'すでにバトルを申し込んできます! 承認されるまでお待ちください'
     end
-      redirect_to request.referrer || root_url, notice: "バトルを申し込みました! 承認されるとバトルページが使用できます"
+      redirect_to request.referrer || gyms_url, notice: "バトルを申し込みました! 承認されるとバトルページが使用できます"
   end
 
   def destroy
@@ -41,10 +41,10 @@ class BattlesController < ApplicationController
         battle_result_by_battle_history(current_climber,@opponent,@delete_battle)
       end
       @delete_battle.destroy
-      redirect_to request.referrer || root_url, notice: "バトルを終了しました! バトル履歴に情報が登録されました"
+      redirect_to request.referrer || gyms_url, notice: "バトルを終了しました! バトル履歴に情報が登録されました"
     else
       @delete_battle.destroy
-      redirect_to request.referrer || root_url, notice: 'バトル申請を取り消しました'
+      redirect_to request.referrer || gyms_url, notice: 'バトル申請を取り消しました'
     end
   end
 

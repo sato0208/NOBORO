@@ -81,7 +81,7 @@
 
               <p class="lead">
                 <span class="wrap mark">
-                  <%= link_to  root_path do %>> 会員登録をしなくてもご利用いただけます
+                  <%= link_to  gyms_url do %>> 会員登録をしなくてもご利用いただけます
                   <% end %>
                 </span>
               </p>
@@ -206,7 +206,7 @@
               <p class="lead">
                 <% if climber_signed_in? %>
                   <span class="wrap mark">
-                    <%= link_to "> まずはお気に入りジムを探そう", root_path %>
+                    <%= link_to "> まずはお気に入りジムを探そう", gyms_url %>
                   </span>
                   <h2 class="c-topTitle">
                     <span class="ja wrap"></span>
@@ -574,7 +574,7 @@
               <p class="lead">
                 <% if climber_signed_in? %>
                   <span class="wrap mark">
-                    <%= link_to "> GO TO NOBORO", root_path %>
+                    <%= link_to "> GO TO NOBORO", gyms_url %>
                   </span>
                 <% else climber_signed_in? %>
                   <span class="wrap mark">

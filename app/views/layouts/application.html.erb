@@ -15,7 +15,7 @@
       <header class="navbar navbar-inverse", id="header">
         <nav class="navbar-left">
           <span>
-            <%= link_to root_path do %>
+            <%= link_to gyms_url do %>
               <%= image_tag 'logo3.png', class:'logo' %>
             <% end %>
           </span>
@@ -91,7 +91,7 @@
         <% else %>
           <ul class="navbar-text navbar-right">
             <li>
-              <%= link_to " ジム検索", root_path,class:"fa fa-search" %>
+              <%= link_to " ジム検索", gyms_url,class:"fa fa-search" %>
             </li>
             <li>
               <%= link_to " トップ", top_path,class:"fas fa-angle-double-right" %>
