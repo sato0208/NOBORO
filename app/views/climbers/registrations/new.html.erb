@@ -15,6 +15,7 @@
       <div class="control">
         <label for="mymail">ニックネーム
           <span class="required">必須</span></label>
+          <em>( 2〜10文字以内 )</em><br>
         <%= f.text_field :name, autofocus: true, id:"inputName"%>
       </div>
 
@@ -35,8 +36,9 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
       <%= f.button "新規登録", :type => "submit", class: 'btn btn-lg btn-primary  center-block' %>
-      <%= link_to 'かんたんログイン', homes_guest_sign_in_path, method: :post, class:"btn btn-lg btn-success center-block" %>
-
-    <br>Already have an account? <%= render "climbers/shared/links" %>
+      <%= link_to 'かんたんログイン', homes_guest_sign_in_path, method: :post, class:"btn btn-lg btn-success center-block" %><br>
+      ※ すでにアカウントをお持ちの方は 
+      <i class="fas fa-share"></i>
+      <%= render "climbers/shared/links" %>
   </div>
 <% end %>

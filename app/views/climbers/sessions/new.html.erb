@@ -1,10 +1,9 @@
 <div class="log-visual">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="content">
-    <%#= render "devise/shared/error_messages", resource: resource %>
-    <%= render 'layouts/alert' %>
-
-        <h1>ログインフォーム</h1>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="content">
+      <%#= render "devise/shared/error_messages", resource: resource %>
+      <%= render 'layouts/alert' %>
+        <h1>ログイン</h1>
         <div class="control">
           <label for="mymail">メールアドレス</label>
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -17,12 +16,12 @@
 
         <% if devise_mapping.rememberable? %>
           <div class="field">
-            <%= f.check_box :remember_me %> Remember me
+            <p><%= f.check_box :remember_me %> Remember me</p>
           </div>
         <% end %>
         <h2></h2>
           <%= f.button "ログイン", :type => "submit", style: 'border-style: none;',class: "btn btn-lg btn-primary center-block" %>
-          <%= link_to 'かんたんログイン', homes_guest_sign_in_path, method: :post, class:"btn btn-lg btn-success center-block" %>
+          <%= link_to 'かんたんログイン', homes_guest_sign_in_path, method: :post, class:"btn btn-lg btn-success center-block" %> <br>
       <% end %>
-      <br>Don't have an account? <%= render "climbers/shared/links" %>
-  </div>
+          ※ まだアカウントを持っていない方は <i class="fas fa-user"></i><%= render "climbers/shared/links" %>
+    </div>
