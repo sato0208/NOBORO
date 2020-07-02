@@ -2,6 +2,7 @@ class Climbers::ClimbersController < ApplicationController
   before_action :authenticate_climber!
   before_action :ensure_correct_climber, {only: [:edit, :update]}
   before_action :set_climber, only: %i[show edit update following follower trophy]
+  before_action :forbid_test_climber, {only: [:edit,:update]}
 
   def show
     now = Time.current
@@ -70,6 +71,13 @@ class Climbers::ClimbersController < ApplicationController
       redirect_to edit_climber_path(current_climber)
     end
   end
+
+  def forbid_test_climber
+    if @climber.email == "guest@example.com"
+      flash[:notice] = "ゲストユーザーのため変更できません"
+      redirect_to climber_path(current_climber)
+    end
+end
 
   def climber_params
     params.require(:climber).permit(:name, :profile_image, :email, :introduction)
