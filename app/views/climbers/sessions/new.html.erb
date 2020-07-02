@@ -21,9 +21,8 @@
           </div>
         <% end %>
         <h2></h2>
-          <%= f.button :type => "submit", style: 'border-style: none;',class: 'btn btn-primary' do %>
-            <i class="fas fa-key"> ログイン</i>
-        <% end %>
+          <%= f.button "ログイン", :type => "submit", style: 'border-style: none;',class: "btn btn-lg btn-primary center-block" %>
+          <%= link_to 'かんたんログイン', homes_guest_sign_in_path, method: :post, class:"btn btn-lg btn-success center-block" %>
       <% end %>
-      <br><%= render "climbers/shared/links" %>
+      <br>Don't have an account? <%= render "climbers/shared/links" %>
   </div>

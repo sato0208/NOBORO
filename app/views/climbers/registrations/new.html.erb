@@ -34,10 +34,9 @@
             <em>( 確認用 )</em><br>
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
-      <%= f.button :type => "submit", class: 'btn btn-primary' do %>
-        <i class="fas fa-key"> 新規登録</i>
-      <% end %>
-      <%= link_to 'かんたんログイン', testsessions_path, method: :post, class:"btn btn-lg btn-success center-block" %>
-    <br><%= render "climbers/shared/links" %>
+      <%= f.button "新規登録", :type => "submit", class: 'btn btn-lg btn-primary  center-block' %>
+      <%= link_to 'かんたんログイン', homes_guest_sign_in_path, method: :post, class:"btn btn-lg btn-success center-block" %>
+
+    <br>Already have an account? <%= render "climbers/shared/links" %>
   </div>
 <% end %>

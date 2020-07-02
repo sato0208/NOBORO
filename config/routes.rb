@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'climbers/gyms#index'
-
+  
   devise_for :gyms, controllers: {
     sessions: 'gyms/sessions'
   }
@@ -48,6 +48,8 @@ Rails.application.routes.draw do
     # urlにclimbersを含めたくないのでわざとscopeから外してます
     get 'homes/about' => 'homes#about', as: :about
     get 'homes/top' => 'homes#top', as: :top
+    post '/homes/guest_sign_in', to: 'homes#new_guest'
+
     resources :genres, only: [:create, :index, :destroy, :new, :show, :edit, :update]
     resources :tasks, only: [:show]
     resources :infos, only: [:index]
