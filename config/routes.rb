@@ -57,4 +57,5 @@ Rails.application.routes.draw do
     resources :battles, only: [:create, :destroy, :update, :index]
     resources :notifications, only: [:create, :destroy, :update, :index]
     resources :battle_historys, only: [:create, :index]
+    resources :testsessions, only: :create
 end

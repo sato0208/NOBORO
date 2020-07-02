@@ -37,6 +37,7 @@
       <%= f.button :type => "submit", class: 'btn btn-primary' do %>
         <i class="fas fa-key"> 新規登録</i>
       <% end %>
+      <%= link_to 'かんたんログイン', testsessions_path, method: :post, class:"btn btn-lg btn-success center-block" %>
     <br><%= render "climbers/shared/links" %>
   </div>
 <% end %>
