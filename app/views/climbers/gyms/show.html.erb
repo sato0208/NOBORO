@@ -26,16 +26,16 @@
           <%= @gym.gym_name %>
         </a>
       </h2>
-      <h4 id="favorites_<%= @gym.id %>">
+      <h5 id="favorites_<%= @gym.id %>">
         <%= render 'favorite', gym: @gym %>
-              <%= link_to gyms_path(genre_id: @gym.genre.id) do %>
+      </h5>
+      <h3 class="feature-title">
+        <%= link_to " #{@gym.gym_name} 今月のランキング",rank_path, class: "fas fa-chess-queen" %>
+        <%= link_to gyms_path(genre_id: @gym.genre.id) do %>
           <span class="show-category">
             <%= @gym.genre.genre_name %>
           </span>
         <% end %>
-      </h4>
-      <h3 class="feature-title">
-        <%= link_to " #{@gym.gym_name} 今月のランキング",rank_path, class: "fas fa-chess-queen" %>
       </h3>
       <div class="ander"></div>
         <h5 class="c-heading3__title">
