@@ -48,6 +48,30 @@ a >.category {
   font-weight: 100;
 }
 
+.show-category {
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #acabab;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+}
+
+a >.show-category {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 100;
+  margin-left: 3%;
+}
+
 button {
   background-color: #fff;
+}
+
+.gym-prof{
+  margin-left: 40%;
+}
+
+.favorites{
+  margin-left: 30px;
 }
