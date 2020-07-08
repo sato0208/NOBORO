@@ -7,11 +7,15 @@
       <i class="fa fa-search"></i>
     <% end %>
   <% end %>
+  <% unless @climbers.present? %>
+    <h4>" <%= params[:name] %> " に一致するクライマーは見つかりませんでした</h4>
+  <% end %>
     <section class="tasks">
     <h3>
       <%= link_to ">> ユーザ一覧ページへ",climbers_path %>
     </h3>
   </section>
+ 
   <%= render 'climbers', climbers: @climbers %>
   <div class="centering_item">
     <%= paginate @climbers %>
