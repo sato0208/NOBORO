@@ -9,10 +9,14 @@
       <% end %>
     <% end %>
   </div>
+    <% unless @gyms.present? %>
+      <h4>" <%= params[:gym_name] %> " に一致するジムは見つかりませんでした</h4>
+    <% end %>
   <!-- ジャンル検索 -->
   <%= render 'genres', genres: @genres %>
   <!-- ジム一覧 -->
   <%= render 'all_gym', gyms: @gyms %>
+
   <div class="centering_item">
     <%= paginate @gyms %>
   </div>
