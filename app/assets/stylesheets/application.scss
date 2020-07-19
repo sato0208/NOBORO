@@ -603,4 +603,18 @@ element.style {
   .strength {
     display: none;
 }
+  .gym-icon {
+    width: 80%;
+    height: 350px;
+    margin: 0 10% 0 10%;
+  }
+  .blog-text {
+    margin: 15px 10% 0 10%;
+}
+//  ジムの詳細画面
+#wrapper {
+  display: block;
+  flex-direction: column;
+  min-height: 100vh;
+}
 }
