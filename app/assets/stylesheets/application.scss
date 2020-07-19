@@ -29,6 +29,7 @@
 $main-color: #3e3e3e;
 
 body {
+  min-width: 768px;
   color: $main-color;
 }
 
@@ -581,4 +582,25 @@ element.style {
 .fa-sign-in-alt {
   position: relative;
   margin-right: 60px;
+}
+
+@media screen and (max-width:425px) {
+  header {
+    width: 100%;
+  }
+  header li {
+    display: none;
+    padding: 0 25px 0 0;
+    color: #fff;
+    font-family: 'Glyphicons Halflings';
+  }
+  .logo {
+    width: 190px;
+    height: 60px;
+    margin-left: 5%;
+  }
+
+  .strength {
+    display: none;
+}
 }
