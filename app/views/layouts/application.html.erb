@@ -59,6 +59,26 @@
                 <%= link_to " 通知", notifications_path,class:"fas fa-bell" %>
               <% end %>
             </li>
+            <!--ハンバーガーメニュー -->
+            <div id="sp-menu">
+              <ul>
+                <li><%= link_to " 友達検索", climbers_path,class:"fa fa-search" %></li>
+                <li><%= link_to " ランキング", done_tasks_path,class:"fas fa-chess-queen" %></li>
+                <li><%= link_to " 通知", notifications_path %></li>
+                <li><%= link_to " マイページ", climber_path(current_climber.id) %></li>
+                <li><%= link_to " トロフィー", trophy_path(current_climber.id) %></li>
+                <li><%= link_to " バトル", battles_path, class:"dropdown-item" %></li>
+                <li><%= link_to " ご利用方法", about_path %></li>
+                <li><%= link_to " ログアウト", destroy_climber_session_path %></li>
+              </ul>
+            </div>
+            <div id="hm-icon">
+              <a class="menu-trigger" href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </div>
 
             <li class="dropdown">
               <%= link_to  climber_path(current_climber), class:"dropdown-toggle", 'data-toggle': :dropdown do %>
