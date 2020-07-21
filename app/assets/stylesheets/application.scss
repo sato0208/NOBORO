@@ -584,11 +584,13 @@ element.style {
   margin-right: 60px;
 }
 
+
 /* ---------------------------- */
 /* --- ハンバーガーアイコン --- */
 /* ---------------------------- */
  
 #hm-icon{
+  display: none;
   position: fixed;
   right: 20px;
   top: 20px;
@@ -633,7 +635,7 @@ element.style {
   position: absolute;
   left: 0;
   bottom: -30px;
-  content: 'MENU';
+  // content: 'MENU';
   display: block;
   width: 100%;
   color: black;
@@ -719,11 +721,20 @@ element.style {
   }
   .blog-text {
     margin: 15px 10% 0 10%;
-}
-//  ジムの詳細画面
-#wrapper {
-  display: block;
-  flex-direction: column;
-  min-height: 100vh;
-}
+  }
+  //  ジムの詳細画面
+  #wrapper {
+    display: block;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  #hm-icon{
+    display: block;
+  }
+  #sp-menu li{
+    display: block;
+  }
+  #sp-menu a{
+    display: block;
+  }
 }
