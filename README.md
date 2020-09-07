@@ -1,5 +1,5 @@
 ## 🧗‍♀️ アプリ名
-### [NOBORO](http://noboro.work/)
+### NOBORO
 
 ## 🍀 サイト概要
 クライミング専用のアプリです。<br>
